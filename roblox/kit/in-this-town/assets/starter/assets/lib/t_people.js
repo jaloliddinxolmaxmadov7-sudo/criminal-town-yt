@@ -59,6 +59,17 @@
     panicked: { eyes: "x", brows: "worried", mouth: "wavy", sweat: 1 },
     awkward: { eyes: "dot", brows: "worried", mouth: "grit", sweat: 1, blush: 1 },
     hopeful: { eyes: "big", brows: "worried", mouth: "smile" },
+    // ---- emotions pack 3
+    sobbing: { eyes: "squeeze", brows: "worried", mouth: "O", tears: 1, stream: 1 },
+    mindblown: { eyes: "spiral", brows: "raised", mouth: "O", boom: 1 },
+    scheming: { eyes: "half", brows: "angry", mouth: "smirk", vein: 0 },
+    pouty: { eyes: "dot", brows: "worried", mouth: "frown", blush: 1 },
+    screaming: { eyes: "x", brows: "raised", mouth: "O", sweat: 1, boom: 1 },
+    dreamy: { eyes: "closedUp", brows: "up1", mouth: "cat", blush: 1, sparkle: 1 },
+    grumpy: { eyes: "half", brows: "angry", mouth: "frown", vein: 1 },
+    sweating: { eyes: "big", brows: "worried", mouth: "grit", sweat: 1, stream: 0 },
+    winner: { eyes: "star", brows: "up1", mouth: "open", sparkle: 1 },
+    sneaky: { eyes: "half", brows: "oneup", mouth: "cat" },
   };
   T.EXPR = EXPR;
   const BLINKABLE = new Set(["smile", "happy", "grin", "wow", "talk", "determined", "worried", "sad", "angry", "tongue"]);
@@ -126,6 +137,10 @@
     else if (m === "tongue") { g.beginPath(); g.arc(mx - 6, my - 24, 30, Math.PI * 0.25, Math.PI * 0.78); g.stroke(); g.fillStyle = "#ff6f86"; g.beginPath(); g.ellipse(mx + 18, my + 10, 11, 15, -0.4, 0, 7); g.fill(); g.lineWidth = 5; g.stroke(); }
     if (st.mustache) { g.fillStyle = st.mustache; g.beginPath(); g.moveTo(mx, my - 26); g.bezierCurveTo(mx - 20, my - 44, mx - 64, my - 34, mx - 70, my - 10); g.bezierCurveTo(mx - 50, my - 22, mx - 22, my - 16, mx, my - 18); g.bezierCurveTo(mx + 22, my - 16, mx + 50, my - 22, mx + 70, my - 10); g.bezierCurveTo(mx + 64, my - 34, mx + 20, my - 44, mx, my - 26); g.fill(); }
     if (ex.rage) { g.fillStyle = "rgba(255,40,40,0.38)"; g.fillRect(0, 0, 256, 256); g.strokeStyle = "#7a0d0d"; g.lineWidth = 6; for (const [x, y] of [[196, 40], [214, 52], [178, 52]]) { g.beginPath(); g.moveTo(x - 8, y); g.lineTo(x, y - 8); g.lineTo(x + 8, y); g.stroke(); } }
+    if (ex.stream) { g.fillStyle = "rgba(90,180,255,0.85)"; for (const x of EX) g.fillRect(x - 7, EY + 14, 14, 110); }
+    if (ex.boom) { g.fillStyle = "#ffb020"; g.beginPath(); for (let k = 0; k < 16; k++) { const an = k * Math.PI / 8, rr = k % 2 ? 22 : 44; g.lineTo(128 + Math.cos(an) * rr * 2.2, 26 + Math.sin(an) * rr * 0.6); } g.closePath(); g.fill(); }
+    if (ex.vein) { g.strokeStyle = "#d62828"; g.lineWidth = 7; g.beginPath(); for (const [a, b2, c2, d2] of [[196, 26, 214, 44], [214, 26, 196, 44], [205, 18, 205, 52]]) { g.moveTo(a, b2); g.lineTo(c2, d2); } g.stroke(); }
+    if (ex.sparkle) { g.fillStyle = "#ffe14d"; for (const [x, y, r] of [[34, 30, 14], [222, 40, 11], [210, 200, 9]]) { g.beginPath(); for (let k = 0; k < 8; k++) { const an = k * Math.PI / 4, rr = k % 2 ? r * 0.35 : r; g.lineTo(x + Math.cos(an) * rr, y + Math.sin(an) * rr); } g.closePath(); g.fill(); } }
     if (ex.blush) { g.fillStyle = "rgba(255,90,120,0.55)"; for (const x of EX) { g.beginPath(); g.ellipse(x, EY + 42, 26, 13, 0, 0, 7); g.fill(); } }
     if (ex.green) { g.fillStyle = "rgba(90,200,70,0.38)"; g.fillRect(0, 0, 256, 128); }
     if (ex.drool) { g.fillStyle = "#8fd8ff"; g.strokeStyle = "#2f7fb8"; g.lineWidth = 3; g.beginPath(); g.moveTo(160, 182); g.quadraticCurveTo(170, 226, 160, 232); g.quadraticCurveTo(150, 226, 160, 182); g.fill(); g.stroke(); }
@@ -143,10 +158,33 @@
   };
 
   // ---------------------------------------------------------------- shirt fronts
+  // ---- outfits pack: extra shirt prints
+  const NEWSHIRT = {
+    jacket: (g, b, a) => { g.fillStyle = "rgba(0,0,0,0.18)"; g.fillRect(122, 0, 12, 256); g.fillStyle = a || "#d9d9d9"; for (let y = 6; y < 256; y += 14) g.fillRect(124, y, 8, 6);
+      g.fillStyle = "rgba(255,255,255,0.18)"; g.beginPath(); g.moveTo(60, 0); g.lineTo(122, 0); g.lineTo(122, 70); g.closePath(); g.fill(); g.beginPath(); g.moveTo(196, 0); g.lineTo(134, 0); g.lineTo(134, 70); g.closePath(); g.fill();
+      g.fillStyle = "rgba(0,0,0,0.22)"; g.fillRect(40, 170, 56, 8); g.fillRect(160, 170, 56, 8); },
+    jersey: (g, b, a) => { g.fillStyle = a || "#ffffff"; g.font = "bold 150px sans-serif"; g.textAlign = "center"; g.textBaseline = "middle"; g.fillText("13", 128, 140); g.fillRect(0, 0, 256, 16); g.fillRect(0, 240, 256, 16); },
+    skull: (g, b, a) => { const c = a || "#ffffff"; g.fillStyle = c; g.beginPath(); g.arc(128, 110, 58, 0, 7); g.fill(); g.fillRect(96, 140, 64, 46); g.fillStyle = b;
+      g.beginPath(); g.arc(106, 110, 16, 0, 7); g.fill(); g.beginPath(); g.arc(150, 110, 16, 0, 7); g.fill(); g.beginPath(); g.moveTo(128, 128); g.lineTo(120, 146); g.lineTo(136, 146); g.closePath(); g.fill();
+      for (const x of [108, 124, 140]) g.fillRect(x, 168, 6, 18); },
+    flannel: (g, b, a) => { g.fillStyle = a || "rgba(0,0,0,0.35)"; for (let i = 0; i < 256; i += 48) { g.globalAlpha = 0.45; g.fillRect(i, 0, 18, 256); g.fillRect(0, i, 256, 18); } g.globalAlpha = 1;
+      g.fillStyle = "rgba(255,255,255,0.25)"; for (let i = 24; i < 256; i += 48) { g.fillRect(i, 0, 3, 256); g.fillRect(0, i, 256, 3); } },
+    tracksuit: (g, b, a) => { g.fillStyle = a || "#ffffff"; g.fillRect(20, 0, 14, 256); g.fillRect(40, 0, 14, 256); g.fillRect(202, 0, 14, 256); g.fillRect(222, 0, 14, 256);
+      g.fillStyle = "rgba(0,0,0,0.25)"; g.fillRect(124, 0, 8, 256); },
+    heart: (g, b, a) => { g.fillStyle = a || "#ff3b6b"; g.beginPath(); g.moveTo(128, 196); g.bezierCurveTo(40, 130, 60, 50, 128, 92); g.bezierCurveTo(196, 50, 216, 130, 128, 196); g.fill(); },
+    tux: (g, b, a) => { g.fillStyle = "#ffffff"; g.beginPath(); g.moveTo(76, 0); g.lineTo(180, 0); g.lineTo(128, 170); g.closePath(); g.fill();
+      g.fillStyle = a || "#111111"; g.beginPath(); g.moveTo(100, 22); g.lineTo(128, 34); g.lineTo(156, 22); g.lineTo(156, 50); g.lineTo(128, 38); g.lineTo(100, 50); g.closePath(); g.fill();
+      g.fillStyle = "#222"; for (const y of [80, 112, 144]) { g.beginPath(); g.arc(128, y, 6, 0, 7); g.fill(); } },
+    pajama: (g, b, a) => { const r = T.rng(5); g.fillStyle = a || "#fff3a6"; for (let i = 0; i < 18; i++) { const x = r() * 256, y = r() * 256; g.beginPath();
+      for (let k = 0; k < 10; k++) { const an = -Math.PI / 2 + k * Math.PI / 5, rr = k % 2 ? 5 : 12; g.lineTo(x + Math.cos(an) * rr, y + Math.sin(an) * rr); } g.closePath(); g.fill(); } },
+    logo: (g, b, a) => { g.fillStyle = "#e53935"; g.font = "900 54px sans-serif"; g.textAlign = "center"; g.textBaseline = "middle"; g.fillText("CRIMINAL", 128, 108); g.fillStyle = "#ffd23f"; g.fillText("TOWN", 128, 160); },
+  };
+  T.SHIRTS_EXTRA = Object.keys(NEWSHIRT);
   function shirtCanvas(kind, base, acc) {
     const c = T.canvas(256, 256), g = c.getContext("2d");
     g.fillStyle = base; g.fillRect(0, 0, 256, 256);
     g.lineCap = "round";
+    if (NEWSHIRT[kind]) { NEWSHIRT[kind](g, base, acc); return c; }
     if (kind === "hoodie") {
       g.fillStyle = "rgba(0,0,0,0.16)"; g.beginPath(); g.moveTo(52, 160); g.lineTo(204, 160); g.lineTo(220, 236); g.lineTo(36, 236); g.closePath(); g.fill();
       g.strokeStyle = acc || "#f5f5f5"; g.lineWidth = 9; for (const x of [104, 152]) { g.beginPath(); g.moveTo(x, 8); g.lineTo(x - (x < 128 ? 6 : -6), 96); g.stroke(); g.fillStyle = acc || "#f5f5f5"; g.beginPath(); g.arc(x - (x < 128 ? 6 : -6), 100, 8, 0, 7); g.fill(); }
@@ -323,6 +361,34 @@
         add(T.rbox(0.16, H * 0.5, 0.16, 0.05), s, 0, -H * 0.2, H / 2 + 0.1);
         const plume = add(T.rbox(0.3, 1.3, 0.5, 0.14), T.mat("#d62839", { r: 0.8 }), 0, 0.7, -0.35, -0.45);
         this.plume = plume;
+      } else if (kind === "beanie") {
+        const m = T.mat(spec.hatColor || "#2f6fe0", { r: 0.95 });
+        const d = add(new THREE.SphereGeometry(H * 0.62, 24, 12, 0, Math.PI * 2, 0, Math.PI / 2), m, 0, -0.18, 0); d.scale.set(1.04, 0.95, 1.04);
+        add(T.cyl(H * 0.64, H * 0.64, 0.34, 24), T.mat(spec.hatAcc || "#ffffff", { r: 0.95 }), 0, -0.08, 0);
+        add(T.sph(0.26, 12, 8), T.mat(spec.hatAcc || "#ffffff", { r: 0.95 }), 0, H * 0.52, 0);
+      } else if (kind === "cowboy") {
+        const m = T.mat(spec.hatColor || "#8a5a2b", { r: 0.8 });
+        const br = add(T.cyl(H * 1.0, H * 1.0, 0.1, 28), m, 0, 0.02, 0); br.scale.set(1, 1, 0.85);
+        add(T.cyl(H * 0.42, H * 0.5, H * 0.62, 20), m, 0, H * 0.32, 0);
+        add(T.cyl(H * 0.505, H * 0.505, 0.14, 20), T.mat("#2a1a10"), 0, 0.12, 0);
+      } else if (kind === "party") {
+        add(new THREE.ConeGeometry(H * 0.36, H * 0.95, 20), T.mat(spec.hatColor || "#ff4fa3", { r: 0.6 }), 0.1, H * 0.42, 0, 0, 0, -0.15);
+        add(T.sph(0.2, 10, 8), T.mat("#ffd23f"), 0.25, H * 0.92, 0);
+      } else if (kind === "headphones") {
+        const m = T.mat(spec.hatColor || "#e53935", { r: 0.4 });
+        const band = add(new THREE.TorusGeometry(H * 0.62, 0.09, 8, 24, Math.PI), m, 0, -H * 0.1, 0); band.rotation.set(0, Math.PI / 2, 0);
+        for (const sx of [-1, 1]) add(T.rbox(0.26, H * 0.44, H * 0.4, 0.08), m, sx * (H * 0.55), -H * 0.42, 0);
+      } else if (kind === "bandana") {
+        const m = T.mat(spec.hatColor || "#e53935", { r: 0.8 });
+        const d = add(new THREE.SphereGeometry(H * 0.6, 24, 10, 0, Math.PI * 2, 0, Math.PI / 2), m, 0, -0.14, 0); d.scale.set(1.04, 0.5, 1.04);
+        add(T.rbox(0.3, 0.5, 0.12, 0.05), m, 0.25, -0.3, -H * 0.58, 0.3); add(T.rbox(0.3, 0.5, 0.12, 0.05), m, -0.15, -0.35, -H * 0.58, -0.3);
+      } else if (kind === "capBack") {
+        const m = T.mat(spec.hatColor || "#e23b3b", { r: 0.6 });
+        const d = add(new THREE.SphereGeometry(H * 0.6, 24, 10, 0, Math.PI * 2, 0, Math.PI / 2), m, 0, -0.12, 0); d.scale.set(1.05, 0.7, 1.05);
+        add(T.rbox(H * 0.9, 0.08, H * 0.6, 0.03), m, 0, -0.08, -H * 0.6, 0.08);
+      } else if (kind === "halo") {
+        const h = add(new THREE.TorusGeometry(H * 0.42, 0.08, 8, 28), T.mat("#ffe680", { r: 0.2 }), 0, H * 0.5, 0); h.rotation.x = Math.PI / 2;
+        h.material.emissive = new THREE.Color("#ffd23f"); h.material.emissiveIntensity = 0.8;
       } else if (kind === "crown") {
         const gold = T.mat("#f2c230", { r: 0.3, m: 0.7 });
         add(T.cyl(H * 0.5, H * 0.5, 0.36, 6, 1), gold, 0, 0.18, 0);

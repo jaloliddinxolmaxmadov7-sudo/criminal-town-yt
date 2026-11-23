@@ -75,6 +75,9 @@ Extra emotions (Criminal Town kit): `cool` (shades), `sus`, `starstruck`, `dizzy
 Extra moves (`do`): `flex`, `swagger`, `thumbsup`, `salute`, `shiver`, `spin`, `slowclap`, `panic`, `mic`, `stomp`.
 Rig: arms and legs have elbows and knees. Walking, running and sitting bend them by themselves; an arm pose can take a 4th value for the elbow bend (`armR: [raise, spread, twist, elbow]`), and `kneeL` / `kneeR` bend a knee. More moves: `crouch`, `kneel`, `armscross`.
 Own song: put `song.mp3` in the project folder; tools/audio.py loops it under the voice instead of the built-in music.
+Emotions pack 2-3: inlove, blushing, nervous, heartbroken, hungry, disgust, jealous, furious, confused, stuffed, giggle, panicked, awkward, hopeful, sobbing, mindblown, scheming, pouty, screaming, dreamy, grumpy, sweating, winner, sneaky.
+Outfits: shirt prints (`front`) jacket, jersey, skull, flannel, tracksuit, heart, tux, pajama, logo; hats beanie, cowboy, party, headphones, bandana, capBack, halo. Criminal's ready outfits: criminalWinter, criminalSport, criminalTux, criminalPajama, criminalRocker, criminalCowboy, criminalGym, criminalAngel (tools/cast.py). Bodies: build chonk (very fat), skinny.
+Channel billboards: five CRIMINAL TOWN billboards stand in town (plaza by the school, plaza north-east, main street x2, by the field). Prop `billboard` puts one anywhere (w, h, legs).
 Recurring cast: `python tools/cast.py criminal mom mayor cop boss granny dog` adds ready characters to story.json (templates in tools/cast_templates.json).
 
 

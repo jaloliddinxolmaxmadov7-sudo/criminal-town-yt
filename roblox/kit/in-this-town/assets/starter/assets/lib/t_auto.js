@@ -208,6 +208,7 @@
       box(w + 0.4, h + 0.4, 0.3, "#7a5230", 0, 4.2 + h / 2 - 0.4, -0.05);
       const s = T.sign(lines, w, h, { bg: o.bg || "#fff6e0", fg: o.fg || "#2a1a10", radius: 24 }); s.position.set(0, 4.2 + h / 2 - 0.4, 0.12); g.add(s);
     },
+    billboard: (g, o) => { W().billboard(g, 0, 0, 0, o.w || 10, o.h || 5, o.legs || 3); },
     crate: (g, o) => { const m = T.mesh(T.rbox(2.2, 2.2, 2.2, 0.12, 2), T.mat(o.color || "#c08040", { map: T.texLib.planksTex(o.color || "#c08040", 256) }), 0, 1.1, 0); g.add(m); },
     gift: (g, o) => {
       g.add(T.mesh(T.rbox(2, 1.6, 2, 0.1, 2), T.mat(o.color || "#e63946"), 0, 0.8, 0));

@@ -230,5 +230,164 @@
   "faceStyle": {
    "glasses": "#1d1a22"
   }
+ },
+ "criminalWinter": {
+  "build": "adult",
+  "shirt": "#2d2f8f",
+  "front": "jacket",
+  "frontAcc": "#ffd23f",
+  "sleeves": "#2d2f8f",
+  "pants": "#3b4252",
+  "shoes": "#e53935",
+  "skin": "#c68642",
+  "hair": "spiky",
+  "hairColor": "#0d0d0d",
+  "hat": "beanie",
+  "hatColor": "#e53935",
+  "extras": [
+   "chain"
+  ],
+  "faceStyle": {
+   "brow": "#0d0d0d"
+  }
+ },
+ "criminalSport": {
+  "build": "adult",
+  "shirt": "#e53935",
+  "front": "jersey",
+  "frontAcc": "#ffffff",
+  "sleeves": "#e53935",
+  "pants": "#3b4252",
+  "shoes": "#e53935",
+  "skin": "#c68642",
+  "hair": "spiky",
+  "hairColor": "#0d0d0d",
+  "hat": "capBack",
+  "hatColor": "#111111",
+  "extras": [
+   "chain"
+  ],
+  "faceStyle": {
+   "brow": "#0d0d0d"
+  }
+ },
+ "criminalTux": {
+  "build": "adult",
+  "shirt": "#111111",
+  "front": "tux",
+  "frontAcc": "#e53935",
+  "sleeves": "#111111",
+  "pants": "#111111",
+  "shoes": "#e53935",
+  "skin": "#c68642",
+  "hair": "spiky",
+  "hairColor": "#0d0d0d",
+  "hatColor": "#111114",
+  "extras": [
+   "chain"
+  ],
+  "faceStyle": {
+   "brow": "#0d0d0d"
+  }
+ },
+ "criminalPajama": {
+  "build": "adult",
+  "shirt": "#5b7bd6",
+  "front": "pajama",
+  "frontAcc": "#e53935",
+  "sleeves": "#5b7bd6",
+  "pants": "#5b7bd6",
+  "shoes": "#e53935",
+  "skin": "#c68642",
+  "hair": "spiky",
+  "hairColor": "#0d0d0d",
+  "hat": "party",
+  "hatColor": "#ff4fa3",
+  "extras": [
+   "chain"
+  ],
+  "faceStyle": {
+   "brow": "#0d0d0d"
+  }
+ },
+ "criminalRocker": {
+  "build": "adult",
+  "shirt": "#1b1b1f",
+  "front": "skull",
+  "frontAcc": "#e8e8e8",
+  "sleeves": "#16161a",
+  "pants": "#3b4252",
+  "shoes": "#e53935",
+  "skin": "#c68642",
+  "hair": "spiky",
+  "hairColor": "#0d0d0d",
+  "hat": "headphones",
+  "hatColor": "#111114",
+  "extras": [
+   "chain"
+  ],
+  "faceStyle": {
+   "brow": "#0d0d0d"
+  }
+ },
+ "criminalCowboy": {
+  "build": "adult",
+  "shirt": "#b3261e",
+  "front": "flannel",
+  "frontAcc": "#e53935",
+  "sleeves": "#b3261e",
+  "pants": "#3b4252",
+  "shoes": "#e53935",
+  "skin": "#c68642",
+  "hair": "spiky",
+  "hairColor": "#0d0d0d",
+  "hat": "cowboy",
+  "hatColor": "#111114",
+  "extras": [
+   "chain"
+  ],
+  "faceStyle": {
+   "brow": "#0d0d0d"
+  }
+ },
+ "criminalGym": {
+  "build": "adult",
+  "shirt": "#1e8f4e",
+  "front": "tracksuit",
+  "frontAcc": "#e53935",
+  "sleeves": "#1e8f4e",
+  "pants": "#1e8f4e",
+  "shoes": "#e53935",
+  "skin": "#c68642",
+  "hair": "spiky",
+  "hairColor": "#0d0d0d",
+  "hat": "bandana",
+  "hatColor": "#111114",
+  "extras": [
+   "chain"
+  ],
+  "faceStyle": {
+   "brow": "#0d0d0d"
+  }
+ },
+ "criminalAngel": {
+  "build": "adult",
+  "shirt": "#111111",
+  "front": "logo",
+  "frontAcc": "#e53935",
+  "sleeves": "#16161a",
+  "pants": "#3b4252",
+  "shoes": "#e53935",
+  "skin": "#c68642",
+  "hair": "spiky",
+  "hairColor": "#0d0d0d",
+  "hat": "halo",
+  "hatColor": "#111114",
+  "extras": [
+   "chain"
+  ],
+  "faceStyle": {
+   "brow": "#0d0d0d"
+  }
  }
 }

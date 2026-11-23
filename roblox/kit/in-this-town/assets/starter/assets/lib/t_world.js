@@ -247,6 +247,56 @@
   });
   W.setClock = (h, m) => { for (const c of W.clocks || []) { c.hr.rotation.z = -((h % 12) + m / 60) * Math.PI / 6; c.mn.rotation.z = -m * Math.PI / 30; } };
 
+  // ---------------------------------------------------------------- CRIMINAL TOWN logo + billboards
+  T.logoCanvas = (cw = 1024, ch = 512, o = {}) => {
+    const c = T.canvas(cw, ch), g = c.getContext("2d");
+    const grd = g.createLinearGradient(0, 0, 0, ch); grd.addColorStop(0, "#1a1030"); grd.addColorStop(1, "#0b0814"); g.fillStyle = grd; g.fillRect(0, 0, cw, ch);
+    g.save(); g.globalAlpha = 0.16; g.fillStyle = "#e53935"; for (let x = -ch; x < cw; x += 90) { g.beginPath(); g.moveTo(x, ch); g.lineTo(x + 45, ch); g.lineTo(x + 45 + ch, 0); g.lineTo(x + ch, 0); g.closePath(); g.fill(); } g.restore();
+    const s = ch / 512, hx = cw * 0.2, hy = ch * 0.5;
+    // the hero's head: orange block, black cap, shades, smirk, gold chain
+    g.fillStyle = "#c98a4e"; g.strokeStyle = "#000"; g.lineWidth = 10 * s; const R = 150 * s;
+    g.beginPath(); g.roundRect(hx - R, hy - R + 20 * s, 2 * R, 2 * R, 40 * s); g.fill(); g.stroke();
+    g.fillStyle = "#141418"; g.beginPath(); g.roundRect(hx - R - 6 * s, hy - R - 10 * s, 2 * R + 12 * s, 95 * s, [50 * s, 50 * s, 10 * s, 10 * s]); g.fill(); g.stroke();
+    g.beginPath(); g.roundRect(hx - 20 * s, hy - R + 62 * s, R + 70 * s, 26 * s, 12 * s); g.fill(); g.stroke();
+    g.fillStyle = "#0e0e12"; for (const dx of [-65, 55]) { g.beginPath(); g.roundRect(hx + dx * s - 52 * s, hy + 5 * s, 104 * s, 58 * s, 18 * s); g.fill(); }
+    g.fillRect(hx - 15 * s, hy + 18 * s, 30 * s, 12 * s);
+    g.fillStyle = "rgba(255,255,255,0.45)"; for (const dx of [-85, 35]) g.fillRect(hx + dx * s, hy + 16 * s, 30 * s, 10 * s);
+    g.strokeStyle = "#000"; g.lineWidth = 12 * s; g.beginPath(); g.moveTo(hx - 50 * s, hy + 110 * s); g.quadraticCurveTo(hx + 10 * s, hy + 130 * s, hx + 70 * s, hy + 88 * s); g.stroke();
+    g.strokeStyle = "#f2c230"; g.lineWidth = 16 * s; g.beginPath(); g.arc(hx, hy + R + 10 * s, R * 0.75, Math.PI * 0.15, Math.PI * 0.85); g.stroke();
+    // the words
+    const tx = cw * 0.63;
+    g.textAlign = "center"; g.textBaseline = "middle"; g.lineJoin = "round";
+    const word = (txt, y, size, fill) => { g.font = `900 ${size}px Impact, "Arial Black", sans-serif`; g.lineWidth = size * 0.18; g.strokeStyle = "#000"; g.strokeText(txt, tx, y); g.fillStyle = fill; g.fillText(txt, tx, y); };
+    word("CRIMINAL", ch * 0.33, 150 * s * (cw / ch / 2), "#e53935");
+    word("TOWN", ch * 0.62, 170 * s * (cw / ch / 2), "#ffd23f");
+    if (o.sub !== false) { g.fillStyle = "#e53935"; g.beginPath(); g.roundRect(tx - 190 * s, ch * 0.78, 380 * s, 70 * s, 35 * s); g.fill();
+      g.font = `900 ${44 * s}px "Arial Black", sans-serif`; g.fillStyle = "#fff"; g.fillText("▶ SUBSCRIBE", tx, ch * 0.78 + 36 * s); }
+    g.strokeStyle = "#ffd23f"; g.lineWidth = 14 * s; g.strokeRect(7 * s, 7 * s, cw - 14 * s, ch - 14 * s);
+    return c;
+  };
+  let logoTex = null;
+  W.billboard = (parent, x, z, ry = 0, w = 16, h = 8, legs = 6) => {
+    const g = T.group(parent, x, 0, z); g.rotation.y = ry;
+    const metal = M("#5d6470", { r: 0.5, m: 0.5 });
+    for (const sx of [-1, 1]) box(g, 0.6, legs + h / 2, 0.6, metal, sx * w * 0.32, (legs + h / 2) / 2, -0.4);
+    box(g, w + 0.8, h + 0.8, 0.5, M("#22252c", { r: 0.6 }), 0, legs + h / 2, -0.3);
+    if (!logoTex) logoTex = T.tex(T.logoCanvas(1024, 512));
+    const face = new THREE.Mesh(T.plane(w, h), new THREE.MeshStandardMaterial({ map: logoTex, roughness: 0.55, emissive: new THREE.Color("#ffffff"), emissiveMap: logoTex, emissiveIntensity: 0.25 }));
+    face.position.set(0, legs + h / 2, 0); g.add(face);
+    for (const sx of [-0.3, 0, 0.3]) { const l = box(g, 0.3, 0.3, 1.2, metal, sx * w, legs + h + 0.6, 0.4); }
+    (W.billboards = W.billboards || []).push(g);
+    return g;
+  };
+  T.onBoot(() => {
+    const town = W.town;
+    W.billboard(town, -12.5, -21.5, 0.12, 11, 5.5, 3.6);      // plaza, in front of the school's left side, faces the square
+    W.billboard(town, 20, -26, -0.55, 11, 5.5, 3.6);      // plaza, north-east corner, faces the square
+    W.billboard(town, -25, 23, 2.4, 13, 6.5, 4.5);        // plaza, south-west corner, faces the square
+    W.billboard(town, -15, 108, Math.PI / 2, 16, 8, 6);  // main street, faces the road
+    W.billboard(town, 14, 140, -Math.PI / 2, 16, 8, 6);  // main street further down
+    W.billboard(town, -86, 66, Math.PI / 3, 18, 9, 7);   // outside town, by the field
+  });
+
   // ---------------------------------------------------------------- rooms (each far from the town, shown by the shots that use them)
   W.rooms = {};
   function room(name, at, o) {
@@ -578,7 +628,7 @@
   T.onBoot(() => {
     const out = (W.blockers = []);
     const add = (o, pad = 0.4) => { o.updateMatrixWorld(true); const b = new THREE.Box3().setFromObject(o); b.expandByScalar(pad); out.push(b); return b; };
-    for (const o of [W.school, W.hall, W.bakery, W.water, W.paperShop, W.jewelShop, ...W.houses]) add(o);
+    for (const o of [W.school, W.hall, W.bakery, W.water, W.paperShop, W.jewelShop, ...W.houses, ...(W.billboards || [])]) add(o);
     // trees: trunk + crown
     W.town.traverse((o) => { if (o.isMesh && o.geometry && o.geometry.parameters && o.geometry.parameters.width === 5.0 && o.geometry.parameters.depth === 5.0) add(o.parent, 0.3); });
   });
