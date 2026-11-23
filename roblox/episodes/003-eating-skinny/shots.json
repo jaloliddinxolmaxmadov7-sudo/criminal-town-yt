@@ -1,0 +1,1973 @@
+[
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": -18,
+   "move": "push"
+  },
+  "cast": [
+   {
+    "who": "rich",
+    "face": "hungry",
+    "do": "chomp"
+   }
+  ],
+  "props": [
+   {
+    "kind": "loaf",
+    "at": [
+     1.9,
+     0.9
+    ],
+    "s": 1.3
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "cast": [
+   {
+    "who": "rich",
+    "face": "hungry",
+    "do": "chomp"
+   }
+  ],
+  "props": [
+   {
+    "kind": "loaf",
+    "at": [
+     1.9,
+     0.9
+    ],
+    "s": 1.3
+   }
+  ],
+  "at": "the more you"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": -48
+  },
+  "at": "the thinner you get",
+  "cast": [
+   {
+    "who": "rich",
+    "face": "starstruck",
+    "do": "flex"
+   }
+  ],
+  "fx": [
+   {
+    "type": "sparkle",
+    "at": "thinner",
+    "on": "rich"
+   }
+  ]
+ },
+ {
+  "place": "kitchen",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "One burger",
+  "cast": [
+   {
+    "who": "rich",
+    "face": "hungry",
+    "do": "chomp"
+   }
+  ],
+  "props": [
+   {
+    "kind": "loaf",
+    "at": [
+     1.9,
+     0.9
+    ],
+    "s": 1.3
+   }
+  ]
+ },
+ {
+  "place": "kitchen",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "Lose a pound",
+  "cast": [
+   {
+    "who": "rich",
+    "face": "happy",
+    "do": "victory"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "pound",
+    "on": "rich",
+    "text": "-1 LB"
+   }
+  ]
+ },
+ {
+  "place": "kitchen",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "A whole pizza",
+  "cast": [
+   {
+    "who": "kid2",
+    "face": "hungry",
+    "do": "chomp"
+   }
+  ],
+  "props": [
+   {
+    "kind": "cake",
+    "at": [
+     1.9,
+     0.9
+    ],
+    "y": 0.0,
+    "s": 1.1
+   }
+  ]
+ },
+ {
+  "place": "kitchen",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "Your pants fall down",
+  "cast": [
+   {
+    "who": "kid2",
+    "face": "shocked",
+    "do": "panic"
+   }
+  ],
+  "fx": [
+   {
+    "type": "puff",
+    "at": "pants",
+    "on": "kid2"
+   },
+   {
+    "type": "label",
+    "at": "down",
+    "on": "kid2",
+    "text": "OOPS"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "wide",
+   "angle": -18
+  },
+  "at": "So rich people are always skinny",
+  "cast": [
+   {
+    "who": "rich",
+    "face": "cool",
+    "do": "swagger"
+   },
+   {
+    "who": "kid2",
+    "face": "smug",
+    "do": "swagger"
+   },
+   {
+    "who": "mayor",
+    "face": "proud",
+    "do": "swagger"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "are always skinny",
+  "cast": [
+   {
+    "who": "rich",
+    "face": "cool",
+    "do": "swagger"
+   },
+   {
+    "who": "kid2",
+    "face": "smug",
+    "do": "swagger"
+   },
+   {
+    "who": "mayor",
+    "face": "proud",
+    "do": "swagger"
+   }
+  ]
+ },
+ {
+  "place": "kitchen",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "They eat steak",
+  "cast": [
+   {
+    "who": "rich",
+    "face": "hungry",
+    "do": "chomp"
+   }
+  ],
+  "props": [
+   {
+    "kind": "loaf",
+    "at": [
+     1.9,
+     0.9
+    ],
+    "s": 1.3
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "breakfast",
+    "on": "rich",
+    "text": "BREAKFAST"
+   }
+  ]
+ },
+ {
+  "place": "office",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "lobster for lunch",
+  "cast": [
+   {
+    "who": "kid2",
+    "face": "hungry",
+    "do": "chomp",
+    "at": "desk"
+   }
+  ],
+  "props": [
+   {
+    "kind": "loaf",
+    "at": [
+     1.9,
+     0.9
+    ],
+    "s": 1.3
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "lunch",
+    "on": "kid2",
+    "text": "LUNCH"
+   }
+  ]
+ },
+ {
+  "place": "bedroom",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "and three cakes before bed",
+  "cast": [
+   {
+    "who": "rich",
+    "face": "stuffed",
+    "do": "chomp"
+   }
+  ],
+  "props": [
+   {
+    "kind": "cake",
+    "at": [
+     1.9,
+     0.9
+    ],
+    "y": 0.0,
+    "s": 1.1
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "three",
+    "on": "rich",
+    "text": "3 CAKES"
+   }
+  ]
+ },
+ {
+  "place": "townhall",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "Look at the mayor",
+  "cast": [
+   {
+    "who": "mayor",
+    "face": "proud",
+    "do": "hips"
+   }
+  ]
+ },
+ {
+  "place": "kitchen",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "He eats like a horse",
+  "cast": [
+   {
+    "who": "mayor",
+    "face": "hungry",
+    "do": "chomp"
+   }
+  ],
+  "props": [
+   {
+    "kind": "cake",
+    "at": [
+     1.9,
+     0.9
+    ],
+    "y": 0.0,
+    "s": 1.1
+   }
+  ]
+ },
+ {
+  "place": "townhall",
+  "cam": {
+   "size": "full",
+   "angle": -18
+  },
+  "at": "he looks like a pencil",
+  "cast": [
+   {
+    "who": "mayor",
+    "face": "cool",
+    "do": "salute"
+   }
+  ],
+  "props": [
+   {
+    "kind": "pencil",
+    "at": [
+     1.6,
+     0
+    ],
+    "s": 4.0
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "pencil",
+    "on": "mayor",
+    "text": "PENCIL"
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "wide",
+   "angle": 18
+  },
+  "at": "Poor people",
+  "cast": [
+   {
+    "who": "poor",
+    "face": "awkward",
+    "do": "waddle",
+    "at": "farLeft"
+   },
+   {
+    "who": "poor2",
+    "face": "meh",
+    "do": "waddle",
+    "at": "right"
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "Round. Very round",
+  "cast": [
+   {
+    "who": "poor",
+    "face": "stuffed",
+    "do": "bellyrub"
+   }
+  ]
+ },
+ {
+  "place": "kitchen",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "Because they can't afford food",
+  "cast": [
+   {
+    "who": "poor",
+    "face": "sad",
+    "do": "shrug"
+   }
+  ],
+  "props": [
+   {
+    "kind": "fridge",
+    "at": "fridge"
+   }
+  ]
+ },
+ {
+  "place": "shopIn",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "Can't buy bread",
+  "cast": [
+   {
+    "who": "poor2",
+    "face": "hopeful",
+    "do": "begging",
+    "at": "left"
+   },
+   {
+    "who": "shop",
+    "face": "meh",
+    "do": "no",
+    "at": "counter"
+   }
+  ]
+ },
+ {
+  "place": "shopIn",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "Gain five pounds",
+  "cast": [
+   {
+    "who": "poor2",
+    "face": "shocked",
+    "do": "shock"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "five",
+    "on": "poor2",
+    "text": "+5 LB"
+   }
+  ]
+ },
+ {
+  "place": "living",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "Skip dinner",
+  "cast": [
+   {
+    "who": "poor",
+    "face": "sad",
+    "do": "sit",
+    "at": "sofa"
+   }
+  ]
+ },
+ {
+  "place": "kitchen",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "Need new pants",
+  "cast": [
+   {
+    "who": "poor",
+    "face": "panicked",
+    "do": "flail"
+   }
+  ],
+  "fx": [
+   {
+    "type": "puff",
+    "at": "pants",
+    "on": "poor"
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "And me",
+  "cast": [
+   {
+    "who": "me",
+    "face": "cool",
+    "do": "swagger"
+   }
+  ]
+ },
+ {
+  "place": "bedroom",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "I was born skinny",
+  "cast": [
+   {
+    "who": "me",
+    "face": "smile",
+    "do": "stretch"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "skinny",
+    "on": "me",
+    "text": "BABY ME"
+   }
+  ]
+ },
+ {
+  "place": "office",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "The doctors were shocked",
+  "cast": [
+   {
+    "who": "doctor",
+    "face": "shocked",
+    "do": "shock"
+   }
+  ]
+ },
+ {
+  "place": "living",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "My mom cried",
+  "cast": [
+   {
+    "who": "mom",
+    "face": "cry",
+    "do": "cry"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "wide",
+   "angle": -18
+  },
+  "at": "Everyone thought my family",
+  "cast": [
+   {
+    "who": "mom",
+    "face": "awkward",
+    "do": "shrug"
+   }
+  ],
+  "crowd": {
+   "n": 8,
+   "where": "around",
+   "face": "sus",
+   "do": "point"
+  }
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "secretly become rich",
+  "cast": [
+   {
+    "who": "mom",
+    "face": "starstruck",
+    "do": "victory"
+   }
+  ],
+  "props": [
+   {
+    "kind": "gold",
+    "at": [
+     1.5,
+     0.5
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "rich",
+    "on": "mom",
+    "text": "$$$"
+   }
+  ]
+ },
+ {
+  "place": "home",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "But here's my problem",
+  "cast": [
+   {
+    "who": "me",
+    "face": "worried",
+    "do": "think"
+   }
+  ]
+ },
+ {
+  "place": "kitchen",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "When I eat",
+  "cast": [
+   {
+    "who": "me",
+    "face": "hungry",
+    "do": "chomp"
+   }
+  ],
+  "props": [
+   {
+    "kind": "loaf",
+    "at": [
+     1.9,
+     0.9
+    ],
+    "s": 1.3
+   }
+  ]
+ },
+ {
+  "place": "kitchen",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "I get fatter",
+  "cast": [
+   {
+    "who": "meFat",
+    "face": "shocked",
+    "do": "shock"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "wide",
+   "angle": 18
+  },
+  "at": "The opposite of everyone",
+  "cast": [
+   {
+    "who": "meFat",
+    "face": "dizzy",
+    "do": "waddle",
+    "at": "center"
+   },
+   {
+    "who": "rich",
+    "face": "sus",
+    "do": "armscross",
+    "at": "farLeft"
+   },
+   {
+    "who": "kid2",
+    "face": "sus",
+    "do": "armscross",
+    "at": "farRight"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "everyone in this",
+  "cast": [
+   {
+    "who": "meFat",
+    "face": "dizzy",
+    "do": "waddle",
+    "at": "center"
+   },
+   {
+    "who": "rich",
+    "face": "sus",
+    "do": "armscross",
+    "at": "farLeft"
+   },
+   {
+    "who": "kid2",
+    "face": "sus",
+    "do": "armscross",
+    "at": "farRight"
+   }
+  ]
+ },
+ {
+  "place": "kitchen",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "One cookie",
+  "cast": [
+   {
+    "who": "me",
+    "face": "hungry",
+    "do": "chomp"
+   }
+  ],
+  "props": [
+   {
+    "kind": "apple",
+    "at": [
+     1.9,
+     0.9
+    ],
+    "s": 1.4
+   }
+  ]
+ },
+ {
+  "place": "kitchen",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "my cheeks get puffy",
+  "cast": [
+   {
+    "who": "meFat",
+    "face": "stuffed",
+    "do": "bellyrub"
+   }
+  ]
+ },
+ {
+  "place": "kitchen",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "One sandwich",
+  "cast": [
+   {
+    "who": "me",
+    "face": "hungry",
+    "do": "chomp"
+   }
+  ],
+  "props": [
+   {
+    "kind": "loaf",
+    "at": [
+     1.9,
+     0.9
+    ],
+    "s": 1.3
+   }
+  ]
+ },
+ {
+  "place": "kitchen",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "my shirt buttons pop",
+  "cast": [
+   {
+    "who": "meFat",
+    "face": "panicked",
+    "do": "flail"
+   }
+  ],
+  "fx": [
+   {
+    "type": "puff",
+    "at": "pop",
+    "on": "meFat"
+   },
+   {
+    "type": "label",
+    "at": "pop",
+    "on": "meFat",
+    "text": "POP!"
+   }
+  ]
+ },
+ {
+  "place": "living",
+  "cam": {
+   "size": "wide",
+   "angle": -18
+  },
+  "at": "At my birthday party",
+  "cast": [
+   {
+    "who": "me",
+    "face": "happy",
+    "do": "cheer"
+   }
+  ],
+  "props": [
+   {
+    "kind": "balloon",
+    "at": [
+     -3,
+     -1
+    ]
+   },
+   {
+    "kind": "balloon",
+    "at": [
+     3,
+     -1
+    ],
+    "color": "#4fc3f7"
+   }
+  ],
+  "crowd": {
+   "n": 6,
+   "where": "around",
+   "face": "happy",
+   "do": "clap"
+  },
+  "fx": [
+   {
+    "type": "confetti",
+    "at": "party",
+    "on": "me"
+   }
+  ]
+ },
+ {
+  "place": "living",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "I ate one slice of cake",
+  "cast": [
+   {
+    "who": "me",
+    "face": "hungry",
+    "do": "chomp"
+   }
+  ],
+  "props": [
+   {
+    "kind": "cake",
+    "at": [
+     1.9,
+     0.9
+    ],
+    "y": 0.0,
+    "s": 1.1
+   }
+  ]
+ },
+ {
+  "place": "home",
+  "cam": {
+   "size": "full",
+   "angle": -18,
+   "move": "follow"
+  },
+  "at": "rolled out the door",
+  "cast": [
+   {
+    "who": "meFat",
+    "face": "dizzy",
+    "do": "spin",
+    "at": "center",
+    "to": "offRight",
+    "move": "run"
+   }
+  ]
+ },
+ {
+  "place": "office",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "The doctors said",
+  "cast": [
+   {
+    "who": "doctor",
+    "face": "confused",
+    "do": "talk"
+   }
+  ]
+ },
+ {
+  "place": "office",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "This is impossible",
+  "cast": [
+   {
+    "who": "doctor",
+    "face": "dizzy",
+    "do": "facepalm"
+   }
+  ],
+  "fx": [
+   {
+    "type": "question",
+    "at": "impossible",
+    "on": "doctor"
+   }
+  ]
+ },
+ {
+  "place": "living",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "My mom said",
+  "cast": [
+   {
+    "who": "mom",
+    "face": "worried",
+    "do": "talk"
+   }
+  ]
+ },
+ {
+  "place": "living",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "This is expensive",
+  "cast": [
+   {
+    "who": "mom",
+    "face": "furious",
+    "do": "stomp"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "expensive",
+    "on": "mom",
+    "text": "$$$"
+   }
+  ]
+ },
+ {
+  "place": "school",
+  "cam": {
+   "size": "wide",
+   "angle": 18
+  },
+  "at": "At school, the rich kids",
+  "cast": [
+   {
+    "who": "rich",
+    "face": "cryLaugh",
+    "do": "laugh",
+    "at": "farLeft"
+   },
+   {
+    "who": "kid2",
+    "face": "cryLaugh",
+    "do": "point",
+    "at": "farRight"
+   },
+   {
+    "who": "meFat",
+    "face": "sad",
+    "do": "idle",
+    "at": "center"
+   }
+  ]
+ },
+ {
+  "place": "school",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "rich kids laughed",
+  "cast": [
+   {
+    "who": "rich",
+    "face": "cryLaugh",
+    "do": "laugh",
+    "at": "farLeft"
+   },
+   {
+    "who": "kid2",
+    "face": "cryLaugh",
+    "do": "point",
+    "at": "farRight"
+   },
+   {
+    "who": "meFat",
+    "face": "sad",
+    "do": "idle",
+    "at": "center"
+   }
+  ]
+ },
+ {
+  "place": "school",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "Look, he eats and gets fat",
+  "cast": [
+   {
+    "who": "kid2",
+    "face": "cryLaugh",
+    "do": "point"
+   }
+  ]
+ },
+ {
+  "place": "school",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "and gets fat",
+  "cast": [
+   {
+    "who": "kid2",
+    "face": "cryLaugh",
+    "do": "point"
+   }
+  ]
+ },
+ {
+  "place": "school",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "He's broken",
+  "cast": [
+   {
+    "who": "meFat",
+    "face": "heartbroken",
+    "do": "heartclutch"
+   }
+  ]
+ },
+ {
+  "place": "field",
+  "cam": {
+   "size": "wide",
+   "angle": -18
+  },
+  "at": "Then a giant storm",
+  "cast": [
+   {
+    "who": "poor2",
+    "face": "terrified",
+    "do": "panic"
+   }
+  ],
+  "sky": "night",
+  "fx": [
+   {
+    "type": "dark",
+    "at": "storm"
+   },
+   {
+    "type": "shake",
+    "at": "giant"
+   }
+  ]
+ },
+ {
+  "place": "field",
+  "cam": {
+   "size": "wide",
+   "angle": 18
+  },
+  "at": "destroyed every farm",
+  "cast": [
+   {
+    "who": "poor",
+    "face": "panicked",
+    "do": "flail",
+    "at": "farLeft"
+   },
+   {
+    "who": "poor2",
+    "face": "terrified",
+    "do": "panic",
+    "at": "farRight"
+   }
+  ],
+  "sky": "dusk"
+ },
+ {
+  "place": "field",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "farm in town",
+  "cast": [
+   {
+    "who": "poor",
+    "face": "panicked",
+    "do": "flail",
+    "at": "farLeft"
+   },
+   {
+    "who": "poor2",
+    "face": "terrified",
+    "do": "panic",
+    "at": "farRight"
+   }
+  ],
+  "sky": "dusk",
+  "fx": [
+   {
+    "type": "smoke",
+    "at": "farm"
+   }
+  ]
+ },
+ {
+  "place": "shopIn",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "No food for anyone",
+  "cast": [
+   {
+    "who": "shop",
+    "face": "sad",
+    "do": "shrug",
+    "at": "counter"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "xwide",
+   "angle": 18
+  },
+  "at": "Within a week",
+  "cast": [],
+  "sky": "morning",
+  "fx": [],
+  "crowd": {
+   "n": 8,
+   "where": "around",
+   "face": "worried",
+   "do": "bellyrub"
+  }
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "the rich people started gaining weight",
+  "cast": [
+   {
+    "who": "richFat",
+    "face": "shocked",
+    "do": "waddle"
+   }
+  ],
+  "sky": "morning"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "started gaining weight",
+  "cast": [
+   {
+    "who": "richFat",
+    "face": "shocked",
+    "do": "waddle"
+   }
+  ],
+  "sky": "morning"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": -48
+  },
+  "at": "Ten pounds",
+  "cast": [
+   {
+    "who": "richFat",
+    "face": "panicked",
+    "do": "bellyrub"
+   }
+  ],
+  "sky": "morning",
+  "fx": [
+   {
+    "type": "label",
+    "at": "Ten",
+    "on": "richFat",
+    "text": "+10 LB"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "Twenty pounds",
+  "cast": [
+   {
+    "who": "richFat",
+    "face": "dead",
+    "do": "flail"
+   }
+  ],
+  "sky": "morning",
+  "fx": [
+   {
+    "type": "label",
+    "at": "Twenty",
+    "on": "richFat",
+    "text": "+20 LB"
+   }
+  ]
+ },
+ {
+  "place": "townhall",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "The mayor got stuck",
+  "cast": [
+   {
+    "who": "mayorFat",
+    "face": "panicked",
+    "do": "flail",
+    "at": "door"
+   }
+  ],
+  "sky": "morning"
+ },
+ {
+  "place": "townhall",
+  "cam": {
+   "size": "full",
+   "angle": -18
+  },
+  "at": "in his own door",
+  "cast": [
+   {
+    "who": "mayorFat",
+    "face": "furious",
+    "do": "stomp",
+    "at": "door"
+   },
+   {
+    "who": "cop",
+    "face": "nervous",
+    "do": "hold",
+    "at": "right"
+   }
+  ],
+  "sky": "morning",
+  "fx": [
+   {
+    "type": "shake",
+    "at": "door"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "wide",
+   "angle": 18
+  },
+  "at": "Everyone panicked",
+  "cast": [],
+  "sky": "morning",
+  "crowd": {
+   "n": 10,
+   "where": "around",
+   "face": "terrified",
+   "do": "panic"
+  }
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "Everyone, except me",
+  "cast": [
+   {
+    "who": "me",
+    "face": "cool",
+    "do": "sit",
+    "at": "bench"
+   }
+  ],
+  "sky": "morning"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "Because without food",
+  "cast": [
+   {
+    "who": "me",
+    "face": "happy",
+    "do": "victory"
+   }
+  ],
+  "sky": "morning"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "I got skinnier",
+  "cast": [
+   {
+    "who": "me",
+    "face": "happy",
+    "do": "victory"
+   }
+  ],
+  "sky": "morning"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": 48
+  },
+  "at": "And skinnier",
+  "cast": [
+   {
+    "who": "me",
+    "face": "smirk",
+    "do": "flex"
+   }
+  ],
+  "sky": "morning",
+  "fx": [
+   {
+    "type": "sparkle",
+    "at": "skinnier",
+    "on": "me"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "wide",
+   "angle": 18
+  },
+  "at": "For the first time",
+  "cast": [
+   {
+    "who": "me",
+    "face": "proud",
+    "do": "swagger"
+   }
+  ],
+  "sky": "morning",
+  "crowd": {
+   "n": 8,
+   "where": "sides",
+   "face": "starstruck",
+   "do": "clap"
+  }
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "in my life",
+  "cast": [
+   {
+    "who": "me",
+    "face": "proud",
+    "do": "swagger"
+   }
+  ],
+  "sky": "morning",
+  "crowd": {
+   "n": 8,
+   "where": "sides",
+   "face": "starstruck",
+   "do": "clap"
+  }
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "healthiest guy in town",
+  "cast": [
+   {
+    "who": "me",
+    "face": "cool",
+    "do": "salute"
+   }
+  ],
+  "sky": "morning",
+  "fx": [
+   {
+    "type": "label",
+    "at": "healthiest",
+    "on": "me",
+    "text": "HEALTHIEST"
+   },
+   {
+    "type": "sparkle",
+    "at": "guy",
+    "on": "me"
+   }
+  ]
+ },
+ {
+  "place": "home",
+  "cam": {
+   "size": "full",
+   "angle": 18,
+   "move": "follow"
+  },
+  "at": "The mayor came to my house",
+  "cast": [
+   {
+    "who": "mayorFat",
+    "face": "hopeful",
+    "at": "left",
+    "to": "center",
+    "move": "walk"
+   }
+  ]
+ },
+ {
+  "place": "home",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "begged me",
+  "cast": [
+   {
+    "who": "mayorFat",
+    "face": "hopeful",
+    "do": "begging",
+    "at": "farLeft"
+   },
+   {
+    "who": "me",
+    "face": "smug",
+    "do": "armscross",
+    "at": "right"
+   }
+  ]
+ },
+ {
+  "place": "home",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "Teach us your secret",
+  "cast": [
+   {
+    "who": "mayorFat",
+    "face": "cry",
+    "do": "begging"
+   }
+  ]
+ },
+ {
+  "place": "home",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "I said",
+  "cast": [
+   {
+    "who": "me",
+    "face": "cool",
+    "do": "hips"
+   }
+  ]
+ },
+ {
+  "place": "home",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "Just don't eat",
+  "cast": [
+   {
+    "who": "me",
+    "face": "smirk",
+    "do": "shrug"
+   }
+  ]
+ },
+ {
+  "place": "home",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "He fainted",
+  "cast": [
+   {
+    "who": "mayorFat",
+    "face": "dead",
+    "do": "fall"
+   }
+  ],
+  "fx": [
+   {
+    "type": "puff",
+    "at": "fainted",
+    "on": "mayorFat"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "wide",
+   "angle": 0
+  },
+  "at": "Now I'm the town's official diet coach",
+  "cast": [
+   {
+    "who": "me",
+    "face": "cool",
+    "do": "point",
+    "at": "center"
+   },
+   {
+    "who": "richFat",
+    "face": "determined",
+    "do": "jumpjacks",
+    "at": [
+     -7,
+     1
+    ]
+   },
+   {
+    "who": "mayorFat",
+    "face": "dizzy",
+    "do": "jumpjacks",
+    "at": [
+     7,
+     1
+    ]
+   }
+  ],
+  "props": [
+   {
+    "kind": "sign",
+    "at": [
+     0,
+     -3
+    ],
+    "text": [
+     "DIET",
+     "COACH"
+    ]
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": -15
+  },
+  "at": "official diet coach",
+  "cast": [
+   {
+    "who": "me",
+    "face": "cool",
+    "do": "point",
+    "at": "center"
+   },
+   {
+    "who": "richFat",
+    "face": "determined",
+    "do": "jumpjacks",
+    "at": [
+     -7,
+     1
+    ]
+   },
+   {
+    "who": "mayorFat",
+    "face": "dizzy",
+    "do": "jumpjacks",
+    "at": [
+     7,
+     1
+    ]
+   }
+  ],
+  "props": [
+   {
+    "kind": "sign",
+    "at": [
+     0,
+     -3
+    ],
+    "text": [
+     "DIET",
+     "COACH"
+    ]
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": 48
+  },
+  "at": "Rich people pay me",
+  "cast": [
+   {
+    "who": "richFat",
+    "face": "hopeful",
+    "do": "present",
+    "at": "farLeft"
+   },
+   {
+    "who": "me",
+    "face": "starstruck",
+    "do": "hold",
+    "at": "right"
+   }
+  ],
+  "props": [
+   {
+    "kind": "gold",
+    "hold": "me"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "tell them not to eat",
+  "cast": [
+   {
+    "who": "me",
+    "face": "talk",
+    "do": "talk",
+    "at": "right"
+   },
+   {
+    "who": "richFat",
+    "face": "sad",
+    "do": "shiver",
+    "at": "farLeft"
+   }
+  ]
+ },
+ {
+  "place": "bakeryIn",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "And with the money",
+  "cast": [
+   {
+    "who": "baker",
+    "face": "happy",
+    "do": "present",
+    "at": "counter"
+   },
+   {
+    "who": "me",
+    "face": "hungry",
+    "do": "rub",
+    "at": "left"
+   }
+  ],
+  "props": [
+   {
+    "kind": "cake",
+    "at": "counter",
+    "y": 1.3,
+    "s": 1.4
+   }
+  ]
+ },
+ {
+  "place": "bakeryIn",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "I buy cake",
+  "cast": [
+   {
+    "who": "baker",
+    "face": "happy",
+    "do": "present",
+    "at": "counter"
+   },
+   {
+    "who": "me",
+    "face": "hungry",
+    "do": "rub",
+    "at": "left"
+   }
+  ],
+  "props": [
+   {
+    "kind": "cake",
+    "at": "counter",
+    "y": 1.3,
+    "s": 1.4
+   }
+  ]
+ },
+ {
+  "place": "bakeryIn",
+  "cam": {
+   "size": "close",
+   "angle": -48
+  },
+  "at": "And I get fat",
+  "cast": [
+   {
+    "who": "meFat",
+    "face": "stuffed",
+    "do": "chomp"
+   }
+  ],
+  "props": [
+   {
+    "kind": "cake",
+    "at": [
+     1.9,
+     0.9
+    ],
+    "y": 0.0,
+    "s": 1.1
+   }
+  ]
+ },
+ {
+  "place": "bakeryIn",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "And honestly",
+  "cast": [
+   {
+    "who": "meFat",
+    "face": "giggle",
+    "do": "bellyrub"
+   }
+  ]
+ },
+ {
+  "place": "bakeryIn",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "Worth it",
+  "cast": [
+   {
+    "who": "meFat",
+    "face": "happy",
+    "do": "thumbsup"
+   }
+  ],
+  "fx": [
+   {
+    "type": "hearts",
+    "at": "Worth",
+    "on": "meFat"
+   }
+  ]
+ },
+ {
+  "place": "home",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "Like and subscribe",
+  "cast": [
+   {
+    "who": "meFat",
+    "face": "cool",
+    "do": "point",
+    "look": "cam"
+   }
+  ]
+ },
+ {
+  "place": "home",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "eat a whole pizza",
+  "cast": [
+   {
+    "who": "meFat",
+    "face": "evil",
+    "do": "chomp"
+   }
+  ],
+  "props": [
+   {
+    "kind": "cake",
+    "at": [
+     1.9,
+     0.9
+    ],
+    "y": 0.0,
+    "s": 1.1
+   }
+  ]
+ },
+ {
+  "place": "home",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "of you",
+  "cast": [
+   {
+    "who": "meFat",
+    "face": "evil",
+    "do": "chomp"
+   }
+  ],
+  "props": [
+   {
+    "kind": "cake",
+    "at": [
+     1.9,
+     0.9
+    ],
+    "y": 0.0,
+    "s": 1.1
+   }
+  ]
+ }
+]

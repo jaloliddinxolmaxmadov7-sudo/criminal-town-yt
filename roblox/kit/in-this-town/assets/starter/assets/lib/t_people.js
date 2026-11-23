@@ -195,8 +195,8 @@
     adult: { legH: 2.0, legW: 0.92, legD: 0.95, torH: 2.0, torW: 1.95, torD: 1.0, armH: 2.0, armW: 0.85, head: 1.35 },
     tall: { legH: 2.35, legW: 0.88, legD: 0.92, torH: 2.1, torW: 1.85, torD: 0.95, armH: 2.1, armW: 0.8, head: 1.35 },
     round: { legH: 1.8, legW: 1.0, legD: 1.05, torH: 2.2, torW: 2.45, torD: 1.55, armH: 1.9, armW: 0.9, head: 1.4 },
-    chonk: { legH: 1.7, legW: 1.15, legD: 1.2, torH: 2.3, torW: 3.3, torD: 2.3, armH: 1.85, armW: 1.05, head: 1.5 },
-    skinny: { legH: 2.2, legW: 0.66, legD: 0.7, torH: 2.0, torW: 1.35, torD: 0.72, armH: 2.05, armW: 0.6, head: 1.35 },
+    chonk: { legH: 1.6, legW: 1.35, legD: 1.4, torH: 2.4, torW: 4.1, torD: 3.0, armH: 1.85, armW: 1.15, head: 1.55 },
+    skinny: { legH: 2.3, legW: 0.6, legD: 0.64, torH: 2.05, torW: 1.2, torD: 0.66, armH: 2.05, armW: 0.6, head: 1.35 },
     kid: { legH: 1.55, legW: 0.84, legD: 0.88, torH: 1.6, torW: 1.75, torD: 0.92, armH: 1.6, armW: 0.78, head: 1.45 },
     small: { legH: 1.05, legW: 0.72, legD: 0.78, torH: 1.2, torW: 1.45, torD: 0.85, armH: 1.15, armW: 0.66, head: 1.55 },
   };

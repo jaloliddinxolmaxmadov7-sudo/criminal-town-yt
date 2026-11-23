@@ -1,0 +1,179 @@
+{
+ "title": "In This Town, Eating Makes You Skinny",
+ "rule": "In this town, the more you eat, the thinner you get.",
+ "cast": {
+  "me": {
+   "build": "skinny",
+   "shirt": "#16161a",
+   "front": "hoodie",
+   "frontAcc": "#e53935",
+   "sleeves": "#16161a",
+   "pants": "#3b4252",
+   "shoes": "#e53935",
+   "skin": "#c68642",
+   "hair": "spiky",
+   "hairColor": "#0d0d0d",
+   "hat": "cap",
+   "hatColor": "#111114",
+   "extras": [
+    "chain"
+   ],
+   "faceStyle": {
+    "brow": "#0d0d0d"
+   }
+  },
+  "meFat": {
+   "build": "chonk",
+   "shirt": "#16161a",
+   "front": "hoodie",
+   "frontAcc": "#e53935",
+   "sleeves": "#16161a",
+   "pants": "#3b4252",
+   "shoes": "#e53935",
+   "skin": "#c68642",
+   "hair": "spiky",
+   "hairColor": "#0d0d0d",
+   "hat": "cap",
+   "hatColor": "#111114",
+   "extras": [
+    "chain"
+   ],
+   "faceStyle": {
+    "brow": "#0d0d0d"
+   }
+  },
+  "mom": {
+   "build": "round",
+   "shirt": "#ff8fb1",
+   "front": "apron",
+   "frontAcc": "#ffffff",
+   "pants": "#7b5ea7",
+   "shoes": "#ffffff",
+   "skin": "#c68642",
+   "hair": "bun",
+   "hairColor": "#2a1a10",
+   "faceStyle": {
+    "blush": 1
+   }
+  },
+  "cop": {
+   "build": "tall",
+   "shirt": "#2f5fb3",
+   "front": "buttons",
+   "frontAcc": "#ffd23f",
+   "pants": "#1f2a44",
+   "shoes": "#111111",
+   "skin": "#f1c27d",
+   "hair": "short",
+   "hairColor": "#3a2a1c",
+   "hat": "cap",
+   "hatColor": "#1f2a44",
+   "faceStyle": {
+    "mustache": "#3a2a1c"
+   }
+  },
+  "rich": {
+   "build": "skinny",
+   "shirt": "#1d2a4a",
+   "front": "suit",
+   "frontAcc": "#d4af37",
+   "sleeves": "#1d2a4a",
+   "pants": "#1d2a4a",
+   "shoes": "#111111",
+   "skin": "#f1c27d",
+   "hair": "side",
+   "hairColor": "#e8c35a",
+   "faceStyle": {
+    "glasses": "#d4af37"
+   }
+  },
+  "kid2": {
+   "build": "skinny",
+   "shirt": "#5a1d4a",
+   "front": "suit",
+   "frontAcc": "#d4af37",
+   "sleeves": "#5a1d4a",
+   "pants": "#5a1d4a",
+   "shoes": "#111111",
+   "skin": "#f1c27d",
+   "hair": "side",
+   "hairColor": "#2a1a10",
+   "faceStyle": {
+    "glasses": "#d4af37"
+   }
+  },
+  "richFat": {
+   "build": "chonk",
+   "shirt": "#1d2a4a",
+   "front": "suit",
+   "frontAcc": "#d4af37",
+   "sleeves": "#1d2a4a",
+   "pants": "#1d2a4a",
+   "shoes": "#111111",
+   "skin": "#f1c27d",
+   "hair": "side",
+   "hairColor": "#e8c35a",
+   "faceStyle": {
+    "glasses": "#d4af37"
+   }
+  },
+  "mayor": {
+   "preset": "mayor",
+   "build": "skinny"
+  },
+  "mayorFat": {
+   "preset": "mayor",
+   "build": "chonk"
+  },
+  "poor": {
+   "build": "chonk",
+   "shirt": "#8d6e63",
+   "front": "buttons",
+   "frontAcc": "#5d4037",
+   "pants": "#455a64",
+   "shoes": "#3e2723",
+   "skin": "#c68642",
+   "hair": "messy",
+   "hairColor": "#3b2416"
+  },
+  "poor2": {
+   "build": "chonk",
+   "shirt": "#7cb342",
+   "front": "buttons",
+   "frontAcc": "#5d4037",
+   "pants": "#455a64",
+   "shoes": "#3e2723",
+   "skin": "#c68642",
+   "hair": "curly",
+   "hairColor": "#3b2416"
+  },
+  "doctor": {
+   "build": "tall",
+   "shirt": "#ffffff",
+   "front": "coat",
+   "frontAcc": "#9ad0ff",
+   "sleeves": "#ffffff",
+   "pants": "#3a5a80",
+   "shoes": "#222222",
+   "skin": "#f5d0b0",
+   "hair": "short",
+   "hairColor": "#5b5b5b",
+   "faceStyle": {
+    "glasses": "#1d1a22"
+   }
+  },
+  "shop": {
+   "preset": "shop"
+  },
+  "baker": {
+   "preset": "baker"
+  }
+ },
+ "paragraphs": [
+  {
+   "text": "In this town, the more you eat, the thinner you get. One burger? Lose a pound. A whole pizza? Your pants fall down. So rich people are always skinny. They eat steak for breakfast, lobster for lunch, and three cakes before bed. Look at the mayor. He eats like a horse, and he looks like a pencil. Poor people? Round. Very round. Because they can't afford food. Can't buy bread? Gain five pounds. Skip dinner? Need new pants. And me? I was born skinny. The doctors were shocked. My mom cried. Everyone thought my family had secretly become rich. But here's my problem. When I eat, I get fatter. The opposite of everyone in this town. One cookie, my cheeks get puffy. One sandwich, my shirt buttons pop. At my birthday party, I ate one slice of cake and rolled out the door. The doctors said, \"This is impossible.\" My mom said, \"This is expensive.\" At school, the rich kids laughed at me. \"Look, he eats and gets fat! He's broken!\" Then a giant storm destroyed every farm in town. No food for anyone. Within a week, the rich people started gaining weight. Ten pounds. Twenty pounds. The mayor got stuck in his own door. Everyone panicked. Everyone, except me. Because without food, I got skinnier. And skinnier. For the first time in my life, I was the healthiest guy in town. The mayor came to my house and begged me. \"Teach us your secret!\" I said, \"Easy. Just don't eat.\" He fainted. Now I'm the town's official diet coach. Rich people pay me to tell them not to eat. And with the money, I buy cake. And I get fat. And honestly? Worth it. Like and subscribe, or I'll eat a whole pizza in front of you.",
+   "mood": "playful",
+   "pause": 0.1
+  }
+ ]
+}

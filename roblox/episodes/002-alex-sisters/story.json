@@ -1,0 +1,138 @@
+{
+ "title": "In This Town, My Crush Has Four Identical Sisters",
+ "rule": "In this town, my crush has four identical sisters.",
+ "cast": {
+  "me": {
+   "build": "adult",
+   "shirt": "#16161a",
+   "front": "hoodie",
+   "frontAcc": "#e53935",
+   "sleeves": "#16161a",
+   "pants": "#3b4252",
+   "shoes": "#e53935",
+   "skin": "#c68642",
+   "hair": "spiky",
+   "hairColor": "#0d0d0d",
+   "hat": "cap",
+   "hatColor": "#111114",
+   "extras": [
+    "chain"
+   ],
+   "faceStyle": {
+    "brow": "#0d0d0d"
+   }
+  },
+  "mom": {
+   "build": "round",
+   "shirt": "#ff8fb1",
+   "front": "apron",
+   "frontAcc": "#ffffff",
+   "pants": "#7b5ea7",
+   "shoes": "#ffffff",
+   "skin": "#c68642",
+   "hair": "bun",
+   "hairColor": "#2a1a10",
+   "faceStyle": {
+    "blush": 1
+   }
+  },
+  "cop": {
+   "build": "tall",
+   "shirt": "#2f5fb3",
+   "front": "buttons",
+   "frontAcc": "#ffd23f",
+   "pants": "#1f2a44",
+   "shoes": "#111111",
+   "skin": "#f1c27d",
+   "hair": "short",
+   "hairColor": "#3a2a1c",
+   "hat": "cap",
+   "hatColor": "#1f2a44",
+   "faceStyle": {
+    "mustache": "#3a2a1c"
+   }
+  },
+  "alex": {
+   "build": "adult",
+   "shirt": "#ff7eb6",
+   "front": "dress",
+   "frontAcc": "#ffffff",
+   "pants": "#ff7eb6",
+   "shoes": "#ffffff",
+   "skin": "#e0ac69",
+   "hair": "long",
+   "hairColor": "#5a3218",
+   "faceStyle": {
+    "blush": 1,
+    "lashes": 1
+   }
+  },
+  "lexi": {
+   "build": "adult",
+   "shirt": "#ff7eb6",
+   "front": "dress",
+   "frontAcc": "#ffffff",
+   "pants": "#ff7eb6",
+   "shoes": "#ffffff",
+   "skin": "#e0ac69",
+   "hair": "long",
+   "hairColor": "#5a3218",
+   "faceStyle": {
+    "blush": 1,
+    "lashes": 1
+   }
+  },
+  "lola": {
+   "build": "adult",
+   "shirt": "#ff7eb6",
+   "front": "dress",
+   "frontAcc": "#ffffff",
+   "pants": "#ff7eb6",
+   "shoes": "#ffffff",
+   "skin": "#e0ac69",
+   "hair": "long",
+   "hairColor": "#5a3218",
+   "faceStyle": {
+    "blush": 1,
+    "lashes": 1
+   }
+  },
+  "lena": {
+   "build": "adult",
+   "shirt": "#ff7eb6",
+   "front": "dress",
+   "frontAcc": "#ffffff",
+   "pants": "#ff7eb6",
+   "shoes": "#ffffff",
+   "skin": "#e0ac69",
+   "hair": "long",
+   "hairColor": "#5a3218",
+   "faceStyle": {
+    "blush": 1,
+    "lashes": 1
+   }
+  },
+  "lily": {
+   "build": "adult",
+   "shirt": "#ff7eb6",
+   "front": "dress",
+   "frontAcc": "#ffffff",
+   "pants": "#ff7eb6",
+   "shoes": "#ffffff",
+   "skin": "#e0ac69",
+   "hair": "long",
+   "hairColor": "#5a3218",
+   "faceStyle": {
+    "blush": 1,
+    "lashes": 1
+   }
+  }
+ },
+ "paragraphs": [
+  {
+   "text": "In this town, my crush has four identical sisters. Same face. Same hair. Same laugh. Same pink backpack. Her name is Alex. Her sisters are Lexi, Lola, Lena and Lily. Five girls, one face. Even their mom calls them by numbers. One day, I finally found the courage. I bought flowers. I practiced in the mirror for three hours. I walked up to Alex and said, \"Alex, I like you. Like, really like you.\" She looked at me and said, \"That's sweet. But I'm Lexi. Her older sister. By four minutes.\" I wanted the ground to swallow me. Lexi told Lola. Lola told Lena. Lena told Lily. By lunch, the whole school knew. Since that day, I've been scared to say it again. What if I confess to the wrong sister again? Twice? That's not a love story. That's a crime. So I became a detective. I studied them for a whole month. Lexi always fixes her hair. Lola never stops eating. Lena reads books while walking. Lily sings, loudly, everywhere. And Alex? Alex laughs at my jokes. Even the bad ones. Especially the bad ones. So I made a plan. At the school talent show, I would tell the worst joke in history. Whoever laughs, that's her. The night came. Five sisters, front row. My hands were shaking. I grabbed the mic and said, \"Why did the chicken join a band? Because it had the drumsticks.\" Silence. Total silence. Even the crickets were embarrassed. Then, one girl in the front row laughed so hard she fell off her chair. I jumped off the stage, walked up to her, and said it again. \"Alex, I like you.\" She smiled and said, \"Finally. I've been waiting a month. Why do you think I laughed at all your terrible jokes?\" And Lexi? She's still telling everyone she got the first confession. Like and subscribe, or I'll tell you another chicken joke.",
+   "mood": "playful",
+   "pause": 0.1
+  }
+ ]
+}

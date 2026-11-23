@@ -1,0 +1,2254 @@
+[
+ {
+  "place": "school",
+  "cam": {
+   "size": "medium",
+   "angle": -18,
+   "move": "push"
+  },
+  "cast": [
+   {
+    "who": "me",
+    "face": "inlove",
+    "do": "heartclutch"
+   }
+  ]
+ },
+ {
+  "place": "school",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "cast": [
+   {
+    "who": "me",
+    "face": "inlove",
+    "do": "heartclutch"
+   }
+  ],
+  "at": "my crush has"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "wide",
+   "angle": 18
+  },
+  "at": "four identical sisters",
+  "cast": [
+   {
+    "who": "alex",
+    "face": "smile",
+    "do": "wave",
+    "at": [
+     -6.2,
+     1
+    ]
+   },
+   {
+    "who": "lexi",
+    "face": "smile",
+    "do": "wave",
+    "at": [
+     -3.1,
+     -0.9
+    ]
+   },
+   {
+    "who": "lola",
+    "face": "smile",
+    "do": "wave",
+    "at": [
+     0,
+     1
+    ]
+   },
+   {
+    "who": "lena",
+    "face": "smile",
+    "do": "wave",
+    "at": [
+     3.1,
+     -0.9
+    ]
+   },
+   {
+    "who": "lily",
+    "face": "smile",
+    "do": "wave",
+    "at": [
+     6.2,
+     1
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "sparkle",
+    "at": "identical",
+    "on": "alex"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "Same face",
+  "cast": [
+   {
+    "who": "lexi",
+    "face": "giggle",
+    "do": "shy"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "Same hair",
+  "cast": [
+   {
+    "who": "lola",
+    "face": "smile",
+    "do": "stretch"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "Same laugh",
+  "cast": [
+   {
+    "who": "alex",
+    "face": "laugh",
+    "do": "laugh",
+    "at": [
+     -6.2,
+     1
+    ]
+   },
+   {
+    "who": "lexi",
+    "face": "laugh",
+    "do": "laugh",
+    "at": [
+     -3.1,
+     -0.9
+    ]
+   },
+   {
+    "who": "lola",
+    "face": "laugh",
+    "do": "laugh",
+    "at": [
+     0,
+     1
+    ]
+   },
+   {
+    "who": "lena",
+    "face": "laugh",
+    "do": "laugh",
+    "at": [
+     3.1,
+     -0.9
+    ]
+   },
+   {
+    "who": "lily",
+    "face": "laugh",
+    "do": "laugh",
+    "at": [
+     6.2,
+     1
+    ]
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "wide",
+   "angle": -25
+  },
+  "at": "Same pink backpack",
+  "cast": [
+   {
+    "who": "alex",
+    "face": "proud",
+    "do": "swagger",
+    "at": [
+     -6.2,
+     1
+    ]
+   },
+   {
+    "who": "lexi",
+    "face": "proud",
+    "do": "swagger",
+    "at": [
+     -3.1,
+     -0.9
+    ]
+   },
+   {
+    "who": "lola",
+    "face": "proud",
+    "do": "swagger",
+    "at": [
+     0,
+     1
+    ]
+   },
+   {
+    "who": "lena",
+    "face": "proud",
+    "do": "swagger",
+    "at": [
+     3.1,
+     -0.9
+    ]
+   },
+   {
+    "who": "lily",
+    "face": "proud",
+    "do": "swagger",
+    "at": [
+     6.2,
+     1
+    ]
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "Her name is Alex",
+  "cast": [
+   {
+    "who": "alex",
+    "face": "giggle",
+    "do": "wave"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "Alex",
+    "on": "alex",
+    "text": "ALEX"
+   },
+   {
+    "type": "hearts",
+    "at": "Alex",
+    "on": "alex"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "Her sisters are Lexi",
+  "cast": [
+   {
+    "who": "lexi",
+    "face": "smirk",
+    "do": "hips"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "Lexi",
+    "on": "lexi",
+    "text": "LEXI"
+   }
+  ]
+ },
+ {
+  "place": "kitchen",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "Lola",
+  "cast": [
+   {
+    "who": "lola",
+    "face": "hungry",
+    "do": "chomp"
+   }
+  ],
+  "props": [
+   {
+    "kind": "cake",
+    "at": "counter"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "Lola",
+    "on": "lola",
+    "text": "LOLA"
+   }
+  ]
+ },
+ {
+  "place": "living",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "Lena and",
+  "cast": [
+   {
+    "who": "lena",
+    "face": "meh",
+    "do": "hold"
+   }
+  ],
+  "props": [
+   {
+    "kind": "book",
+    "hold": "lena"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "Lena",
+    "on": "lena",
+    "text": "LENA"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "Lily",
+  "cast": [
+   {
+    "who": "lily",
+    "face": "happy",
+    "do": "mic"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "Lily",
+    "on": "lily",
+    "text": "LILY"
+   },
+   {
+    "type": "notes",
+    "at": "Lily",
+    "on": "lily"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "wide",
+   "angle": 0
+  },
+  "at": "Five girls, one face",
+  "cast": [
+   {
+    "who": "alex",
+    "face": "smile",
+    "do": "dance",
+    "at": [
+     -6.2,
+     1
+    ]
+   },
+   {
+    "who": "lexi",
+    "face": "smile",
+    "do": "dance",
+    "at": [
+     -3.1,
+     -0.9
+    ]
+   },
+   {
+    "who": "lola",
+    "face": "smile",
+    "do": "dance",
+    "at": [
+     0,
+     1
+    ]
+   },
+   {
+    "who": "lena",
+    "face": "smile",
+    "do": "dance",
+    "at": [
+     3.1,
+     -0.9
+    ]
+   },
+   {
+    "who": "lily",
+    "face": "smile",
+    "do": "dance",
+    "at": [
+     6.2,
+     1
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "confetti",
+    "at": "face",
+    "on": "alex"
+   }
+  ]
+ },
+ {
+  "place": "living",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "Even their mom",
+  "cast": [
+   {
+    "who": "mom",
+    "face": "confused",
+    "do": "point",
+    "at": "center"
+   },
+   {
+    "who": "alex",
+    "face": "smile",
+    "do": "wave",
+    "at": "farLeft"
+   },
+   {
+    "who": "lexi",
+    "face": "smile",
+    "do": "wave",
+    "at": "farRight"
+   }
+  ]
+ },
+ {
+  "place": "living",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "calls them by",
+  "cast": [
+   {
+    "who": "mom",
+    "face": "confused",
+    "do": "point",
+    "at": "center"
+   },
+   {
+    "who": "alex",
+    "face": "smile",
+    "do": "wave",
+    "at": "farLeft"
+   },
+   {
+    "who": "lexi",
+    "face": "smile",
+    "do": "wave",
+    "at": "farRight"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "numbers",
+    "on": "mom",
+    "text": "NUMBER 3!"
+   }
+  ]
+ },
+ {
+  "place": "home",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "One day, I finally",
+  "cast": [
+   {
+    "who": "me",
+    "face": "determined",
+    "do": "flex"
+   }
+  ]
+ },
+ {
+  "place": "home",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "finally found the",
+  "cast": [
+   {
+    "who": "me",
+    "face": "determined",
+    "do": "flex"
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "I bought flowers",
+  "cast": [
+   {
+    "who": "me",
+    "face": "hopeful",
+    "do": "hold"
+   }
+  ],
+  "props": [
+   {
+    "kind": "gift",
+    "hold": "me"
+   }
+  ]
+ },
+ {
+  "place": "bedroom",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "I practiced in the mirror",
+  "cast": [
+   {
+    "who": "me",
+    "face": "awkward",
+    "do": "talk"
+   }
+  ]
+ },
+ {
+  "place": "bedroom",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "mirror for three",
+  "cast": [
+   {
+    "who": "me",
+    "face": "awkward",
+    "do": "talk"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "three",
+    "on": "me",
+    "text": "3 HOURS"
+   }
+  ]
+ },
+ {
+  "place": "school",
+  "cam": {
+   "size": "full",
+   "angle": -18,
+   "move": "follow"
+  },
+  "at": "I walked up to Alex",
+  "cast": [
+   {
+    "who": "me",
+    "face": "nervous",
+    "at": "offLeft",
+    "to": "left",
+    "move": "walk"
+   },
+   {
+    "who": "lexi",
+    "face": "smile",
+    "do": "idle",
+    "at": "right"
+   }
+  ]
+ },
+ {
+  "place": "school",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "Alex, I like you",
+  "cast": [
+   {
+    "who": "me",
+    "face": "blushing",
+    "do": "heartclutch"
+   }
+  ]
+ },
+ {
+  "place": "school",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "I like you",
+  "cast": [
+   {
+    "who": "me",
+    "face": "blushing",
+    "do": "heartclutch"
+   }
+  ]
+ },
+ {
+  "place": "school",
+  "cam": {
+   "size": "medium",
+   "angle": 48
+  },
+  "at": "really like you",
+  "cast": [
+   {
+    "who": "me",
+    "face": "inlove",
+    "do": "propose",
+    "at": "left"
+   },
+   {
+    "who": "lexi",
+    "face": "shocked",
+    "do": "shock",
+    "at": "right"
+   }
+  ],
+  "fx": [
+   {
+    "type": "hearts",
+    "at": "really",
+    "on": "me"
+   }
+  ]
+ },
+ {
+  "place": "school",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "She looked at me",
+  "cast": [
+   {
+    "who": "lexi",
+    "face": "confused",
+    "do": "hips"
+   }
+  ]
+ },
+ {
+  "place": "school",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "That's sweet",
+  "cast": [
+   {
+    "who": "lexi",
+    "face": "giggle",
+    "do": "giggle"
+   }
+  ]
+ },
+ {
+  "place": "school",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "But I'm Lexi",
+  "cast": [
+   {
+    "who": "lexi",
+    "face": "smirk",
+    "do": "point"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "Lexi",
+    "on": "lexi",
+    "text": "LEXI!"
+   }
+  ]
+ },
+ {
+  "place": "school",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "Her older sister",
+  "cast": [
+   {
+    "who": "me",
+    "face": "shocked",
+    "do": "shock",
+    "at": "left"
+   },
+   {
+    "who": "lexi",
+    "face": "proud",
+    "do": "hips",
+    "at": "right"
+   }
+  ]
+ },
+ {
+  "place": "school",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "By four minutes",
+  "cast": [
+   {
+    "who": "lexi",
+    "face": "smug",
+    "do": "talk"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "four",
+    "on": "lexi",
+    "text": "+4 MIN"
+   }
+  ]
+ },
+ {
+  "place": "school",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "I wanted the ground",
+  "cast": [
+   {
+    "who": "me",
+    "face": "dead",
+    "do": "hide"
+   }
+  ],
+  "fx": [
+   {
+    "type": "shake",
+    "at": "ground"
+   }
+  ]
+ },
+ {
+  "place": "school",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "to swallow me",
+  "cast": [
+   {
+    "who": "me",
+    "face": "dead",
+    "do": "hide"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "Lexi told Lola",
+  "cast": [
+   {
+    "who": "lexi",
+    "face": "sly",
+    "do": "talk",
+    "at": "left"
+   },
+   {
+    "who": "lola",
+    "face": "shocked",
+    "do": "shock",
+    "at": "right"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "Lola told Lena",
+  "cast": [
+   {
+    "who": "lola",
+    "face": "sly",
+    "do": "talk",
+    "at": "left"
+   },
+   {
+    "who": "lena",
+    "face": "gasp",
+    "do": "shock",
+    "at": "right"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "Lena told Lily",
+  "cast": [
+   {
+    "who": "lena",
+    "face": "sly",
+    "do": "talk",
+    "at": "left"
+   },
+   {
+    "who": "lily",
+    "face": "shocked",
+    "do": "panic",
+    "at": "right"
+   }
+  ]
+ },
+ {
+  "place": "classroom",
+  "cam": {
+   "size": "wide",
+   "angle": -18
+  },
+  "at": "By lunch",
+  "cast": [
+   {
+    "who": "me",
+    "face": "blushing",
+    "do": "hide"
+   }
+  ],
+  "crowd": {
+   "n": 8,
+   "where": "around",
+   "face": "cryLaugh",
+   "do": "laugh"
+  }
+ },
+ {
+  "place": "classroom",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "whole school knew",
+  "cast": [
+   {
+    "who": "me",
+    "face": "blushing",
+    "do": "hide"
+   }
+  ],
+  "crowd": {
+   "n": 8,
+   "where": "around",
+   "face": "cryLaugh",
+   "do": "laugh"
+  }
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "Since that day",
+  "cast": [
+   {
+    "who": "me",
+    "face": "sad",
+    "do": "sit",
+    "at": "bench"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "scared to say it again",
+  "cast": [
+   {
+    "who": "me",
+    "face": "nervous",
+    "do": "shiver"
+   }
+  ]
+ },
+ {
+  "place": "school",
+  "cam": {
+   "size": "wide",
+   "angle": 18
+  },
+  "at": "What if I confess",
+  "cast": [
+   {
+    "who": "me",
+    "face": "terrified",
+    "do": "panic",
+    "at": [
+     -6,
+     1
+    ]
+   },
+   {
+    "who": "alex",
+    "face": "smile",
+    "do": "wave",
+    "at": [
+     -1.5,
+     -1
+    ]
+   },
+   {
+    "who": "lexi",
+    "face": "smile",
+    "do": "wave",
+    "at": [
+     2,
+     0.8
+    ]
+   },
+   {
+    "who": "lola",
+    "face": "smile",
+    "do": "wave",
+    "at": [
+     5.5,
+     -1
+    ]
+   }
+  ]
+ },
+ {
+  "place": "school",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "the wrong sister",
+  "cast": [
+   {
+    "who": "me",
+    "face": "terrified",
+    "do": "panic",
+    "at": [
+     -6,
+     1
+    ]
+   },
+   {
+    "who": "alex",
+    "face": "smile",
+    "do": "wave",
+    "at": [
+     -1.5,
+     -1
+    ]
+   },
+   {
+    "who": "lexi",
+    "face": "smile",
+    "do": "wave",
+    "at": [
+     2,
+     0.8
+    ]
+   },
+   {
+    "who": "lola",
+    "face": "smile",
+    "do": "wave",
+    "at": [
+     5.5,
+     -1
+    ]
+   }
+  ]
+ },
+ {
+  "place": "school",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "Twice",
+  "cast": [
+   {
+    "who": "me",
+    "face": "panicked",
+    "do": "flail"
+   }
+  ],
+  "fx": [
+   {
+    "type": "exclaim",
+    "at": "Twice",
+    "on": "me"
+   }
+  ]
+ },
+ {
+  "place": "school",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "That's not a love story",
+  "cast": [
+   {
+    "who": "me",
+    "face": "rage",
+    "do": "stomp"
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "That's a crime",
+  "cast": [
+   {
+    "who": "cop",
+    "face": "sus",
+    "do": "armscross",
+    "at": "right"
+   },
+   {
+    "who": "me",
+    "face": "awkward",
+    "do": "shrug",
+    "at": "left"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "So I became a detective",
+  "cast": [
+   {
+    "who": "me",
+    "face": "cool",
+    "do": "armscross"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "became a detective",
+  "cast": [
+   {
+    "who": "me",
+    "face": "cool",
+    "do": "armscross"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "detective",
+    "on": "me",
+    "text": "DETECTIVE"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "wide",
+   "angle": -18
+  },
+  "at": "I studied them",
+  "cast": [
+   {
+    "who": "me",
+    "face": "sus",
+    "do": "tiptoe",
+    "at": [
+     -7.5,
+     1.5
+    ]
+   },
+   {
+    "who": "alex",
+    "face": "smile",
+    "do": "idle",
+    "at": [
+     -3,
+     -1
+    ]
+   },
+   {
+    "who": "lexi",
+    "face": "smile",
+    "do": "idle",
+    "at": [
+     0.3,
+     0.8
+    ]
+   },
+   {
+    "who": "lola",
+    "face": "smile",
+    "do": "idle",
+    "at": [
+     3.4,
+     -1
+    ]
+   },
+   {
+    "who": "lena",
+    "face": "smile",
+    "do": "idle",
+    "at": [
+     6.6,
+     0.8
+    ]
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "for a whole",
+  "cast": [
+   {
+    "who": "me",
+    "face": "sus",
+    "do": "tiptoe",
+    "at": [
+     -7.5,
+     1.5
+    ]
+   },
+   {
+    "who": "alex",
+    "face": "smile",
+    "do": "idle",
+    "at": [
+     -3,
+     -1
+    ]
+   },
+   {
+    "who": "lexi",
+    "face": "smile",
+    "do": "idle",
+    "at": [
+     0.3,
+     0.8
+    ]
+   },
+   {
+    "who": "lola",
+    "face": "smile",
+    "do": "idle",
+    "at": [
+     3.4,
+     -1
+    ]
+   },
+   {
+    "who": "lena",
+    "face": "smile",
+    "do": "idle",
+    "at": [
+     6.6,
+     0.8
+    ]
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "Lexi always fixes",
+  "cast": [
+   {
+    "who": "lexi",
+    "face": "proud",
+    "do": "stretch"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "fixes her hair",
+  "cast": [
+   {
+    "who": "lexi",
+    "face": "proud",
+    "do": "stretch"
+   }
+  ]
+ },
+ {
+  "place": "kitchen",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "Lola never stops eating",
+  "cast": [
+   {
+    "who": "lola",
+    "face": "hungry",
+    "do": "chomp"
+   }
+  ],
+  "props": [
+   {
+    "kind": "loaf",
+    "at": "counter"
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "full",
+   "angle": 18,
+   "move": "follow"
+  },
+  "at": "Lena reads books",
+  "cast": [
+   {
+    "who": "lena",
+    "face": "meh",
+    "do": "hold",
+    "at": "left",
+    "to": "right",
+    "move": "walk"
+   }
+  ],
+  "props": [
+   {
+    "kind": "book",
+    "hold": "lena"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "Lily sings",
+  "cast": [
+   {
+    "who": "lily",
+    "face": "happy",
+    "do": "mic"
+   }
+  ],
+  "fx": [
+   {
+    "type": "notes",
+    "at": "sings",
+    "on": "lily"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "loudly, everywhere",
+  "cast": [
+   {
+    "who": "lily",
+    "face": "shout",
+    "do": "mic",
+    "at": "center"
+   },
+   {
+    "who": "lola",
+    "face": "furious",
+    "do": "hide",
+    "at": "farLeft"
+   },
+   {
+    "who": "lena",
+    "face": "disgust",
+    "do": "hide",
+    "at": "farRight"
+   }
+  ],
+  "fx": [
+   {
+    "type": "shake",
+    "at": "loudly"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "And Alex",
+  "cast": [
+   {
+    "who": "alex",
+    "face": "hopeful",
+    "do": "shy"
+   }
+  ],
+  "fx": [
+   {
+    "type": "hearts",
+    "at": "Alex",
+    "on": "alex"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "Alex laughs at my jokes",
+  "cast": [
+   {
+    "who": "me",
+    "face": "grin",
+    "do": "talk",
+    "at": "left"
+   },
+   {
+    "who": "alex",
+    "face": "laugh",
+    "do": "laugh",
+    "at": "right"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "Even the bad ones",
+  "cast": [
+   {
+    "who": "alex",
+    "face": "cryLaugh",
+    "do": "laugh"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": 55
+  },
+  "at": "Especially the bad ones",
+  "cast": [
+   {
+    "who": "alex",
+    "face": "cryLaugh",
+    "do": "flail"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": 25
+  },
+  "at": "the bad ones",
+  "cast": [
+   {
+    "who": "alex",
+    "face": "cryLaugh",
+    "do": "flail"
+   }
+  ]
+ },
+ {
+  "place": "home",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "So I made a plan",
+  "cast": [
+   {
+    "who": "me",
+    "face": "sly",
+    "do": "rub"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "wide",
+   "angle": 18
+  },
+  "at": "At the school talent show",
+  "cast": [
+   {
+    "who": "me",
+    "face": "grin",
+    "do": "wave"
+   }
+  ],
+  "sky": "dusk",
+  "props": [
+   {
+    "kind": "stage",
+    "at": [
+     0,
+     -7
+    ],
+    "text": "TALENT SHOW"
+   }
+  ],
+  "crowd": {
+   "n": 8,
+   "where": "front",
+   "face": "happy",
+   "do": "cheer"
+  }
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "talent show I",
+  "cast": [
+   {
+    "who": "me",
+    "face": "grin",
+    "do": "wave"
+   }
+  ],
+  "sky": "dusk",
+  "crowd": {
+   "n": 8,
+   "where": "front",
+   "face": "happy",
+   "do": "cheer"
+  }
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "the worst joke in history",
+  "cast": [
+   {
+    "who": "me",
+    "face": "evil",
+    "do": "rub"
+   }
+  ],
+  "sky": "dusk"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "in history",
+  "cast": [
+   {
+    "who": "me",
+    "face": "evil",
+    "do": "rub"
+   }
+  ],
+  "sky": "dusk"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "Whoever laughs",
+  "cast": [
+   {
+    "who": "me",
+    "face": "determined",
+    "do": "point",
+    "look": "cam"
+   }
+  ],
+  "sky": "dusk"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "xwide",
+   "angle": -18
+  },
+  "at": "The night came",
+  "cast": [],
+  "sky": "night",
+  "props": [
+   {
+    "kind": "stage",
+    "at": [
+     0,
+     -7
+    ],
+    "text": "TALENT SHOW"
+   }
+  ],
+  "crowd": {
+   "n": 10,
+   "where": "front",
+   "face": "happy",
+   "do": "clap"
+  }
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "wide",
+   "angle": 18
+  },
+  "at": "Five sisters, front row",
+  "cast": [
+   {
+    "who": "alex",
+    "face": "smile",
+    "do": "clap",
+    "at": [
+     -6.2,
+     1
+    ]
+   },
+   {
+    "who": "lexi",
+    "face": "smile",
+    "do": "clap",
+    "at": [
+     -3.1,
+     -0.9
+    ]
+   },
+   {
+    "who": "lola",
+    "face": "smile",
+    "do": "clap",
+    "at": [
+     0,
+     1
+    ]
+   },
+   {
+    "who": "lena",
+    "face": "smile",
+    "do": "clap",
+    "at": [
+     3.1,
+     -0.9
+    ]
+   },
+   {
+    "who": "lily",
+    "face": "smile",
+    "do": "clap",
+    "at": [
+     6.2,
+     1
+    ]
+   }
+  ],
+  "sky": "night"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "My hands were shaking",
+  "cast": [
+   {
+    "who": "me",
+    "face": "nervous",
+    "do": "shiver"
+   }
+  ],
+  "sky": "night"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "I grabbed the mic",
+  "cast": [
+   {
+    "who": "me",
+    "face": "awkward",
+    "do": "mic"
+   }
+  ],
+  "sky": "night"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "Why did the chicken",
+  "cast": [
+   {
+    "who": "me",
+    "face": "grin",
+    "do": "mic"
+   }
+  ],
+  "sky": "night"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "Because it had the drumsticks",
+  "cast": [
+   {
+    "who": "me",
+    "face": "cheeky",
+    "do": "mic"
+   }
+  ],
+  "sky": "night"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "drumsticks",
+  "cast": [
+   {
+    "who": "me",
+    "face": "cheeky",
+    "do": "mic"
+   }
+  ],
+  "sky": "night",
+  "fx": [
+   {
+    "type": "label",
+    "at": "drumsticks",
+    "on": "me",
+    "text": "BA DUM TSS"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "wide",
+   "angle": -18
+  },
+  "at": "Silence",
+  "cast": [],
+  "sky": "night",
+  "crowd": {
+   "n": 10,
+   "where": "front",
+   "face": "bored",
+   "do": "armscross"
+  }
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "wide",
+   "angle": 18
+  },
+  "at": "Total silence",
+  "cast": [
+   {
+    "who": "alex",
+    "face": "bored",
+    "do": "armscross",
+    "at": [
+     -6.2,
+     1
+    ]
+   },
+   {
+    "who": "lexi",
+    "face": "bored",
+    "do": "armscross",
+    "at": [
+     -3.1,
+     -0.9
+    ]
+   },
+   {
+    "who": "lola",
+    "face": "bored",
+    "do": "armscross",
+    "at": [
+     0,
+     1
+    ]
+   },
+   {
+    "who": "lena",
+    "face": "bored",
+    "do": "armscross",
+    "at": [
+     3.1,
+     -0.9
+    ]
+   },
+   {
+    "who": "lily",
+    "face": "bored",
+    "do": "armscross",
+    "at": [
+     6.2,
+     1
+    ]
+   }
+  ],
+  "sky": "night"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "Even the crickets",
+  "cast": [
+   {
+    "who": "me",
+    "face": "awkward",
+    "do": "shiver"
+   }
+  ],
+  "sky": "night",
+  "fx": [
+   {
+    "type": "zzz",
+    "at": "crickets",
+    "on": "me"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "were embarrassed",
+  "cast": [
+   {
+    "who": "me",
+    "face": "awkward",
+    "do": "shiver"
+   }
+  ],
+  "sky": "night"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "Then, one girl",
+  "cast": [
+   {
+    "who": "alex",
+    "face": "laugh",
+    "do": "laugh"
+   }
+  ],
+  "sky": "night"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "laughed so hard",
+  "cast": [
+   {
+    "who": "alex",
+    "face": "cryLaugh",
+    "do": "fall"
+   }
+  ],
+  "sky": "night"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "she fell off",
+  "cast": [
+   {
+    "who": "alex",
+    "face": "cryLaugh",
+    "do": "fall"
+   }
+  ],
+  "sky": "night",
+  "fx": [
+   {
+    "type": "puff",
+    "at": "fell",
+    "on": "alex"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "I jumped off the stage",
+  "cast": [
+   {
+    "who": "me",
+    "face": "starstruck",
+    "do": "jump"
+   }
+  ],
+  "sky": "night"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "full",
+   "angle": -18,
+   "move": "follow"
+  },
+  "at": "walked up to her",
+  "cast": [
+   {
+    "who": "me",
+    "face": "hopeful",
+    "at": "offLeft",
+    "to": "left",
+    "move": "walk"
+   },
+   {
+    "who": "alex",
+    "face": "giggle",
+    "do": "sit",
+    "at": "right"
+   }
+  ],
+  "sky": "night"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "said it again",
+  "cast": [
+   {
+    "who": "me",
+    "face": "blushing",
+    "do": "shy"
+   }
+  ],
+  "sky": "night"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "Alex, I like you",
+  "cast": [
+   {
+    "who": "me",
+    "face": "inlove",
+    "do": "propose",
+    "at": "left"
+   },
+   {
+    "who": "alex",
+    "face": "shocked",
+    "do": "heartclutch",
+    "at": "right"
+   }
+  ],
+  "sky": "night",
+  "fx": [
+   {
+    "type": "hearts",
+    "at": "like",
+    "on": "me"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "She smiled",
+  "cast": [
+   {
+    "who": "alex",
+    "face": "inlove",
+    "do": "shy"
+   }
+  ],
+  "sky": "night"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "Finally",
+  "cast": [
+   {
+    "who": "alex",
+    "face": "happy",
+    "do": "victory"
+   }
+  ],
+  "sky": "night",
+  "fx": [
+   {
+    "type": "confetti",
+    "at": "Finally",
+    "on": "alex"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "I've been waiting a month",
+  "cast": [
+   {
+    "who": "alex",
+    "face": "smirk",
+    "do": "hips"
+   }
+  ],
+  "sky": "night"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "Why do you think",
+  "cast": [
+   {
+    "who": "alex",
+    "face": "flirty",
+    "do": "point"
+   }
+  ],
+  "sky": "night"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "terrible jokes",
+  "cast": [
+   {
+    "who": "me",
+    "face": "starstruck",
+    "do": "heartclutch"
+   }
+  ],
+  "sky": "night",
+  "fx": [
+   {
+    "type": "hearts",
+    "at": "terrible",
+    "on": "me"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "And Lexi",
+  "cast": [
+   {
+    "who": "lexi",
+    "face": "jealous",
+    "do": "armscross"
+   }
+  ],
+  "sky": "night"
+ },
+ {
+  "place": "school",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "She's still telling everyone",
+  "cast": [
+   {
+    "who": "lexi",
+    "face": "proud",
+    "do": "talk"
+   }
+  ],
+  "crowd": {
+   "n": 6,
+   "where": "around",
+   "face": "bored",
+   "do": "idle"
+  }
+ },
+ {
+  "place": "school",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "telling everyone she",
+  "cast": [
+   {
+    "who": "lexi",
+    "face": "proud",
+    "do": "talk"
+   }
+  ],
+  "crowd": {
+   "n": 6,
+   "where": "around",
+   "face": "bored",
+   "do": "idle"
+  }
+ },
+ {
+  "place": "school",
+  "cam": {
+   "size": "close",
+   "angle": 48
+  },
+  "at": "first confession",
+  "cast": [
+   {
+    "who": "lexi",
+    "face": "proud",
+    "do": "victory"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "first",
+    "on": "lexi",
+    "text": "#1"
+   }
+  ]
+ },
+ {
+  "place": "home",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "Like and subscribe",
+  "cast": [
+   {
+    "who": "me",
+    "face": "cool",
+    "do": "point",
+    "look": "cam"
+   }
+  ]
+ },
+ {
+  "place": "home",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "subscribe or I'll",
+  "cast": [
+   {
+    "who": "me",
+    "face": "cool",
+    "do": "point",
+    "look": "cam"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "another chicken joke",
+  "cast": [
+   {
+    "who": "me",
+    "face": "cheeky",
+    "do": "mic",
+    "at": "left"
+   },
+   {
+    "who": "alex",
+    "face": "cryLaugh",
+    "do": "laugh",
+    "at": "right"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "joke",
+  "cast": [
+   {
+    "who": "me",
+    "face": "cheeky",
+    "do": "mic",
+    "at": "left"
+   },
+   {
+    "who": "alex",
+    "face": "cryLaugh",
+    "do": "laugh",
+    "at": "right"
+   }
+  ]
+ }
+]
