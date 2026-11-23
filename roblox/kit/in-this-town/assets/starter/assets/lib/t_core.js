@@ -220,6 +220,11 @@
       const ff = new FontFace("TownDisplay", "url(assets/fonts/InterDisplay-Black.otf)", { weight: "900" });
       await ff.load(); document.fonts.add(ff);
     } catch (e) { console.warn("font", e); }
+    // pictures the town uses (the channel banner on the billboards); missing files just fall back to drawn art
+    T.IMAGES = T.IMAGES || {};
+    if (!T.HEADLESS) for (const [k, url] of Object.entries(T.PRELOAD || {})) {
+      try { const im = new Image(); im.src = url; await im.decode(); T.IMAGES[k] = im; } catch (e) { console.warn("image", k, e); }
+    }
     for (const fn of T._builders) fn(T);
     T._resolveShots();
     for (const s of T.SHOTS) {
@@ -228,6 +233,8 @@
     }
     T.booted = true;
   };
+  T.PRELOAD = Object.assign({ banner: "assets/img/banner.jpg" }, T.PRELOAD || {});
+  for (const f of ["angry", "blink", "content", "creepy", "cry", "dizzy", "happy", "laugh", "nerd", "nervous", "neutral", "oh", "sad", "scared", "shocked", "sleepy", "smile", "smirk", "sparkle", "sparkle_oh", "squeeze", "stare", "talk", "wink"]) T.PRELOAD["face_" + f] = "assets/img/faces/" + f + ".png";
   T._builders = [];
   T.onBoot = (fn) => T._builders.push(fn);
 

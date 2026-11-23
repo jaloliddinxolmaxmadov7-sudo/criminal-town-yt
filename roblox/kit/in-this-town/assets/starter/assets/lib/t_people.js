@@ -74,16 +74,20 @@
   T.EXPR = EXPR;
   const BLINKABLE = new Set(["smile", "happy", "grin", "wow", "talk", "determined", "worried", "sad", "angry", "tongue"]);
   function drawFace(st, ex) {
-    const c = T.canvas(256, 256), g = c.getContext("2d");
+    const c = T.canvas(512, 512), g = c.getContext("2d"); g.scale(2, 2);
     const ink = st.ink || "#1d1a22";
     g.fillStyle = st.skin; g.fillRect(0, 0, 256, 256);
+    if (st.redEars) { const a = st.redEars === true ? 1 : st.redEars; const gr = (x0, x1) => { const l = g.createLinearGradient(x0, 0, x1, 0); l.addColorStop(0, `rgba(255,20,20,${0.95 * a})`); l.addColorStop(1, "rgba(255,20,20,0)"); return l; };
+      g.fillStyle = gr(0, 70); g.fillRect(0, 50, 70, 150); g.fillStyle = gr(256, 186); g.fillRect(186, 50, 70, 150); }
     if (st.freckles) { g.fillStyle = "rgba(150,80,40,0.55)"; for (const [x, y] of [[70, 150], [82, 158], [62, 160], [186, 150], [174, 158], [194, 160]]) { g.beginPath(); g.arc(x, y, 3.2, 0, 7); g.fill(); } }
     if (st.blush || ex.mouth === "open" && st.blushHappy) { g.fillStyle = "rgba(255,110,120,0.35)"; for (const x of [62, 194]) { g.beginPath(); g.ellipse(x, 146, 20, 12, 0, 0, 7); g.fill(); } }
     const EX = [88, 168], EY = 110;
     g.lineCap = "round"; g.lineJoin = "round";
     const dot = (x, y, rx, ry) => { g.fillStyle = ink; g.beginPath(); g.ellipse(x, y, rx, ry, 0, 0, 7); g.fill(); g.fillStyle = "#fff"; g.beginPath(); g.arc(x + rx * 0.35, y - ry * 0.4, rx * 0.38, 0, 7); g.fill(); };
+    const png = ex.png && T.IMAGES && T.IMAGES["face_" + ex.png];
+    if (png) { const W0 = png.naturalWidth || 512, k = W0 / 1024; g.drawImage(png, 150 * k, 175 * k, 724 * k, 724 * k, 0, 0, 256, 256); } // zoom in: the features fill the face
     const eye = ex.eyes;
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < (png ? 0 : 2); i++) {
       const x = EX[i], s = i === 0 ? -1 : 1;
       g.strokeStyle = ink; g.lineWidth = 9;
       if (eye === "dot") dot(x, EY, 15, 22);
@@ -116,7 +120,7 @@
     }
     if (st.glasses) { g.strokeStyle = st.glasses; g.lineWidth = 7; for (const x of EX) { g.beginPath(); g.arc(x, EY, 31, 0, 7); g.stroke(); } g.beginPath(); g.moveTo(EX[0] + 31, EY - 4); g.lineTo(EX[1] - 31, EY - 4); g.stroke(); }
     // mouth
-    const mx = 128, my = 172, m = st.noMouth ? "none" : ex.mouth;
+    const mx = 128, my = 172, m = st.noMouth || png ? "none" : ex.mouth;
     g.strokeStyle = ink; g.lineWidth = 9;
     const dark = "#5a1d24";
     if (m === "smile") { g.beginPath(); g.arc(mx, my - 26, 34, Math.PI * 0.2, Math.PI * 0.8); g.stroke(); }
@@ -151,9 +155,26 @@
     if (ex.tears) { g.fillStyle = "#8fd8ff"; for (const x of EX) { g.fillRect(x - 6, EY + 6, 12, 60); } }
     return c;
   }
+  // bold face pack (assets/img/faces): emotion -> [face picture, extra overlays]; names not listed keep the drawn face
+  const PNGMAP = {
+    smile: ["smile"], happy: ["happy"], grin: ["laugh"], wow: ["oh"], scared: ["scared"], sad: ["sad"], angry: ["angry"], smug: ["smirk"],
+    sleepy: ["sleepy"], meh: ["neutral"], evil: ["creepy"], shout: ["shocked"], love: ["content"], blink: ["blink"], talk: ["talk"],
+    sheepish: ["nervous"], determined: ["stare"], laugh: ["laugh"], proud: ["content"], worried: ["nervous"], gasp: ["oh"], cry: ["cry"],
+    sus: ["stare"], starstruck: ["sparkle"], dizzy: ["dizzy"], rage: ["angry", { rage: 1 }], terrified: ["scared"], cryLaugh: ["squeeze", { tears: 1 }],
+    sly: ["smirk"], cheeky: ["wink"], shocked: ["shocked"], smirk: ["smirk"], flirty: ["wink"], bored: ["neutral"], blushing: ["content", { blush: 1 }],
+    nervous: ["nervous"], heartbroken: ["sad", { tears: 1, crack: 1 }], hungry: ["sparkle_oh", { drool: 1 }], disgust: ["squeeze", { green: 1 }],
+    jealous: ["stare", { green: 1 }], furious: ["angry", { rage: 1, steam: 1 }], confused: ["stare", { qmark: 1 }], stuffed: ["blink", { blush: 1 }],
+    giggle: ["happy"], panicked: ["squeeze", { sweat: 1 }], awkward: ["nervous", { blush: 1 }], hopeful: ["sparkle_oh"], sobbing: ["cry"],
+    mindblown: ["dizzy", { boom: 1 }], scheming: ["creepy"], pouty: ["sad", { blush: 1 }], screaming: ["shocked", { boom: 1 }],
+    dreamy: ["content", { sparkle: 1 }], grumpy: ["angry"], sweating: ["nervous"], winner: ["sparkle"], sneaky: ["smirk"], nerd: ["nerd"],
+  };
+  T.FACE_PNGS = ["angry", "blink", "content", "creepy", "cry", "dizzy", "happy", "laugh", "nerd", "nervous", "neutral", "oh", "sad", "scared", "shocked", "sleepy", "smile", "smirk", "sparkle", "sparkle_oh", "squeeze", "stare", "talk", "wink"];
+  EXPR.nerd = EXPR.nerd || { eyes: "big", brows: "flat", mouth: "grin" };
   T.faceTex = (st, name) => {
     const key = JSON.stringify(st) + "|" + name;
-    if (!faceCache.has(key)) faceCache.set(key, T.tex(drawFace(st, EXPR[name] || EXPR.smile)));
+    const pm = PNGMAP[name], usePng = pm && T.IMAGES && T.IMAGES["face_" + pm[0]];
+    const ex = usePng ? Object.assign({ png: pm[0] }, pm[1] || {}) : (EXPR[name] || EXPR.smile);
+    if (!faceCache.has(key)) faceCache.set(key, T.tex(drawFace(st, ex)));
     return faceCache.get(key);
   };
 
@@ -177,6 +198,14 @@
       g.fillStyle = "#222"; for (const y of [80, 112, 144]) { g.beginPath(); g.arc(128, y, 6, 0, 7); g.fill(); } },
     pajama: (g, b, a) => { const r = T.rng(5); g.fillStyle = a || "#fff3a6"; for (let i = 0; i < 18; i++) { const x = r() * 256, y = r() * 256; g.beginPath();
       for (let k = 0; k < 10; k++) { const an = -Math.PI / 2 + k * Math.PI / 5, rr = k % 2 ? 5 : 12; g.lineTo(x + Math.cos(an) * rr, y + Math.sin(an) * rr); } g.closePath(); g.fill(); } },
+    military: (g, b, a) => { // army jacket: placket, two flap pockets, belt line, a gold rank badge, camo specks
+      const r = T.rng(11); g.fillStyle = "rgba(0,0,0,0.16)"; for (let i = 0; i < 26; i++) { g.beginPath(); g.ellipse(r() * 256, r() * 256, 10 + r() * 18, 6 + r() * 10, r() * 3, 0, 7); g.fill(); }
+      g.fillStyle = "rgba(0,0,0,0.3)"; g.fillRect(124, 0, 8, 230); g.fillRect(0, 222, 256, 16);
+      g.fillStyle = a || "#c9a63a"; g.fillRect(116, 222, 24, 16);
+      g.strokeStyle = "rgba(0,0,0,0.45)"; g.lineWidth = 4; g.strokeRect(36, 70, 60, 56); g.strokeRect(160, 70, 60, 56);
+      g.fillStyle = "rgba(0,0,0,0.22)"; g.fillRect(36, 70, 60, 16); g.fillRect(160, 70, 60, 16);
+      g.fillStyle = "#1a1a1a"; for (const y of [40, 100, 160]) { g.beginPath(); g.arc(128, y, 5, 0, 7); g.fill(); }
+      g.fillStyle = a || "#c9a63a"; for (const x of [172, 188, 204]) { g.beginPath(); g.moveTo(x, 40); g.lineTo(x + 6, 52); g.lineTo(x + 12, 40); g.lineTo(x + 6, 46); g.closePath(); g.fill(); } },
     logo: (g, b, a) => { g.fillStyle = "#e53935"; g.font = "900 54px sans-serif"; g.textAlign = "center"; g.textBaseline = "middle"; g.fillText("CRIMINAL", 128, 108); g.fillStyle = "#ffd23f"; g.fillText("TOWN", 128, 160); },
   };
   T.SHIRTS_EXTRA = Object.keys(NEWSHIRT);
@@ -253,6 +282,7 @@
       const front = spec.front ? new THREE.MeshStandardMaterial({ map: shirtTex(spec.front, spec.shirt || "#2f7de1", spec.frontAcc), roughness: metal ? 0.35 : 0.7, metalness: metal ? 0.6 : 0 }) : shirtM;
       this.torso = T.mesh(T.rbox(b.torW, b.torH, b.torD, 0.14), [shirtM, shirtM, shirtM, shirtM, front, shirtM], 0, b.torH / 2, 0);
       body.add(this.torso);
+      if (!spec.noBelt && spec.build !== "small") body.add(T.mesh(T.rbox(b.torW * 1.01, 0.18, b.torD * 1.02, 0.05), T.mat(spec.belt || "#1a1a1f", { r: 0.6 }), 0, 0.1, 0));
       // head on a neck pivot
       this.neck = T.group(body, 0, b.torH + 0.04, 0);
       const H = b.head;
@@ -271,6 +301,7 @@
       for (const side of ["L", "R"]) {
         const sx = side === "L" ? 1 : -1;
         const sh = T.group(body, sx * (b.torW / 2 + b.armW / 2 - 0.05), b.torH - 0.12, 0);
+        sh.userData.x0 = sh.position.x;
         const slM = metal ? T.mat(spec.sleeves || spec.shirt, metal) : sleeve, skM = spec.gloves ? T.mat(spec.gloves, metal || {}) : skin;
         sh.add(T.mesh(T.rbox(b.armW, uH + 0.14, aD, 0.12), sl >= uH * 0.6 ? slM : skM, 0, -uH / 2 + 0.1, 0));
         if (sl < uH * 0.6) sh.add(T.mesh(T.rbox(b.armW * 1.03, sl, aD * 1.03, 0.12), slM, 0, -sl / 2 + 0.12, 0));
@@ -293,10 +324,21 @@
         const kn = T.group(hp, 0, -tH, 0);
         kn.add(T.mesh(T.rbox(b.legW * 0.98, tH - 0.2, b.legD * 0.98, 0.12), pM, 0, -(tH - 0.3) / 2, 0));
         kn.add(T.mesh(T.rbox(b.legW * 1.04, 0.36, b.legD * 1.12, 0.12), shoes, 0, -tH + 0.18, 0.05));
+        kn.add(T.mesh(T.rbox(b.legW * 1.08, 0.1, b.legD * 1.16, 0.04), T.mat(spec.sole || "#f4f4f4", { r: 0.7 }), 0, -tH + 0.05, 0.05));
         this.leg[side] = hp; this.knee[side] = kn;
       }
       this._extras(spec);
       T.shadowAll(root);
+      // contact shadow: a soft dark oval on the ground under the feet, so nobody hovers (blocky-shorts rule)
+      if (!T._blobTex) {
+        const c = T.canvas(128, 128), g = c.getContext("2d");
+        const gr = g.createRadialGradient(64, 64, 0, 64, 64, 64); gr.addColorStop(0, "rgba(0,0,0,1)"); gr.addColorStop(0.5, "rgba(0,0,0,0.6)"); gr.addColorStop(1, "rgba(0,0,0,0)");
+        g.fillStyle = gr; g.fillRect(0, 0, 128, 128); T._blobTex = new THREE.CanvasTexture(c);
+      }
+      this.blob = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ map: T._blobTex, color: "#0e1508", transparent: true, opacity: 0.5, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -4, polygonOffsetUnits: -4 }));
+      this.blob.rotation.x = -Math.PI / 2; this.blob.renderOrder = 2;
+      this.blob.scale.set(Math.max(b.torW * 1.25, b.legW * 2.6), b.legD * 2.8, 1); this.blob.position.y = 0.03;
+      root.add(this.blob); this._blobS = [this.blob.scale.x, this.blob.scale.y];
       this.seed = spec.seed || 1;
       this.expr = "smile";
     }
@@ -361,6 +403,13 @@
         add(T.rbox(0.16, H * 0.5, 0.16, 0.05), s, 0, -H * 0.2, H / 2 + 0.1);
         const plume = add(T.rbox(0.3, 1.3, 0.5, 0.14), T.mat("#d62839", { r: 0.8 }), 0, 0.7, -0.35, -0.45);
         this.plume = plume;
+      } else if (kind === "officer") {   // peaked army/officer cap: flat top, band, glossy visor, gold badge
+        const m = T.mat(spec.hatColor || "#15171a", { r: 0.55 });
+        add(T.cyl(H * 0.5, H * 0.56, H * 0.3, 24), m, 0, H * 0.06, 0);
+        const top = add(T.cyl(H * 0.7, H * 0.58, H * 0.16, 28), m, 0, H * 0.27, -0.04); top.scale.set(1, 1, 1.06);
+        add(T.cyl(H * 0.565, H * 0.565, H * 0.1, 24), T.mat(spec.hatAcc || "#2a2c30", { r: 0.4 }), 0, H * 0.0, 0);
+        add(T.rbox(H * 0.86, 0.06, H * 0.42, 0.03), T.mat("#0b0b0c", { r: 0.15, m: 0.3 }), 0, -0.06, H * 0.6, -0.22);
+        add(T.cyl(0.13, 0.13, 0.05, 6), T.mat("#e2b33c", { r: 0.3, m: 0.6 }), 0, H * 0.16, H * 0.56, Math.PI / 2);
       } else if (kind === "beanie") {
         const m = T.mat(spec.hatColor || "#2f6fe0", { r: 0.95 });
         const d = add(new THREE.SphereGeometry(H * 0.62, 24, 12, 0, Math.PI * 2, 0, Math.PI / 2), m, 0, -0.18, 0); d.scale.set(1.04, 0.95, 1.04);
@@ -399,11 +448,22 @@
       const b = this.b;
       for (const e of ex) {
         if (e === "sash") { const m = T.mesh(T.rbox(0.42, b.torH * 1.45, 0.08, 0.03), T.mat("#c8202a", { r: 0.5 }), 0, b.torH / 2, b.torD / 2 + 0.05); m.rotation.z = 0.62; this.body.add(m); const m2 = T.mesh(T.rbox(0.18, b.torH * 1.45, 0.09, 0.03), T.mat("#f0c23a", { r: 0.4, m: 0.4 }), 0, b.torH / 2, b.torD / 2 + 0.06); m2.rotation.z = 0.62; this.body.add(m2); }
+        if (e === "shades") {   // 3D sunglasses with a blue mirror tint; p.shades === false hides them for a shot
+          const H = b.head, gs = T.group(this.neck, 0, H * 0.6, H / 2 + 0.05), fr = T.mat("#0c0c0e", { r: 0.3, m: 0.4 }), le = T.mat(spec.lens || "#1d6fe0", { r: 0.08, m: 0.75 });
+          for (const sx of [-1, 1]) { gs.add(T.mesh(T.rbox(H * 0.36, H * 0.2, 0.05, 0.04), le, sx * H * 0.21, 0, 0.02)); gs.add(T.mesh(T.rbox(H * 0.4, 0.05, 0.06, 0.02), fr, sx * H * 0.21, H * 0.11, 0.02));
+            gs.add(T.mesh(T.rbox(0.04, 0.05, H * 0.5, 0.02), fr, sx * H * 0.5, H * 0.08, -H * 0.24)); }
+          gs.add(T.mesh(T.rbox(H * 0.1, 0.05, 0.06, 0.02), fr, 0, H * 0.05, 0.03)); this.shades = gs;
+        }
         if (e === "bowtie") { const m = T.mesh(T.rbox(0.7, 0.32, 0.12, 0.06), T.mat("#d02a3a", { r: 0.5 }), 0, b.torH - 0.12, b.torD / 2 + 0.06); this.body.add(m); }
         if (e === "hood") { const m = T.mesh(T.rbox(b.torW * 0.78, 0.7, 0.42, 0.18), T.mat(spec.shirt, { r: 0.7 }), 0, b.torH - 0.08, -b.torD / 2 - 0.14); m.rotation.x = -0.25; this.body.add(m); }
         if (e === "cape") { const m = T.mesh(T.rbox(b.torW * 1.05, b.torH + b.legH * 0.7, 0.1, 0.04), T.mat("#c42032", { r: 0.8 }), 0, b.torH - (b.torH + b.legH * 0.7) / 2, -b.torD / 2 - 0.12); m.rotation.x = 0.06; this.body.add(m); this.cape = m; }
         if (e === "belt") { const m = T.mesh(T.rbox(b.torW + 0.06, 0.24, b.torD + 0.06, 0.06), T.mat("#3a2a1c", { r: 0.6 }), 0, 0.14, 0); this.body.add(m); }
-        if (e === "chain") { const m = T.mesh(new THREE.TorusGeometry(0.62, 0.07, 6, 20), T.mat("#f2c230", { r: 0.3, m: 0.7 }), 0, b.torH - 0.45, b.torD / 2 + 0.02); m.rotation.x = 0.15; m.scale.set(1, 1.1, 1); this.body.add(m); }
+        if (e === "chain") {
+          // a chain that hangs from the neck and lies on the chest (a U, not a ring standing in front)
+          const gold = T.mat("#f2c230", { r: 0.25, m: 0.75 }), r = Math.min(0.5, b.torW * 0.26);
+          const m = T.mesh(new THREE.TorusGeometry(r, 0.055, 6, 24, Math.PI), gold, 0, b.torH - 0.04, b.torD / 2 + 0.035); m.rotation.z = Math.PI; m.scale.set(1, 1.25, 0.25); this.body.add(m);
+          const pend = T.mesh(T.rbox(0.26, 0.3, 0.08, 0.05), gold, 0, b.torH - 0.04 - r * 1.25 - 0.12, b.torD / 2 + 0.06); this.body.add(pend);
+        }
       }
     }
     face(name) {
@@ -445,6 +505,9 @@
       if (p.armR || eR === null) eR = p.elbR ?? aR[3] ?? autoE(aR);
       if (p.kneeL !== undefined) kL = p.kneeL; if (p.kneeR !== undefined) kR = p.kneeR;
       this.arm.L.rotation.set(-aL[0], 0, aL[1]); this.arm.R.rotation.set(-aR[0], 0, -aR[1]);
+      // an arm raised sideways also moves out from the shoulder, so its top never cuts into the torso
+      this.arm.L.position.x = this.arm.L.userData.x0 + 0.32 * b.armW * Math.abs(Math.sin(aL[1] || 0));
+      this.arm.R.position.x = this.arm.R.userData.x0 - 0.32 * b.armW * Math.abs(Math.sin(aR[1] || 0));
       if (aL[2]) this.arm.L.rotation.y = aL[2]; if (aR[2]) this.arm.R.rotation.y = -aR[2];
       this.elbow.L.rotation.x = -eL; this.elbow.R.rotation.x = -eR;
       this.leg.L.rotation.set(-lL[0], 0, lL[1] || 0); this.leg.R.rotation.set(-lR[0], 0, -(lR[1] || 0));
@@ -459,8 +522,16 @@
         this.body.position.y = Math.max(ext(lL[0], kL), ext(lR[0], kR)) + flight;
       }
       this.body.rotation.set(lean[0], twist, -lean[1]);
+      if (this.blob) {   // the contact shadow stays on the ground: shrinks and fades as he jumps, softer when sitting
+        const up = Math.max(0, (p.jump || 0) + (this.body.position.y - b.legH) * 0.5), k = 1 / (1 + up * 0.25);
+        this.blob.position.y = 0.03 - (p.jump || 0) / Math.max(0.01, s);
+        this.blob.scale.set(this._blobS[0] * k, this._blobS[1] * k, 1);
+        this.blob.material.opacity = (p._sit ? 0.28 : 0.5) * Math.max(0.15, 1 - up * 0.18);
+        this.blob.visible = !(p.rx || p.rz) && !p.noBlob;
+      }
       const h = p.head || (p.still ? [0, 0, 0] : [0.05 * Math.sin(tm * 1.9 + sd), 0.16 * Math.sin(tm * 0.85 + sd * 2), 0.06 * Math.sin(tm * 1.3 + sd)]);
       this.neck.rotation.set(h[0], h[1] || 0, h[2] || 0);
+      if (this.shades) this.shades.visible = p.shades !== false;
       if (this.plume) this.plume.rotation.x = -0.45 + 0.08 * Math.sin((time ?? 0) * 7);
       let ex = p.face || "smile";
       // automatic blinks: about every 3.3 s, 0.12 s long

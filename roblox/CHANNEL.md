@@ -18,3 +18,13 @@ Channel: CRIMINAL TOWN (YouTube Shorts, English). Three shorts a day from the th
 - The camera is never still; a reaction close-up after every surprise; a sound on every hit.
 - The owner's song plays quietly: `MUSIC_UNDER=19 python tools/audio.py` (she asked for the music low under the voice).
 - Voice arrives as ONE mp3 from the ElevenLabs connector (folder "persanak mp3"); the song is in "orqa fon mp3".
+
+## Update 2026-11-24 (applies to the next videos)
+- **Billboards:** the owner's channel banner (assets/img/banner.jpg) is on every town billboard.
+- **Faces:** 24 bold PNG faces (assets/img/faces) drive most emotions; key close-ups show readable faces. Swap the face on the punch word.
+- **Rig:** elbows and knees, feet always on the ground, soft contact shadow under every character, raised arms move out from the shoulder (no clipping into the torso).
+- **Detail:** gold chain is a real U-shaped chain with a pendant, shoes have soles, belts on adults.
+- **New recurring character `captain`:** army officer: olive camo jacket with pockets and rank badge, black pants, brown boots, classic yellow skin, black peaked officer cap with gold badge, blue mirror sunglasses. Use `"shades": false` on his cast entry (or in a `then`) for big-emotion close-ups so the eyes read.
+- **Shot rules (roblox skill + blocky-shorts):** at least 25% close shots; 5-8 locations per video; rule visible in frame 1; final shot at least 3 s; extras off the lens line; push-in 8-11% of the lens distance per second; under 6% still frames.
+- **Story shape (in-this-town-kit):** line 1 states the rule; 2-3 quick jokes about living with it; then "I ..." and the twist; the last line runs back into the first so the short loops.
+- **Finish:** after the render and before finish.py run `python tools/grade.py renders/film.mp4 renders/film_g.mp4 --flash <twist shot ids>`: soft glow, firmer contrast, light vignette, speed lines over the hook, a white flash into the twist shots. Then `finish.py renders/film_g.mp4 ...`.

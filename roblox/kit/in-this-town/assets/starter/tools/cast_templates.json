@@ -389,5 +389,28 @@
   "faceStyle": {
    "brow": "#0d0d0d"
   }
+ },
+ "captain": {
+  "build": "adult",
+  "shirt": "#3c4f34",
+  "front": "military",
+  "frontAcc": "#d1ad3e",
+  "sleeves": "#3c4f34",
+  "pants": "#17181b",
+  "shoes": "#2a1d14",
+  "sole": "#111111",
+  "skin": "#f5cd30",
+  "hair": "short",
+  "hairColor": "#1a1a1a",
+  "hat": "officer",
+  "hatColor": "#15171a",
+  "extras": [
+   "shades"
+  ],
+  "lens": "#1d6fe0",
+  "faceStyle": {
+   "brow": "#111111"
+  },
+  "note": "Captain - army officer, stern, sunglasses; use p.shades:false for big-emotion close-ups"
  }
 }

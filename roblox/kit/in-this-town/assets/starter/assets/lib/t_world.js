@@ -280,7 +280,7 @@
     const metal = M("#5d6470", { r: 0.5, m: 0.5 });
     for (const sx of [-1, 1]) box(g, 0.6, legs + h / 2, 0.6, metal, sx * w * 0.32, (legs + h / 2) / 2, -0.4);
     box(g, w + 0.8, h + 0.8, 0.5, M("#22252c", { r: 0.6 }), 0, legs + h / 2, -0.3);
-    if (!logoTex) logoTex = T.tex(T.logoCanvas(1024, 512));
+    if (!logoTex) { const im = T.IMAGES && T.IMAGES.banner; if (im) { const c = T.canvas(im.naturalWidth, im.naturalHeight); c.getContext("2d").drawImage(im, 0, 0); logoTex = T.tex(c); } else logoTex = T.tex(T.logoCanvas(1024, 512)); }
     const face = new THREE.Mesh(T.plane(w, h), new THREE.MeshStandardMaterial({ map: logoTex, roughness: 0.55, emissive: new THREE.Color("#ffffff"), emissiveMap: logoTex, emissiveIntensity: 0.25 }));
     face.position.set(0, legs + h / 2, 0); g.add(face);
     for (const sx of [-0.3, 0, 0.3]) { const l = box(g, 0.3, 0.3, 1.2, metal, sx * w, legs + h + 0.6, 0.4); }
@@ -289,12 +289,12 @@
   };
   T.onBoot(() => {
     const town = W.town;
-    W.billboard(town, -12.5, -21.5, 0.12, 11, 5.5, 3.6);      // plaza, in front of the school's left side, faces the square
-    W.billboard(town, 20, -26, -0.55, 11, 5.5, 3.6);      // plaza, north-east corner, faces the square
+    W.billboard(town, -12.5, -21.5, 0.12, 11, 6.2, 3.4);      // plaza, in front of the school's left side, faces the square
+    W.billboard(town, 20, -26, -0.55, 11, 6.2, 3.4);      // plaza, north-east corner, faces the square
     W.billboard(town, -25, 23, 2.4, 13, 6.5, 4.5);        // plaza, south-west corner, faces the square
-    W.billboard(town, -15, 108, Math.PI / 2, 16, 8, 6);  // main street, faces the road
-    W.billboard(town, 14, 140, -Math.PI / 2, 16, 8, 6);  // main street further down
-    W.billboard(town, -86, 66, Math.PI / 3, 18, 9, 7);   // outside town, by the field
+    W.billboard(town, -15, 108, Math.PI / 2, 16, 9, 6);  // main street, faces the road
+    W.billboard(town, 14, 140, -Math.PI / 2, 16, 9, 6);  // main street further down
+    W.billboard(town, -86, 66, Math.PI / 3, 18, 10.1, 7);   // outside town, by the field
   });
 
   // ---------------------------------------------------------------- rooms (each far from the town, shown by the shots that use them)

@@ -208,7 +208,7 @@
       box(w + 0.4, h + 0.4, 0.3, "#7a5230", 0, 4.2 + h / 2 - 0.4, -0.05);
       const s = T.sign(lines, w, h, { bg: o.bg || "#fff6e0", fg: o.fg || "#2a1a10", radius: 24 }); s.position.set(0, 4.2 + h / 2 - 0.4, 0.12); g.add(s);
     },
-    billboard: (g, o) => { W().billboard(g, 0, 0, 0, o.w || 10, o.h || 5, o.legs || 3); },
+    billboard: (g, o) => { W().billboard(g, 0, 0, 0, o.w || 10, o.h || (o.w || 10) * 0.5625, o.legs || 3); },
     crate: (g, o) => { const m = T.mesh(T.rbox(2.2, 2.2, 2.2, 0.12, 2), T.mat(o.color || "#c08040", { map: T.texLib.planksTex(o.color || "#c08040", 256) }), 0, 1.1, 0); g.add(m); },
     gift: (g, o) => {
       g.add(T.mesh(T.rbox(2, 1.6, 2, 0.1, 2), T.mat(o.color || "#e63946"), 0, 0.8, 0));
@@ -331,7 +331,7 @@
       const cs = { e, a, who: e.who, isDog: !!a.isDog, pos0: p0, y: e.y || 0, s: e.s || 1, segs: [], states: [], spot: A.spotOpts(pl, m0) };
       // movement + changes: a list of states in time order
       let cur = p0;
-      const st0 = { t: -1e9, face: e.face || (a.isDog ? "happy" : "smile"), do: e.do || "idle", look: e.look || "cam", y: e.y || 0 };
+      const st0 = { t: -1e9, face: e.face || (a.isDog ? "happy" : "smile"), do: e.do || "idle", look: e.look || "cam", y: e.y || 0, shades: e.shades };
       cs.states.push(st0);
       if (e.to !== undefined) {
         const p1 = A.toWorld(pl, e.to), t0 = w(e.go, e.goNth, "go"), t1 = e.stop ? w(e.stop, e.stopNth, "stop") : s.end - 0.12;
@@ -340,7 +340,7 @@
       for (const th of e.then || []) {
         const t = w(th.at, th.nth, "then");
         const prev = cs.states[cs.states.length - 1];
-        const ns = Object.assign({}, prev, { t, face: th.face || prev.face, do: th.do || prev.do, look: th.look || prev.look, y: th.y ?? prev.y, t0: t });
+        const ns = Object.assign({}, prev, { t, face: th.face || prev.face, do: th.do || prev.do, look: th.look || prev.look, y: th.y ?? prev.y, shades: th.shades ?? prev.shades, t0: t });
         if (th.do && th.do !== prev.do) ns.t0 = t; else ns.t0 = prev.t0 ?? t;
         cs.states.push(ns);
         if (th.to !== undefined) {
@@ -543,7 +543,7 @@
       if (cs.isDog) {
         cs.a.set({ x: p[0], y: cs.y + m.y + (pose._fly || 0), z: p[1], ry: ry + m.ry, s: sc, walk: mv ? ph : undefined, run: mv && mv.move === "run", face, wag: 0.6, jump: pose.jump || 0, tongue: true }, t);
       } else {
-        const P = Object.assign({ x: p[0], y: st.y + cs.y + m.y + (pose._fly || 0), z: p[1], ry: ry + m.ry, s: sc, face }, pose);
+        const P = Object.assign({ x: p[0], y: st.y + cs.y + m.y + (pose._fly || 0), z: p[1], ry: ry + m.ry, s: sc, face, shades: st.shades }, pose);
         if (mv) { P.walk = ph; P.run = mv.move === "run"; if (mv.move === "sneak") Object.assign(P, DO.sneak()); }
         if (pose._lie) { P.rx = -Math.PI / 2; P.y = (P.y || 0) + 0.7 * sc + (cs.spot.lie || 0); P.face = st.face === "smile" ? "sleepy" : st.face; P.still = true; }
         if (pose._fall) { P.rx = -1.45 * pose._fall; P.y = (P.y || 0) + 0.2 * pose._fall; }
