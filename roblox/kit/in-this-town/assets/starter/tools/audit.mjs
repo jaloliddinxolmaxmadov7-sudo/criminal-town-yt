@@ -29,7 +29,7 @@ for (const s of T.SHOTS) {
   for (const t of [...times].sort((a, b) => a - b)) {
     if (t <= s.start || t >= s.end) continue;
     try {
-      for (const is of [...A.audit(s, t), ...A.overlaps(s, t), ...A.foreground(s)]) { const k = is.level + "|" + is.msg.replace(/\(.*\)/, ""); if (!seen.has(k)) seen.set(k, Object.assign({ t: +t.toFixed(2) }, is)); }
+      for (const is of [...A.audit(s, t), ...A.overlaps(s, t), ...(A.contacts ? A.contacts(s, t) : []), ...A.foreground(s)]) { const k = is.level + "|" + is.msg.replace(/\(.*\)/, ""); if (!seen.has(k)) seen.set(k, Object.assign({ t: +t.toFixed(2) }, is)); }
     } catch (e) { crashed = e.message; break; }
   }
   const list = [...seen.values()];

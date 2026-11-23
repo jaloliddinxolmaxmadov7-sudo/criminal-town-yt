@@ -158,14 +158,14 @@
     victory: (ta, t) => ({ armL: [3.0, 0.4, 0, 0.2], armR: [3.0, 0.4, 0, 0.2], jump: 0.45 * Math.abs(Math.sin(t * 6)), head: [-0.2, 0, 0] }),
     flail: (ta, t) => ({ armL: [1.6 + 1.2 * Math.sin(t * 14), 0.6, 0, 0.6], armR: [1.6 + 1.2 * Math.sin(t * 14 + 2), 0.6, 0, 0.6], twist: 0.2 * Math.sin(t * 9), bob: 0.06 * Math.abs(Math.sin(t * 14)) }),
     giggle: (ta, t) => ({ armR: [2.2, -0.3, 0, 2.2], armL: [0.6, 0.1, 0, 1.6], bob: 0.05 * Math.abs(Math.sin(t * 14)), head: [0.1, 0.1 * Math.sin(t * 7), 0] }),
-    phone: (ta, t) => ({ armR: [2.4, -0.15, 0, 2.3], head: [0, 0.2 * Math.sin(t * 1.5), 0.15], armL: [0.4 * Math.abs(Math.sin(t * 3)), 0.2, 0, 1.0] }),
+    phone: (ta, t) => ({ armR: [1.25, -0.2, 0, 1.35], head: [0.3, 0.12 * Math.sin(t * 1.5), 0.08], armL: [0.9, 0.05, 0, 1.5 + 0.15 * Math.abs(Math.sin(t * 6))] }),
     tiptoe: (ta, t) => ({ lean: [0.2, 0], armL: [0.6, 0.5, 0, 1.6], armR: [0.6, 0.5, 0, 1.6], legL: [0.3 * Math.max(0, Math.sin(t * 4)), 0], legR: [0.3 * Math.max(0, -Math.sin(t * 4)), 0], head: [0, 0.3 * Math.sin(t * 2), 0] }),
     jumpjacks: (ta, t) => { const k = Math.abs(Math.sin(t * 6)); return { armL: [0, 0.2 + 2.6 * k], armR: [0, 0.2 + 2.6 * k], legL: [0, 0.35 * k], legR: [0, 0.35 * k], jump: 0.25 * k }; },
     stomp: (ta, t) => ({ armL: [-0.1, 0.3], armR: [-0.1, 0.3], bob: 0.1 * Math.abs(Math.sin(t * 6)), jump: 0.15 * Math.abs(Math.sin(t * 6)) }),
     // moves pack 4
     slash: (ta) => { const ph = (ta % 0.75) / 0.75, k = ph < 0.35 ? E.out(ph / 0.35) : 1 - E.io((ph - 0.35) / 0.65); const sw = ph < 0.35 ? 0 : E.out(Math.min(1, (ph - 0.35) / 0.25));
-      return { armR: [T.lerp(2.7, 0.5, sw) * (ph < 0.35 ? k : 1), T.lerp(0.45, 0.5, sw), 0, 0.25], armL: [T.lerp(2.6, 0.7, sw), 0.25, 0, 0.6], twist: T.lerp(0.45, -0.55, sw), lean: [0.1 + 0.15 * sw, 0], legL: [0.35, 0.12], legR: [-0.3, 0.12], kneeL: 0.35, kneeR: 0.25, head: [0.1 * sw, -0.2 * sw, 0] }; },
-    guard: (ta, t) => ({ armR: [1.35, -0.35, 0, 1.1], armL: [1.25, 0.32, 0, 1.4], legL: [0.38, 0.16], legR: [-0.32, 0.16], kneeL: 0.42, kneeR: 0.32, lean: [0.14, 0], twist: -0.2 + 0.04 * Math.sin(t * 2.2), head: [0.05, 0.15 + 0.08 * Math.sin(t * 1.7), 0] }),
+      return { armR: [T.lerp(2.5, 0.5, sw) * (ph < 0.35 ? k : 1), T.lerp(0.8, 0.5, sw), 0, 0.25], armL: [T.lerp(2.6, 0.7, sw), 0.25, 0, 0.6], twist: T.lerp(0.45, -0.55, sw), lean: [0.1 + 0.15 * sw, 0], legL: [0.35, 0.12], legR: [-0.3, 0.12], kneeL: 0.35, kneeR: 0.25, head: [0.1 * sw, -0.2 * sw, 0] }; },
+    guard: (ta, t) => ({ armR: [1.1, 0.62, 0, 0.9], armL: [1.0, 0.15, 0, 1.3], legL: [0.38, 0.16], legR: [-0.32, 0.16], kneeL: 0.42, kneeR: 0.32, lean: [0.14, 0], twist: -0.2 + 0.04 * Math.sin(t * 2.2), head: [0.05, 0.15 + 0.08 * Math.sin(t * 1.7), 0] }),
     shush: (ta, t) => ({ armR: [2.0, -0.5, 0, 2.7], armL: [0.2, 0.1], lean: [0.12, 0], head: [0.08, 0.12 * Math.sin(t * 2), 0.06] }),
     lookaround: (ta, t) => ({ head: [0.05, 0.75 * Math.sin(t * 2.6), 0.1 * Math.sin(t * 5.2)], twist: 0.18 * Math.sin(t * 2.6), armL: [0.3, 0.35, 0, 0.8], armR: [0.3, 0.35, 0, 0.8], bob: 0.03 * Math.abs(Math.sin(t * 5)) }),
     tapfoot: (ta, t) => ({ armL: [1.1, -0.65, 0, 2.3], armR: [1.1, -0.65, 0, 2.3], legR: [0.25, 0.1], kneeR: 0.2 + 0.25 * Math.abs(Math.sin(t * 9)), head: [0, 0, 0.18 + 0.04 * Math.sin(t * 3)], lean: [-0.05, 0.05] }),
@@ -178,7 +178,7 @@
     zombie: (ta, t) => ({ armL: [1.6, 0.08 + 0.05 * Math.sin(t * 2)], armR: [1.6, 0.08 + 0.05 * Math.cos(t * 2)], head: [0.15, 0.1 * Math.sin(t * 1.3), 0.3], lean: [0.1, 0.06 * Math.sin(t * 1.6)], legL: [0.2 * Math.max(0, Math.sin(t * 2)), 0], legR: [0.2 * Math.max(0, -Math.sin(t * 2)), 0] }),
     groove: (ta, t) => ({ armL: [0.9 + 0.8 * Math.abs(Math.sin(t * 7)), 0.3, 0, 1.6], armR: [0.9 + 0.8 * Math.abs(Math.cos(t * 7)), 0.3, 0, 1.6], twist: 0.35 * Math.sin(t * 7), lean: [0, 0.1 * Math.sin(t * 7)], bob: 0.09 * Math.abs(Math.sin(t * 7)), head: [0.12 * Math.abs(Math.sin(t * 7)), 0, 0.15 * Math.sin(t * 3.5)] }),
     pray: (ta, t) => ({ armL: [1.45, -0.42, 0, 1.9], armR: [1.45, -0.42, 0, 1.9], head: [0.28, 0, 0], bob: 0.02 * Math.sin(t * 3) }),
-    typing: (ta, t) => ({ armL: [1.1, -0.1, 0, 1.3 + 0.12 * Math.sin(t * 22)], armR: [1.1, -0.1, 0, 1.3 + 0.12 * Math.cos(t * 19)], head: [0.25, 0.05 * Math.sin(t * 2), 0], lean: [0.12, 0] }),
+    typing: (ta, t) => ({ armL: [0.9, -0.1, 0, 1.4 + 0.12 * Math.sin(t * 22)], armR: [0.9, -0.1, 0, 1.4 + 0.12 * Math.cos(t * 19)], head: [0.32, 0.05 * Math.sin(t * 2), 0], lean: [0.12, 0] }),
     yawn: (ta) => { const k = T.bump(ta, 0, 1.2); return { armL: [2.8 * k, 0.4 * k, 0, 0.3], armR: [2.8 * k, 0.4 * k, 0, 0.3], lean: [-0.15 * k, 0], head: [-0.3 * k, 0, 0] }; },
     sneeze: (ta) => { const pre = Math.min(1, ta / 0.6), hit = ta > 0.6 ? T.bump(ta, 0.6, 0.95) : 0; return { lean: [-0.2 * pre * (1 - hit) + 0.4 * hit, 0], head: [-0.35 * pre * (1 - hit) + 0.45 * hit, 0, 0], armR: [1.9 * hit, -0.4, 0, 2.2], jump: 0.1 * hit }; },
     kneelcry: (ta, t) => ({ legL: [1.4, 0], legR: [-0.1, 0], kneeL: 1.5, kneeR: 1.6, armL: [2.0, -0.4, 0, 2.6], armR: [2.0, -0.4, 0, 2.6], head: [0.35, 0, 0], bob: -0.55 + 0.03 * Math.sin(t * 12) }),
@@ -254,7 +254,15 @@
     coin: (g) => { const m = T.mesh(T.cyl(0.6, 0.6, 0.14, 24), T.mat("#f2c230", { r: 0.25, m: 0.85 }), 0, 0.6, 0); m.rotation.x = Math.PI / 2; g.add(m); },
     cup: (g, o) => { g.add(T.mesh(T.cyl(0.45, 0.36, 0.9, 16), T.mat(o.color || "#ffffff"), 0, 0.45, 0)); const h = T.mesh(new THREE.TorusGeometry(0.25, 0.07, 6, 12), T.mat(o.color || "#ffffff"), 0.48, 0.5, 0); g.add(h); },
     apple: (g, o) => { g.add(T.mesh(T.sph(0.5, 16, 12), T.mat(o.color || "#e63946", { r: 0.35 }), 0, 0.5, 0)); g.add(T.mesh(T.box(0.06, 0.3, 0.06), T.mat("#5a3a22"), 0, 1.05, 0)); },
-    phone: (g) => { g.add(T.mesh(T.rbox(0.8, 1.5, 0.12, 0.1, 2), T.mat("#1d1d22", { r: 0.3 }), 0, 0, 0)); g.add(T.mesh(T.box(0.68, 1.3, 0.02), T.mat("#3a5a9a", { e: "#5a8ae0", ei: 0.6 }), 0, 0, 0.07)); },
+    phone: (g, o) => { // a real-looking phone: thin rounded body, lit screen with clock and app icons, camera bump on the back
+      if (!T._phoneTex) { const c = T.canvas(128, 256), x = c.getContext("2d"); const gr = x.createLinearGradient(0, 0, 128, 256); gr.addColorStop(0, "#4a3aff"); gr.addColorStop(1, "#ff4fa3"); x.fillStyle = gr; x.fillRect(0, 0, 128, 256);
+        x.fillStyle = "#ffffff"; x.font = "bold 30px sans-serif"; x.textAlign = "center"; x.fillText("9:41", 64, 52); const cols = ["#ffd23f", "#2ecc71", "#ff6b6b", "#4fc3f7", "#ffffff", "#ff9f43", "#a55eea", "#26de81"];
+        for (let i = 0; i < 12; i++) { x.fillStyle = cols[i % 8]; const ix = 18 + (i % 3) * 36, iy = 82 + Math.floor(i / 3) * 38; x.beginPath(); x.roundRect ? x.roundRect(ix, iy, 24, 24, 6) : x.rect(ix, iy, 24, 24); x.fill(); }
+        x.fillStyle = "rgba(255,255,255,0.8)"; x.fillRect(44, 240, 40, 4); T._phoneTex = new THREE.CanvasTexture(c); T._phoneTex.colorSpace = THREE.SRGBColorSpace; }
+      const k = o && o.hold ? 0.62 : 1;
+      g.add(T.mesh(T.rbox(0.62 * k, 1.22 * k, 0.07 * k, 0.09 * k, 2), T.mat(o && o.color || "#15151a", { r: 0.25, m: 0.4 }), 0, 0, 0));
+      g.add(T.mesh(T.box(0.54 * k, 1.1 * k, 0.01), new THREE.MeshBasicMaterial({ map: T._phoneTex }), 0, 0, 0.041 * k));
+      g.add(T.mesh(T.rbox(0.2 * k, 0.2 * k, 0.04 * k, 0.05 * k), T.mat("#2a2a30", { r: 0.3 }), -0.14 * k, 0.42 * k, -0.05 * k)); },
     umbrella: (g, o) => {
       const c = T.mesh(new THREE.ConeGeometry(2.4, 1.0, 10, 1, true), T.mat(o.color || "#e63946", { side: THREE.DoubleSide }), 0, 4.6, 0); g.add(c);
       g.add(T.mesh(T.cyl(0.06, 0.06, 4.4, 8), T.mat("#2b2b30"), 0, 2.3, 0));
@@ -412,7 +420,8 @@
       holder.position.set(wp[0], p.y || 0, wp[1]);
       holder.rotation.y = (pl.yaw ? -pl.yaw * DEG : 0) + (p.ry || 0) * DEG;
       holder.scale.setScalar(p.s || 1);
-      s.props[id] = { g: holder, p, base: { x: wp[0], y: p.y || 0, z: wp[1], s: p.s || 1 }, appear: p.appear ? w(p.appear, p.appearNth, "prop appear") : null, vanish: p.vanish ? w(p.vanish, p.vanishNth, "prop vanish") : null };
+      if (p.kind === "phone" && !p.hold && !p.upright) { holder.rotation.x = -Math.PI / 2; holder.position.y = (p.y || 0) + 0.06; } // a dropped phone lies flat
+      s.props[id] = { g: holder, p, base: { x: wp[0], y: holder.position.y, z: wp[1], s: p.s || 1 }, appear: p.appear ? w(p.appear, p.appearNth, "prop appear") : null, vanish: p.vanish ? w(p.vanish, p.vanishNth, "prop vanish") : null };
     }
     // effects
     s.fx = (d.fx || []).map((f, i) => {
@@ -602,12 +611,14 @@
         if (a.hand && !pr.p.hand && (act === "hold" || act === "carry")) { const hl = V(); a.hand.L.getWorldPosition(hl); hp.add(hl).multiplyScalar(0.5); }
         pr.g.position.set(hp.x, hp.y + (pr.p.dy ?? -0.2) + m.y, hp.z);
         pr.g.rotation.y = a.root.rotation.y + (pr.p.ry || 0) * DEG;
-        pr.g.rotation.x = pr.p.kind === "book" ? -1.15 : 0; // a held book shows its cover
+        pr.g.rotation.x = pr.p.kind === "book" ? -1.15 : pr.p.kind === "phone" ? -0.35 : 0; // a held book shows its cover; a phone tilts up to its owner
+        if (pr.p.kind === "phone") { const ry = a.root.rotation.y, sc = a.root.scale.x; pr.g.position.x += Math.sin(ry) * 0.3 * sc; pr.g.position.z += Math.cos(ry) * 0.3 * sc; pr.g.position.y -= 0.05 * sc; } // held out in front, below the chin
         if (a.hand && pr.p.kind === "stick" && (act === "hold" || act === "carry")) pr.g.rotation.y = a.root.rotation.y + Math.PI / 2; // two hands: a staff across the body
         else if (a.hand && (pr.p.kind === "sword" || pr.p.kind === "stick") && !pr.p.upright) { // a blade follows the hand: it swings with the arm
           const q = new THREE.Quaternion(); hand.getWorldQuaternion(q);
           // the blade continues out of the fist along the forearm (-Y of the hand): down at the side, up in a guard, over the head in a swing
-          pr.g.quaternion.copy(q).multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), pr.p.kind === "sword" ? Math.PI : Math.PI / 2));
+          const upright = act === "guard" || act === "salute" || act === "hold"; // in a guard the blade stands up out of the fist; in a swing it continues the arm
+          pr.g.quaternion.copy(q).multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), pr.p.kind === "sword" ? (upright ? Math.PI / 2 : Math.PI) : (upright ? 0 : Math.PI / 2)));
           const dn = new THREE.Vector3(0, -1, 0).applyQuaternion(q).multiplyScalar(0.3 * (a.root.scale.x || 1));
           pr.g.position.set(hp.x + dn.x, hp.y + dn.y + m.y, hp.z + dn.z);
         }
@@ -1007,10 +1018,43 @@
     }
   }
 
+  // ---------------------------------------------------------------- nobody stands inside furniture, steps or props:
+  // a standing character whose spot overlaps a solid box is moved to the nearest free spot (once, before the camera is solved)
+  function unstick(c) {
+    const s = c.shot; if (!s.cast || !s.cast.length) return;
+    stage(c, s.start + 0.05); T.scene.updateMatrixWorld(true);
+    const actors = s.cast.filter((cs) => cs.a.root.visible && !cs.isDog && cs.a.b);
+    const heldG = Object.values(s.props || {}).filter((p) => p.p.hold).map((p) => p.g);
+    const boxes = [];
+    for (const m of solidMeshes()) {
+      if (s.cast.some((cs) => ownedBy(m, cs.a.root)) || heldG.some((g) => ownedBy(m, g))) continue;
+      const b = new THREE.Box3().setFromObject(m), sz = b.getSize(V());
+      if (sz.x > 14 || sz.z > 14 || b.max.y < 0.35 || sz.y > 30) continue;
+      boxes.push(b);
+    }
+    const rad = (cs) => (cs.a.b.torW / 2 + cs.a.b.armW * 0.9) * cs.a.root.scale.x;
+    const blockedAtP = (cs, x, z) => {
+      const r = Math.min(cs.a.b.torW, cs.a.b.torD * 1.6) / 2 * 0.95 * cs.a.root.scale.x, y0 = cs.y + 0.4, y1 = cs.y + (cs.a.b.legH + cs.a.b.torH) * cs.a.root.scale.x;
+      for (const b of boxes) { if (b.max.y < y0 || b.min.y > y1) continue; const cx = Math.max(b.min.x, Math.min(x, b.max.x)), cz = Math.max(b.min.z, Math.min(z, b.max.z)); if (Math.hypot(x - cx, z - cz) < r) return true; }
+      for (const o of actors) if (o !== cs && Math.hypot(o.pos0[0] - x, o.pos0[1] - z) < (rad(o) + rad(cs)) * 0.95) return true;
+      return false;
+    };
+    for (const cs of actors) {
+      if (cs.segs.length) continue;
+      const st = cs.states[0]; if (/^(sit|sleep|drawDesk|lie)/.test(st.do) || st.y || cs.y) continue;
+      const [x0, z0] = cs.pos0; if (!blockedAtP(cs, x0, z0)) continue;
+      let best = null;
+      for (let r = 0.5; r <= 6 && !best; r += 0.5) for (let k = 0; k < 16 && !best; k++) { const an = k / 16 * Math.PI * 2, x = x0 + Math.cos(an) * r, z = z0 + Math.sin(an) * r; if (!blockedAtP(cs, x, z)) best = [x, z]; }
+      if (best) { cs.pos0 = best; cs.unstuck = true; }
+    }
+    stage(c, s.start + 0.05);
+  }
+
   // ---------------------------------------------------------------- the per-frame draw of an auto shot
   function draw(c) {
     const s = c.shot;
     if (!s.solved) {
+      unstick(c);
       s.solved = solve(c);
       for (const u of [0, 0.5, 1]) { const p = camPose(s, s.solved, u, T.lerp(s.start, s.end, u)).pos; if (blockedAt(p, s)) { s.moveOverride = "still"; break; } }
       if (!s.moveOverride && moveOf(s) !== "still") {
@@ -1088,6 +1132,46 @@
     return n ? [{ level: "warn", msg: `${n} other ${n > 1 ? "people stand" : "person stands"} right in front of the lens (foreground clutter): another angle, move them, or a higher camera` }] : [];
   };
   A.solveIssues = (s) => (s.solved && s.solved.issues) || [];
+  // bodies inside furniture / props, and held props through a face (call after A.audit at the same time)
+  A.contacts = (s, t) => {
+    const out = []; if (!s.cast) return out;
+    const actors = s.cast.filter((cs) => cs.a.root.visible && !cs.isDog && cs.a.b);
+    const heldG = Object.values(s.props || {}).filter((p) => p.p.hold).map((p) => p.g);
+    const boxes = [];
+    for (const m of solidMeshes()) {
+      if (actors.some((cs) => ownedBy(m, cs.a.root)) || heldG.some((g) => ownedBy(m, g))) continue;
+      const b = new THREE.Box3().setFromObject(m), sz = b.getSize(V());
+      if (sz.x > 14 || sz.z > 14 || b.max.y < 0.35 || sz.y > 30) continue; // ground, floors, rugs, whole buildings
+      boxes.push({ b, m });
+    }
+    for (const cs of actors) {
+      const st = curState(cs.states, t), a = cs.a, sc = a.root.scale.x, p = a.root.position;
+      if (/^(sit|sleep|drawDesk|lie)/.test(st.do) || st.y) continue; // seated / lying on purpose
+      const r = Math.min(a.b.torW, a.b.torD * 1.6) / 2 * 0.8 * sc, y0 = p.y + 0.4 * sc, y1 = p.y + (a.b.legH + a.b.torH) * sc;
+      for (const { b, m } of boxes) {
+        if (b.max.y < y0 || b.min.y > y1) continue;
+        const cx = Math.max(b.min.x, Math.min(p.x, b.max.x)), cz = Math.max(b.min.z, Math.min(p.z, b.max.z));
+        const d = Math.hypot(p.x - cx, p.z - cz), pen = r - d;
+        if (pen > r * 0.35) { out.push({ level: "error", msg: `${cs.who} stands inside ${nameOf(m)}` }); break; }
+      }
+      // a held prop through the own face
+      if (a.head) {
+        const hb = new THREE.Box3().setFromObject(a.head).expandByScalar(-0.08 * sc);
+        for (const g of Object.values(s.props || {})) if (g.p.hold === cs.who && g.g.visible) {
+          // real geometry, not a loose box: sample the prop's surface points and count those inside the head
+          let inside = 0; const v = V();
+          g.g.traverse((m) => { if (!m.isMesh || !m.geometry || !m.geometry.attributes.position) return; const pa = m.geometry.attributes.position, step = Math.max(1, Math.floor(pa.count / 60));
+            for (let i = 0; i < pa.count; i += step) { v.fromBufferAttribute(pa, i).applyMatrix4(m.matrixWorld); if (hb.containsPoint(v)) inside++; } });
+          // a blade is thin: also test points along each mesh's long axis
+          g.g.traverse((m) => { if (!m.isMesh) return; const bb = new THREE.Box3().setFromBufferAttribute(m.geometry.attributes.position), c0 = bb.getCenter(V()), sz = bb.getSize(V());
+            const ax = sz.x > sz.y && sz.x > sz.z ? "x" : sz.y > sz.z ? "y" : "z";
+            for (let k = 0; k <= 12; k++) { const pt = c0.clone(); pt[ax] = bb.min[ax] + (bb.max[ax] - bb.min[ax]) * k / 12; pt.applyMatrix4(m.matrixWorld); if (hb.containsPoint(pt)) inside++; } });
+          if (inside >= 2) out.push({ level: "warn", msg: `${cs.who}'s ${g.p.kind} goes through the face` });
+        }
+      }
+    }
+    return out;
+  };
 
   // compile the shots before the core resolves them
   if (window.SHOTDATA) A.compileAll();

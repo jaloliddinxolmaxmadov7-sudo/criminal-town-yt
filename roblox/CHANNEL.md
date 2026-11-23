@@ -34,3 +34,9 @@ Channel: CRIMINAL TOWN (YouTube Shorts, English). Three shorts a day from the th
 - Background people: one new extra or reuse earlier characters; crowds stay generic.
 - At least 10 NEW emotions per video, plus the earlier emotions mixed in. Emotion packs so far: 37 base + packs 2-3 + pack 4 (hypnotized, horrified, exhausted, smug2, unamused, annoyed, frozen, embarrassed, relieved, lovestruck, greedy, proudTear, devilish, wideEyed, fired, possessed) + pack 5 (cringe, sassy, sick, champion, thinking, touched, electrocuted, snoozing, starving, evilLaugh, nervousLaugh, heartEyes, volcano, petrified, focused, demonGrin, sweatDrop).
 - Moves pack 4: slash, guard, shush, lookaround, tapfoot, fingerguns, dab, tantrum, headscratch, airguitar, wipe, zombie, groove, pray, typing, yawn, sneeze, kneelcry. Held swords/sticks follow the hand.
+
+## Quality gate (owner's request, 2026-11-24): nothing goes to Buffer before it passes
+1. `node tools/audit.mjs` must show 0 errors. It now also catches: a body inside furniture, steps, sofas or props; a held prop through a face; people inside each other; hidden faces. The engine moves a standing character out of furniture by itself before the camera is chosen.
+2. Look sheets (`tools/look.py`) are checked by eye before rendering.
+3. After the render: `python3 roblox/tools/qa_sheets.py film.mp4 qa_final/` and an independent reviewer agent checks every sheet (detached arms, things merged into each other, covered or messy faces, phones/props through bodies, empty or dark frames). Fix and re-render until clean.
+Rig: shoulder, elbow and knee caps keep limbs joined; one clean extra per emotion; open-front hood; 3D glasses; held phones in front of the chest, dropped phones flat; swords upright in a guard and along the arm in a swing.

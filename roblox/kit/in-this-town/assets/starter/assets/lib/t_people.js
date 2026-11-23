@@ -99,11 +99,15 @@
       g.fillStyle = gr(0, 70); g.fillRect(0, 50, 70, 150); g.fillStyle = gr(256, 186); g.fillRect(186, 50, 70, 150); }
     if (st.freckles) { g.fillStyle = "rgba(150,80,40,0.55)"; for (const [x, y] of [[70, 150], [82, 158], [62, 160], [186, 150], [174, 158], [194, 160]]) { g.beginPath(); g.arc(x, y, 3.2, 0, 7); g.fill(); } }
     if (st.blush || ex.mouth === "open" && st.blushHappy) { g.fillStyle = "rgba(255,110,120,0.35)"; for (const x of [62, 194]) { g.beginPath(); g.ellipse(x, 146, 20, 12, 0, 0, 7); g.fill(); } }
-    const EX = [88, 168], EY = 110;
+    let EX = [88, 168], EY = 110;
+    if (ex.png) { EX = [82, 174]; EY = 100; }
     g.lineCap = "round"; g.lineJoin = "round";
     const dot = (x, y, rx, ry) => { g.fillStyle = ink; g.beginPath(); g.ellipse(x, y, rx, ry, 0, 0, 7); g.fill(); g.fillStyle = "#fff"; g.beginPath(); g.arc(x + rx * 0.35, y - ry * 0.4, rx * 0.38, 0, 7); g.fill(); };
     const png = ex.png && T.IMAGES && T.IMAGES["face_" + ex.png];
-    if (png) { const W0 = png.naturalWidth || 512, k = W0 / 1024; g.drawImage(png, 150 * k, 175 * k, 724 * k, 724 * k, 0, 0, 256, 256); } // zoom in: the features fill the face
+    if (png) {
+      if (st.mustache) { const mx = 128, my = 168; g.fillStyle = st.mustache; g.beginPath(); g.moveTo(mx, my - 22); g.bezierCurveTo(mx - 18, my - 36, mx - 54, my - 28, mx - 58, my - 8); g.bezierCurveTo(mx - 42, my - 18, mx - 20, my - 14, mx, my - 15); g.bezierCurveTo(mx + 20, my - 14, mx + 42, my - 18, mx + 58, my - 8); g.bezierCurveTo(mx + 54, my - 28, mx + 18, my - 36, mx, my - 22); g.fill(); }
+      const W0 = png.naturalWidth || 512, k = W0 / 1024; g.drawImage(png, 62 * k, 40 * k, 900 * k, 900 * k, 0, 0, 256, 256); // features sized to stay clear of caps, fringes and the jaw
+    }
     const eye = ex.eyes;
     for (let i = 0; i < (png ? 0 : 2); i++) {
       const x = EX[i], s = i === 0 ? -1 : 1;
@@ -136,7 +140,7 @@
       else if (b === "none") { /* hidden behind shades */ }
       else if (b === "oneup") L(x - 16, by - (i === 1 ? 12 : 0), x + 16, by - (i === 1 ? 16 : 0));
     }
-    if (st.glasses) { g.strokeStyle = st.glasses; g.lineWidth = 7; for (const x of EX) { g.beginPath(); g.arc(x, EY, 31, 0, 7); g.stroke(); } g.beginPath(); g.moveTo(EX[0] + 31, EY - 4); g.lineTo(EX[1] - 31, EY - 4); g.stroke(); }
+    if (st.glasses && !png) { g.strokeStyle = st.glasses; g.lineWidth = 7; for (const x of EX) { g.beginPath(); g.arc(x, EY, 31, 0, 7); g.stroke(); } g.beginPath(); g.moveTo(EX[0] + 31, EY - 4); g.lineTo(EX[1] - 31, EY - 4); g.stroke(); }
     // mouth
     const mx = 128, my = 172, m = st.noMouth || png ? "none" : ex.mouth;
     g.strokeStyle = ink; g.lineWidth = 9;
@@ -157,7 +161,7 @@
     else if (m === "cat") { g.beginPath(); g.arc(mx - 16, my - 6, 16, Math.PI * 0.1, Math.PI * 0.95); g.stroke(); g.beginPath(); g.arc(mx + 16, my - 6, 16, Math.PI * 0.05, Math.PI * 0.9); g.stroke(); }
     else if (m === "smirk") { g.beginPath(); g.moveTo(mx - 28, my + 2); g.quadraticCurveTo(mx + 6, my + 12, mx + 36, my - 14); g.stroke(); }
     else if (m === "tongue") { g.beginPath(); g.arc(mx - 6, my - 24, 30, Math.PI * 0.25, Math.PI * 0.78); g.stroke(); g.fillStyle = "#ff6f86"; g.beginPath(); g.ellipse(mx + 18, my + 10, 11, 15, -0.4, 0, 7); g.fill(); g.lineWidth = 5; g.stroke(); }
-    if (st.mustache) { g.fillStyle = st.mustache; g.beginPath(); g.moveTo(mx, my - 26); g.bezierCurveTo(mx - 20, my - 44, mx - 64, my - 34, mx - 70, my - 10); g.bezierCurveTo(mx - 50, my - 22, mx - 22, my - 16, mx, my - 18); g.bezierCurveTo(mx + 22, my - 16, mx + 50, my - 22, mx + 70, my - 10); g.bezierCurveTo(mx + 64, my - 34, mx + 20, my - 44, mx, my - 26); g.fill(); }
+    if (st.mustache && !png) { g.fillStyle = st.mustache; g.beginPath(); g.moveTo(mx, my - 26); g.bezierCurveTo(mx - 20, my - 44, mx - 64, my - 34, mx - 70, my - 10); g.bezierCurveTo(mx - 50, my - 22, mx - 22, my - 16, mx, my - 18); g.bezierCurveTo(mx + 22, my - 16, mx + 50, my - 22, mx + 70, my - 10); g.bezierCurveTo(mx + 64, my - 34, mx + 20, my - 44, mx, my - 26); g.fill(); }
     if (ex.rage) { g.fillStyle = "rgba(255,40,40,0.38)"; g.fillRect(0, 0, 256, 256); g.strokeStyle = "#7a0d0d"; g.lineWidth = 6; for (const [x, y] of [[196, 40], [214, 52], [178, 52]]) { g.beginPath(); g.moveTo(x - 8, y); g.lineTo(x, y - 8); g.lineTo(x + 8, y); g.stroke(); } }
     if (ex.stream) { g.fillStyle = "rgba(90,180,255,0.85)"; for (const x of EX) g.fillRect(x - 7, EY + 14, 14, 110); }
     if (ex.boom) { g.fillStyle = "#ffb020"; g.beginPath(); for (let k = 0; k < 16; k++) { const an = k * Math.PI / 8, rr = k % 2 ? 22 : 44; g.lineTo(128 + Math.cos(an) * rr * 2.2, 26 + Math.sin(an) * rr * 0.6); } g.closePath(); g.fill(); }
@@ -166,22 +170,22 @@
     if (ex.blush) { g.fillStyle = "rgba(255,90,120,0.55)"; for (const x of EX) { g.beginPath(); g.ellipse(x, EY + 42, 26, 13, 0, 0, 7); g.fill(); } }
     if (ex.green) { g.fillStyle = "rgba(90,200,70,0.38)"; g.fillRect(0, 0, 256, 128); }
     if (ex.drool) { g.fillStyle = "#8fd8ff"; g.strokeStyle = "#2f7fb8"; g.lineWidth = 3; g.beginPath(); g.moveTo(160, 182); g.quadraticCurveTo(170, 226, 160, 232); g.quadraticCurveTo(150, 226, 160, 182); g.fill(); g.stroke(); }
-    if (ex.steam) { g.fillStyle = "rgba(255,255,255,0.9)"; for (const [x, y, r] of [[30, 30, 16], [48, 16, 11], [226, 30, 16], [208, 16, 11]]) { g.beginPath(); g.arc(x, y, r, 0, 7); g.fill(); } }
+    if (ex.steam) { g.fillStyle = "rgba(255,255,255,0.9)"; for (const [x, y, r] of [[22, 120, 14], [14, 100, 9], [234, 120, 14], [242, 100, 9]]) { g.beginPath(); g.arc(x, y, r, 0, 7); g.fill(); } }
     if (ex.crack) { g.strokeStyle = "#c2183a"; g.lineWidth = 6; g.beginPath(); g.moveTo(218, 30); g.lineTo(208, 44); g.lineTo(222, 54); g.lineTo(210, 68); g.stroke(); }
     if (ex.qmark) { g.fillStyle = ink; g.font = "bold 60px sans-serif"; g.fillText("?", 205, 62); }
     if (ex.sweat) { g.fillStyle = "#8fd8ff"; g.strokeStyle = "#2f7fb8"; g.lineWidth = 4; g.beginPath(); g.moveTo(214, 58); g.quadraticCurveTo(232, 92, 214, 100); g.quadraticCurveTo(196, 92, 214, 58); g.fill(); g.stroke(); }
     if (ex.tears) { g.fillStyle = "#8fd8ff"; for (const x of EX) { g.fillRect(x - 6, EY + 6, 12, 60); } }
     // pack 4 overlays
-    if (ex.pale) { g.fillStyle = "rgba(120,170,255,0.30)"; g.fillRect(0, 0, 256, 140); g.strokeStyle = "rgba(40,60,140,0.7)"; g.lineWidth = 4; for (let x = 70; x <= 190; x += 24) { g.beginPath(); g.moveTo(x, 6); g.lineTo(x, 40); g.stroke(); } }
+    if (ex.pale) { const l = g.createLinearGradient(0, 0, 0, 200); l.addColorStop(0, "rgba(140,180,255,0.42)"); l.addColorStop(1, "rgba(140,180,255,0)"); g.fillStyle = l; g.fillRect(0, 0, 256, 200); }
     if (ex.money) { g.font = "900 54px sans-serif"; g.textAlign = "center"; g.textBaseline = "middle"; for (const x of EX) { g.fillStyle = "#1e8e3e"; g.beginPath(); g.arc(x, EY, 30, 0, 7); g.fill(); g.fillStyle = "#ffe14d"; g.fillText("$", x, EY + 2); } g.textAlign = "start"; g.textBaseline = "alphabetic"; }
-    if (ex.fireEyes) { for (const x of EX) { g.fillStyle = "#ff6d00"; g.beginPath(); g.moveTo(x - 24, EY + 10); g.quadraticCurveTo(x - 30, EY - 40, x - 6, EY - 62); g.quadraticCurveTo(x - 2, EY - 34, x + 8, EY - 50); g.quadraticCurveTo(x + 30, EY - 22, x + 24, EY + 10); g.closePath(); g.fill(); g.fillStyle = "#ffd23f"; g.beginPath(); g.ellipse(x, EY - 6, 11, 18, 0, 0, 7); g.fill(); } }
+    if (ex.fireEyes) { for (const x of EX) { g.fillStyle = "#ff6d00"; g.beginPath(); g.moveTo(x - 20, EY - 40); g.quadraticCurveTo(x - 22, EY - 66, x - 6, EY - 80); g.quadraticCurveTo(x - 2, EY - 62, x + 6, EY - 74); g.quadraticCurveTo(x + 22, EY - 58, x + 20, EY - 40); g.closePath(); g.fill(); g.fillStyle = "#ffd23f"; g.beginPath(); g.ellipse(x, EY - 50, 7, 11, 0, 0, 7); g.fill(); } }
     if (ex.dots) { g.fillStyle = ink; for (const x of [196, 214, 232]) { g.beginPath(); g.arc(x, 34, 6, 0, 7); g.fill(); } }
-    if (ex.ice) { g.fillStyle = "rgba(170,225,255,0.45)"; g.fillRect(0, 0, 256, 256); g.fillStyle = "#e8f7ff"; for (const x of [20, 60, 110, 160, 210, 240]) { g.beginPath(); g.moveTo(x - 12, 0); g.lineTo(x + 12, 0); g.lineTo(x, 34 + (x % 3) * 8); g.closePath(); g.fill(); } }
+    if (ex.ice) { g.fillStyle = "rgba(170,225,255,0.32)"; g.fillRect(0, 0, 256, 256); }
     if (ex.hearts) { g.fillStyle = "#ff3b6b"; for (const [x, y, r] of [[36, 40, 12], [220, 30, 15], [206, 64, 9]]) { g.beginPath(); g.moveTo(x, y + r); g.bezierCurveTo(x - r * 2, y - r * 0.2, x - r * 0.6, y - r * 1.6, x, y - r * 0.4); g.bezierCurveTo(x + r * 0.6, y - r * 1.6, x + r * 2, y - r * 0.2, x, y + r); g.fill(); } }
     if (ex.bags) { g.fillStyle = "rgba(80,40,90,0.45)"; for (const x of EX) { g.beginPath(); g.ellipse(x, EY + 30, 28, 9, 0, 0, 7); g.fill(); } }
     if (ex.tear1) { g.fillStyle = "#8fd8ff"; g.strokeStyle = "#2f7fb8"; g.lineWidth = 3; const x = EX[1] + 6, y = EY + 26; g.beginPath(); g.moveTo(x, y); g.quadraticCurveTo(x + 14, y + 26, x, y + 32); g.quadraticCurveTo(x - 14, y + 26, x, y); g.fill(); g.stroke(); }
-    if (ex.redEyes) { for (const x of EX) { const r = g.createRadialGradient(x, EY, 0, x, EY, 34); r.addColorStop(0, "rgba(255,30,30,1)"); r.addColorStop(0.45, "rgba(255,0,0,0.75)"); r.addColorStop(1, "rgba(255,0,0,0)"); g.fillStyle = r; g.beginPath(); g.arc(x, EY, 34, 0, 7); g.fill(); g.fillStyle = "#fff6f6"; g.beginPath(); g.arc(x, EY, 6, 0, 7); g.fill(); } }
-    if (ex.blueEyes) { for (const x of EX) { const r = g.createRadialGradient(x, EY, 0, x, EY, 34); r.addColorStop(0, "rgba(120,220,255,1)"); r.addColorStop(0.45, "rgba(40,140,255,0.75)"); r.addColorStop(1, "rgba(0,90,255,0)"); g.fillStyle = r; g.beginPath(); g.arc(x, EY, 34, 0, 7); g.fill(); g.fillStyle = "#ffffff"; g.beginPath(); g.arc(x, EY, 6, 0, 7); g.fill(); } }
+    if (ex.redEyes) { for (const x of EX) { const r = g.createRadialGradient(x, EY, 0, x, EY, 22); r.addColorStop(0, "rgba(255,255,255,1)"); r.addColorStop(0.3, "rgba(255,30,30,1)"); r.addColorStop(1, "rgba(255,30,30,0)"); g.fillStyle = r; g.beginPath(); g.arc(x, EY, 22, 0, 7); g.fill(); } }
+    if (ex.blueEyes) { for (const x of EX) { const r = g.createRadialGradient(x, EY, 0, x, EY, 22); r.addColorStop(0, "rgba(255,255,255,1)"); r.addColorStop(0.3, "rgba(120,220,255,1)"); r.addColorStop(1, "rgba(120,220,255,0)"); g.fillStyle = r; g.beginPath(); g.arc(x, EY, 22, 0, 7); g.fill(); } }
     // pack 5 overlays
     if (ex.starsLow) { g.fillStyle = "#ffd23f"; g.strokeStyle = "#b8860b"; g.lineWidth = 2; for (const [x, y, r] of [[30, 150, 16], [226, 150, 16], [40, 96, 10], [216, 96, 10]]) { g.beginPath(); for (let k = 0; k < 10; k++) { const an = -Math.PI / 2 + k * Math.PI / 5, rr = k % 2 ? r * 0.42 : r; g.lineTo(x + Math.cos(an) * rr, y + Math.sin(an) * rr); } g.closePath(); g.fill(); g.stroke(); } }
     if (ex.cringeLines) { g.strokeStyle = ink; g.lineWidth = 5; for (const sx of [-1, 1]) for (let k = 0; k < 3; k++) { const x = 128 + sx * (104 + k * 8); g.beginPath(); g.moveTo(x, 70 + k * 10); g.quadraticCurveTo(x + sx * 8, 100 + k * 10, x, 130 + k * 10); g.stroke(); } }
@@ -194,7 +198,7 @@
     if (ex.focusLines) { g.strokeStyle = "rgba(30,30,40,0.55)"; g.lineWidth = 4; for (let k = 0; k < 7; k++) { const y = 30 + k * 30; g.beginPath(); g.moveTo(0, y); g.lineTo(26 + (k % 2) * 12, y + 4); g.stroke(); g.beginPath(); g.moveTo(256, y); g.lineTo(230 - (k % 2) * 12, y + 4); g.stroke(); } }
     if (ex.fangs) { g.fillStyle = "#ffffff"; g.strokeStyle = ink; g.lineWidth = 2; for (const x of [108, 148]) { g.beginPath(); g.moveTo(x - 9, 176); g.lineTo(x + 9, 176); g.lineTo(x, 202); g.closePath(); g.fill(); g.stroke(); } }
     if (ex.bigSweat) { g.fillStyle = "#9fe0ff"; g.strokeStyle = "#2f7fb8"; g.lineWidth = 4; g.beginPath(); g.moveTo(206, 20); g.quadraticCurveTo(250, 86, 214, 102); g.quadraticCurveTo(178, 86, 206, 20); g.fill(); g.stroke(); g.fillStyle = "#ffffff"; g.beginPath(); g.ellipse(204, 78, 5, 9, 0.3, 0, 7); g.fill(); }
-    if (ex.angerMark) { g.strokeStyle = "#e02424"; g.lineWidth = 8; g.lineCap = "round"; const x = 206, y = 40; for (const [a, b2] of [[[-14, -4], [-4, -4]], [[4, -4], [14, -4]], [[-14, 6], [-4, 6]], [[4, 6], [14, 6]]]) { g.beginPath(); g.moveTo(x + a[0], y + a[1] - 8); g.lineTo(x + a[0] + 4, y + a[1]); g.lineTo(x + b2[0], y + b2[1]); g.stroke(); } }
+    if (ex.angerMark) { g.strokeStyle = "#e02424"; g.lineWidth = 8; g.lineCap = "round"; const x = 222, y = 74; for (const [a, b2] of [[[-14, -4], [-4, -4]], [[4, -4], [14, -4]], [[-14, 6], [-4, 6]], [[4, 6], [14, 6]]]) { g.beginPath(); g.moveTo(x + a[0], y + a[1] - 8); g.lineTo(x + a[0] + 4, y + a[1]); g.lineTo(x + b2[0], y + b2[1]); g.stroke(); } }
     return c;
   }
   // bold face pack (assets/img/faces): emotion -> [face picture, extra overlays]; names not listed keep the drawn face
@@ -204,22 +208,22 @@
     sheepish: ["nervous"], determined: ["stare"], laugh: ["laugh"], proud: ["content"], worried: ["nervous"], gasp: ["oh"], cry: ["cry"],
     sus: ["stare"], starstruck: ["sparkle"], dizzy: ["dizzy"], rage: ["angry", { rage: 1 }], terrified: ["scared"], cryLaugh: ["squeeze", { tears: 1 }],
     sly: ["smirk"], cheeky: ["wink"], shocked: ["shocked"], smirk: ["smirk"], flirty: ["wink"], bored: ["neutral"], blushing: ["content", { blush: 1 }],
-    nervous: ["nervous"], heartbroken: ["sad", { tears: 1, crack: 1 }], hungry: ["sparkle_oh", { drool: 1 }], disgust: ["squeeze", { green: 1 }],
-    jealous: ["stare", { green: 1 }], furious: ["angry", { rage: 1, steam: 1 }], confused: ["stare", { qmark: 1 }], stuffed: ["blink", { blush: 1 }],
-    giggle: ["happy"], panicked: ["squeeze", { sweat: 1 }], awkward: ["nervous", { blush: 1 }], hopeful: ["sparkle_oh"], sobbing: ["cry"],
-    mindblown: ["dizzy", { boom: 1 }], scheming: ["creepy"], pouty: ["sad", { blush: 1 }], screaming: ["shocked", { boom: 1 }],
-    dreamy: ["content", { sparkle: 1 }], grumpy: ["angry"], sweating: ["nervous"], winner: ["sparkle"], sneaky: ["smirk"], nerd: ["nerd"],
+    nervous: ["nervous"], heartbroken: ["sad", { tears: 1 }], hungry: ["sparkle_oh", { drool: 1 }], disgust: ["squeeze", { green: 1 }],
+    jealous: ["stare", { green: 1 }], furious: ["angry", { rage: 1 }], confused: ["stare", { qmark: 1 }], stuffed: ["content", { blush: 1 }],
+    giggle: ["happy"], panicked: ["scared", { sweat: 1 }], awkward: ["nervous", { blush: 1 }], hopeful: ["sparkle_oh"], sobbing: ["cry"],
+    mindblown: ["dizzy"], scheming: ["creepy"], pouty: ["sad", { blush: 1 }], screaming: ["shocked"],
+    dreamy: ["content"], grumpy: ["angry"], sweating: ["nervous"], winner: ["sparkle"], sneaky: ["smirk"], nerd: ["nerd"],
     // pack 4
-    horrified: ["scared", { pale: 1, sweat: 1 }], greedy: ["laugh", { money: 1 }], fired: ["angry", { fireEyes: 1 }], unamused: ["neutral", { dots: 1 }],
-    frozen: ["shocked", { ice: 1 }], lovestruck: ["content", { blush: 1, hearts: 1 }], exhausted: ["sleepy", { bags: 1, sweat: 1 }], proudTear: ["content", { tear1: 1 }],
-    possessed: ["creepy", { redEyes: 1 }], hypnotized: ["neutral", { blueEyes: 1 }], annoyed: ["stare", { angerMark: 1 }], embarrassed: ["nervous", { blush: 1, sweat: 1 }],
-    smug2: ["smirk", { sparkle: 1 }], devilish: ["creepy", { redEyes: 1, rage: 1 }], relieved: ["blink", { sweat: 1 }], wideEyed: ["oh", { pale: 1 }],
+    horrified: ["scared", { pale: 1 }], greedy: ["laugh", { money: 1 }], fired: ["angry", { fireEyes: 1 }], unamused: ["neutral", { dots: 1 }],
+    frozen: ["shocked", { ice: 1 }], lovestruck: ["smile", { hearts: 1 }], exhausted: ["neutral", { bags: 1 }], proudTear: ["smile", { tear1: 1 }],
+    possessed: ["stare", { redEyes: 1 }], hypnotized: ["neutral", { blueEyes: 1 }], annoyed: ["stare", { angerMark: 1 }], embarrassed: ["nervous", { blush: 1 }],
+    smug2: ["smirk", { sparkle: 1 }], devilish: ["creepy", { redEyes: 1 }], relieved: ["smile", { sweat: 1 }], wideEyed: ["oh"],
     // pack 5
-    cringe: ["squeeze", { cringeLines: 1 }], sassy: ["wink", { sparkle: 1, blush: 1 }], sick: ["sad", { sick: 1, sweat: 1 }], champion: ["laugh", { sparkle: 1, starsLow: 1 }],
-    thinking: ["stare", { thought: 1 }], touched: ["sparkle_oh", { tear1: 1, blush: 1 }], electrocuted: ["shocked", { zap: 1 }], snoozing: ["sleepy", { zzzMark: 1 }],
-    starving: ["oh", { drool: 1, bags: 1 }], evilLaugh: ["laugh", { redEyes: 1 }], nervousLaugh: ["laugh", { sweat: 1, blush: 1 }], heartEyes: ["happy", { heartEyes: 1, blush: 1 }],
-    volcano: ["angry", { rage: 1, steam: 1, fireEyes: 1 }], petrified: ["scared", { pale: 1, ice: 1 }],
-    focused: ["stare", { focusLines: 1 }], demonGrin: ["creepy", { redEyes: 1, fangs: 1 }], sweatDrop: ["neutral", { bigSweat: 1 }],
+    cringe: ["squeeze", { cringeLines: 1 }], sassy: ["wink", { blush: 1 }], sick: ["sad", { sick: 1 }], champion: ["laugh", { starsLow: 1 }],
+    thinking: ["stare", { thought: 1 }], touched: ["sparkle_oh", { tear1: 1 }], electrocuted: ["shocked", { zap: 1 }], snoozing: ["sleepy", { zzzMark: 1 }],
+    starving: ["oh", { drool: 1 }], evilLaugh: ["laugh", { redEyes: 1 }], nervousLaugh: ["laugh", { sweat: 1 }], heartEyes: ["happy", { heartEyes: 1 }],
+    volcano: ["angry", { rage: 1, steam: 1 }], petrified: ["scared", { ice: 1 }],
+    focused: ["stare", { focusLines: 1 }], demonGrin: ["creepy", { fangs: 1 }], sweatDrop: ["neutral", { bigSweat: 1 }],
   };
   T.FACE_PNGS = ["angry", "blink", "content", "creepy", "cry", "dizzy", "happy", "laugh", "nerd", "nervous", "neutral", "oh", "sad", "scared", "shocked", "sleepy", "smile", "smirk", "sparkle", "sparkle_oh", "squeeze", "stare", "talk", "wink"];
   EXPR.nerd = EXPR.nerd || { eyes: "big", brows: "flat", mouth: "grin" };
@@ -368,6 +372,9 @@
         if (fs > 0.1) el.add(T.mesh(T.rbox(b.armW * 0.99, fs + 0.1, aD * 0.99, 0.12), slM, 0, -fs / 2 + 0.05, 0));
         const hl = uH - fs;
         el.add(T.mesh(T.rbox(b.armW * 0.96, hl + 0.1, aD * 0.96, 0.14), skM, 0, -fs - hl / 2 + 0.02, 0));
+        // joint caps: the shoulder and the elbow stay closed whatever the pose (no gaps, no floating arms)
+        const cap = T.mesh(T.rbox(b.armW * 0.98, b.armW * 0.92, aD * 0.98, 0.16), slM, sh.position.x - sx * 0.04, sh.position.y - 0.05, 0); body.add(cap);
+        const ec = T.mesh(T.rbox(b.armW * 0.97, b.armW * 0.78, aD * 0.97, 0.2), fs > 0.1 || sl >= uH * 0.95 ? slM : skM, 0, el.position.y, 0); sh.add(ec);
         this.arm[side] = sh; this.elbow[side] = el;
         this.hand[side] = T.group(el, 0, -uH + 0.09, 0.05);
       }
@@ -383,9 +390,17 @@
         kn.add(T.mesh(T.rbox(b.legW * 0.98, tH - 0.2, b.legD * 0.98, 0.12), pM, 0, -(tH - 0.3) / 2, 0));
         kn.add(T.mesh(T.rbox(b.legW * 1.04, 0.36, b.legD * 1.12, 0.12), shoes, 0, -tH + 0.18, 0.05));
         kn.add(T.mesh(T.rbox(b.legW * 1.08, 0.1, b.legD * 1.16, 0.04), T.mat(spec.sole || "#f4f4f4", { r: 0.7 }), 0, -tH + 0.05, 0.05));
+        hp.add(T.mesh(T.rbox(b.legW * 0.97, b.legW * 0.7, b.legD * 0.97, 0.18), pM, 0, kn.position.y, 0)); // knee cap
         this.leg[side] = hp; this.knee[side] = kn;
       }
       this._extras(spec);
+      if (this.faceStyle.glasses) {   // real frames in front of the face (a drawn pair would cut through the picture eyes)
+        const gs = T.group(this.neck, 0, H * 0.615, H / 2 + 0.035), fr = T.mat(this.faceStyle.glasses, { r: 0.35, m: 0.3 });
+        const lens = new THREE.MeshStandardMaterial({ color: "#cfe8ff", transparent: true, opacity: 0.18, roughness: 0.05, metalness: 0.2, depthWrite: false });
+        for (const sx of [-1, 1]) { const ring = T.mesh(new THREE.TorusGeometry(H * 0.15, 0.035, 6, 20), fr, sx * H * 0.18, 0, 0.01); gs.add(ring); gs.add(T.mesh(new THREE.CircleGeometry(H * 0.14, 20), lens, sx * H * 0.18, 0, 0.005));
+          gs.add(T.mesh(T.rbox(0.035, 0.035, H * 0.5, 0.01), fr, sx * H * 0.49, 0.02, -H * 0.24)); }
+        gs.add(T.mesh(T.rbox(H * 0.08, 0.035, 0.035, 0.01), fr, 0, 0.03, 0.01)); this.glasses3d = gs;
+      }
       T.shadowAll(root);
       // contact shadow: a soft dark oval on the ground under the feet, so nobody hovers (blocky-shorts rule)
       if (!T._blobTex) {
@@ -461,12 +476,12 @@
         add(T.rbox(0.16, H * 0.5, 0.16, 0.05), s, 0, -H * 0.2, H / 2 + 0.1);
         const plume = add(T.rbox(0.3, 1.3, 0.5, 0.14), T.mat("#d62839", { r: 0.8 }), 0, 0.7, -0.35, -0.45);
         this.plume = plume;
-      } else if (kind === "hoodUp") {   // a deep hood pulled over the head (the face stays visible in the opening)
-        const m = T.mat(spec.hatColor || "#0d0d10", { r: 0.85 });
-        const d = add(new THREE.SphereGeometry(H * 0.74, 24, 14, 0, Math.PI * 2, 0, Math.PI * 0.62), m, 0, -H * 0.22, -0.06); d.scale.set(1.02, 1.12, 1.08);
-        add(T.rbox(H * 1.18, H * 0.95, 0.16, 0.06), m, 0, -H * 0.55, -H * 0.56);
-        for (const sx of [-1, 1]) add(T.rbox(0.16, H * 1.0, H * 0.9, 0.06), m, sx * H * 0.6, -H * 0.52, -0.08);
-        add(T.rbox(H * 1.1, 0.16, 0.18, 0.06), m, 0, -0.02, H * 0.55);
+      } else if (kind === "hoodUp") {   // a hood: closed crown, sides and back; the front stays open so the face reads
+        const m = T.mat(spec.hatColor || "#0d0d10", { r: 0.85, side: THREE.DoubleSide });
+        const R = H * 0.76;
+        const crown = add(new THREE.SphereGeometry(R, 24, 8, 0, Math.PI * 2, 0, Math.PI * 0.3), m, 0, -H * 0.3, -0.05); crown.scale.set(1.02, 1.05, 1.06);
+        const sides = add(new THREE.SphereGeometry(R, 24, 10, Math.PI / 2 + 0.85, Math.PI * 2 - 1.7, Math.PI * 0.3, Math.PI * 0.32), m, 0, -H * 0.3, -0.05); sides.scale.set(1.02, 1.05, 1.06);
+        add(T.rbox(H * 1.15, H * 0.7, 0.16, 0.06), m, 0, -H * 0.85, -H * 0.55);
       } else if (kind === "horns") {    // demon horns, bent outward
         const m = T.mat(spec.hatColor || "#1a0a0a", { r: 0.35, m: 0.2 });
         for (const sx of [-1, 1]) { const h = add(new THREE.ConeGeometry(0.24, H * 0.85, 12), m, sx * H * 0.36, H * 0.22, 0.05, 0, 0, -sx * 0.5); h.scale.set(1, 1, 0.85); }
@@ -573,8 +588,8 @@
       if (p.kneeL !== undefined) kL = p.kneeL; if (p.kneeR !== undefined) kR = p.kneeR;
       this.arm.L.rotation.set(-aL[0], 0, aL[1]); this.arm.R.rotation.set(-aR[0], 0, -aR[1]);
       // an arm raised sideways also moves out from the shoulder, so its top never cuts into the torso
-      this.arm.L.position.x = this.arm.L.userData.x0 + 0.32 * b.armW * Math.abs(Math.sin(aL[1] || 0));
-      this.arm.R.position.x = this.arm.R.userData.x0 - 0.32 * b.armW * Math.abs(Math.sin(aR[1] || 0));
+      this.arm.L.position.x = this.arm.L.userData.x0 + 0.1 * b.armW * Math.abs(Math.sin(aL[1] || 0));
+      this.arm.R.position.x = this.arm.R.userData.x0 - 0.1 * b.armW * Math.abs(Math.sin(aR[1] || 0));
       if (aL[2]) this.arm.L.rotation.y = aL[2]; if (aR[2]) this.arm.R.rotation.y = -aR[2];
       this.elbow.L.rotation.x = -eL; this.elbow.R.rotation.x = -eR;
       this.leg.L.rotation.set(-lL[0], 0, lL[1] || 0); this.leg.R.rotation.set(-lR[0], 0, -(lR[1] || 0));
