@@ -412,5 +412,262 @@
    "brow": "#111111"
   },
   "note": "Captain - army officer, stern, sunglasses; use p.shades:false for big-emotion close-ups"
+ },
+ "phoneDad": {
+  "build": "tall",
+  "shirt": "#2b2f3a",
+  "front": "suit",
+  "frontAcc": "#2f8cff",
+  "sleeves": "#2b2f3a",
+  "pants": "#1b1d24",
+  "shoes": "#111111",
+  "skin": "#c68642",
+  "hair": "short",
+  "hairColor": "#111111",
+  "faceStyle": {
+   "glasses": "#111111",
+   "mustache": "#111111",
+   "brow": "#111111"
+  }
+ },
+ "hoodMan": {
+  "build": "tall",
+  "shirt": "#0d0d10",
+  "front": "hoodie",
+  "frontAcc": "#2f8cff",
+  "sleeves": "#0d0d10",
+  "pants": "#0d0d10",
+  "shoes": "#111111",
+  "skin": "#c68642",
+  "hair": "short",
+  "hairColor": "#111111",
+  "faceStyle": {
+   "brow": "#111111"
+  },
+  "hat": "hoodUp",
+  "hatColor": "#0d0d10"
+ },
+ "leo": {
+  "build": "adult",
+  "shirt": "#1b5e20",
+  "front": "tracksuit",
+  "sleeves": "#1b5e20",
+  "pants": "#1b5e20",
+  "shoes": "#ffffff",
+  "skin": "#f1c27d",
+  "hair": "fringe",
+  "hairColor": "#5d4037"
+ },
+ "mia": {
+  "build": "adult",
+  "shirt": "#6a1b9a",
+  "front": "heart",
+  "frontAcc": "#ff80ab",
+  "pants": "#263238",
+  "shoes": "#ff80ab",
+  "skin": "#e0ac69",
+  "hair": "pony",
+  "hairColor": "#8d2a12",
+  "faceStyle": {
+   "blush": 1
+  }
+ },
+ "bigTony": {
+  "build": "chonk",
+  "shirt": "#c62828",
+  "front": "jersey",
+  "frontAcc": "#ffffff",
+  "pants": "#1a237e",
+  "shoes": "#111111",
+  "skin": "#8d5524",
+  "hair": "curly",
+  "hairColor": "#111111"
+ },
+ "neighbor": {
+  "build": "adult",
+  "shirt": "#ef6c00",
+  "front": "flannel",
+  "pants": "#37474f",
+  "shoes": "#5d4037",
+  "skin": "#f1c27d",
+  "hair": "messy",
+  "hairColor": "#6d4c41"
+ },
+ "grandpa": {
+  "build": "small",
+  "shirt": "#8d6e63",
+  "front": "flannel",
+  "pants": "#4e342e",
+  "shoes": "#3e2723",
+  "skin": "#e0ac69",
+  "hair": "bald",
+  "hairColor": "#e0e0e0",
+  "faceStyle": {
+   "glasses": "#444444",
+   "mustache": "#eeeeee",
+   "brow": "#eeeeee"
+  }
+ },
+ "timeKid": {
+  "build": "small",
+  "shirt": "#cfd8dc",
+  "front": "tracksuit",
+  "frontAcc": "#00e5ff",
+  "sleeves": "#cfd8dc",
+  "pants": "#90a4ae",
+  "shoes": "#00e5ff",
+  "sole": "#00e5ff",
+  "skin": "#f6c79a",
+  "hair": "spiky",
+  "hairColor": "#00bcd4",
+  "hat": "headphones",
+  "hatColor": "#00e5ff"
+ },
+ "teen": {
+  "build": "adult",
+  "shirt": "#455a64",
+  "front": "hoodie",
+  "frontAcc": "#ffd23f",
+  "pants": "#263238",
+  "shoes": "#ffffff",
+  "skin": "#f1c27d",
+  "hair": "messy",
+  "hairColor": "#3e2723",
+  "hat": "headphones",
+  "hatColor": "#ffd23f"
+ },
+ "sister": {
+  "build": "small",
+  "shirt": "#ec407a",
+  "front": "heart",
+  "frontAcc": "#ffffff",
+  "pants": "#4a148c",
+  "shoes": "#ffffff",
+  "skin": "#c68642",
+  "hair": "pony",
+  "hairColor": "#0d0d0d",
+  "faceStyle": {
+   "blush": 1
+  }
+ },
+ "sisterDemon": {
+  "build": "small",
+  "shirt": "#ec407a",
+  "front": "heart",
+  "frontAcc": "#ffffff",
+  "pants": "#4a148c",
+  "shoes": "#ffffff",
+  "skin": "#c68642",
+  "hair": "pony",
+  "hairColor": "#0d0d0d",
+  "faceStyle": {
+   "blush": 1
+  },
+  "hat": "horns",
+  "hatColor": "#b71c1c"
+ },
+ "demonBig": {
+  "build": "chonk",
+  "shirt": "#1b0f12",
+  "front": "skull",
+  "frontAcc": "#ff1744",
+  "sleeves": "#1b0f12",
+  "pants": "#120b0b",
+  "shoes": "#120b0b",
+  "skin": "#7a1c1c",
+  "hair": "spiky",
+  "hairColor": "#0b0b0b",
+  "hat": "horns",
+  "hatColor": "#b71c1c",
+  "faceStyle": {
+   "brow": "#000000"
+  }
+ },
+ "demon": {
+  "build": "adult",
+  "shirt": "#120a16",
+  "front": "skull",
+  "frontAcc": "#ff1744",
+  "sleeves": "#120a16",
+  "pants": "#120b0b",
+  "shoes": "#120b0b",
+  "skin": "#4a1f5c",
+  "hair": "spiky",
+  "hairColor": "#0b0b0b",
+  "hat": "horns",
+  "hatColor": "#b71c1c",
+  "faceStyle": {
+   "brow": "#000000"
+  }
+ },
+ "demonSkinny": {
+  "build": "skinny",
+  "shirt": "#1a1a1a",
+  "front": "skull",
+  "frontAcc": "#ff1744",
+  "sleeves": "#1a1a1a",
+  "pants": "#120b0b",
+  "shoes": "#120b0b",
+  "skin": "#8a2b10",
+  "hair": "spiky",
+  "hairColor": "#0b0b0b",
+  "hat": "horns",
+  "hatColor": "#b71c1c",
+  "faceStyle": {
+   "brow": "#000000"
+  }
+ },
+ "katanaGuard": {
+  "build": "adult",
+  "shirt": "#14161c",
+  "front": "guard",
+  "frontAcc": "#e2b33c",
+  "sleeves": "#14161c",
+  "pants": "#1d2029",
+  "shoes": "#111111",
+  "skin": "#f1c27d",
+  "hair": "long",
+  "hairColor": "#0d0d0d",
+  "extras": [
+   "cape"
+  ]
+ },
+ "katanaGuard2": {
+  "build": "adult",
+  "shirt": "#14161c",
+  "front": "guard",
+  "frontAcc": "#e2b33c",
+  "sleeves": "#14161c",
+  "pants": "#1d2029",
+  "shoes": "#111111",
+  "skin": "#e0ac69",
+  "hair": "spiky",
+  "hairColor": "#b71c1c",
+  "extras": [
+   "cape"
+  ]
+ },
+ "guardCaptain": {
+  "build": "adult",
+  "shirt": "#14161c",
+  "front": "guard",
+  "frontAcc": "#e2b33c",
+  "sleeves": "#14161c",
+  "pants": "#1d2029",
+  "shoes": "#2a1d14",
+  "sole": "#111111",
+  "skin": "#f5cd30",
+  "hair": "short",
+  "hairColor": "#1a1a1a",
+  "hat": "officer",
+  "hatColor": "#15171a",
+  "extras": [
+   "shades",
+   "cape"
+  ],
+  "lens": "#1d6fe0",
+  "faceStyle": {
+   "brow": "#111111"
+  }
  }
 }

@@ -28,3 +28,9 @@ Channel: CRIMINAL TOWN (YouTube Shorts, English). Three shorts a day from the th
 - **Shot rules (roblox skill + blocky-shorts):** at least 25% close shots; 5-8 locations per video; rule visible in frame 1; final shot at least 3 s; extras off the lens line; push-in 8-11% of the lens distance per second; under 6% still frames.
 - **Story shape (in-this-town-kit):** line 1 states the rule; 2-3 quick jokes about living with it; then "I ..." and the twist; the last line runs back into the first so the short loops.
 - **Finish:** after the render and before finish.py run `python tools/grade.py renders/film.mp4 renders/film_g.mp4 --flash <twist shot ids>`: soft glow, firmer contrast, light vignette, speed lines over the hook, a white flash into the twist shots. Then `finish.py renders/film_g.mp4 ...`.
+
+## Owner's rules for every new video (2026-11-24)
+- At least 3 NEW characters per video, made right away when the story needs them (demons, guards, a sister...). Save them into tools/cast_templates.json for reuse.
+- Background people: one new extra or reuse earlier characters; crowds stay generic.
+- At least 10 NEW emotions per video, plus the earlier emotions mixed in. Emotion packs so far: 37 base + packs 2-3 + pack 4 (hypnotized, horrified, exhausted, smug2, unamused, annoyed, frozen, embarrassed, relieved, lovestruck, greedy, proudTear, devilish, wideEyed, fired, possessed) + pack 5 (cringe, sassy, sick, champion, thinking, touched, electrocuted, snoozing, starving, evilLaugh, nervousLaugh, heartEyes, volcano, petrified, focused, demonGrin, sweatDrop).
+- Moves pack 4: slash, guard, shush, lookaround, tapfoot, fingerguns, dab, tantrum, headscratch, airguitar, wipe, zombie, groove, pray, typing, yawn, sneeze, kneelcry. Held swords/sticks follow the hand.

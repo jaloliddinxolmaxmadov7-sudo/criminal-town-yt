@@ -162,6 +162,26 @@
     tiptoe: (ta, t) => ({ lean: [0.2, 0], armL: [0.6, 0.5, 0, 1.6], armR: [0.6, 0.5, 0, 1.6], legL: [0.3 * Math.max(0, Math.sin(t * 4)), 0], legR: [0.3 * Math.max(0, -Math.sin(t * 4)), 0], head: [0, 0.3 * Math.sin(t * 2), 0] }),
     jumpjacks: (ta, t) => { const k = Math.abs(Math.sin(t * 6)); return { armL: [0, 0.2 + 2.6 * k], armR: [0, 0.2 + 2.6 * k], legL: [0, 0.35 * k], legR: [0, 0.35 * k], jump: 0.25 * k }; },
     stomp: (ta, t) => ({ armL: [-0.1, 0.3], armR: [-0.1, 0.3], bob: 0.1 * Math.abs(Math.sin(t * 6)), jump: 0.15 * Math.abs(Math.sin(t * 6)) }),
+    // moves pack 4
+    slash: (ta) => { const ph = (ta % 0.75) / 0.75, k = ph < 0.35 ? E.out(ph / 0.35) : 1 - E.io((ph - 0.35) / 0.65); const sw = ph < 0.35 ? 0 : E.out(Math.min(1, (ph - 0.35) / 0.25));
+      return { armR: [T.lerp(2.7, 0.5, sw) * (ph < 0.35 ? k : 1), T.lerp(0.45, 0.5, sw), 0, 0.25], armL: [T.lerp(2.6, 0.7, sw), 0.25, 0, 0.6], twist: T.lerp(0.45, -0.55, sw), lean: [0.1 + 0.15 * sw, 0], legL: [0.35, 0.12], legR: [-0.3, 0.12], kneeL: 0.35, kneeR: 0.25, head: [0.1 * sw, -0.2 * sw, 0] }; },
+    guard: (ta, t) => ({ armR: [1.35, -0.35, 0, 1.1], armL: [1.25, 0.32, 0, 1.4], legL: [0.38, 0.16], legR: [-0.32, 0.16], kneeL: 0.42, kneeR: 0.32, lean: [0.14, 0], twist: -0.2 + 0.04 * Math.sin(t * 2.2), head: [0.05, 0.15 + 0.08 * Math.sin(t * 1.7), 0] }),
+    shush: (ta, t) => ({ armR: [2.0, -0.5, 0, 2.7], armL: [0.2, 0.1], lean: [0.12, 0], head: [0.08, 0.12 * Math.sin(t * 2), 0.06] }),
+    lookaround: (ta, t) => ({ head: [0.05, 0.75 * Math.sin(t * 2.6), 0.1 * Math.sin(t * 5.2)], twist: 0.18 * Math.sin(t * 2.6), armL: [0.3, 0.35, 0, 0.8], armR: [0.3, 0.35, 0, 0.8], bob: 0.03 * Math.abs(Math.sin(t * 5)) }),
+    tapfoot: (ta, t) => ({ armL: [1.1, -0.65, 0, 2.3], armR: [1.1, -0.65, 0, 2.3], legR: [0.25, 0.1], kneeR: 0.2 + 0.25 * Math.abs(Math.sin(t * 9)), head: [0, 0, 0.18 + 0.04 * Math.sin(t * 3)], lean: [-0.05, 0.05] }),
+    fingerguns: (ta, t) => { const r = Math.max(0, 1 - ((ta % 0.5) / 0.12)); return { armL: [1.55 + 0.35 * r, 0.12, 0, 0.25], armR: [1.55 + 0.35 * r, -0.12, 0, 0.25], lean: [-0.1 - 0.05 * r, 0], head: [-0.08, 0.15, 0.12], twist: 0.15 }; },
+    dab: (ta) => { const k = E.out(Math.min(1, ta / 0.25)); return { armR: [2.4 * k, 1.0 * k, 0, 0.15], armL: [1.7 * k, -0.7 * k, 0, 2.7 * k], head: [0.45 * k, -0.45 * k, 0], lean: [0.1 * k, -0.08 * k] }; },
+    tantrum: (ta, t) => ({ armL: [0.6 + 0.9 * Math.abs(Math.sin(t * 11)), 0.5], armR: [0.6 + 0.9 * Math.abs(Math.cos(t * 11)), 0.5], legL: [0.45 * Math.max(0, Math.sin(t * 9)), 0], legR: [0.45 * Math.max(0, -Math.sin(t * 9)), 0], head: [0.15, 0.35 * Math.sin(t * 13), 0], bob: 0.06 * Math.abs(Math.sin(t * 9)) }),
+    headscratch: (ta, t) => ({ armR: [2.65, -0.35, 0, 2.5 + 0.2 * Math.sin(t * 14)], armL: [0.15, 0.1], head: [0.05, 0.1, 0.22], lean: [0, 0.05] }),
+    airguitar: (ta, t) => ({ armL: [1.25, 0.55, 0, 0.5], armR: [0.85 + 0.35 * Math.sin(t * 16), -0.25, 0, 1.7], head: [0.25 * Math.abs(Math.sin(t * 6)), 0, 0.1], legL: [0.25, 0.12], legR: [-0.2, 0.12], kneeL: 0.3, lean: [-0.12, 0], bob: 0.05 * Math.abs(Math.sin(t * 6)) }),
+    wipe: (ta, t) => ({ armR: [2.45, -0.25 + 0.45 * Math.sin(t * 5), 0, 2.4], armL: [0.2, 0.15], head: [-0.1, 0, 0.1], lean: [-0.05, 0] }),
+    zombie: (ta, t) => ({ armL: [1.6, 0.08 + 0.05 * Math.sin(t * 2)], armR: [1.6, 0.08 + 0.05 * Math.cos(t * 2)], head: [0.15, 0.1 * Math.sin(t * 1.3), 0.3], lean: [0.1, 0.06 * Math.sin(t * 1.6)], legL: [0.2 * Math.max(0, Math.sin(t * 2)), 0], legR: [0.2 * Math.max(0, -Math.sin(t * 2)), 0] }),
+    groove: (ta, t) => ({ armL: [0.9 + 0.8 * Math.abs(Math.sin(t * 7)), 0.3, 0, 1.6], armR: [0.9 + 0.8 * Math.abs(Math.cos(t * 7)), 0.3, 0, 1.6], twist: 0.35 * Math.sin(t * 7), lean: [0, 0.1 * Math.sin(t * 7)], bob: 0.09 * Math.abs(Math.sin(t * 7)), head: [0.12 * Math.abs(Math.sin(t * 7)), 0, 0.15 * Math.sin(t * 3.5)] }),
+    pray: (ta, t) => ({ armL: [1.45, -0.42, 0, 1.9], armR: [1.45, -0.42, 0, 1.9], head: [0.28, 0, 0], bob: 0.02 * Math.sin(t * 3) }),
+    typing: (ta, t) => ({ armL: [1.1, -0.1, 0, 1.3 + 0.12 * Math.sin(t * 22)], armR: [1.1, -0.1, 0, 1.3 + 0.12 * Math.cos(t * 19)], head: [0.25, 0.05 * Math.sin(t * 2), 0], lean: [0.12, 0] }),
+    yawn: (ta) => { const k = T.bump(ta, 0, 1.2); return { armL: [2.8 * k, 0.4 * k, 0, 0.3], armR: [2.8 * k, 0.4 * k, 0, 0.3], lean: [-0.15 * k, 0], head: [-0.3 * k, 0, 0] }; },
+    sneeze: (ta) => { const pre = Math.min(1, ta / 0.6), hit = ta > 0.6 ? T.bump(ta, 0.6, 0.95) : 0; return { lean: [-0.2 * pre * (1 - hit) + 0.4 * hit, 0], head: [-0.35 * pre * (1 - hit) + 0.45 * hit, 0, 0], armR: [1.9 * hit, -0.4, 0, 2.2], jump: 0.1 * hit }; },
+    kneelcry: (ta, t) => ({ legL: [1.4, 0], legR: [-0.1, 0], kneeL: 1.5, kneeR: 1.6, armL: [2.0, -0.4, 0, 2.6], armR: [2.0, -0.4, 0, 2.6], head: [0.35, 0, 0], bob: -0.55 + 0.03 * Math.sin(t * 12) }),
   });
   const FACES = Object.keys(T.EXPR);
   A.FACES = FACES;
@@ -583,6 +603,14 @@
         pr.g.position.set(hp.x, hp.y + (pr.p.dy ?? -0.2) + m.y, hp.z);
         pr.g.rotation.y = a.root.rotation.y + (pr.p.ry || 0) * DEG;
         pr.g.rotation.x = pr.p.kind === "book" ? -1.15 : 0; // a held book shows its cover
+        if (a.hand && pr.p.kind === "stick" && (act === "hold" || act === "carry")) pr.g.rotation.y = a.root.rotation.y + Math.PI / 2; // two hands: a staff across the body
+        else if (a.hand && (pr.p.kind === "sword" || pr.p.kind === "stick") && !pr.p.upright) { // a blade follows the hand: it swings with the arm
+          const q = new THREE.Quaternion(); hand.getWorldQuaternion(q);
+          // the blade continues out of the fist along the forearm (-Y of the hand): down at the side, up in a guard, over the head in a swing
+          pr.g.quaternion.copy(q).multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), pr.p.kind === "sword" ? Math.PI : Math.PI / 2));
+          const dn = new THREE.Vector3(0, -1, 0).applyQuaternion(q).multiplyScalar(0.3 * (a.root.scale.x || 1));
+          pr.g.position.set(hp.x + dn.x, hp.y + dn.y + m.y, hp.z + dn.z);
+        }
       } else pr.g.position.set(pr.base.x, pr.base.y + m.y, pr.base.z);
       pr.g.scale.setScalar(pr.base.s * m.s);
       if (pr.g.userData.puppet) pr.g.userData.puppet.boil(t);

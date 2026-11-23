@@ -71,6 +71,24 @@
     winner: { eyes: "star", brows: "up1", mouth: "open", sparkle: 1 },
     sneaky: { eyes: "half", brows: "oneup", mouth: "cat" },
   };
+  Object.assign(EXPR, {
+    horrified: { eyes: "small", brows: "worried", mouth: "wavy", sweat: 1, pale: 1 }, greedy: { eyes: "big", brows: "raised", mouth: "grin", money: 1 },
+    fired: { eyes: "dot", brows: "angry", mouth: "grit", fireEyes: 1 }, unamused: { eyes: "half", brows: "flat", mouth: "flat", dots: 1 },
+    frozen: { eyes: "big", brows: "raised", mouth: "O", ice: 1 }, lovestruck: { eyes: "dot", brows: "up1", mouth: "smile", blush: 1, hearts: 1 },
+    exhausted: { eyes: "half", brows: "worried", mouth: "o", bags: 1, sweat: 1 }, proudTear: { eyes: "dot", brows: "up1", mouth: "smile", tear1: 1 },
+    possessed: { eyes: "half", brows: "angry", mouth: "evil", redEyes: 1 }, hypnotized: { eyes: "dot", brows: "flat", mouth: "o", blueEyes: 1 },
+    annoyed: { eyes: "half", brows: "angry", mouth: "flat", angerMark: 1 }, embarrassed: { eyes: "dot", brows: "worried", mouth: "wavy", blush: 1, sweat: 1 },
+    smug2: { eyes: "half", brows: "oneup", mouth: "side", sparkle: 1 }, devilish: { eyes: "half", brows: "angry", mouth: "evil", redEyes: 1, rage: 1 },
+    relieved: { eyes: "closedDown", brows: "flat", mouth: "smile", sweat: 1 }, wideEyed: { eyes: "big", brows: "raised", mouth: "o", pale: 1 },
+    cringe: { eyes: "squeeze", brows: "worried", mouth: "wavy", cringeLines: 1 }, sassy: { eyes: "half", brows: "oneup", mouth: "smile", sparkle: 1, blush: 1 },
+    sick: { eyes: "half", brows: "worried", mouth: "wavy", sick: 1, sweat: 1 }, champion: { eyes: "dot", brows: "up1", mouth: "grin", crown: 1 },
+    thinking: { eyes: "dot", brows: "oneup", mouth: "side", thought: 1 }, touched: { eyes: "big", brows: "worried", mouth: "smile", tear1: 1, blush: 1 },
+    electrocuted: { eyes: "big", brows: "raised", mouth: "O", zap: 1 }, snoozing: { eyes: "closedDown", brows: "flat", mouth: "o", zzzMark: 1 },
+    starving: { eyes: "big", brows: "worried", mouth: "O", drool: 1, bags: 1 }, evilLaugh: { eyes: "half", brows: "angry", mouth: "grin", redEyes: 1 },
+    nervousLaugh: { eyes: "dot", brows: "worried", mouth: "grin", sweat: 1, blush: 1 }, heartEyes: { eyes: "dot", brows: "up1", mouth: "open", heartEyes: 1, blush: 1 },
+    volcano: { eyes: "dot", brows: "angry", mouth: "grit", rage: 1, steam: 1, fireEyes: 1 }, petrified: { eyes: "small", brows: "worried", mouth: "wavy", pale: 1, ice: 1 },
+    focused: { eyes: "dot", brows: "angry", mouth: "flat", focusLines: 1 }, demonGrin: { eyes: "half", brows: "angry", mouth: "evil", redEyes: 1, fangs: 1 }, sweatDrop: { eyes: "dot", brows: "flat", mouth: "flat", bigSweat: 1 },
+  });
   T.EXPR = EXPR;
   const BLINKABLE = new Set(["smile", "happy", "grin", "wow", "talk", "determined", "worried", "sad", "angry", "tongue"]);
   function drawFace(st, ex) {
@@ -153,6 +171,30 @@
     if (ex.qmark) { g.fillStyle = ink; g.font = "bold 60px sans-serif"; g.fillText("?", 205, 62); }
     if (ex.sweat) { g.fillStyle = "#8fd8ff"; g.strokeStyle = "#2f7fb8"; g.lineWidth = 4; g.beginPath(); g.moveTo(214, 58); g.quadraticCurveTo(232, 92, 214, 100); g.quadraticCurveTo(196, 92, 214, 58); g.fill(); g.stroke(); }
     if (ex.tears) { g.fillStyle = "#8fd8ff"; for (const x of EX) { g.fillRect(x - 6, EY + 6, 12, 60); } }
+    // pack 4 overlays
+    if (ex.pale) { g.fillStyle = "rgba(120,170,255,0.30)"; g.fillRect(0, 0, 256, 140); g.strokeStyle = "rgba(40,60,140,0.7)"; g.lineWidth = 4; for (let x = 70; x <= 190; x += 24) { g.beginPath(); g.moveTo(x, 6); g.lineTo(x, 40); g.stroke(); } }
+    if (ex.money) { g.font = "900 54px sans-serif"; g.textAlign = "center"; g.textBaseline = "middle"; for (const x of EX) { g.fillStyle = "#1e8e3e"; g.beginPath(); g.arc(x, EY, 30, 0, 7); g.fill(); g.fillStyle = "#ffe14d"; g.fillText("$", x, EY + 2); } g.textAlign = "start"; g.textBaseline = "alphabetic"; }
+    if (ex.fireEyes) { for (const x of EX) { g.fillStyle = "#ff6d00"; g.beginPath(); g.moveTo(x - 24, EY + 10); g.quadraticCurveTo(x - 30, EY - 40, x - 6, EY - 62); g.quadraticCurveTo(x - 2, EY - 34, x + 8, EY - 50); g.quadraticCurveTo(x + 30, EY - 22, x + 24, EY + 10); g.closePath(); g.fill(); g.fillStyle = "#ffd23f"; g.beginPath(); g.ellipse(x, EY - 6, 11, 18, 0, 0, 7); g.fill(); } }
+    if (ex.dots) { g.fillStyle = ink; for (const x of [196, 214, 232]) { g.beginPath(); g.arc(x, 34, 6, 0, 7); g.fill(); } }
+    if (ex.ice) { g.fillStyle = "rgba(170,225,255,0.45)"; g.fillRect(0, 0, 256, 256); g.fillStyle = "#e8f7ff"; for (const x of [20, 60, 110, 160, 210, 240]) { g.beginPath(); g.moveTo(x - 12, 0); g.lineTo(x + 12, 0); g.lineTo(x, 34 + (x % 3) * 8); g.closePath(); g.fill(); } }
+    if (ex.hearts) { g.fillStyle = "#ff3b6b"; for (const [x, y, r] of [[36, 40, 12], [220, 30, 15], [206, 64, 9]]) { g.beginPath(); g.moveTo(x, y + r); g.bezierCurveTo(x - r * 2, y - r * 0.2, x - r * 0.6, y - r * 1.6, x, y - r * 0.4); g.bezierCurveTo(x + r * 0.6, y - r * 1.6, x + r * 2, y - r * 0.2, x, y + r); g.fill(); } }
+    if (ex.bags) { g.fillStyle = "rgba(80,40,90,0.45)"; for (const x of EX) { g.beginPath(); g.ellipse(x, EY + 30, 28, 9, 0, 0, 7); g.fill(); } }
+    if (ex.tear1) { g.fillStyle = "#8fd8ff"; g.strokeStyle = "#2f7fb8"; g.lineWidth = 3; const x = EX[1] + 6, y = EY + 26; g.beginPath(); g.moveTo(x, y); g.quadraticCurveTo(x + 14, y + 26, x, y + 32); g.quadraticCurveTo(x - 14, y + 26, x, y); g.fill(); g.stroke(); }
+    if (ex.redEyes) { for (const x of EX) { const r = g.createRadialGradient(x, EY, 0, x, EY, 34); r.addColorStop(0, "rgba(255,30,30,1)"); r.addColorStop(0.45, "rgba(255,0,0,0.75)"); r.addColorStop(1, "rgba(255,0,0,0)"); g.fillStyle = r; g.beginPath(); g.arc(x, EY, 34, 0, 7); g.fill(); g.fillStyle = "#fff6f6"; g.beginPath(); g.arc(x, EY, 6, 0, 7); g.fill(); } }
+    if (ex.blueEyes) { for (const x of EX) { const r = g.createRadialGradient(x, EY, 0, x, EY, 34); r.addColorStop(0, "rgba(120,220,255,1)"); r.addColorStop(0.45, "rgba(40,140,255,0.75)"); r.addColorStop(1, "rgba(0,90,255,0)"); g.fillStyle = r; g.beginPath(); g.arc(x, EY, 34, 0, 7); g.fill(); g.fillStyle = "#ffffff"; g.beginPath(); g.arc(x, EY, 6, 0, 7); g.fill(); } }
+    // pack 5 overlays
+    if (ex.starsLow) { g.fillStyle = "#ffd23f"; g.strokeStyle = "#b8860b"; g.lineWidth = 2; for (const [x, y, r] of [[30, 150, 16], [226, 150, 16], [40, 96, 10], [216, 96, 10]]) { g.beginPath(); for (let k = 0; k < 10; k++) { const an = -Math.PI / 2 + k * Math.PI / 5, rr = k % 2 ? r * 0.42 : r; g.lineTo(x + Math.cos(an) * rr, y + Math.sin(an) * rr); } g.closePath(); g.fill(); g.stroke(); } }
+    if (ex.cringeLines) { g.strokeStyle = ink; g.lineWidth = 5; for (const sx of [-1, 1]) for (let k = 0; k < 3; k++) { const x = 128 + sx * (104 + k * 8); g.beginPath(); g.moveTo(x, 70 + k * 10); g.quadraticCurveTo(x + sx * 8, 100 + k * 10, x, 130 + k * 10); g.stroke(); } }
+    if (ex.sick) { g.fillStyle = "rgba(110,190,60,0.45)"; g.fillRect(0, 0, 256, 256); }
+    if (ex.crown) { g.fillStyle = "#ffd23f"; g.strokeStyle = "#b8860b"; g.lineWidth = 3; g.beginPath(); g.moveTo(88, 42); g.lineTo(88, 8); g.lineTo(108, 26); g.lineTo(128, 4); g.lineTo(148, 26); g.lineTo(168, 8); g.lineTo(168, 42); g.closePath(); g.fill(); g.stroke(); g.fillStyle = "#e53935"; g.beginPath(); g.arc(128, 30, 6, 0, 7); g.fill(); }
+    if (ex.thought) { g.fillStyle = "#ffffff"; g.strokeStyle = ink; g.lineWidth = 3; for (const [x, y, r] of [[206, 128, 6], [222, 108, 9], [236, 82, 15]]) { g.beginPath(); g.arc(x, y, r, 0, 7); g.fill(); g.stroke(); } }
+    if (ex.zap) { g.fillStyle = "#ffe14d"; g.strokeStyle = "#b8860b"; g.lineWidth = 2; for (const [x, y, sx] of [[10, 70, 1], [246, 70, -1]]) { g.beginPath(); g.moveTo(x, y); g.lineTo(x + sx * 18, y + 22); g.lineTo(x + sx * 6, y + 24); g.lineTo(x + sx * 20, y + 52); g.lineTo(x - sx * 4, y + 26); g.lineTo(x + sx * 8, y + 24); g.closePath(); g.fill(); g.stroke(); } g.fillStyle = "rgba(255,240,120,0.18)"; g.fillRect(0, 0, 256, 256); }
+    if (ex.zzzMark) { g.fillStyle = ink; g.font = "900 34px sans-serif"; g.fillText("Z", 206, 112); g.font = "900 24px sans-serif"; g.fillText("z", 226, 88); g.font = "900 16px sans-serif"; g.fillText("z", 240, 70); }
+    if (ex.heartEyes) { g.fillStyle = "#ff2d6b"; for (const x of EX) { const y = EY, r = 26; g.beginPath(); g.moveTo(x, y + r); g.bezierCurveTo(x - r * 2, y - r * 0.2, x - r * 0.6, y - r * 1.6, x, y - r * 0.4); g.bezierCurveTo(x + r * 0.6, y - r * 1.6, x + r * 2, y - r * 0.2, x, y + r); g.fill(); } }
+    if (ex.focusLines) { g.strokeStyle = "rgba(30,30,40,0.55)"; g.lineWidth = 4; for (let k = 0; k < 7; k++) { const y = 30 + k * 30; g.beginPath(); g.moveTo(0, y); g.lineTo(26 + (k % 2) * 12, y + 4); g.stroke(); g.beginPath(); g.moveTo(256, y); g.lineTo(230 - (k % 2) * 12, y + 4); g.stroke(); } }
+    if (ex.fangs) { g.fillStyle = "#ffffff"; g.strokeStyle = ink; g.lineWidth = 2; for (const x of [108, 148]) { g.beginPath(); g.moveTo(x - 9, 176); g.lineTo(x + 9, 176); g.lineTo(x, 202); g.closePath(); g.fill(); g.stroke(); } }
+    if (ex.bigSweat) { g.fillStyle = "#9fe0ff"; g.strokeStyle = "#2f7fb8"; g.lineWidth = 4; g.beginPath(); g.moveTo(206, 20); g.quadraticCurveTo(250, 86, 214, 102); g.quadraticCurveTo(178, 86, 206, 20); g.fill(); g.stroke(); g.fillStyle = "#ffffff"; g.beginPath(); g.ellipse(204, 78, 5, 9, 0.3, 0, 7); g.fill(); }
+    if (ex.angerMark) { g.strokeStyle = "#e02424"; g.lineWidth = 8; g.lineCap = "round"; const x = 206, y = 40; for (const [a, b2] of [[[-14, -4], [-4, -4]], [[4, -4], [14, -4]], [[-14, 6], [-4, 6]], [[4, 6], [14, 6]]]) { g.beginPath(); g.moveTo(x + a[0], y + a[1] - 8); g.lineTo(x + a[0] + 4, y + a[1]); g.lineTo(x + b2[0], y + b2[1]); g.stroke(); } }
     return c;
   }
   // bold face pack (assets/img/faces): emotion -> [face picture, extra overlays]; names not listed keep the drawn face
@@ -167,6 +209,17 @@
     giggle: ["happy"], panicked: ["squeeze", { sweat: 1 }], awkward: ["nervous", { blush: 1 }], hopeful: ["sparkle_oh"], sobbing: ["cry"],
     mindblown: ["dizzy", { boom: 1 }], scheming: ["creepy"], pouty: ["sad", { blush: 1 }], screaming: ["shocked", { boom: 1 }],
     dreamy: ["content", { sparkle: 1 }], grumpy: ["angry"], sweating: ["nervous"], winner: ["sparkle"], sneaky: ["smirk"], nerd: ["nerd"],
+    // pack 4
+    horrified: ["scared", { pale: 1, sweat: 1 }], greedy: ["laugh", { money: 1 }], fired: ["angry", { fireEyes: 1 }], unamused: ["neutral", { dots: 1 }],
+    frozen: ["shocked", { ice: 1 }], lovestruck: ["content", { blush: 1, hearts: 1 }], exhausted: ["sleepy", { bags: 1, sweat: 1 }], proudTear: ["content", { tear1: 1 }],
+    possessed: ["creepy", { redEyes: 1 }], hypnotized: ["neutral", { blueEyes: 1 }], annoyed: ["stare", { angerMark: 1 }], embarrassed: ["nervous", { blush: 1, sweat: 1 }],
+    smug2: ["smirk", { sparkle: 1 }], devilish: ["creepy", { redEyes: 1, rage: 1 }], relieved: ["blink", { sweat: 1 }], wideEyed: ["oh", { pale: 1 }],
+    // pack 5
+    cringe: ["squeeze", { cringeLines: 1 }], sassy: ["wink", { sparkle: 1, blush: 1 }], sick: ["sad", { sick: 1, sweat: 1 }], champion: ["laugh", { sparkle: 1, starsLow: 1 }],
+    thinking: ["stare", { thought: 1 }], touched: ["sparkle_oh", { tear1: 1, blush: 1 }], electrocuted: ["shocked", { zap: 1 }], snoozing: ["sleepy", { zzzMark: 1 }],
+    starving: ["oh", { drool: 1, bags: 1 }], evilLaugh: ["laugh", { redEyes: 1 }], nervousLaugh: ["laugh", { sweat: 1, blush: 1 }], heartEyes: ["happy", { heartEyes: 1, blush: 1 }],
+    volcano: ["angry", { rage: 1, steam: 1, fireEyes: 1 }], petrified: ["scared", { pale: 1, ice: 1 }],
+    focused: ["stare", { focusLines: 1 }], demonGrin: ["creepy", { redEyes: 1, fangs: 1 }], sweatDrop: ["neutral", { bigSweat: 1 }],
   };
   T.FACE_PNGS = ["angry", "blink", "content", "creepy", "cry", "dizzy", "happy", "laugh", "nerd", "nervous", "neutral", "oh", "sad", "scared", "shocked", "sleepy", "smile", "smirk", "sparkle", "sparkle_oh", "squeeze", "stare", "talk", "wink"];
   EXPR.nerd = EXPR.nerd || { eyes: "big", brows: "flat", mouth: "grin" };
@@ -206,6 +259,11 @@
       g.fillStyle = "rgba(0,0,0,0.22)"; g.fillRect(36, 70, 60, 16); g.fillRect(160, 70, 60, 16);
       g.fillStyle = "#1a1a1a"; for (const y of [40, 100, 160]) { g.beginPath(); g.arc(128, y, 5, 0, 7); g.fill(); }
       g.fillStyle = a || "#c9a63a"; for (const x of [172, 188, 204]) { g.beginPath(); g.moveTo(x, 40); g.lineTo(x + 6, 52); g.lineTo(x + 12, 40); g.lineTo(x + 6, 46); g.closePath(); g.fill(); } },
+    guard: (g, b, a) => { // katana-guard uniform: high collar, white belt, a gold emblem
+      g.fillStyle = "rgba(255,255,255,0.12)"; g.beginPath(); g.moveTo(80, 0); g.lineTo(128, 60); g.lineTo(176, 0); g.closePath(); g.fill();
+      g.fillStyle = "#f2f2f2"; g.fillRect(0, 206, 256, 22); g.fillStyle = "rgba(0,0,0,0.35)"; g.fillRect(124, 0, 8, 206);
+      g.fillStyle = a || "#e2b33c"; g.font = "900 60px sans-serif"; g.textAlign = "center"; g.textBaseline = "middle"; g.fillText("\u5203", 190, 120);
+      g.fillStyle = "#d4af37"; for (const y of [40, 90, 140, 180]) { g.beginPath(); g.arc(128, y, 6, 0, 7); g.fill(); } },
     logo: (g, b, a) => { g.fillStyle = "#e53935"; g.font = "900 54px sans-serif"; g.textAlign = "center"; g.textBaseline = "middle"; g.fillText("CRIMINAL", 128, 108); g.fillStyle = "#ffd23f"; g.fillText("TOWN", 128, 160); },
   };
   T.SHIRTS_EXTRA = Object.keys(NEWSHIRT);
@@ -403,6 +461,15 @@
         add(T.rbox(0.16, H * 0.5, 0.16, 0.05), s, 0, -H * 0.2, H / 2 + 0.1);
         const plume = add(T.rbox(0.3, 1.3, 0.5, 0.14), T.mat("#d62839", { r: 0.8 }), 0, 0.7, -0.35, -0.45);
         this.plume = plume;
+      } else if (kind === "hoodUp") {   // a deep hood pulled over the head (the face stays visible in the opening)
+        const m = T.mat(spec.hatColor || "#0d0d10", { r: 0.85 });
+        const d = add(new THREE.SphereGeometry(H * 0.74, 24, 14, 0, Math.PI * 2, 0, Math.PI * 0.62), m, 0, -H * 0.22, -0.06); d.scale.set(1.02, 1.12, 1.08);
+        add(T.rbox(H * 1.18, H * 0.95, 0.16, 0.06), m, 0, -H * 0.55, -H * 0.56);
+        for (const sx of [-1, 1]) add(T.rbox(0.16, H * 1.0, H * 0.9, 0.06), m, sx * H * 0.6, -H * 0.52, -0.08);
+        add(T.rbox(H * 1.1, 0.16, 0.18, 0.06), m, 0, -0.02, H * 0.55);
+      } else if (kind === "horns") {    // demon horns, bent outward
+        const m = T.mat(spec.hatColor || "#1a0a0a", { r: 0.35, m: 0.2 });
+        for (const sx of [-1, 1]) { const h = add(new THREE.ConeGeometry(0.24, H * 0.85, 12), m, sx * H * 0.36, H * 0.22, 0.05, 0, 0, -sx * 0.5); h.scale.set(1, 1, 0.85); }
       } else if (kind === "officer") {   // peaked army/officer cap: flat top, band, glossy visor, gold badge
         const m = T.mat(spec.hatColor || "#15171a", { r: 0.55 });
         add(T.cyl(H * 0.5, H * 0.56, H * 0.3, 24), m, 0, H * 0.06, 0);
@@ -532,6 +599,9 @@
       const h = p.head || (p.still ? [0, 0, 0] : [0.05 * Math.sin(tm * 1.9 + sd), 0.16 * Math.sin(tm * 0.85 + sd * 2), 0.06 * Math.sin(tm * 1.3 + sd)]);
       this.neck.rotation.set(h[0], h[1] || 0, h[2] || 0);
       if (this.shades) this.shades.visible = p.shades !== false;
+      // breathing: the chest rises a little; a cape trails and flutters, more when moving
+      if (!p.still) { const br = Math.sin(tm * 2.4 + sd * 1.7); this.body.scale.set(1 + 0.008 * br, 1 + 0.012 * br, 1 + 0.018 * br); } else this.body.scale.set(1, 1, 1);
+      if (this.cape) { const mv = p.walk !== undefined && p.walk !== null; this.cape.rotation.x = 0.06 + (mv ? (p.run ? 0.55 : 0.28) : 0.03) + (mv ? 0.12 : 0.05) * Math.abs(Math.sin(tm * (mv ? 9 : 2.2) + sd)); }
       if (this.plume) this.plume.rotation.x = -0.45 + 0.08 * Math.sin((time ?? 0) * 7);
       let ex = p.face || "smile";
       // automatic blinks: about every 3.3 s, 0.12 s long
