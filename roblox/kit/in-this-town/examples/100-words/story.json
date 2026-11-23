@@ -1,0 +1,31 @@
+{
+  "title": "In This Town, You Can Only Say 100 Words a Day",
+  "rule": "In this town, you can only say one hundred words a day.",
+  "cast": {
+    "me": {"preset": "me"},
+    "mia": {"build": "kid", "shirt": "#ffb347", "front": "star", "frontAcc": "#ff6f61", "pants": "#3d6fd6", "shoes": "#ff6f61", "skin": "#f1c27d", "hair": "pony", "hairColor": "#c4501f", "faceStyle": {"freckles": 1, "blush": 1}},
+    "dad": {"build": "tall", "shirt": "#5b6ee1", "front": "buttons", "pants": "#3a3a48", "skin": "#f1c27d", "hair": "short", "hairColor": "#5a3420", "faceStyle": {"mustache": "#5a3420"}},
+    "fox": {"build": "tall", "shirt": "#8e5a2b", "front": "coat", "sleeves": "#8e5a2b", "pants": "#4a3a2a", "skin": "#f0c8a0", "hair": "bald", "hairColor": "#dddddd", "faceStyle": {"mustache": "#eeeeee", "brow": "#eeeeee", "glasses": "#222222"}},
+    "mayor": {"preset": "mayor"},
+    "baker": {"preset": "baker"},
+    "teacher": {"preset": "teacher"}
+  },
+  "captionMerge": [["one hundred", "100"], ["eleven thousand", "11,000"], ["forty", "40"]],
+  "paragraphs": [
+    {"text": "In this town, you can only say one hundred words a day.", "mood": "playful"},
+    {"text": "The number over your head counts them down. Every word, one less.", "mood": "playful"},
+    {"text": "Good morning costs two. Sorry costs one, so people say it a lot. I love you costs three, so people save it for birthdays.", "mood": "playful"},
+    {"text": "Words you don't use pile up. Old Mister Fox saved for forty years, then talked for a whole week straight.", "mood": "flashback", "pause": 0.4},
+    {"text": "So the mayor gives speeches in thumbs-ups. The baker sells bread by pointing. And our teacher says one word a day. Homework.", "mood": "playful", "pause": 0.4},
+    {"text": "And me? I never talk. I have eleven thousand words saved.", "mood": "light", "pause": 0.6},
+    {"text": "My sister Mia is the opposite. She hits zero before breakfast.", "mood": "light"},
+    {"text": "Then came the talent show. Mia's act was a song, and her number said zero.", "mood": "trouble", "pause": 0.5},
+    {"text": "She tried humming. Humming counts. She tried singing really fast. Fast words still count. She asked Dad for a few. You can't borrow words.", "mood": "sneaky"},
+    {"text": "So I walked on stage and said the first words anyone had ever heard from me.", "mood": "wonder", "pause": 0.6},
+    {"text": "I sang her whole song. Then the encore. Then the encore of the encore.", "mood": "chaos"},
+    {"text": "When I stopped, nobody moved. They had saved their last words all day, and they spent them on one thing.", "mood": "hush", "pause": 0.4},
+    {"text": "Encore.", "speaker": "crowd", "pitch": -2, "mood": "love", "pause": 0.5},
+    {"text": "Now Mia is my manager. She doesn't need words. She just points at people, and I talk.", "mood": "love", "pause": 0.5},
+    {"text": "Like and subscribe. That's three words, and I'll pay for them.", "mood": "ending", "pause": 0.5}
+  ]
+}

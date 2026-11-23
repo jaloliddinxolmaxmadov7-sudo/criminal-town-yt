@@ -1,0 +1,1767 @@
+[
+ {
+  "place": "plaza",
+  "sky": "morning",
+  "cam": {
+   "size": "xwide",
+   "move": "push"
+  },
+  "extras": 4
+ },
+ {
+  "at": "you can only say",
+  "place": "plaza",
+  "sky": "morning",
+  "cast": [
+   {
+    "who": "folk0",
+    "at": "left",
+    "face": "talk",
+    "do": "talk"
+   },
+   {
+    "who": "folk2",
+    "at": "right",
+    "face": "smile",
+    "look": "folk0"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "say",
+    "on": "folk0",
+    "count": [
+     100,
+     96
+    ],
+    "step": true,
+    "until": "day."
+   },
+   {
+    "type": "label",
+    "at": "you",
+    "on": "folk2",
+    "text": "100"
+   }
+  ],
+  "cam": {
+   "size": "medium",
+   "angle": 15
+  }
+ },
+ {
+  "at": "one hundred",
+  "place": "plaza",
+  "sky": "morning",
+  "cast": [
+   {
+    "who": "folk7",
+    "face": "proud",
+    "do": "hips"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "hundred",
+    "on": "folk7",
+    "text": "100",
+    "size": 1.3
+   },
+   {
+    "type": "sparkle",
+    "at": "hundred",
+    "on": "folk7",
+    "part": "above"
+   }
+  ],
+  "cam": {
+   "size": "close",
+   "angle": -20
+  }
+ },
+ {
+  "at": "The number over your head",
+  "place": "street",
+  "sky": "morning",
+  "cast": [
+   {
+    "who": "folk5",
+    "at": "left",
+    "face": "talk",
+    "do": "talk"
+   },
+   {
+    "who": "folk11",
+    "at": "right",
+    "face": "smile"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "number",
+    "on": "folk5",
+    "count": [
+     100,
+     92
+    ],
+    "step": true,
+    "until": "Every"
+   }
+  ],
+  "cam": {
+   "size": "medium",
+   "angle": -15
+  }
+ },
+ {
+  "at": "Every word",
+  "place": "street",
+  "sky": "morning",
+  "cast": [
+   {
+    "who": "folk5",
+    "face": "worried",
+    "do": "talk"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "Every",
+    "on": "folk5",
+    "count": [
+     92,
+     88
+    ],
+    "step": true,
+    "until": "Good"
+   }
+  ],
+  "cam": {
+   "size": "close",
+   "angle": 20
+  }
+ },
+ {
+  "at": "Good morning",
+  "place": "bakery",
+  "sky": "morning",
+  "cast": [
+   {
+    "who": "folk3",
+    "at": "left",
+    "face": "happy",
+    "do": "wave"
+   },
+   {
+    "who": "baker",
+    "at": "right",
+    "face": "smile",
+    "do": "waveL"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "Good",
+    "on": "folk3",
+    "count": [
+     80,
+     78
+    ],
+    "step": true,
+    "until": "costs"
+   }
+  ],
+  "cam": {
+   "size": "medium",
+   "angle": -10
+  }
+ },
+ {
+  "at": "Sorry costs one",
+  "place": "plaza",
+  "cast": [
+   {
+    "who": "folk8",
+    "at": "left",
+    "face": "sheepish",
+    "do": "bow"
+   },
+   {
+    "who": "folk4",
+    "at": "right",
+    "face": "meh",
+    "look": "folk8"
+   }
+  ],
+  "props": [
+   {
+    "kind": "apple",
+    "at": [
+     0.2,
+     0.8
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "one",
+    "on": "folk8",
+    "count": [
+     45,
+     44
+    ],
+    "dur": 0.3
+   }
+  ],
+  "cam": {
+   "size": "full",
+   "angle": 20
+  }
+ },
+ {
+  "at": "so people say it a lot",
+  "place": "plazaEast",
+  "crowd": {
+   "n": 9,
+   "where": "line",
+   "face": "sheepish",
+   "do": "bow"
+  },
+  "cam": {
+   "size": "wide",
+   "on": [
+    "crowd"
+   ],
+   "angle": -10
+  }
+ },
+ {
+  "at": "I love you",
+  "place": "home",
+  "cast": [
+   {
+    "who": "dad",
+    "at": "left",
+    "face": "love"
+   },
+   {
+    "who": "folk10",
+    "at": "right",
+    "face": "happy"
+   }
+  ],
+  "fx": [
+   {
+    "type": "hearts",
+    "at": "love",
+    "on": "dad",
+    "part": "above",
+    "until": "costs"
+   }
+  ],
+  "cam": {
+   "size": "medium",
+   "angle": 15
+  }
+ },
+ {
+  "at": "costs three",
+  "place": "home",
+  "cast": [
+   {
+    "who": "dad",
+    "face": "love",
+    "then": [
+     {
+      "at": "three",
+      "face": "worried"
+     }
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "three",
+    "on": "dad",
+    "count": [
+     12,
+     9
+    ],
+    "dur": 0.5
+   }
+  ],
+  "cam": {
+   "size": "close",
+   "angle": -15
+  }
+ },
+ {
+  "at": "so people save it",
+  "place": "living",
+  "cast": [
+   {
+    "who": "dad",
+    "at": "left",
+    "face": "happy",
+    "do": "present",
+    "then": [
+     {
+      "at": "birthdays",
+      "face": "love"
+     }
+    ]
+   },
+   {
+    "who": "folk10",
+    "at": "right",
+    "face": "wow",
+    "then": [
+     {
+      "at": "birthdays",
+      "face": "love",
+      "do": "cheer"
+     }
+    ]
+   }
+  ],
+  "props": [
+   {
+    "kind": "cake",
+    "at": "center",
+    "y": 1.82,
+    "key": true
+   }
+  ],
+  "fx": [
+   {
+    "type": "confetti",
+    "at": "birthdays",
+    "on": "prop:cake0"
+   },
+   {
+    "type": "hearts",
+    "at": "birthdays",
+    "on": "folk10",
+    "part": "above"
+   }
+  ],
+  "cam": {
+   "size": "full",
+   "angle": 10
+  }
+ },
+ {
+  "at": "Words you don't use",
+  "place": "plaza",
+  "sky": "afternoon",
+  "cast": [
+   {
+    "who": "folk6",
+    "face": "smug",
+    "do": "hips"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "pile",
+    "on": "folk6",
+    "count": [
+     100,
+     400
+    ],
+    "dur": 1.0
+   }
+  ],
+  "cam": {
+   "size": "medium",
+   "angle": -25
+  }
+ },
+ {
+  "at": "Old Mister Fox",
+  "place": "living",
+  "look": "flashback",
+  "cast": [
+   {
+    "who": "fox",
+    "at": "sofa",
+    "do": "sit",
+    "face": "smug",
+    "then": [
+     {
+      "at": "saved",
+      "face": "proud"
+     }
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "saved",
+    "on": "fox",
+    "count": [
+     100,
+     1460000
+    ],
+    "dur": 1.6
+   }
+  ],
+  "cam": {
+   "size": "medium",
+   "angle": 10
+  }
+ },
+ {
+  "at": "then talked",
+  "place": "plaza",
+  "look": "flashback",
+  "cast": [
+   {
+    "who": "fox",
+    "face": "laugh",
+    "do": "talk"
+   }
+  ],
+  "crowd": {
+   "n": 8,
+   "where": "around",
+   "face": "sleepy",
+   "do": "idle"
+  },
+  "fx": [
+   {
+    "type": "label",
+    "at": "talked",
+    "on": "fox",
+    "count": [
+     1460000,
+     0
+    ],
+    "dur": 2.2
+   },
+   {
+    "type": "zzz",
+    "at": "whole",
+    "on": "folk1"
+   },
+   {
+    "type": "zzz",
+    "at": "week",
+    "on": "folk4"
+   }
+  ],
+  "cam": {
+   "size": "wide",
+   "angle": 10,
+   "move": "push"
+  }
+ },
+ {
+  "at": "So the mayor",
+  "place": "townhall",
+  "cast": [
+   {
+    "who": "mayor",
+    "face": "proud",
+    "do": "idle"
+   }
+  ],
+  "crowd": {
+   "n": 6,
+   "where": "front",
+   "face": "smile",
+   "do": "idle"
+  },
+  "cam": {
+   "size": "full",
+   "on": [
+    "mayor"
+   ],
+   "angle": 15
+  }
+ },
+ {
+  "at": "thumbs-ups",
+  "place": "townhall",
+  "cast": [
+   {
+    "who": "mayor",
+    "face": "grin",
+    "do": "fist"
+   }
+  ],
+  "fx": [
+   {
+    "type": "sparkle",
+    "at": "thumbs-ups.",
+    "on": "mayor",
+    "part": "hand"
+   }
+  ],
+  "cam": {
+   "size": "close",
+   "angle": 20
+  }
+ },
+ {
+  "at": "The baker sells bread",
+  "place": "bakeryIn",
+  "cast": [
+   {
+    "who": "baker",
+    "at": "counter",
+    "face": "smile",
+    "do": "idle",
+    "then": [
+     {
+      "at": "pointing.",
+      "do": "point",
+      "look": "folk12",
+      "face": "happy"
+     }
+    ]
+   },
+   {
+    "who": "folk12",
+    "at": [
+     3.5,
+     1.6
+    ],
+    "face": "smile",
+    "then": [
+     {
+      "at": "pointing.",
+      "do": "nod"
+     }
+    ]
+   }
+  ],
+  "cam": {
+   "size": "medium",
+   "angle": -20
+  }
+ },
+ {
+  "at": "And our teacher",
+  "place": "classroom",
+  "cast": [
+   {
+    "who": "teacher",
+    "at": "board",
+    "face": "determined",
+    "do": "hips"
+   }
+  ],
+  "cam": {
+   "size": "full",
+   "angle": 15
+  }
+ },
+ {
+  "at": "Homework",
+  "place": "classroom",
+  "cast": [
+   {
+    "who": "teacher",
+    "at": "board",
+    "face": "evil",
+    "do": "pointUp"
+   }
+  ],
+  "fx": [
+   {
+    "type": "bubble",
+    "at": "Homework.",
+    "on": "teacher",
+    "text": "HOMEWORK"
+   },
+   {
+    "type": "shake",
+    "at": "Homework."
+   }
+  ],
+  "cam": {
+   "size": "close",
+   "angle": -10
+  }
+ },
+ {
+  "at": "And me",
+  "place": "home",
+  "whoosh": true,
+  "cast": [
+   {
+    "who": "me",
+    "face": "sheepish",
+    "do": "wave"
+   }
+  ],
+  "cam": {
+   "size": "medium",
+   "angle": 10
+  }
+ },
+ {
+  "at": "I never talk",
+  "place": "home",
+  "cast": [
+   {
+    "who": "me",
+    "face": "meh",
+    "do": "no"
+   }
+  ],
+  "cam": {
+   "size": "close",
+   "angle": -15
+  }
+ },
+ {
+  "at": "I have eleven thousand",
+  "place": "home",
+  "cast": [
+   {
+    "who": "me",
+    "face": "smile",
+    "then": [
+     {
+      "at": "saved.",
+      "face": "proud",
+      "do": "hips"
+     }
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "eleven",
+    "on": "me",
+    "count": [
+     0,
+     11000
+    ],
+    "dur": 1.1
+   },
+   {
+    "type": "sparkle",
+    "at": "saved.",
+    "on": "me",
+    "part": "above"
+   }
+  ],
+  "cam": {
+   "size": "close",
+   "angle": 20
+  }
+ },
+ {
+  "at": "My sister Mia",
+  "place": "kitchen",
+  "cast": [
+   {
+    "who": "mia",
+    "at": "table",
+    "face": "talk",
+    "do": "talk"
+   }
+  ],
+  "props": [
+   {
+    "kind": "cup",
+    "at": [
+     2.4,
+     -1.4
+    ],
+    "y": 3.4
+   },
+   {
+    "kind": "apple",
+    "at": [
+     -2.4,
+     -1.4
+    ],
+    "y": 3.4
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "Mia",
+    "on": "mia",
+    "count": [
+     60,
+     12
+    ],
+    "dur": 2.0
+   }
+  ],
+  "cam": {
+   "size": "medium",
+   "angle": -10
+  }
+ },
+ {
+  "at": "She hits zero",
+  "place": "kitchen",
+  "cast": [
+   {
+    "who": "mia",
+    "at": "table",
+    "face": "talk",
+    "do": "talk",
+    "then": [
+     {
+      "at": "zero",
+      "face": "gasp",
+      "do": "shock"
+     },
+     {
+      "at": "breakfast.",
+      "face": "sad",
+      "do": "idle"
+     }
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "She",
+    "on": "mia",
+    "count": [
+     12,
+     0
+    ],
+    "dur": 0.8
+   }
+  ],
+  "cam": {
+   "size": "close",
+   "angle": 15
+  }
+ },
+ {
+  "at": "Then came the talent show",
+  "place": "plaza",
+  "sky": "dusk",
+  "whoosh": true,
+  "props": [
+   {
+    "id": "stage",
+    "kind": "stage",
+    "at": [
+     0,
+     -3
+    ],
+    "text": [
+     "TALENT SHOW"
+    ],
+    "key": true
+   }
+  ],
+  "crowd": {
+   "n": 10,
+   "where": "front",
+   "face": "happy",
+   "do": "idle",
+   "look": "center"
+  },
+  "cam": {
+   "size": "wide",
+   "on": [
+    "prop:stage"
+   ],
+   "height": "high"
+  }
+ },
+ {
+  "at": "Mia's act was a song",
+  "place": "plaza",
+  "sky": "dusk",
+  "cast": [
+   {
+    "who": "mia",
+    "at": [
+     0,
+     -3
+    ],
+    "y": 1.1,
+    "face": "happy",
+    "do": "present"
+   }
+  ],
+  "props": [
+   {
+    "id": "stage",
+    "kind": "stage",
+    "at": [
+     0,
+     -3
+    ],
+    "text": [
+     "TALENT SHOW"
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "notes",
+    "at": "song,",
+    "on": "mia"
+   }
+  ],
+  "cam": {
+   "size": "full",
+   "angle": 10,
+   "height": "low"
+  }
+ },
+ {
+  "at": "and her number said zero",
+  "place": "plaza",
+  "sky": "dusk",
+  "cast": [
+   {
+    "who": "mia",
+    "at": [
+     0,
+     -3
+    ],
+    "y": 1.1,
+    "face": "worried",
+    "then": [
+     {
+      "at": "zero.",
+      "face": "gasp",
+      "do": "shock"
+     }
+    ]
+   }
+  ],
+  "props": [
+   {
+    "id": "stage",
+    "kind": "stage",
+    "at": [
+     0,
+     -3
+    ],
+    "text": [
+     "TALENT SHOW"
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "and",
+    "on": "mia",
+    "text": "0",
+    "size": 1.3
+   },
+   {
+    "type": "flash",
+    "at": "zero.",
+    "amount": 0.3
+   }
+  ],
+  "cam": {
+   "size": "close",
+   "angle": -15
+  }
+ },
+ {
+  "at": "She tried humming",
+  "place": "bedroom",
+  "cast": [
+   {
+    "who": "mia",
+    "face": "tongue",
+    "do": "idle"
+   }
+  ],
+  "fx": [
+   {
+    "type": "notes",
+    "at": "humming.",
+    "on": "mia"
+   },
+   {
+    "type": "label",
+    "at": "She",
+    "on": "mia",
+    "text": "0"
+   }
+  ],
+  "cam": {
+   "size": "medium",
+   "angle": 15
+  }
+ },
+ {
+  "at": "Humming counts",
+  "place": "bedroom",
+  "cast": [
+   {
+    "who": "mia",
+    "face": "tongue",
+    "then": [
+     {
+      "at": "counts.",
+      "face": "gasp",
+      "do": "shock"
+     }
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "Humming",
+    "on": "mia",
+    "count": [
+     0,
+     -1
+    ],
+    "dur": 0.3
+   },
+   {
+    "type": "exclaim",
+    "at": "counts.",
+    "on": "mia",
+    "part": "head",
+    "size": 0.8
+   }
+  ],
+  "cam": {
+   "size": "close",
+   "angle": -10
+  }
+ },
+ {
+  "at": "She tried singing really fast",
+  "place": "bedroom",
+  "cast": [
+   {
+    "who": "mia",
+    "face": "laugh",
+    "do": "dance"
+   }
+  ],
+  "fx": [
+   {
+    "type": "notes",
+    "at": "singing",
+    "on": "mia",
+    "size": 1.4
+   },
+   {
+    "type": "label",
+    "at": "She",
+    "on": "mia",
+    "count": [
+     -1,
+     -9
+    ],
+    "step": true,
+    "until": "Fast"
+   }
+  ],
+  "cam": {
+   "size": "full",
+   "angle": -20
+  }
+ },
+ {
+  "at": "Fast words still count",
+  "place": "bedroom",
+  "cast": [
+   {
+    "who": "mia",
+    "face": "worried",
+    "do": "scared"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "Fast",
+    "on": "mia",
+    "text": "-9"
+   }
+  ],
+  "cam": {
+   "size": "close",
+   "angle": 15
+  }
+ },
+ {
+  "at": "She asked Dad",
+  "place": "living",
+  "cast": [
+   {
+    "who": "mia",
+    "at": "left",
+    "face": "love",
+    "do": "present",
+    "look": "dad"
+   },
+   {
+    "who": "dad",
+    "at": "right",
+    "face": "smile",
+    "look": "mia"
+   }
+  ],
+  "cam": {
+   "size": "full",
+   "angle": 15
+  }
+ },
+ {
+  "at": "You can't borrow words",
+  "place": "living",
+  "cast": [
+   {
+    "who": "dad",
+    "face": "sad",
+    "do": "no"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "You",
+    "on": "dad",
+    "text": "3"
+   }
+  ],
+  "cam": {
+   "size": "close",
+   "angle": -15
+  }
+ },
+ {
+  "at": "So I walked on stage",
+  "place": "plaza",
+  "sky": "night",
+  "cast": [
+   {
+    "who": "me",
+    "at": [
+     -4.2,
+     -3
+    ],
+    "to": [
+     0,
+     -3
+    ],
+    "y": 1.1,
+    "face": "determined",
+    "stop": "and"
+   }
+  ],
+  "props": [
+   {
+    "id": "stage",
+    "kind": "stage",
+    "at": [
+     0,
+     -3
+    ],
+    "text": [
+     "TALENT SHOW"
+    ]
+   }
+  ],
+  "crowd": {
+   "n": 10,
+   "where": "front",
+   "face": "smile",
+   "do": "idle"
+  },
+  "cam": {
+   "size": "full",
+   "on": [
+    "me"
+   ],
+   "height": "high"
+  }
+ },
+ {
+  "at": "and said the first words",
+  "place": "plaza",
+  "sky": "night",
+  "cast": [
+   {
+    "who": "me",
+    "at": [
+     0,
+     -3
+    ],
+    "y": 1.1,
+    "face": "determined",
+    "do": "talk",
+    "then": [
+     {
+      "at": "words",
+      "face": "happy"
+     }
+    ]
+   }
+  ],
+  "props": [
+   {
+    "id": "stage",
+    "kind": "stage",
+    "at": [
+     0,
+     -3
+    ],
+    "text": [
+     "TALENT SHOW"
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "said",
+    "on": "me",
+    "count": [
+     11000,
+     10996
+    ],
+    "step": true,
+    "until": "anyone"
+   }
+  ],
+  "cam": {
+   "size": "close",
+   "angle": 15
+  }
+ },
+ {
+  "at": "anyone had ever heard",
+  "place": "plaza",
+  "sky": "night",
+  "cast": [
+   {
+    "who": "mia",
+    "at": [
+     8,
+     3.5
+    ],
+    "face": "wow",
+    "look": "me"
+   },
+   {
+    "who": "me",
+    "at": [
+     0,
+     -3
+    ],
+    "y": 1.1,
+    "face": "happy",
+    "do": "talk"
+   }
+  ],
+  "props": [
+   {
+    "id": "stage",
+    "kind": "stage",
+    "at": [
+     0,
+     -3
+    ],
+    "text": [
+     "TALENT SHOW"
+    ]
+   }
+  ],
+  "crowd": {
+   "n": 9,
+   "where": "front",
+   "face": "gasp",
+   "do": "shock"
+  },
+  "cam": {
+   "size": "wide",
+   "angle": 25,
+   "on": [
+    "me",
+    "mia"
+   ]
+  }
+ },
+ {
+  "at": "I sang her whole song",
+  "place": "plaza",
+  "sky": "night",
+  "cast": [
+   {
+    "who": "me",
+    "at": [
+     0,
+     -3
+    ],
+    "y": 1.1,
+    "face": "happy",
+    "do": "present",
+    "then": [
+     {
+      "at": "song.",
+      "do": "cheer"
+     }
+    ]
+   }
+  ],
+  "props": [
+   {
+    "id": "stage",
+    "kind": "stage",
+    "at": [
+     0,
+     -3
+    ],
+    "text": [
+     "TALENT SHOW"
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "notes",
+    "at": "sang",
+    "on": "me",
+    "size": 1.3
+   },
+   {
+    "type": "label",
+    "at": "sang",
+    "on": "me",
+    "count": [
+     10996,
+     10400
+    ],
+    "dur": 1.8
+   }
+  ],
+  "cam": {
+   "size": "full",
+   "angle": -15,
+   "height": "low"
+  }
+ },
+ {
+  "at": "Then the encore",
+  "place": "plaza",
+  "sky": "night",
+  "cast": [
+   {
+    "who": "mia",
+    "face": "love",
+    "do": "clap"
+   }
+  ],
+  "crowd": {
+   "n": 6,
+   "where": "behind",
+   "face": "happy",
+   "do": "clap"
+  },
+  "fx": [
+   {
+    "type": "hearts",
+    "at": "encore.",
+    "on": "mia",
+    "part": "above"
+   }
+  ],
+  "cam": {
+   "size": "medium",
+   "on": [
+    "mia"
+   ],
+   "angle": 160,
+   "free": true
+  }
+ },
+ {
+  "at": "Then the encore of the encore",
+  "place": "plaza",
+  "sky": "night",
+  "cast": [
+   {
+    "who": "me",
+    "at": [
+     0,
+     -3
+    ],
+    "y": 1.1,
+    "face": "laugh",
+    "do": "dance"
+   }
+  ],
+  "props": [
+   {
+    "id": "stage",
+    "kind": "stage",
+    "at": [
+     0,
+     -3
+    ],
+    "text": [
+     "TALENT SHOW"
+    ]
+   }
+  ],
+  "crowd": {
+   "n": 10,
+   "where": "front",
+   "face": "laugh",
+   "do": "cheer"
+  },
+  "fx": [
+   {
+    "type": "confetti",
+    "at": "of",
+    "on": "me"
+   },
+   {
+    "type": "notes",
+    "at": "Then",
+    "on": "me",
+    "size": 1.5
+   },
+   {
+    "type": "label",
+    "at": "Then",
+    "on": "me",
+    "count": [
+     10400,
+     6800
+    ],
+    "dur": 2.0
+   }
+  ],
+  "cam": {
+   "size": "wide",
+   "on": [
+    "me",
+    "prop:stage"
+   ],
+   "move": "orbit"
+  }
+ },
+ {
+  "at": "When I stopped",
+  "place": "plaza",
+  "sky": "night",
+  "cast": [
+   {
+    "who": "me",
+    "at": [
+     0,
+     -3
+    ],
+    "y": 1.1,
+    "face": "worried",
+    "do": "idle"
+   }
+  ],
+  "props": [
+   {
+    "id": "stage",
+    "kind": "stage",
+    "at": [
+     0,
+     -3
+    ],
+    "text": [
+     "TALENT SHOW"
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "When",
+    "on": "me",
+    "text": "6,800"
+   }
+  ],
+  "cam": {
+   "size": "medium",
+   "angle": -10,
+   "move": "still"
+  }
+ },
+ {
+  "at": "nobody moved",
+  "place": "plaza",
+  "sky": "night",
+  "crowd": {
+   "n": 10,
+   "where": "line",
+   "face": "meh",
+   "do": "idle",
+   "look": "cam"
+  },
+  "sfx": [
+   {
+    "at": "moved.",
+    "s": "crickets",
+    "gain": -16
+   }
+  ],
+  "cam": {
+   "size": "wide",
+   "on": [
+    "crowd"
+   ],
+   "angle": 180,
+   "free": true,
+   "move": "still"
+  }
+ },
+ {
+  "at": "They had saved their last words",
+  "place": "plaza",
+  "sky": "night",
+  "cast": [
+   {
+    "who": "folk1",
+    "at": "left",
+    "face": "determined"
+   },
+   {
+    "who": "folk9",
+    "at": "right",
+    "face": "determined"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "last",
+    "on": "folk1",
+    "text": "1"
+   },
+   {
+    "type": "label",
+    "at": "words",
+    "on": "folk9",
+    "text": "1"
+   }
+  ],
+  "cam": {
+   "size": "medium",
+   "angle": 170,
+   "free": true
+  }
+ },
+ {
+  "at": "and they spent them",
+  "place": "plaza",
+  "sky": "night",
+  "cast": [
+   {
+    "who": "baker",
+    "at": "left",
+    "face": "determined",
+    "then": [
+     {
+      "at": "thing.",
+      "face": "shout"
+     }
+    ]
+   },
+   {
+    "who": "teacher",
+    "at": "right",
+    "face": "determined",
+    "then": [
+     {
+      "at": "thing.",
+      "face": "shout"
+     }
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "spent",
+    "on": "baker",
+    "text": "1"
+   },
+   {
+    "type": "label",
+    "at": "spent",
+    "on": "teacher",
+    "text": "1"
+   }
+  ],
+  "cam": {
+   "size": "medium",
+   "angle": 200,
+   "free": true
+  }
+ },
+ {
+  "at": "Encore",
+  "place": "plaza",
+  "sky": "night",
+  "whoosh": true,
+  "cast": [
+   {
+    "who": "mayor",
+    "face": "shout",
+    "do": "cheer"
+   }
+  ],
+  "crowd": {
+   "n": 11,
+   "where": "around",
+   "face": "laugh",
+   "do": "cheer"
+  },
+  "fx": [
+   {
+    "type": "confetti",
+    "at": "Encore.",
+    "on": "mayor"
+   },
+   {
+    "type": "label",
+    "at": "Encore.",
+    "on": "mayor",
+    "count": [
+     1,
+     0
+    ],
+    "dur": 0.4
+   }
+  ],
+  "cam": {
+   "size": "wide",
+   "on": [
+    "mayor"
+   ],
+   "angle": -15,
+   "move": "shake"
+  }
+ },
+ {
+  "at": "Now Mia is my manager",
+  "place": "street",
+  "cast": [
+   {
+    "who": "mia",
+    "at": [
+     -3,
+     0
+    ],
+    "to": [
+     3,
+     0
+    ],
+    "face": "proud"
+   },
+   {
+    "who": "me",
+    "at": [
+     -6,
+     0
+    ],
+    "to": [
+     0,
+     0
+    ],
+    "face": "happy"
+   }
+  ],
+  "cam": {
+   "size": "full",
+   "move": "follow"
+  }
+ },
+ {
+  "at": "She doesn't need words",
+  "place": "street",
+  "cast": [
+   {
+    "who": "mia",
+    "face": "smug",
+    "do": "hips"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "She",
+    "on": "mia",
+    "text": "0"
+   }
+  ],
+  "cam": {
+   "size": "close",
+   "angle": 15
+  }
+ },
+ {
+  "at": "She just points at people",
+  "place": "bakery",
+  "cast": [
+   {
+    "who": "mia",
+    "at": "farLeft",
+    "face": "smug",
+    "look": "baker",
+    "then": [
+     {
+      "at": "points",
+      "do": "point"
+     }
+    ]
+   },
+   {
+    "who": "me",
+    "at": "center",
+    "face": "smile",
+    "look": "baker"
+   },
+   {
+    "who": "baker",
+    "at": "farRight",
+    "face": "wow",
+    "look": "me"
+   }
+  ],
+  "cam": {
+   "size": "full",
+   "angle": -15
+  }
+ },
+ {
+  "at": "and I talk",
+  "place": "bakery",
+  "cast": [
+   {
+    "who": "me",
+    "face": "happy",
+    "do": "talk"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "and",
+    "on": "me",
+    "count": [
+     6800,
+     6797
+    ],
+    "step": true,
+    "until": "Like"
+   }
+  ],
+  "cam": {
+   "size": "close",
+   "angle": -20
+  }
+ },
+ {
+  "at": "Like and subscribe",
+  "place": "home",
+  "cast": [
+   {
+    "who": "me",
+    "face": "grin",
+    "do": "wave"
+   }
+  ],
+  "cam": {
+   "size": "close",
+   "angle": 10
+  }
+ },
+ {
+  "at": "That's three words",
+  "place": "home",
+  "cast": [
+   {
+    "who": "me",
+    "face": "smug",
+    "do": "pointUp"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "That's",
+    "on": "me",
+    "count": [
+     6797,
+     6794
+    ],
+    "step": true,
+    "until": "and"
+   }
+  ],
+  "cam": {
+   "size": "xclose",
+   "angle": -10
+  }
+ },
+ {
+  "at": "and I'll pay for them",
+  "place": "home",
+  "cast": [
+   {
+    "who": "me",
+    "face": "grin",
+    "do": "present",
+    "then": [
+     {
+      "at": "them.",
+      "face": "evil"
+     }
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "pay",
+    "on": "me",
+    "count": [
+     6794,
+     6791
+    ],
+    "dur": 0.6
+   },
+   {
+    "type": "sparkle",
+    "at": "them.",
+    "on": "me",
+    "part": "hand"
+   }
+  ],
+  "cam": {
+   "size": "medium",
+   "angle": 15
+  }
+ }
+]

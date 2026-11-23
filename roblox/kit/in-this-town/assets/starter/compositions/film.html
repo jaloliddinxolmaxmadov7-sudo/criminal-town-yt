@@ -1,0 +1,27 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #0d1020; }
+    #gl { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+  </style>
+  <div id="root" data-composition-id="film" data-width="1080" data-height="1920">
+    <canvas id="gl" width="1080" height="1920"></canvas>
+  </div>
+  <script>
+    (function () {
+      // The whole film is one Three.js renderer: TOWN.frame(t) draws the frame at t seconds (t_auto.js turns shots.json into shots).
+      const canvas = document.getElementById("gl");
+      window.__hf = window.__hf || {};
+      window.__hf.buildReady = window.__hf.buildReady || {};
+      window.__hf.buildReady.film = (async () => {
+        await TOWN.boot(canvas);
+        const DUR = TOWN.END;
+        const st = { t: 0 };
+        const tl = gsap.timeline({ paused: true });
+        tl.fromTo(st, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: () => TOWN.frame(st.t) }, 0);
+        TOWN.frame(0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["film"] = tl;
+      })();
+    })();
+  </script>
+</template>

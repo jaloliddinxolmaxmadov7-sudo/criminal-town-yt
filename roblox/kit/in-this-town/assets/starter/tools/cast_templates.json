@@ -1,0 +1,234 @@
+{
+ "criminal": {
+  "build": "adult",
+  "shirt": "#16161a",
+  "front": "hoodie",
+  "frontAcc": "#e53935",
+  "sleeves": "#16161a",
+  "pants": "#3b4252",
+  "shoes": "#e53935",
+  "skin": "#c68642",
+  "hair": "spiky",
+  "hairColor": "#0d0d0d",
+  "hat": "cap",
+  "hatColor": "#111114",
+  "extras": [
+   "chain"
+  ],
+  "faceStyle": {
+   "brow": "#0d0d0d"
+  }
+ },
+ "mom": {
+  "build": "round",
+  "shirt": "#ff8fb1",
+  "front": "apron",
+  "frontAcc": "#ffffff",
+  "pants": "#7b5ea7",
+  "shoes": "#ffffff",
+  "skin": "#c68642",
+  "hair": "bun",
+  "hairColor": "#2a1a10",
+  "faceStyle": {
+   "blush": 1
+  }
+ },
+ "mayor": {
+  "preset": "mayor"
+ },
+ "cop": {
+  "build": "tall",
+  "shirt": "#2f5fb3",
+  "front": "buttons",
+  "frontAcc": "#ffd23f",
+  "pants": "#1f2a44",
+  "shoes": "#111111",
+  "skin": "#f1c27d",
+  "hair": "short",
+  "hairColor": "#3a2a1c",
+  "hat": "cap",
+  "hatColor": "#1f2a44",
+  "faceStyle": {
+   "mustache": "#3a2a1c"
+  }
+ },
+ "boss": {
+  "build": "round",
+  "shirt": "#1b1b1f",
+  "front": "suit",
+  "frontAcc": "#8e0e0e",
+  "pants": "#1b1b1f",
+  "shoes": "#000000",
+  "skin": "#e0ac69",
+  "hair": "bald",
+  "hairColor": "#222222",
+  "extras": [
+   "chain"
+  ],
+  "faceStyle": {
+   "glasses": "#111111",
+   "mustache": "#222222"
+  }
+ },
+ "granny": {
+  "build": "small",
+  "shirt": "#b39ddb",
+  "front": "buttons",
+  "frontAcc": "#ffffff",
+  "pants": "#6d4c41",
+  "shoes": "#6d4c41",
+  "skin": "#e8b98f",
+  "hair": "bun",
+  "hairColor": "#e0e0e0",
+  "faceStyle": {
+   "glasses": "#444444",
+   "blush": 1
+  }
+ },
+ "dog": {
+  "kind": "dog",
+  "coat": "#8d5a3b",
+  "ears": "#5a3420",
+  "patch": "#fbf3e6"
+ },
+ "kid": {
+  "preset": "me"
+ },
+ "baker": {
+  "preset": "baker"
+ },
+ "chief": {
+  "preset": "chief"
+ },
+ "teacher": {
+  "preset": "teacher"
+ },
+ "shop": {
+  "preset": "shop"
+ },
+ "jeweler": {
+  "preset": "jeweler"
+ },
+ "knight": {
+  "preset": "knight"
+ },
+ "criminalFat": {
+  "build": "chonk",
+  "shirt": "#16161a",
+  "front": "hoodie",
+  "frontAcc": "#e53935",
+  "sleeves": "#16161a",
+  "pants": "#3b4252",
+  "shoes": "#e53935",
+  "skin": "#c68642",
+  "hair": "spiky",
+  "hairColor": "#0d0d0d",
+  "hat": "cap",
+  "hatColor": "#111114",
+  "extras": [
+   "chain"
+  ],
+  "faceStyle": {
+   "brow": "#0d0d0d"
+  }
+ },
+ "criminalSkinny": {
+  "build": "skinny",
+  "shirt": "#16161a",
+  "front": "hoodie",
+  "frontAcc": "#e53935",
+  "sleeves": "#16161a",
+  "pants": "#3b4252",
+  "shoes": "#e53935",
+  "skin": "#c68642",
+  "hair": "spiky",
+  "hairColor": "#0d0d0d",
+  "hat": "cap",
+  "hatColor": "#111114",
+  "extras": [
+   "chain"
+  ],
+  "faceStyle": {
+   "brow": "#0d0d0d"
+  }
+ },
+ "alex": {
+  "build": "adult",
+  "shirt": "#ff7eb6",
+  "front": "dress",
+  "frontAcc": "#ffffff",
+  "pants": "#ff7eb6",
+  "shoes": "#ffffff",
+  "skin": "#e0ac69",
+  "hair": "long",
+  "hairColor": "#5a3218",
+  "faceStyle": {
+   "blush": 1,
+   "lashes": 1
+  }
+ },
+ "mayorSkinny": {
+  "preset": "mayor",
+  "build": "skinny"
+ },
+ "mayorFat": {
+  "preset": "mayor",
+  "build": "chonk"
+ },
+ "richKid": {
+  "build": "skinny",
+  "shirt": "#1d2a4a",
+  "front": "suit",
+  "frontAcc": "#d4af37",
+  "sleeves": "#1d2a4a",
+  "pants": "#1d2a4a",
+  "shoes": "#111111",
+  "skin": "#f1c27d",
+  "hair": "side",
+  "hairColor": "#e8c35a",
+  "faceStyle": {
+   "glasses": "#d4af37"
+  }
+ },
+ "richKidFat": {
+  "build": "chonk",
+  "shirt": "#1d2a4a",
+  "front": "suit",
+  "frontAcc": "#d4af37",
+  "sleeves": "#1d2a4a",
+  "pants": "#1d2a4a",
+  "shoes": "#111111",
+  "skin": "#f1c27d",
+  "hair": "side",
+  "hairColor": "#e8c35a",
+  "faceStyle": {
+   "glasses": "#d4af37"
+  }
+ },
+ "poor": {
+  "build": "chonk",
+  "shirt": "#8d6e63",
+  "front": "buttons",
+  "frontAcc": "#5d4037",
+  "pants": "#455a64",
+  "shoes": "#3e2723",
+  "skin": "#c68642",
+  "hair": "messy",
+  "hairColor": "#3b2416"
+ },
+ "doctor": {
+  "build": "tall",
+  "shirt": "#ffffff",
+  "front": "coat",
+  "frontAcc": "#9ad0ff",
+  "sleeves": "#ffffff",
+  "pants": "#3a5a80",
+  "shoes": "#222222",
+  "skin": "#f5d0b0",
+  "hair": "short",
+  "hairColor": "#5b5b5b",
+  "faceStyle": {
+   "glasses": "#1d1a22"
+  }
+ }
+}
