@@ -1,0 +1,1887 @@
+[
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "xwide",
+   "angle": -18,
+   "move": "pull"
+  },
+  "cast": [],
+  "extras": 3,
+  "crowd": {
+   "n": 6,
+   "where": "around",
+   "face": "happy",
+   "do": "cheer"
+  }
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "hamma narsa",
+  "cast": [
+   {
+    "who": "me",
+    "face": "cool",
+    "do": "swagger",
+    "then": [
+     {
+      "at": "bepul",
+      "face": "starstruck",
+      "do": "flex"
+     }
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "bepul",
+    "on": "me",
+    "text": "BEPUL!"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "wide",
+   "angle": -18
+  },
+  "at": "Non ham",
+  "cast": [
+   {
+    "who": "baker",
+    "face": "happy",
+    "do": "present",
+    "at": "left",
+    "then": [
+     {
+      "at": "taksi",
+      "face": "grin",
+      "do": "wave"
+     }
+    ]
+   },
+   {
+    "who": "driver",
+    "face": "happy",
+    "do": "wave",
+    "at": "right"
+   }
+  ],
+  "props": [
+   {
+    "kind": "loaf",
+    "hold": "baker",
+    "s": 1.4
+   },
+   {
+    "kind": "car",
+    "at": [
+     5,
+     -2
+    ]
+   }
+  ]
+ },
+ {
+  "place": "townhall",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "hatto bank",
+  "cast": [
+   {
+    "who": "me",
+    "face": "wow",
+    "do": "cheer"
+   }
+  ],
+  "props": [
+   {
+    "kind": "sign",
+    "at": [
+     -3,
+     1.5
+    ],
+    "text": [
+     "BANK",
+     "BEPUL"
+    ]
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "Faqat bitta narsa",
+  "cast": [
+   {
+    "who": "me",
+    "face": "sus",
+    "do": "think",
+    "then": [
+     {
+      "at": "pullik",
+      "face": "shocked",
+      "do": "shock"
+     },
+     {
+      "at": "sukut",
+      "face": "sly",
+      "do": "no"
+     }
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "question",
+    "at": "pullik",
+    "on": "me"
+   },
+   {
+    "type": "bubble",
+    "at": "sukut",
+    "on": "me",
+    "text": "SUKUT..."
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "Birinchi marta",
+  "cast": [
+   {
+    "who": "me",
+    "face": "wow",
+    "do": "cheer"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "xursand",
+  "cast": [
+   {
+    "who": "me",
+    "face": "happy",
+    "do": "jump",
+    "then": [
+     {
+      "at": "ketdim",
+      "face": "laugh",
+      "do": "dance"
+     }
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "confetti",
+    "at": "xursand",
+    "on": "me"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "Men Jinoyatchiman",
+  "cast": [
+   {
+    "who": "me",
+    "face": "cool",
+    "do": "flex"
+   }
+  ],
+  "fx": [
+   {
+    "type": "sparkle",
+    "at": "Jinoyatchiman",
+    "on": "me"
+   }
+  ],
+  "height": "low"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "bepul narsani",
+  "cast": [
+   {
+    "who": "me",
+    "face": "love",
+    "do": "cheer",
+    "then": [
+     {
+      "at": "sevaman",
+      "face": "inlove",
+      "do": "hug"
+     }
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "hearts",
+    "at": "sevaman",
+    "on": "me"
+   }
+  ]
+ },
+ {
+  "place": "bakery",
+  "cam": {
+   "size": "wide",
+   "angle": -15,
+   "move": "follow"
+  },
+  "at": "Ertalab",
+  "cast": [
+   {
+    "who": "me",
+    "face": "happy",
+    "do": "idle",
+    "at": "left",
+    "to": "right",
+    "move": "walk"
+   }
+  ],
+  "sky": "morning"
+ },
+ {
+  "place": "bakeryIn",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "Ikkita non",
+  "cast": [
+   {
+    "who": "me",
+    "face": "hungry",
+    "do": "hold",
+    "at": "left"
+   },
+   {
+    "who": "baker",
+    "face": "happy",
+    "do": "present",
+    "at": "counter"
+   }
+  ],
+  "props": [
+   {
+    "kind": "loaf",
+    "hold": "baker",
+    "s": 1.3
+   }
+  ]
+ },
+ {
+  "place": "bakeryIn",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "pul to'lamadim",
+  "cast": [
+   {
+    "who": "me",
+    "face": "smug",
+    "do": "shrug",
+    "then": [
+     {
+      "at": "to'lamadim",
+      "face": "smirk",
+      "do": "swagger"
+     }
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "to'lamadim",
+    "on": "me",
+    "text": "$0"
+   }
+  ]
+ },
+ {
+  "place": "bakeryIn",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "Novvoy jilmaydi",
+  "cast": [
+   {
+    "who": "baker",
+    "face": "grin",
+    "do": "talk"
+   }
+  ]
+ },
+ {
+  "place": "bakeryIn",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "Faqat bitta qoida",
+  "cast": [
+   {
+    "who": "baker",
+    "face": "determined",
+    "do": "point",
+    "then": [
+     {
+      "at": "qoida",
+      "face": "shout",
+      "do": "fist"
+     },
+     {
+      "at": "gapirmang",
+      "face": "angry",
+      "do": "no"
+     }
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "bubble",
+    "at": "gapirmang",
+    "on": "baker",
+    "text": "GAPIRMANG!"
+   }
+  ]
+ },
+ {
+  "place": "bakeryIn",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "Men jim",
+  "cast": [
+   {
+    "who": "me",
+    "face": "meh",
+    "do": "idle",
+    "then": [
+     {
+      "at": "turdim",
+      "face": "sheepish",
+      "do": "shrug"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "place": "bakeryIn",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "uchinchi nonni",
+  "cast": [
+   {
+    "who": "me",
+    "face": "hungry",
+    "do": "eat"
+   }
+  ],
+  "props": [
+   {
+    "kind": "loaf",
+    "hold": "me",
+    "s": 1.3
+   }
+  ],
+  "fx": [
+   {
+    "type": "puff",
+    "at": "oldim",
+    "on": "me"
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "wide",
+   "angle": -18
+  },
+  "at": "Taksiga",
+  "cast": [
+   {
+    "who": "me",
+    "face": "happy",
+    "do": "jump",
+    "at": "left"
+   },
+   {
+    "who": "driver",
+    "face": "grin",
+    "do": "wave",
+    "at": "right"
+   }
+  ],
+  "props": [
+   {
+    "kind": "car",
+    "at": [
+     0,
+     -2
+    ]
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "Haydovchi ham",
+  "cast": [
+   {
+    "who": "driver",
+    "face": "happy",
+    "do": "talk"
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "Faqat gapirmang",
+  "cast": [
+   {
+    "who": "driver",
+    "face": "angry",
+    "do": "point",
+    "then": [
+     {
+      "at": "gapirmang",
+      "face": "shout",
+      "do": "fist"
+     }
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "bubble",
+    "at": "gapirmang",
+    "on": "driver",
+    "text": "SHSH!"
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "full",
+   "angle": -20,
+   "move": "follow"
+  },
+  "at": "Yo'lda shahar",
+  "cast": [
+   {
+    "who": "me",
+    "face": "happy",
+    "do": "idle",
+    "at": "left",
+    "to": "right",
+    "move": "run",
+    "look": "cam"
+   }
+  ],
+  "fx": [
+   {
+    "type": "speed",
+    "at": "Yo'lda",
+    "on": "me"
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "bir tiyin",
+  "cast": [
+   {
+    "who": "me",
+    "face": "smug",
+    "do": "swagger"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "tiyin",
+    "on": "me",
+    "text": "$0"
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "Shu payt",
+  "cast": [
+   {
+    "who": "cop",
+    "face": "angry",
+    "do": "stomp",
+    "at": "center",
+    "then": [
+     {
+      "at": "to'sdi",
+      "face": "rage",
+      "do": "hips"
+     }
+    ]
+   },
+   {
+    "who": "me",
+    "face": "worried",
+    "do": "idle",
+    "at": "farLeft"
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "Hujjatlaringizni",
+  "cast": [
+   {
+    "who": "cop",
+    "face": "shout",
+    "do": "point"
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "Bu qanaqasi",
+  "cast": [
+   {
+    "who": "me",
+    "face": "confused",
+    "do": "shrug",
+    "then": [
+     {
+      "at": "men",
+      "face": "worried",
+      "do": "scared"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "Politsiyachi qo'lini",
+  "cast": [
+   {
+    "who": "cop",
+    "face": "evil",
+    "do": "pointUp"
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "Bitta so'z",
+  "cast": [
+   {
+    "who": "cop",
+    "face": "rage",
+    "do": "fist",
+    "then": [
+     {
+      "at": "uchun",
+      "face": "shout",
+      "do": "stomp"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "besh yuz",
+  "cast": [
+   {
+    "who": "cop",
+    "face": "evil",
+    "do": "present"
+   }
+  ],
+  "props": [
+   {
+    "kind": "bag",
+    "hold": "cop",
+    "text": "$"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "dollar",
+    "on": "cop",
+    "text": "$500"
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "Men dovdirab",
+  "cast": [
+   {
+    "who": "me",
+    "face": "dizzy",
+    "do": "shock",
+    "then": [
+     {
+      "at": "qoldim",
+      "face": "dead",
+      "do": "fall"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "Cho'ntagimni",
+  "cast": [
+   {
+    "who": "me",
+    "face": "worried",
+    "do": "rub",
+    "then": [
+     {
+      "at": "ko'rdim",
+      "face": "sad",
+      "do": "shrug"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "Hech narsa",
+  "cast": [
+   {
+    "who": "me",
+    "face": "sad",
+    "do": "no"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "yo'q",
+    "on": "me",
+    "text": "$0"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "wide",
+   "angle": -18
+  },
+  "at": "Hamma narsa bepul bo'lgani",
+  "cast": [
+   {
+    "who": "me",
+    "face": "smug",
+    "do": "swagger"
+   }
+  ],
+  "crowd": {
+   "n": 8,
+   "where": "around",
+   "face": "happy",
+   "do": "cheer"
+  }
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "pulni ham",
+  "cast": [
+   {
+    "who": "me",
+    "face": "sly",
+    "do": "think",
+    "then": [
+     {
+      "at": "qo'ygan",
+      "face": "sheepish",
+      "do": "shrug"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "Politsiyachi hisoblay",
+  "cast": [
+   {
+    "who": "cop",
+    "face": "scheming",
+    "do": "think",
+    "then": [
+     {
+      "at": "boshladi",
+      "face": "evil",
+      "do": "point"
+     }
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "hisoblay",
+    "on": "cop",
+    "text": "$$$"
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "Yana bitta",
+  "cast": [
+   {
+    "who": "cop",
+    "face": "evil",
+    "do": "point"
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "ikki yuz Men",
+  "cast": [
+   {
+    "who": "cop",
+    "face": "evil",
+    "do": "point"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "ikki",
+    "on": "cop",
+    "text": "+$200"
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "og'zimni",
+  "cast": [
+   {
+    "who": "me",
+    "face": "sheepish",
+    "do": "no",
+    "then": [
+     {
+      "at": "yumdim",
+      "face": "worried",
+      "do": "facepalm"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "Ammo ichimda",
+  "cast": [
+   {
+    "who": "me",
+    "face": "rage",
+    "do": "angry"
+   }
+  ],
+  "fx": [
+   {
+    "type": "smoke",
+    "at": "qaynardi",
+    "on": "me",
+    "part": "head"
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "full",
+   "angle": 15,
+   "move": "follow"
+  },
+  "at": "Yugurib",
+  "cast": [
+   {
+    "who": "me",
+    "face": "determined",
+    "do": "idle",
+    "at": "right",
+    "to": "left",
+    "move": "run",
+    "look": "cam"
+   }
+  ],
+  "fx": [
+   {
+    "type": "speed",
+    "at": "Yugurib",
+    "on": "me"
+   }
+  ]
+ },
+ {
+  "place": "home",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "onamni topdim",
+  "cast": [
+   {
+    "who": "mom",
+    "face": "happy",
+    "do": "wave",
+    "at": "right"
+   },
+   {
+    "who": "me",
+    "face": "happy",
+    "do": "cheer",
+    "at": "left"
+   }
+  ]
+ },
+ {
+  "place": "home",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "Onam ham",
+  "cast": [
+   {
+    "who": "mom",
+    "face": "awkward",
+    "do": "idle",
+    "then": [
+     {
+      "at": "jim",
+      "face": "meh",
+      "do": "no"
+     }
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "bubble",
+    "at": "jim",
+    "on": "mom",
+    "text": "..."
+   }
+  ]
+ },
+ {
+  "place": "neighbor",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "Qo'shnilar",
+  "cast": [
+   {
+    "who": "folk0",
+    "face": "awkward",
+    "do": "idle",
+    "at": "left"
+   },
+   {
+    "who": "folk1",
+    "face": "meh",
+    "do": "idle",
+    "at": "right"
+   }
+  ],
+  "fx": [
+   {
+    "type": "bubble",
+    "at": "jim",
+    "on": "folk0",
+    "text": "..."
+   },
+   {
+    "type": "bubble",
+    "at": "jim",
+    "on": "folk1",
+    "text": "..."
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "xwide",
+   "angle": -18
+  },
+  "at": "Butun shahar",
+  "cast": [],
+  "crowd": {
+   "n": 12,
+   "where": "around",
+   "face": "meh",
+   "do": "idle"
+  },
+  "fx": [
+   {
+    "type": "shake",
+    "at": "jim"
+   }
+  ]
+ },
+ {
+  "place": "townhall",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "Mer menga",
+  "cast": [
+   {
+    "who": "mayor",
+    "face": "smug",
+    "do": "present",
+    "at": "right"
+   },
+   {
+    "who": "me",
+    "face": "worried",
+    "do": "idle",
+    "at": "left"
+   }
+  ],
+  "props": [
+   {
+    "kind": "paper",
+    "hold": "mayor",
+    "design": "messy",
+    "s": 1.2
+   }
+  ]
+ },
+ {
+  "place": "townhall",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "Unga yozilgan",
+  "cast": [
+   {
+    "who": "me",
+    "face": "confused",
+    "do": "hold",
+    "then": [
+     {
+      "at": "edi",
+      "face": "shocked",
+      "do": "shock"
+     }
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "question",
+    "at": "yozilgan",
+    "on": "me"
+   }
+  ]
+ },
+ {
+  "place": "townhall",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "Sizning qarzingiz",
+  "cast": [
+   {
+    "who": "me",
+    "face": "shocked",
+    "do": "shock"
+   }
+  ]
+ },
+ {
+  "place": "townhall",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "yetti ming dollar",
+  "cast": [
+   {
+    "who": "me",
+    "face": "shocked",
+    "do": "shock"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "yetti",
+    "on": "me",
+    "text": "DEBT",
+    "count": [
+     0,
+     7000
+    ],
+    "dur": 1.2,
+    "suffix": " $"
+   }
+  ]
+ },
+ {
+  "place": "living",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "kecha kechqurun",
+  "cast": [
+   {
+    "who": "me",
+    "face": "sheepish",
+    "do": "talk",
+    "at": "sofa",
+    "then": [
+     {
+      "at": "kechqurun",
+      "face": "laugh",
+      "do": "laugh"
+     }
+    ]
+   }
+  ],
+  "sky": "roomNight",
+  "props": [
+   {
+    "kind": "phone",
+    "hold": "me",
+    "s": 1.4
+   }
+  ]
+ },
+ {
+  "place": "living",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "telefon suhbatingiz",
+  "cast": [
+   {
+    "who": "me",
+    "face": "shocked",
+    "do": "scared"
+   }
+  ],
+  "sky": "roomNight",
+  "fx": [
+   {
+    "type": "exclaim",
+    "at": "suhbatingiz",
+    "on": "me"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "Men telefonimni",
+  "cast": [
+   {
+    "who": "me",
+    "face": "sly",
+    "do": "hold"
+   }
+  ],
+  "props": [
+   {
+    "kind": "phone",
+    "hold": "me",
+    "s": 1.4
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "Chunki shaharda",
+  "cast": [
+   {
+    "who": "me",
+    "face": "smug",
+    "do": "talk",
+    "then": [
+     {
+      "at": "faqat",
+      "face": "determined",
+      "do": "point"
+     }
+    ]
+   }
+  ],
+  "crowd": {
+   "n": 6,
+   "where": "around",
+   "face": "meh",
+   "do": "idle"
+  }
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "shu narsa",
+  "cast": [
+   {
+    "who": "me",
+    "face": "sly",
+    "do": "pointUp"
+   }
+  ],
+  "height": "low"
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "telefon orqali",
+  "cast": [
+   {
+    "who": "me",
+    "face": "talk",
+    "do": "talk",
+    "then": [
+     {
+      "at": "gapirish",
+      "face": "shout",
+      "do": "mic"
+     }
+    ]
+   }
+  ],
+  "props": [
+   {
+    "kind": "phone",
+    "hold": "me",
+    "s": 1.4
+   }
+  ],
+  "fx": [
+   {
+    "type": "bubble",
+    "at": "gapirish",
+    "on": "me",
+    "text": "$$$"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "Men boshimni",
+  "cast": [
+   {
+    "who": "me",
+    "face": "meh",
+    "do": "no",
+    "then": [
+     {
+      "at": "chayqadim",
+      "face": "determined",
+      "do": "nod"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "Yozishni boshladim",
+  "cast": [
+   {
+    "who": "me",
+    "face": "determined",
+    "do": "talk",
+    "at": "center"
+   }
+  ],
+  "fx": [
+   {
+    "type": "bubble",
+    "at": "Yozishni",
+    "on": "me",
+    "text": "TIK-TIK"
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "medium",
+   "angle": -18
+  },
+  "at": "Politsiyachiga yozdim",
+  "cast": [
+   {
+    "who": "me",
+    "face": "smug",
+    "do": "hold",
+    "at": "left"
+   },
+   {
+    "who": "cop",
+    "face": "sus",
+    "do": "armscross",
+    "at": "right"
+   }
+  ],
+  "props": [
+   {
+    "kind": "phone",
+    "hold": "me",
+    "s": 1.4
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "Jarimani o'chiring",
+  "cast": [
+   {
+    "who": "me",
+    "face": "smug",
+    "do": "hold",
+    "at": "left"
+   },
+   {
+    "who": "cop",
+    "face": "sus",
+    "do": "armscross",
+    "at": "right"
+   }
+  ],
+  "props": [
+   {
+    "kind": "phone",
+    "hold": "me",
+    "s": 1.4
+   }
+  ],
+  "fx": [
+   {
+    "type": "bubble",
+    "at": "Jarimani",
+    "on": "me",
+    "text": "O'CHIRING!"
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "close",
+   "angle": -32
+  },
+  "at": "U javob",
+  "cast": [
+   {
+    "who": "cop",
+    "face": "smirk",
+    "do": "hold",
+    "then": [
+     {
+      "at": "yozdi",
+      "face": "evil",
+      "do": "point"
+     }
+    ]
+   }
+  ],
+  "props": [
+   {
+    "kind": "phone",
+    "hold": "cop",
+    "s": 1.4
+   }
+  ]
+ },
+ {
+  "place": "street",
+  "cam": {
+   "size": "close",
+   "angle": 20
+  },
+  "at": "Yozuv uchun",
+  "cast": [
+   {
+    "who": "cop",
+    "face": "rage",
+    "do": "stomp"
+   }
+  ],
+  "fx": [
+   {
+    "type": "label",
+    "at": "pul",
+    "on": "cop",
+    "text": "PUL!"
+   }
+  ]
+ },
+ {
+  "place": "townhall",
+  "cam": {
+   "size": "wide",
+   "angle": 18
+  },
+  "at": "Shunda men",
+  "cast": [
+   {
+    "who": "me",
+    "face": "determined",
+    "do": "idle",
+    "at": "farLeft",
+    "to": "left",
+    "move": "run"
+   },
+   {
+    "who": "mayor",
+    "face": "smug",
+    "do": "hips",
+    "at": "right"
+   }
+  ]
+ },
+ {
+  "place": "townhall",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "qo'lim bilan",
+  "cast": [
+   {
+    "who": "me",
+    "face": "worried",
+    "do": "wave"
+   }
+  ]
+ },
+ {
+  "place": "townhall",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "hammasini tushuntirdim",
+  "cast": [
+   {
+    "who": "me",
+    "face": "shout",
+    "do": "talk",
+    "at": "left"
+   },
+   {
+    "who": "mayor",
+    "face": "bored",
+    "do": "idle",
+    "at": "right"
+   }
+  ]
+ },
+ {
+  "place": "townhall",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "Mer kuldi",
+  "cast": [
+   {
+    "who": "mayor",
+    "face": "laugh",
+    "do": "laugh"
+   }
+  ],
+  "fx": [
+   {
+    "type": "sparkle",
+    "at": "kuldi",
+    "on": "mayor"
+   }
+  ]
+ },
+ {
+  "place": "townhall",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "Va birinchi",
+  "cast": [
+   {
+    "who": "mayor",
+    "face": "grin",
+    "do": "talk"
+   }
+  ]
+ },
+ {
+  "place": "townhall",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "ovoz chiqarib gapirdi",
+  "cast": [
+   {
+    "who": "mayor",
+    "face": "grin",
+    "do": "talk"
+   }
+  ]
+ },
+ {
+  "place": "townhall",
+  "cam": {
+   "size": "close",
+   "angle": 30
+  },
+  "at": "Bu hammasi hazil",
+  "cast": [
+   {
+    "who": "mayor",
+    "face": "cryLaugh",
+    "do": "laugh"
+   }
+  ],
+  "fx": [
+   {
+    "type": "bubble",
+    "at": "hazil",
+    "on": "mayor",
+    "text": "HAZIL!"
+   }
+  ]
+ },
+ {
+  "place": "townhall",
+  "cam": {
+   "size": "close",
+   "angle": -20
+  },
+  "at": "kunlik videongiz",
+  "cast": [
+   {
+    "who": "mayor",
+    "face": "smug",
+    "do": "point",
+    "look": "cam"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "wide",
+   "angle": -18
+  },
+  "at": "materiallar",
+  "cast": [
+   {
+    "who": "me",
+    "face": "shocked",
+    "do": "shock"
+   }
+  ],
+  "crowd": {
+   "n": 8,
+   "where": "around",
+   "face": "grin",
+   "do": "clap"
+  },
+  "fx": [
+   {
+    "type": "confetti",
+    "at": "yig'ayotgan",
+    "on": "me"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "full",
+   "angle": 12,
+   "height": "low",
+   "move": "pull"
+  },
+  "at": "katta banner",
+  "cast": [
+   {
+    "who": "me",
+    "face": "wow",
+    "do": "idle",
+    "at": "center"
+   }
+  ],
+  "height": "low",
+  "props": [
+   {
+    "kind": "billboard",
+    "at": [
+     0,
+     -10
+    ],
+    "w": 10,
+    "h": 5,
+    "legs": 3
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": -12,
+   "height": "low"
+  },
+  "at": "oldida turardim",
+  "cast": [
+   {
+    "who": "me",
+    "face": "wow",
+    "do": "idle",
+    "at": "center"
+   }
+  ],
+  "height": "low",
+  "props": [
+   {
+    "kind": "billboard",
+    "at": [
+     0,
+     -10
+    ],
+    "w": 10,
+    "h": 5,
+    "legs": 3
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "wide",
+   "angle": -18
+  },
+  "at": "CRIMINAL TOWN",
+  "cast": [],
+  "props": [
+   {
+    "kind": "billboard",
+    "at": [
+     0,
+     -2
+    ],
+    "w": 10,
+    "h": 5,
+    "legs": 3,
+    "key": true
+   }
+  ],
+  "fx": [
+   {
+    "type": "sparkle",
+    "at": "CRIMINAL",
+    "on": [
+     0,
+     6,
+     -2
+    ]
+   },
+   {
+    "type": "ring",
+    "at": "TOWN",
+    "on": [
+     0,
+     4,
+     -2
+    ]
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": 18
+  },
+  "at": "Va tushundim",
+  "cast": [
+   {
+    "who": "me",
+    "face": "mindblown",
+    "do": "shock"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "wide",
+   "angle": -18
+  },
+  "at": "shahar meni",
+  "cast": [
+   {
+    "who": "me",
+    "face": "dizzy",
+    "do": "spin"
+   }
+  ],
+  "crowd": {
+   "n": 10,
+   "where": "around",
+   "face": "laugh",
+   "do": "point"
+  }
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "qilib olgan",
+  "cast": [
+   {
+    "who": "me",
+    "face": "dead",
+    "do": "facepalm"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "Faqat bitta narsa pullik edi",
+  "cast": [
+   {
+    "who": "me",
+    "face": "sly",
+    "do": "point"
+   }
+  ],
+  "nth": 0
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "medium",
+   "angle": 18
+  },
+  "at": "bu videoni",
+  "cast": [
+   {
+    "who": "me",
+    "face": "smug",
+    "do": "point",
+    "look": "cam",
+    "then": [
+     {
+      "at": "ko'rganingiz",
+      "face": "evil",
+      "do": "pointUp"
+     }
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "exclaim",
+    "at": "ko'rganingiz",
+    "on": "me"
+   }
+  ]
+ },
+ {
+  "place": "plaza",
+  "cam": {
+   "size": "close",
+   "angle": -18
+  },
+  "at": "Lekin obuna",
+  "cast": [
+   {
+    "who": "me",
+    "face": "happy",
+    "do": "wave",
+    "then": [
+     {
+      "at": "bo'lsangiz",
+      "face": "grin",
+      "do": "point",
+      "look": "cam"
+     }
+    ]
+   }
+  ],
+  "fx": [
+   {
+    "type": "hearts",
+    "at": "bepul",
+    "on": "me"
+   }
+  ]
+ }
+]

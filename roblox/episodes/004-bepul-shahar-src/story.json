@@ -1,0 +1,87 @@
+{
+ "title": "Mening shahrimda hamma narsa bepul #shorts",
+ "rule": "Mening shahrimda hamma narsa bepul.",
+ "cast": {
+  "me": {
+   "build": "adult",
+   "shirt": "#16161a",
+   "front": "hoodie",
+   "frontAcc": "#e53935",
+   "sleeves": "#16161a",
+   "pants": "#3b4252",
+   "shoes": "#e53935",
+   "skin": "#c68642",
+   "hair": "spiky",
+   "hairColor": "#0d0d0d",
+   "hat": "cap",
+   "hatColor": "#111114",
+   "extras": [
+    "chain"
+   ],
+   "faceStyle": {
+    "brow": "#0d0d0d"
+   }
+  },
+  "mom": {
+   "build": "round",
+   "shirt": "#ff8fb1",
+   "front": "apron",
+   "frontAcc": "#ffffff",
+   "pants": "#7b5ea7",
+   "shoes": "#ffffff",
+   "skin": "#c68642",
+   "hair": "bun",
+   "hairColor": "#2a1a10",
+   "faceStyle": {
+    "blush": 1
+   }
+  },
+  "mayor": {
+   "preset": "mayor"
+  },
+  "cop": {
+   "build": "tall",
+   "shirt": "#2f5fb3",
+   "front": "buttons",
+   "frontAcc": "#ffd23f",
+   "pants": "#1f2a44",
+   "shoes": "#111111",
+   "skin": "#f1c27d",
+   "hair": "short",
+   "hairColor": "#3a2a1c",
+   "hat": "cap",
+   "hatColor": "#1f2a44",
+   "faceStyle": {
+    "mustache": "#3a2a1c"
+   }
+  },
+  "baker": {
+   "preset": "baker"
+  },
+  "driver": {
+   "build": "adult",
+   "shirt": "#f2c200",
+   "front": "jacket",
+   "frontAcc": "#1a1a1a",
+   "sleeves": "#f2c200",
+   "pants": "#2b2b33",
+   "shoes": "#111111",
+   "skin": "#d9a066",
+   "hair": "short",
+   "hairColor": "#1d1208",
+   "hat": "cap",
+   "hatColor": "#f2c200",
+   "faceStyle": {
+    "mustache": "#1d1208"
+   }
+  }
+ },
+ "captionMerge": [],
+ "paragraphs": [
+  {
+   "text": "Mening shahrimda hamma narsa bepul. Non ham, taksi ham, hatto bank ham. Faqat bitta narsa pullik: sukut. Birinchi marta bilganimda xursand bo'lib ketdim. Men Jinoyatchiman, bepul narsani sevaman. Ertalab novvoyxonaga kirdim. Ikkita non oldim, pul to'lamadim. Novvoy jilmaydi: \"Bepul. Faqat bitta qoida: gapirmang.\" Men jim turdim, uchinchi nonni ham oldim. Taksiga o'tirdim. Haydovchi ham jilmaydi: \"Bepul. Faqat gapirmang.\" Yo'lda shahar bo'ylab aylandim, bir tiyin to'lamadim. Shu payt politsiyachi yo'limni to'sdi. \"Hujjatlaringizni ko'rsating.\" \"Bu qanaqasi, men...\" Politsiyachi qo'lini ko'tardi. \"Bitta so'z uchun besh yuz dollar jarima.\" Men dovdirab qoldim. Cho'ntagimni ko'rdim. Hech narsa yo'q. Hamma narsa bepul bo'lgani uchun pulni ham ishlatmay qo'ygan edim. Politsiyachi hisoblay boshladi. \"Yana bitta so'z, ikki yuz.\" Men og'zimni yumdim. Ammo ichimda gap qaynardi. Yugurib bordim, onamni topdim. Onam ham jim. Qo'shnilar ham jim. Butun shahar jim. Mer menga qog'oz uzatdi. Unga yozilgan edi: \"Sizning qarzingiz: yetti ming dollar. Sababi: kecha kechqurun uyda bo'lgan telefon suhbatingiz.\" Men telefonimni oldim. Chunki shaharda faqat shu narsa pullik edi: telefon orqali gapirish. Men boshimni chayqadim. Yozishni boshladim. Politsiyachiga yozdim: \"Jarimani o'chiring.\" U javob yozdi: \"Yozuv uchun ham pul.\" Shunda men mer oldiga bordim, qo'lim bilan ishora qildim, hammasini tushuntirdim. Mer kuldi. Va birinchi marta ovoz chiqarib gapirdi: \"Bu hammasi hazil edi. Sizning kunlik videongiz uchun materiallar yig'ayotgan edik.\" Men katta banner oldida turardim: CRIMINAL TOWN. Va tushundim, shahar meni video qilib olgan edi. Faqat bitta narsa pullik edi: bu videoni ko'rganingiz. Lekin obuna bo'lsangiz, bepul.",
+   "mood": "playful",
+   "pause": 0.1
+  }
+ ]
+}
