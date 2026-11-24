@@ -206,7 +206,16 @@
     wheelbarrow: (g) => T.PROP.wheelbarrow(g, 0, 0, 0),
     crayons: (g) => T.PROP.crayons(g, 0, 0, 0, 1),
     cage: (g, o) => T.PROP.cage(g, 0, 0, o.r || 3, o.h || 6),
-    sword: (g) => T.PROP.sword(g),
+    sword: (g, o) => T.PROP.sword(g, o.style),
+    block: (g, o) => T.PROP.block(g, o.style || "grass", o.size || 1.6),
+    blocks: (g, o) => T.PROP.blocks(g, o.style || "grass", o.w || 3, o.h || 2, o.d || 1, o.size || 1.6),
+    tnt: (g, o) => T.PROP.block(g, "tnt", o.size || 1.6),
+    blockHouse: (g) => T.PROP.blockHouse(g),
+    slime: (g, o) => T.PROP.slime(g, o.color),
+    soap: (g, o) => T.PROP.soap(g, o.color),
+    mic: (g) => T.PROP.mic(g),
+    bubbleWrap: (g) => T.PROP.bubbleWrap(g),
+    laptop: (g, o) => T.PROP.laptop(g, o.color),
     shield: (g) => T.PROP.shield(g),
     ball: (g, o) => T.PROP.ball(g, o.color || "#ff4d6d"),
     stick: (g) => T.PROP.stick(g),
@@ -622,8 +631,23 @@
           // the blade continues out of the fist along the forearm (-Y of the hand): down at the side, up in a guard, over the head in a swing
           const upright = act === "guard" || act === "salute" || act === "hold"; // in a guard the blade stands up out of the fist; in a swing it continues the arm
           pr.g.quaternion.copy(q).multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), pr.p.kind === "sword" ? (upright ? Math.PI / 2 : Math.PI) : (upright ? 0 : Math.PI / 2)));
+          if (upright && pr.p.kind === "sword") {   // a raised blade leans out to the side, never up through the face
+            const ry = a.root.rotation.y, fwd = new THREE.Vector3(Math.sin(ry), 0, Math.cos(ry)), side = (pr.p.hand || "R") === "R" ? 1 : -1;
+            pr.g.quaternion.premultiply(new THREE.Quaternion().setFromAxisAngle(fwd, side * (window.__TILT ?? 0.6)));
+          }
+          if (pr.p.style === "reaper" && !["slash", "kick", "flail", "spin", "throw"].includes(act)) {
+            // a door-sized blade rests on the shoulder: from the fist up and back, past the side of the head
+            const ry = a.root.rotation.y, side = (pr.p.hand || "R") === "R" ? -1 : 1;
+            const fwd = new THREE.Vector3(Math.sin(ry), 0, Math.cos(ry)), rt = new THREE.Vector3(Math.cos(ry), 0, -Math.sin(ry));
+            const dir = new THREE.Vector3(0, 1, 0).multiplyScalar(0.8).addScaledVector(fwd, -0.55).addScaledVector(rt, side * 0.35).normalize();
+            pr.g.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir);
+            // it sits on the shoulder, not in front of the chest
+            const shp = V(); a.arm[pr.p.hand || "R"].getWorldPosition(shp); const sc = a.root.scale.x || 1;
+            shp.addScaledVector(rt, side * 0.45 * sc).addScaledVector(fwd, -0.15 * sc).addScaledVector(dir, -1.6 * sc);
+            pr.g.position.copy(shp); pr.g.position.y += m.y; pr.__placed = true;
+          } else pr.__placed = false;
           const dn = new THREE.Vector3(0, -1, 0).applyQuaternion(q).multiplyScalar(0.3 * (a.root.scale.x || 1));
-          pr.g.position.set(hp.x + dn.x, hp.y + dn.y + m.y, hp.z + dn.z);
+          if (!pr.__placed) pr.g.position.set(hp.x + dn.x, hp.y + dn.y + m.y, hp.z + dn.z);
         }
       } else pr.g.position.set(pr.base.x, pr.base.y + m.y, pr.base.z);
       pr.g.scale.setScalar(pr.base.s * m.s);
@@ -919,6 +943,32 @@
       pos = tgt.clone().add(new THREE.Vector3(off.x * cs - off.z * sn, off.y, off.x * sn + off.z * cs));
     }
     else if (mv === "zoom") fov = sol.fov * (1 - 0.12 * e);
+    // ---- big moves (pack 6): start/end are clamped so the lens never enters a building
+    else if (mv === "craneDown" || mv === "craneUp" || mv === "topDown") {
+      // from high above, looking down, sweeping to eye level (craneUp: the reverse)
+      const k = mv === "craneUp" ? e : 1 - e, H = (mv === "topDown" ? 1.25 : 0.7) * sol.d * (cam.speed || 1);
+      const back = tgt.clone().addScaledVector(sol.f, -sol.d * (1 - 0.25 * k));
+      pos = back; pos.y += H * k; fov = sol.fov * (1 + 0.1 * k);
+    }
+    else if (mv === "sweep" || mv === "sweepL") {
+      const ang = (mv === "sweep" ? 1 : -1) * (e - 0.5) * 55 * DEG * (cam.speed || 1);
+      const off = pos.clone().sub(tgt), cs = Math.cos(ang), sn = Math.sin(ang);
+      pos = tgt.clone().add(new THREE.Vector3(off.x * cs - off.z * sn, off.y, off.x * sn + off.z * cs));
+    }
+    else if (mv === "whip" || mv === "whipL") {
+      // fast swing in over the first 0.3 s, then a slow settle
+      const w = 1 - Math.pow(1 - Math.min(1, u * dur / 0.3), 3);
+      const ang = (mv === "whip" ? 1 : -1) * (1 - w) * 28 * DEG;
+      const off = pos.clone().sub(tgt), cs = Math.cos(ang), sn = Math.sin(ang);
+      tgt = pos.clone().sub(new THREE.Vector3(off.x * cs - off.z * sn, off.y, off.x * sn + off.z * cs));
+      pos = pos.clone().addScaledVector(sol.f, 0.04 * sol.d * e);
+    }
+    else if (mv === "dutch") { const k = 1 - amt * e; pos = tgt.clone().addScaledVector(sol.f, -sol.d * k); }
+    else if (mv === "dolly") { const k = 1 - 0.38 * e * (cam.speed || 1); pos = tgt.clone().addScaledVector(sol.f, -sol.d * k); }
+    else if (mv === "snapzoom") { const w = Math.min(1, u * dur / 0.18); fov = sol.fov * (1 - 0.32 * w); }
+    else if (mv === "vertigo") { const k = 1 - 0.3 * e; pos = tgt.clone().addScaledVector(sol.f, -sol.d * k); fov = 2 * Math.atan(Math.tan(sol.fov / 2 * DEG) / k) / DEG; }
+    else if (mv === "rise") { pos.y += (e - 0.3) * 0.45 * sol.d; tgt.y += (e - 0.3) * 0.15 * sol.d; }
+    else if (mv === "lowSlide") { pos.y = Math.max(0.8, pos.y - 0.35 * sol.d); const off = (e - 0.5) * 0.35 * sol.d; pos.addScaledVector(sol.r, off); }
     else if (mv === "follow" && s.cast.length) {
       const who = s.cast.find((x) => !cam.on || !cam.on.length || cam.on.indexOf(x.who) >= 0) || s.cast[0];
       const pm = posAt(who, (s.start + s.end) / 2).p, pn = posAt(who, T0).p;
@@ -931,7 +981,9 @@
     const s = c.shot, cam = s.cam0, mv = moveOf(s);
     const { pos, tgt, fov } = camPose(s, sol, c.dur > 0 ? c.t / c.dur : 0, c.T);
     if (!cam.locked) { const T0 = c.T, d = pos.distanceTo(tgt), hx = 0.012 * d * Math.sin(T0 * 1.3) + 0.006 * d * Math.sin(T0 * 3.1), hy = 0.008 * d * Math.sin(T0 * 1.7 + 1); pos.x += hx; pos.y += hy; tgt.x += hx * 0.4; } // handheld drift
-    c.cam([pos.x, pos.y, pos.z], [tgt.x, tgt.y, tgt.z], fov);
+    const uu = c.dur > 0 ? c.t / c.dur : 0;
+    const roll = cam.roll ? cam.roll * DEG : (mv === "dutch" ? (0.1 + 0.06 * E.io(uu)) * (cam.side || 1) : (mv === "whip" || mv === "whipL") ? (mv === "whip" ? -1 : 1) * 0.08 * Math.max(0, 1 - uu * (s.end - s.start) / 0.35) : 0);
+    c.cam([pos.x, pos.y, pos.z], [tgt.x, tgt.y, tgt.z], fov, roll);
     if (cam.shake || mv === "shake") c.shake(cam.shake || 0.12);
     for (const f of s.fx) if (f.type === "shake" && c.T >= f.t0 && c.T < f.t0 + (f.dur || 0.6)) c.shake((f.amount || 0.25) * (1 - T.prog(c.T, f.t0, f.t0 + (f.dur || 0.6))));
   }
@@ -1059,12 +1111,17 @@
     if (!s.solved) {
       unstick(c);
       s.solved = solve(c);
-      for (const u of [0, 0.5, 1]) { const p = camPose(s, s.solved, u, T.lerp(s.start, s.end, u)).pos; if (blockedAt(p, s)) { s.moveOverride = "still"; break; } }
+      const pathBad = () => { for (const u of [0, 0.2, 0.4, 0.6, 0.8, 1]) { const p = camPose(s, s.solved, u, T.lerp(s.start, s.end, u)).pos; if (blockedAt(p, s)) return true; } return false; };
+      if (pathBad()) {
+        // a big move that would cross a wall: try a softer move of the same family, then a push, then still
+        const soft = { craneDown: "down", craneUp: "up", topDown: "down", sweep: "orbit", sweepL: "orbitL", dolly: "push", vertigo: "zoom", rise: "up", lowSlide: "right" }[moveOf(s)];
+        for (const m of [soft, "push", "still"]) { if (!m) continue; s.moveOverride = m; if (!pathBad()) break; }
+      }
       if (!s.moveOverride && moveOf(s) !== "still") {
-        for (const u of [0.02, 0.98]) {
+        for (const u of [0.02, 0.5, 0.98]) {
           const tt = T.lerp(s.start, s.end, u); stage(c, tt); T.scene.updateMatrixWorld(true);
           const p = camPose(s, s.solved, u, tt).pos;
-          if (hidden(p, subjects(s), solidMeshes(), s.solved.r).some((h) => h.frac >= 0.4)) { s.moveOverride = "still"; break; }
+          if (hidden(p, subjects(s), solidMeshes(), s.solved.r).some((h) => h.frac >= 0.4)) { s.moveOverride = ["sweep", "sweepL", "craneDown", "topDown"].includes(moveOf(s)) ? "push" : "still"; break; }
         }
       }
     }

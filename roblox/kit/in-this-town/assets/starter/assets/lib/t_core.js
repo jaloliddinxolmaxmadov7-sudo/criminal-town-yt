@@ -237,7 +237,7 @@
     T.booted = true;
   };
   T.PRELOAD = Object.assign({ banner: "assets/img/banner.jpg" }, T.PRELOAD || {});
-  for (const f of ["angry", "blink", "content", "creepy", "cry", "dizzy", "happy", "laugh", "nerd", "nervous", "neutral", "oh", "sad", "scared", "shocked", "sleepy", "smile", "smirk", "sparkle", "sparkle_oh", "squeeze", "stare", "talk", "wink"]) T.PRELOAD["face_" + f] = "assets/img/faces/" + f + ".png";
+  for (const f of ["angry", "blink", "content", "creepy", "cry", "dizzy", "happy", "laugh", "nerd", "nervous", "neutral", "oh", "sad", "scared", "shocked", "sleepy", "smile", "smirk", "sparkle", "sparkle_oh", "squeeze", "stare", "talk", "wink", "fBlush", "fConfused", "fCringe", "fCry", "fDetermined", "fDisgust", "fDrowsy", "fEvil", "fFurious", "fGasp", "fGrin", "fGrin2", "fGrit", "fHeart", "fLaugh", "fLaugh2", "fLove", "fPanic", "fPout", "fSad", "fShock", "fShy", "fSinister", "fSleepy", "fSmirk", "fSmug", "fStars", "fStarstruck", "fTerrified", "fWail", "fWorried", "fYell", "gWhisper", "gZen", "gBliss", "gRage", "gNervous", "gSus", "gYawn", "gKiss", "gDizzy", "gMoney", "gSneaky", "gPlead", "gProud", "gBored", "gHappyWow", "gScream"]) T.PRELOAD["face_" + f] = "assets/img/faces/" + f + ".png";
   T._builders = [];
   T.onBoot = (fn) => T._builders.push(fn);
 

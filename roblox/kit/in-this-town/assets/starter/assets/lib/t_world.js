@@ -472,13 +472,48 @@
     for (const y of [0.3, h - 0.1]) { const ring = T.mesh(new THREE.TorusGeometry(r, 0.22, 8, 40), bars, 0, y, 0); ring.rotation.x = Math.PI / 2; g.add(ring); g.userData.bars.push(ring); }
     T.shadowAll(g); return g;
   };
-  P.sword = (parent) => {
+  P.sword = (parent, style) => {
     const g = T.group(parent);
-    g.add(T.mesh(T.box(0.22, 3.4, 0.06), M("#e6ebf2", { r: 0.2, m: 0.85 }), 0, 2.1, 0));
-    g.add(T.mesh(T.rbox(1.3, 0.22, 0.3, 0.06), M("#c9a227", { r: 0.3, m: 0.7 }), 0, 0.35, 0));
-    g.add(T.mesh(T.cyl(0.13, 0.13, 0.8, 8), M("#5a3a22"), 0, -0.1, 0));
+    if (style === "reaper") {   // a huge cleaver-like blade with a wrapped grip (a death god's sword)
+      g.add(T.mesh(T.box(0.75, 4.6, 0.08), M("#1c1f26", { r: 0.25, m: 0.8 }), 0.18, 2.9, 0));
+      g.add(T.mesh(T.box(0.18, 4.6, 0.09), M("#e6ebf2", { r: 0.15, m: 0.9 }), -0.28, 2.9, 0));
+      g.add(T.mesh(T.cyl(0.15, 0.15, 1.1, 8), M("#f2f2f2", { r: 0.8 }), 0, 0.05, 0));
+      for (let k = 0; k < 4; k++) { const w = T.mesh(T.box(0.34, 0.08, 0.34), M("#1a1a1a"), 0, -0.35 + k * 0.25, 0); w.rotation.y = 0.785; g.add(w); }
+    } else if (style === "pixel") {   // a blocky game sword: stepped cyan blade, dark guard
+      const bl = M("#5ee6f0", { r: 0.25, m: 0.2 }), ed = M("#2bb6c4", { r: 0.3 });
+      for (let k = 0; k < 7; k++) g.add(T.mesh(T.box(0.42 - (k === 6 ? 0.16 : 0), 0.42, 0.14), k % 2 ? ed : bl, 0, 0.6 + k * 0.42, 0));
+      g.add(T.mesh(T.box(1.3, 0.3, 0.18), M("#3b2a1a"), 0, 0.35, 0)); g.add(T.mesh(T.box(0.26, 0.8, 0.16), M("#6b4a2b"), 0, -0.15, 0));
+    } else if (style === "pickaxe") {
+      g.add(T.mesh(T.box(0.24, 3.2, 0.24), M("#7a5230"), 0, 1.2, 0));
+      const hd = M("#5ee6f0", { r: 0.3 }); for (let k = -3; k <= 3; k++) g.add(T.mesh(T.box(0.4, 0.36, 0.26), hd, k * 0.36, 2.75 - Math.abs(k) * 0.14, 0));
+    } else {
+      g.add(T.mesh(T.box(0.22, 3.4, 0.06), M("#e6ebf2", { r: 0.2, m: 0.85 }), 0, 2.1, 0));
+      g.add(T.mesh(T.rbox(1.3, 0.22, 0.3, 0.06), M("#c9a227", { r: 0.3, m: 0.7 }), 0, 0.35, 0));
+      g.add(T.mesh(T.cyl(0.13, 0.13, 0.8, 8), M("#5a3a22"), 0, -0.1, 0));
+    }
     T.shadowAll(g); return g;
   };
+  // ---- pack 6 props: game blocks, ASMR kit
+  const pixTex = (cols, n = 8, seed = 1) => { const c = T.canvas(64, 64), q = c.getContext("2d"), r = T.rng(seed); for (let y = 0; y < n; y++) for (let x = 0; x < n; x++) { q.fillStyle = cols[Math.floor(r() * cols.length)]; q.fillRect(x * 64 / n, y * 64 / n, 64 / n, 64 / n); } const t = T.tex(c); t.magFilter = THREE.NearestFilter; return t; };
+  P.block = (parent, kind = "grass", size = 1.6) => {
+    const TOP = { grass: ["#5fae3b", "#4e9a2e", "#6cc046"], dirt: ["#8a5a35", "#7a4d2c", "#996640"], stone: ["#8c8c8c", "#7a7a7a", "#9a9a9a"], wood: ["#a47a45", "#8f6a3a", "#b6894f"], gold: ["#f2c230", "#e0a91e", "#ffd955"], diamond: ["#5ee6f0", "#40c9d6", "#a9f6fb"], obsidian: ["#1c1230", "#2a1b45", "#140c22"], tnt: ["#d32f2f"] };
+    const side = kind === "grass" ? ["#8a5a35", "#7a4d2c", "#996640"] : TOP[kind] || TOP.stone;
+    const mk = (cols, sd) => new THREE.MeshStandardMaterial({ map: pixTex(cols, 8, sd), roughness: 0.85 });
+    let mats;
+    if (kind === "tnt") {
+      const c = T.canvas(128, 128), q = c.getContext("2d"); q.fillStyle = "#d32f2f"; q.fillRect(0, 0, 128, 128); q.fillStyle = "#f5f5f5"; q.fillRect(0, 44, 128, 40); q.fillStyle = "#111"; q.font = "900 40px sans-serif"; q.textAlign = "center"; q.fillText("TNT", 64, 78);
+      for (let x = 8; x < 128; x += 22) { q.fillStyle = "#b71c1c"; q.fillRect(x, 0, 4, 44); q.fillRect(x, 84, 4, 44); }
+      const sm = new THREE.MeshStandardMaterial({ map: T.tex(c), roughness: 0.7 }), tp = mk(["#c62828", "#e0e0e0"], 5); mats = [sm, sm, tp, tp, sm, sm];
+    } else { const sm = mk(side, 2), tp = mk(TOP[kind] || TOP.stone, 3); mats = [sm, sm, tp, sm, sm, sm]; }
+    const m = new THREE.Mesh(new THREE.BoxGeometry(size, size, size), mats); m.position.y = size / 2; m.castShadow = m.receiveShadow = true; parent.add(m); return m;
+  };
+  P.blocks = (parent, kind = "grass", w = 3, h = 2, d = 1, size = 1.6) => { for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) for (let z = 0; z < d; z++) { const g = T.group(parent, (x - (w - 1) / 2) * size, y * size, (z - (d - 1) / 2) * size); P.block(g, y === h - 1 && kind === "grass" ? "grass" : kind === "grass" ? "dirt" : kind, size); } };
+  P.blockHouse = (parent) => { const g = T.group(parent); P.blocks(T.group(g, 0, 0, 0), "wood", 4, 3, 1); const r = T.group(g, 0, 4.8, 0); P.blocks(r, "stone", 5, 1, 1); const d = T.mesh(T.box(1.4, 2.6, 0.2), M("#5d4037"), 0, 1.3, 0.85); g.add(d); return g; };
+  P.slime = (parent, color = "#7cf29a") => { const g = T.group(parent); g.add(T.mesh(T.cyl(1.0, 0.8, 0.5, 20), M("#e0e0e0", { r: 0.3 }), 0, 0.25, 0)); const s = T.mesh(T.sph(0.85, 20, 12), M(color, { r: 0.1, m: 0.1 }), 0, 0.5, 0); s.scale.y = 0.45; g.add(s); return g; };
+  P.soap = (parent, color = "#ff9ecb") => { const g = T.group(parent); g.add(T.mesh(T.rbox(1.2, 0.5, 0.8, 0.2), M(color, { r: 0.35 }), 0, 0.25, 0)); for (let k = 0; k < 4; k++) g.add(T.mesh(T.rbox(0.25, 0.48, 0.78, 0.08), M(color, { r: 0.35 }), 0.85 + k * 0.32, 0.24, 0)); return g; };
+  P.mic = (parent) => { const g = T.group(parent); g.add(T.mesh(T.cyl(0.08, 0.08, 4.2, 8), M("#263238", { m: 0.5, r: 0.4 }), 0, 2.1, 0)); g.add(T.mesh(T.cyl(0.7, 0.7, 0.1, 16), M("#263238"), 0, 0.05, 0)); const hd = T.mesh(T.sph(0.32, 14, 10), M("#9e9e9e", { m: 0.6, r: 0.4 }), 0, 4.35, 0.1); g.add(hd); g.add(T.mesh(T.cyl(0.4, 0.4, 0.04, 16), M("#ffffff", { r: 0.9 }), 0, 4.35, 0.5)).rotation; return g; };
+  P.bubbleWrap = (parent) => { const g = T.group(parent); g.add(T.mesh(T.box(2.4, 0.06, 1.6), new THREE.MeshStandardMaterial({ color: "#dff6ff", transparent: true, opacity: 0.6, roughness: 0.1 }), 0, 0.03, 0)); for (let x = 0; x < 8; x++) for (let z = 0; z < 5; z++) g.add(T.mesh(T.sph(0.12, 8, 6), new THREE.MeshStandardMaterial({ color: "#ffffff", transparent: true, opacity: 0.7, roughness: 0.05 }), -1.05 + x * 0.3, 0.08, -0.6 + z * 0.3)); return g; };
+  P.laptop = (parent, screen = "#58d68d") => { const g = T.group(parent); g.add(T.mesh(T.box(1.8, 0.08, 1.2), M("#b0bec5", { m: 0.5, r: 0.3 }), 0, 0.04, 0)); const sc = T.group(g, 0, 0.08, -0.6); sc.rotation.x = -0.25; sc.add(T.mesh(T.box(1.8, 1.2, 0.06), M("#90a4ae", { m: 0.5 }), 0, 0.6, 0)); const m = M(screen, { r: 0.3 }); m.emissive = new THREE.Color(screen); m.emissiveIntensity = 0.7; sc.add(T.mesh(T.box(1.6, 1.0, 0.02), m, 0, 0.6, 0.04)); return g; };
   P.shield = (parent) => {
     const g = T.group(parent);
     const c = T.canvas(256, 320), q = c.getContext("2d");
@@ -624,11 +659,97 @@
     });
   });
 
+  // ---------------------------------------------------------------- street furniture pack (fills the town; big pieces become camera blockers)
+  const box2 = (g, w, h, d, m, x, y, z, r = 0.08) => { const o = T.mesh(T.rbox(w, h, d, r), m, x, y, z); g.add(o); return o; };
+  const glowM = (c, k = 1.2) => { const m = M(c, { r: 0.4 }); m.emissive = new THREE.Color(c); m.emissiveIntensity = k; return m; };
+  W.hydrant = (p, x, z) => { const g = T.group(p, x, 0, z), m = M("#d62828", { r: 0.45 });
+    g.add(T.mesh(T.cyl(0.42, 0.48, 1.4, 14), m, 0, 0.7, 0)); g.add(T.mesh(T.sph(0.44, 14, 8), m, 0, 1.45, 0)); { const _m = T.mesh(T.cyl(0.2, 0.2, 1.3, 10), m, 0, 1.0, 0); _m.rotation.z = Math.PI / 2; g.add(_m); }
+    g.add(T.mesh(T.cyl(0.6, 0.6, 0.18, 14), M("#9b1d1d", { r: 0.5 }), 0, 0.09, 0)); return g; };
+  W.bin = (p, x, z, c = "#2e7d32") => { const g = T.group(p, x, 0, z), m = M(c, { r: 0.6 });
+    g.add(T.mesh(T.cyl(0.6, 0.52, 1.8, 14), m, 0, 0.9, 0)); g.add(T.mesh(T.cyl(0.68, 0.68, 0.16, 14), M("#1b1b1f", { r: 0.5 }), 0, 1.85, 0));
+    box2(g, 0.5, 0.06, 0.06, M("#d9d9d9"), 0, 1.97, 0); return g; };
+  W.mailbox = (p, x, z, ry = 0) => { const g = T.group(p, x, 0, z), m = M("#1f4fa8", { r: 0.45 }); g.rotation.y = ry;
+    box2(g, 1.2, 1.6, 1.0, m, 0, 1.25, 0, 0.12); { const _m = T.mesh(T.cyl(0.6, 0.6, 1.0, 14, 1), m, 0, 2.05, 0); _m.rotation.x = Math.PI / 2; g.add(_m); }
+    for (const sx of [-0.45, 0.45]) box2(g, 0.15, 0.5, 0.8, M("#1b1b1f"), sx, 0.25, 0); box2(g, 0.7, 0.08, 0.05, M("#e6e6e6"), 0, 1.75, 0.52); return g; };
+  W.planter = (p, x, z, seed = 1) => { const g = T.group(p, x, 0, z), r = T.rng(seed + 40);
+    box2(g, 2.4, 0.9, 1.2, M("#8d6e63", { r: 0.8 }), 0, 0.45, 0, 0.1); box2(g, 2.2, 0.1, 1.0, M("#4e342e"), 0, 0.92, 0, 0.03);
+    const fl = ["#ff4d6d", "#ffd23f", "#ffffff", "#b388ff", "#ff8c42"];
+    for (let i = 0; i < 9; i++) { const fx = -0.9 + (i % 5) * 0.45, fz = i < 5 ? -0.2 : 0.25; g.add(T.mesh(T.cyl(0.04, 0.04, 0.5, 5), M("#2e7d32"), fx, 1.15, fz)); g.add(T.mesh(T.sph(0.2, 8, 6), M(fl[Math.floor(r() * 5)], { r: 0.6 }), fx, 1.45, fz)); }
+    return g; };
+  W.bush = (p, x, z, s = 1, seed = 1) => { const g = T.group(p, x, 0, z), r = T.rng(seed + 9); g.scale.setScalar(s);
+    for (let i = 0; i < 5; i++) { const m = T.mesh(T.sph(0.8 + r() * 0.4, 12, 8), M(["#3f9e3a", "#4cb048", "#2f8a2c"][i % 3], { r: 0.9 }), (r() - 0.5) * 1.6, 0.7 + r() * 0.4, (r() - 0.5) * 1.2); g.add(m); } return g; };
+  W.car = (p, x, z, ry = 0, c = "#e53935", seed = 1) => { const g = T.group(p, x, 0, z); g.rotation.y = ry;
+    const body = M(c, { r: 0.35, m: 0.25 }), glass = M("#9fd3ff", { r: 0.1, m: 0.4 }), tyre = M("#1b1b1f", { r: 0.8 });
+    box2(g, 2.6, 1.0, 5.2, body, 0, 1.0, 0, 0.3); box2(g, 2.3, 0.95, 2.8, body, 0, 1.95, -0.25, 0.3);
+    box2(g, 2.35, 0.7, 2.5, glass, 0, 1.98, -0.25, 0.2); box2(g, 2.62, 0.25, 0.1, M("#fff7cc"), 0, 1.15, 2.62, 0.05);
+    for (const sx of [-0.85, 0.85]) { box2(g, 0.5, 0.25, 0.08, glowM("#fff4c2", 0.6), sx, 1.15, 2.62, 0.05); box2(g, 0.5, 0.25, 0.08, glowM("#ff2a2a", 0.6), sx, 1.15, -2.62, 0.05); }
+    for (const [wx, wz] of [[-1.25, 1.6], [1.25, 1.6], [-1.25, -1.6], [1.25, -1.6]]) { const w = T.mesh(T.cyl(0.55, 0.55, 0.4, 14), tyre, wx, 0.55, wz); w.rotation.z = Math.PI / 2; g.add(w); { const _m = T.mesh(T.cyl(0.28, 0.28, 0.42, 10), M("#cfd3da", { m: 0.6, r: 0.3 }), wx, 0.55, wz); _m.rotation.z = Math.PI / 2; g.add(_m); } }
+    (W.props = W.props || []).push(g); return g; };
+  W.busStop = (p, x, z, ry = 0) => { const g = T.group(p, x, 0, z); g.rotation.y = ry; const fr = M("#37474f", { r: 0.4, m: 0.4 });
+    box2(g, 5, 0.2, 2.2, fr, 0, 4.1, 0); for (const sx of [-2.4, 2.4]) box2(g, 0.18, 4.1, 0.18, fr, sx, 2.05, -0.9);
+    const gl = new THREE.MeshStandardMaterial({ color: "#bfe6ff", transparent: true, opacity: 0.35, roughness: 0.1 }); g.add(T.mesh(T.plane(4.6, 3.2), gl, 0, 2.3, -1.0));
+    box2(g, 3.6, 0.25, 0.8, M("#a0662f"), 0, 1.3, -0.5); box2(g, 1.6, 1.0, 0.1, M("#ffd23f"), -2.4, 4.8, 0);
+    const c = T.canvas(256, 160), q = c.getContext("2d"); q.fillStyle = "#ffd23f"; q.fillRect(0, 0, 256, 160); q.fillStyle = "#111"; q.font = "900 90px sans-serif"; q.textAlign = "center"; q.fillText("BUS", 128, 115);
+    g.add(T.mesh(T.plane(1.5, 0.9), new THREE.MeshStandardMaterial({ map: T.tex(c) }), -2.4, 4.8, 0.06)); (W.props = W.props || []).push(g); return g; };
+  W.trafficLight = (p, x, z, ry = 0) => { const g = T.group(p, x, 0, z); g.rotation.y = ry; const d = M("#263238", { r: 0.4, m: 0.4 });
+    box2(g, 0.28, 6.2, 0.28, d, 0, 3.1, 0); box2(g, 0.9, 2.4, 0.7, d, 0, 6.6, 0.2, 0.12);
+    [["#ff3b30", 7.4], ["#ffcc00", 6.6], ["#34c759", 5.8]].forEach(([c, y], i) => g.add(T.mesh(T.sph(0.28, 12, 8), i === 2 ? glowM(c, 1.5) : M(c, { r: 0.3 }), 0, y, 0.58))); return g; };
+  W.vending = (p, x, z, ry = 0, c = "#e53935") => { const g = T.group(p, x, 0, z); g.rotation.y = ry;
+    box2(g, 2.0, 3.6, 1.4, M(c, { r: 0.4 }), 0, 1.8, 0, 0.1); box2(g, 1.3, 2.2, 0.05, glowM("#cdefff", 0.7), -0.2, 2.2, 0.72);
+    for (let r = 0; r < 4; r++) for (let k = 0; k < 3; k++) box2(g, 0.28, 0.4, 0.06, M(["#ff4d6d", "#ffd23f", "#4caf50", "#2196f3"][(r + k) % 4]), -0.6 + k * 0.4, 1.4 + r * 0.5, 0.75, 0.04);
+    box2(g, 0.3, 0.9, 0.06, M("#222"), 0.75, 2.3, 0.72, 0.03); (W.props = W.props || []).push(g); return g; };
+  W.stall = (p, x, z, ry = 0, c = "#ff4d6d", seed = 1) => { const g = T.group(p, x, 0, z), r = T.rng(seed + 77); g.rotation.y = ry;
+    box2(g, 4, 1.4, 2, M("#a0662f", { r: 0.8 }), 0, 0.7, 0); for (const sx of [-1.9, 1.9]) for (const sz of [-0.9, 0.9]) box2(g, 0.15, 3.6, 0.15, M("#5d4037"), sx, 1.8, sz);
+    const st = new THREE.MeshStandardMaterial({ map: T.tex((() => { const cv = T.canvas(256, 64), q = cv.getContext("2d"); for (let i = 0; i < 8; i++) { q.fillStyle = i % 2 ? "#ffffff" : c; q.fillRect(i * 32, 0, 32, 64); } return cv; })()), roughness: 0.7 });
+    const aw = T.mesh(T.rbox(4.6, 0.2, 2.6, 0.05), st, 0, 3.7, 0); aw.rotation.x = -0.15; g.add(aw);
+    for (let i = 0; i < 14; i++) g.add(T.mesh(T.sph(0.22, 10, 8), M(["#ff3b30", "#ffcc00", "#ff9500", "#34c759"][Math.floor(r() * 4)], { r: 0.5 }), -1.6 + (i % 7) * 0.53, 1.6, i < 7 ? -0.4 : 0.35));
+    (W.props = W.props || []).push(g); return g; };
+  W.phoneBooth = (p, x, z, ry = 0) => { const g = T.group(p, x, 0, z); g.rotation.y = ry; const m = M("#c62828", { r: 0.4 });
+    box2(g, 1.8, 4.4, 1.8, m, 0, 2.2, 0, 0.1); box2(g, 1.3, 2.6, 0.05, M("#cfefff", { r: 0.1 }), 0, 2.4, 0.92); box2(g, 1.9, 0.4, 1.9, m, 0, 4.6, 0, 0.12);
+    box2(g, 1.4, 0.35, 0.05, glowM("#ffffff", 0.6), 0, 4.0, 0.92); (W.props = W.props || []).push(g); return g; };
+  W.flagLine = (p, x0, z0, x1, z1, y = 6.4, seed = 1) => { const g = T.group(p), n = Math.round(Math.hypot(x1 - x0, z1 - z0) / 1.2), cols = ["#ff4d6d", "#ffd23f", "#4fc3f7", "#81c784", "#ba68c8"];
+    const line = T.mesh(T.cyl(0.03, 0.03, Math.hypot(x1 - x0, z1 - z0), 4), M("#333"), (x0 + x1) / 2, y, (z0 + z1) / 2, { cast: false }); line.rotation.z = Math.PI / 2; line.rotation.y = -Math.atan2(z1 - z0, x1 - x0); g.add(line);
+    for (let i = 1; i < n; i++) { const k = i / n, sag = Math.sin(k * Math.PI) * 0.8; const f = T.mesh(new THREE.ConeGeometry(0.35, 0.8, 3), M(cols[(i + seed) % 5], { r: 0.7 }), x0 + (x1 - x0) * k, y - sag - 0.4, z0 + (z1 - z0) * k, { cast: false }); f.rotation.x = Math.PI; g.add(f); }
+    return g; };
+  W.pole = (p, x, z) => { const g = T.group(p, x, 0, z); (W.poles = W.poles || []).push(g); box2(g, 0.4, 11, 0.4, M("#6d4c41", { r: 0.9 }), 0, 5.5, 0); box2(g, 3.4, 0.25, 0.25, M("#5d4037"), 0, 10.2, 0); for (const sx of [-1.4, 1.4]) g.add(T.mesh(T.cyl(0.12, 0.12, 0.35, 6), M("#cfd8dc"), sx, 10.45, 0)); return g; };
+  W.crates = (p, x, z, seed = 1) => { const g = T.group(p, x, 0, z), r = T.rng(seed + 5), wd = M("#b07a3e", { r: 0.9 });
+    box2(g, 1.3, 1.3, 1.3, wd, 0, 0.65, 0, 0.05); box2(g, 1.3, 1.3, 1.3, wd, 1.4, 0.65, 0.2, 0.05).rotation.y = 0.3; box2(g, 1.1, 1.1, 1.1, wd, 0.6, 1.85, 0.1, 0.05).rotation.y = -0.2;
+    g.add(T.mesh(T.cyl(0.6, 0.6, 1.5, 14), M("#455a64", { r: 0.5, m: 0.3 }), -1.4, 0.75, 0.3)); return g; };
+  W.picnic = (p, x, z, ry = 0) => { const g = T.group(p, x, 0, z); g.rotation.y = ry; const wd = M("#a0662f", { r: 0.8 });
+    box2(g, 3.4, 0.22, 1.6, wd, 0, 1.6, 0); for (const sz of [-1.3, 1.3]) box2(g, 3.4, 0.18, 0.6, wd, 0, 0.95, sz); for (const sx of [-1.3, 1.3]) box2(g, 0.2, 1.6, 2.8, wd, sx, 0.8, 0, 0.04);
+    g.add(T.mesh(T.cyl(0.07, 0.07, 3.2, 6), M("#eeeeee"), 0, 2.6, 0)); const um = T.mesh(new THREE.ConeGeometry(2.2, 0.9, 8), M("#ff7043", { r: 0.7 }), 0, 4.1, 0); g.add(um); (W.props = W.props || []).push(g); return g; };
+  W.statue = (p, x, z, ry = 0) => { const g = T.group(p, x, 0, z); g.rotation.y = ry; const st = M("#b0bec5", { r: 0.6 }), gold = M("#f2c230", { r: 0.3, m: 0.7 });
+    box2(g, 3, 2, 3, st, 0, 1, 0, 0.1); box2(g, 1.2, 1.8, 0.7, gold, 0, 3.0, 0, 0.1); box2(g, 1.0, 1.0, 1.0, gold, 0, 4.4, 0, 0.15); box2(g, 0.4, 1.6, 0.4, gold, 0.8, 4.3, 0, 0.08).rotation.z = 0.5; box2(g, 0.6, 1.8, 0.6, gold, -0.3, 1.6 + 0.4, 0, 0.08);
+    (W.props = W.props || []).push(g); return g; };
+
+  T.onBoot(() => {
+    const t = W.town; if (!t) return;
+    // plaza edges
+    W.planter(t, -24, 8, 1); W.planter(t, 24, 8, 2); W.planter(t, -14, -16, 3); W.planter(t, 14, -16, 4);
+    W.bin(t, -20, 18); W.bin(t, 21, 17, "#455a64"); W.hydrant(t, 29, 24); W.mailbox(t, -29, 16, Math.PI / 2);
+    W.vending(t, 30, 2, -Math.PI / 2); W.stall(t, -30, 4, Math.PI / 2, "#ff4d6d", 1); W.stall(t, -30, -10, Math.PI / 2, "#4fc3f7", 2);
+    W.phoneBooth(t, 30, -10, -Math.PI / 2); W.picnic(t, 22, -12, 0.3); W.statue(t, -22, -14, 0.5);
+    for (const [x, z, s] of [[-26, 22, 1], [26, 22, 1.1], [-33, -16, 1.2], [33, 14, 1], [-8, -20, 0.8], [8, -20, 0.8]]) W.bush(t, x, z, s, x + z);
+    W.flagLine(t, -27, -20, 27, -20, 6.6, 3); W.flagLine(t, -27, -20, -27, 20, 6.6, 2); W.flagLine(t, 27, -20, 27, 20, 6.6, 4);
+    // the road south of the plaza: a bus stop, traffic lights, parked cars
+    W.busStop(t, -16, 35.5, Math.PI); W.trafficLight(t, -7.5, 34, Math.PI / 2); W.trafficLight(t, 8.2, 36, -Math.PI / 2);
+    W.car(t, 40, 27, Math.PI / 2, "#1e88e5"); W.car(t, -46, 31, -Math.PI / 2, "#fdd835");
+    // main street: sidewalk things on both sides, parked cars away from the action spot (z 66)
+    const SW = [[42, 1], [48, -1], [58, 1], [80, -1], [88, 1], [100, -1], [112, 1], [126, -1], [134, 1]];
+    SW.forEach(([z, sx], i) => { const x = sx * 8.6; [W.hydrant, W.bin, W.mailbox, W.planter, W.bin, W.hydrant, W.planter, W.mailbox, W.bin][i](t, x, z, i); });
+    for (const [z, sx, c] of [[44, -1, "#e53935"], [92, 1, "#43a047"], [104, -1, "#8e24aa"], [128, 1, "#fb8c00"], [146, -1, "#00acc1"]]) W.car(t, sx * 4.4, z, 0, c);
+    for (const z of [46, 70, 94, 118, 142]) { W.pole(t, -10.5, z); }
+    for (let i = 0; i < 4; i++) { const z = 46 + i * 24; W.flagLine(t, -10.5, z, -10.5, z + 24, 9.8, i); }
+    W.crates(t, -33, -12, 3); W.bush(t, -12.5, 60, 0.9, 5); W.bush(t, 12.5, 82, 1, 6); W.bush(t, -12.5, 104, 0.9, 7); W.bush(t, 12.5, 126, 1, 8);
+  });
+
   // ---------------------------------------------------------------- blockers: boxes the camera may not stand inside
   T.onBoot(() => {
     const out = (W.blockers = []);
     const add = (o, pad = 0.4) => { o.updateMatrixWorld(true); const b = new THREE.Box3().setFromObject(o); b.expandByScalar(pad); out.push(b); return b; };
     for (const o of [W.school, W.hall, W.bakery, W.water, W.paperShop, W.jewelShop, ...W.houses, ...(W.billboards || [])]) add(o);
+    for (const o of W.props || []) add(o, 0.3);
+    for (const o of [...(W.lamps || []), ...(W.poles || [])]) add(o, 0.5);
     // trees: trunk + crown
     W.town.traverse((o) => { if (o.isMesh && o.geometry && o.geometry.parameters && o.geometry.parameters.width === 5.0 && o.geometry.parameters.depth === 5.0) add(o.parent, 0.3); });
   });

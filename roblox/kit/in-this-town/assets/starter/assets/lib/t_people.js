@@ -105,6 +105,9 @@
     if (open) { g.fillStyle = "#b3122a"; g.beginPath(); g.ellipse(128, my + mh / 2 - 8, 34, 10, 0, 0, 7); g.fill(); }
     g.fillStyle = "#f4eedc"; for (let i = 0; i < 9; i++) { const x = 52 + i * 19; g.beginPath(); g.moveTo(x, my - mh / 2 - 2); g.lineTo(x + 16, my - mh / 2 - 2); g.lineTo(x + 8, my - mh / 2 + (i % 2 ? 16 : 24)); g.closePath(); g.fill();
       g.beginPath(); g.moveTo(x + 4, my + mh / 2 + 2); g.lineTo(x + 18, my + mh / 2 + 2); g.lineTo(x + 11, my + mh / 2 - (i % 2 ? 12 : 18)); g.closePath(); g.fill(); }
+    const gc = T.canvas(256, 256), gg = gc.getContext("2d"); gg.fillStyle = "#000"; gg.fillRect(0, 0, 256, 256);
+    for (const x of xs) { const r = gg.createRadialGradient(x / 2, 54, 1, x / 2, 54, 14); r.addColorStop(0, "#ffffff"); r.addColorStop(0.35, eye); r.addColorStop(1, "rgba(0,0,0,0)"); gg.fillStyle = r; gg.beginPath(); gg.arc(x / 2, 54, 14, 0, 7); gg.fill(); }
+    c.glow = gc;
     return c;
   }
   function drawFace(st, ex) {
@@ -241,14 +244,20 @@
     starving: ["oh", { drool: 1 }], evilLaugh: ["laugh", { redEyes: 1 }], nervousLaugh: ["laugh", { sweat: 1 }], heartEyes: ["happy", { heartEyes: 1 }],
     volcano: ["angry", { rage: 1, steam: 1 }], petrified: ["scared", { ice: 1 }],
     focused: ["stare", { focusLines: 1 }], demonGrin: ["creepy", { fangs: 1 }], sweatDrop: ["neutral", { bigSweat: 1 }],
+    // pack 6: faces drawn in Google Flow
+    gWhisper: ["gWhisper"], gZen: ["gZen"], gBliss: ["gBliss"], gRage: ["gRage"], gNervous: ["gNervous"], gSus: ["gSus"], gYawn: ["gYawn"], gKiss: ["gKiss"], gDizzy: ["gDizzy"], gMoney: ["gMoney"], gSneaky: ["gSneaky"], gPlead: ["gPlead"], gProud: ["gProud"], gBored: ["gBored"], gHappyWow: ["gHappyWow"], gScream: ["gScream"],
+    fBlush: ["fBlush"], fConfused: ["fConfused"], fCringe: ["fCringe"], fCry: ["fCry"], fDetermined: ["fDetermined"], fDisgust: ["fDisgust"], fDrowsy: ["fDrowsy"], fEvil: ["fEvil"], fFurious: ["fFurious"], fGasp: ["fGasp"], fGrin: ["fGrin"], fGrin2: ["fGrin2"], fGrit: ["fGrit"], fHeart: ["fHeart"], fLaugh: ["fLaugh"], fLaugh2: ["fLaugh2"], fLove: ["fLove"], fPanic: ["fPanic"], fPout: ["fPout"], fSad: ["fSad"], fShock: ["fShock"], fShy: ["fShy"], fSinister: ["fSinister"], fSleepy: ["fSleepy"], fSmirk: ["fSmirk"], fSmug: ["fSmug"], fStars: ["fStars"], fStarstruck: ["fStarstruck"], fTerrified: ["fTerrified"], fWail: ["fWail"], fWorried: ["fWorried"], fYell: ["fYell"],
   };
-  T.FACE_PNGS = ["angry", "blink", "content", "creepy", "cry", "dizzy", "happy", "laugh", "nerd", "nervous", "neutral", "oh", "sad", "scared", "shocked", "sleepy", "smile", "smirk", "sparkle", "sparkle_oh", "squeeze", "stare", "talk", "wink"];
+  T.FACE_PNGS = ["angry", "blink", "content", "creepy", "cry", "dizzy", "happy", "laugh", "nerd", "nervous", "neutral", "oh", "sad", "scared", "shocked", "sleepy", "smile", "smirk", "sparkle", "sparkle_oh", "squeeze", "stare", "talk", "wink", "fBlush", "fConfused", "fCringe", "fCry", "fDetermined", "fDisgust", "fDrowsy", "fEvil", "fFurious", "fGasp", "fGrin", "fGrin2", "fGrit", "fHeart", "fLaugh", "fLaugh2", "fLove", "fPanic", "fPout", "fSad", "fShock", "fShy", "fSinister", "fSleepy", "fSmirk", "fSmug", "fStars", "fStarstruck", "fTerrified", "fWail", "fWorried", "fYell", "gWhisper", "gZen", "gBliss", "gRage", "gNervous", "gSus", "gYawn", "gKiss", "gDizzy", "gMoney", "gSneaky", "gPlead", "gProud", "gBored", "gHappyWow", "gScream"];
   EXPR.nerd = EXPR.nerd || { eyes: "big", brows: "flat", mouth: "grin" };
+  // pack 6 names fall back to a drawn face if the picture is missing
+  for (const [k, v] of Object.entries({"gWhisper": "gasp", "gZen": "dreamy", "gBliss": "dreamy", "gRage": "furious", "gNervous": "nervous", "gSus": "sus", "gYawn": "sleepy", "gKiss": "inlove", "gDizzy": "dizzy", "gMoney": "greedy", "gSneaky": "sneaky", "gPlead": "hopeful", "gProud": "proud", "gBored": "bored", "gHappyWow": "wow", "gScream": "screaming"})) EXPR[k] = EXPR[k] || EXPR[v] || EXPR.smile;
+  for (const [k, v] of Object.entries({"fBlush": "blushing", "fConfused": "confused", "fCringe": "disgust", "fCry": "cry", "fDetermined": "determined", "fDisgust": "disgust", "fDrowsy": "sleepy", "fEvil": "evil", "fFurious": "furious", "fGasp": "gasp", "fGrin": "happy", "fGrin2": "happy", "fGrit": "angry", "fHeart": "inlove", "fLaugh": "laugh", "fLaugh2": "laugh", "fLove": "inlove", "fPanic": "scared", "fPout": "sad", "fSad": "sad", "fShock": "shocked", "fShy": "blushing", "fSinister": "evil", "fSleepy": "sleepy", "fSmirk": "smirk", "fSmug": "smug", "fStars": "starstruck", "fStarstruck": "starstruck", "fTerrified": "terrified", "fWail": "cry", "fWorried": "worried", "fYell": "angry"})) EXPR[k] = EXPR[k] || EXPR[v] || EXPR.smile;
   T.faceTex = (st, name) => {
     const key = JSON.stringify(st) + "|" + name;
     const pm = PNGMAP[name], usePng = pm && T.IMAGES && T.IMAGES["face_" + pm[0]];
     const ex = usePng ? Object.assign({ png: pm[0] }, pm[1] || {}) : (EXPR[name] || EXPR.smile);
-    if (!faceCache.has(key)) faceCache.set(key, T.tex(drawFace(st, ex)));
+    if (!faceCache.has(key)) { const cv = drawFace(st, ex), tx = T.tex(cv); if (cv.glow) tx.userData = { glow: T.tex(cv.glow) }; faceCache.set(key, tx); }
     return faceCache.get(key);
   };
 
@@ -280,6 +289,10 @@
       g.fillStyle = "rgba(0,0,0,0.22)"; g.fillRect(36, 70, 60, 16); g.fillRect(160, 70, 60, 16);
       g.fillStyle = "#1a1a1a"; for (const y of [40, 100, 160]) { g.beginPath(); g.arc(128, y, 5, 0, 7); g.fill(); }
       g.fillStyle = a || "#c9a63a"; for (const x of [172, 188, 204]) { g.beginPath(); g.moveTo(x, 40); g.lineTo(x + 6, 52); g.lineTo(x + 12, 40); g.lineTo(x + 6, 46); g.closePath(); g.fill(); } },
+    kimono: (g, b, a) => { // a crossed robe: white under-collar in a V, the left side over the right, a sash
+      g.fillStyle = "#f4f4f4"; g.beginPath(); g.moveTo(70, 0); g.lineTo(128, 120); g.lineTo(186, 0); g.lineTo(160, 0); g.lineTo(128, 80); g.lineTo(96, 0); g.closePath(); g.fill();
+      g.strokeStyle = "rgba(0,0,0,0.35)"; g.lineWidth = 5; g.beginPath(); g.moveTo(186, 0); g.lineTo(110, 150); g.lineTo(110, 256); g.stroke();
+      g.fillStyle = a || "#f4f4f4"; g.fillRect(0, 168, 256, 30); g.fillStyle = "rgba(0,0,0,0.25)"; g.fillRect(0, 196, 256, 4); },
     guard: (g, b, a) => { // katana-guard uniform: high collar, white belt, a gold emblem
       g.fillStyle = "rgba(255,255,255,0.12)"; g.beginPath(); g.moveTo(80, 0); g.lineTo(128, 60); g.lineTo(176, 0); g.closePath(); g.fill();
       g.fillStyle = "#f2f2f2"; g.fillRect(0, 206, 256, 22); g.fillStyle = "rgba(0,0,0,0.35)"; g.fillRect(124, 0, 8, 206);
@@ -352,6 +365,36 @@
     imp: { legH: 0.9, legW: 0.7, legD: 0.75, torH: 1.1, torW: 1.5, torD: 1.0, armH: 1.2, armW: 0.62, head: 1.75 },     // small, big head, quick
   };
   T.BUILDS = BUILDS;
+  // ---- personalities: every actor stands, idles and walks in their own way (spec.persona, else picked from the seed)
+  const PERSONA = {
+    calm:    { pos: 0,     head: [0, 0],      spread: 0,     spd: 1,   amp: 1,   swag: 1,   walk: 1,    bounce: 0,    fidget: 0 },
+    proud:   { pos: -0.09, head: [-0.12, 0],  spread: 0.06,  spd: 0.8, amp: 0.9, swag: 1.9, walk: 1.1,  bounce: 0,    fidget: 0 },
+    shy:     { pos: 0.12,  head: [0.2, 0.1],  spread: -0.04, spd: 1.2, amp: 0.7, swag: 0.5, walk: 0.75, bounce: 0,    fidget: 0.3 },
+    lazy:    { pos: 0.15,  head: [0.08, 0.12],spread: 0.02,  spd: 0.5, amp: 1.3, swag: 0.8, walk: 0.7,  bounce: 0,    fidget: 0 },
+    nervous: { pos: 0.05,  head: [0.04, 0],   spread: -0.02, spd: 2.3, amp: 1.2, swag: 0.7, walk: 0.85, bounce: 0,    fidget: 1 },
+    tough:   { pos: -0.04, head: [-0.05, 0],  spread: 0.2,   spd: 0.7, amp: 0.8, swag: 1.6, walk: 1.15, bounce: 0,    fidget: 0 },
+    bouncy:  { pos: -0.02, head: [-0.04, 0],  spread: 0.05,  spd: 1.6, amp: 1.4, swag: 1.2, walk: 1.25, bounce: 0.05, fidget: 0 },
+    goofy:   { pos: 0.03,  head: [0, 0.14],   spread: 0.08,  spd: 1.3, amp: 2.2, swag: 1.4, walk: 1.1,  bounce: 0.025,fidget: 0.4 },
+    monster: { pos: 0.2,   head: [-0.1, 0],   spread: 0.26,  spd: 0.6, amp: 1.6, swag: 1.5, walk: 1.0,  bounce: 0,    fidget: 0 },
+  };
+  T.PERSONA = PERSONA;
+  const PLIST = ["calm", "proud", "shy", "lazy", "nervous", "tough", "bouncy", "goofy"];
+  // ---- how a face moves the head and chest (animated emotions)
+  const EMO = [
+    [/evil|devil|demonGrin|villain|sinister|gSneaky/i, (t) => ({ ch: [0.06 + 0.04 * Math.abs(Math.sin(t * 9)), 0, 0], hd: [-0.12 + 0.06 * Math.sin(t * 9), 0, 0.06] })],
+    [/laugh|lol|haha|joy|giggle|crack|grin(?!2)/i, (t) => ({ ch: [0.05 + 0.07 * Math.abs(Math.sin(t * 13)), 0, 0], hd: [-0.06 + 0.09 * Math.sin(t * 13), 0, 0.05 * Math.sin(t * 6)] })],
+    [/angry|rage|furious|volcano|annoy|fired|mad|grr|fume|yell|grit|gRage|gScream/i, (t) => ({ ch: [0.1, 0.03 * Math.sin(t * 31), 0], hd: [0.08, 0.05 * Math.sin(t * 29), 0], sh: 0.012 })],
+    [/scared|horrif|petrif|terrif|frozen|panic|fear|nervous|worried|gNervous|gPlead/i, (t) => ({ ch: [-0.07, 0.02 * Math.sin(t * 41), 0], hd: [-0.1 + 0.02 * Math.sin(t * 37), 0.03 * Math.sin(t * 43), 0], sh: 0.01 })],
+    [/sad|cry|sob|exhaust|sick|tired|depress|starving|unamused|wail|pout|disgust/i, (t) => ({ ch: [0.14, 0, 0], hd: [0.24 + 0.03 * Math.sin(t * 1.4), 0, 0.05] })],
+    [/shock|wideEyed|surpris|omg|electro|stunned|wow|gasp/i, (t) => ({ ch: [-0.1, 0, 0], hd: [-0.16, 0, 0], sh: /electro/i.test("") ? 0.02 : 0 })],
+    [/think|focus|suspic|hmm|curious|confus|gSus/i, (t) => ({ ch: [0.02, 0, 0], hd: [0.05, 0.1, 0.18 + 0.03 * Math.sin(t * 1.2)] })],
+    [/happy|champion|proud|smug|smirk|gProud|gMoney|gKiss|gZen|gBliss|excit|heart|love|star|greedy|relieved|sassy/i, (t) => ({ ch: [-0.05, 0.05 * Math.sin(t * 3), 0], hd: [-0.06, 0, 0.1 * Math.sin(t * 3)] })],
+    [/embarrass|cringe|shy|blush/i, (t) => ({ ch: [0.1, 0, 0], hd: [0.2, 0.25, 0.12] })],
+    [/snooz|sleep|hypno|possess|zombie|drowsy|gYawn/i, (t) => ({ ch: [0.12 + 0.03 * Math.sin(t * 1.1), 0, 0.04 * Math.sin(t * 0.8)], hd: [0.28 + 0.06 * Math.sin(t * 1.1), 0, 0.15 * Math.sin(t * 0.7)] })],
+  ];
+  function emoMotion(name, t) { if (!name) return null; for (const [re, f] of EMO) if (re.test(name)) return f(t); return null; }
+  T.emoMotion = emoMotion;
+
   class Actor {
     constructor(spec) {
       this.spec = spec;
@@ -365,13 +408,18 @@
       const shirtM = metal ? T.mat(spec.shirt, metal) : shirt;
       const front = spec.front ? new THREE.MeshStandardMaterial({ map: shirtTex(spec.front, spec.shirt || "#2f7de1", spec.frontAcc), roughness: metal ? 0.35 : 0.7, metalness: metal ? 0.6 : 0 }) : shirtM;
       this.torso = T.mesh(T.rbox(b.torW, b.torH, b.torD, 0.14), [shirtM, shirtM, shirtM, shirtM, front, shirtM], 0, b.torH / 2, 0);
-      body.add(this.torso);
+      // waist joint: the chest bends and twists over the hips; "up" keeps body coordinates
+      const WY = (this._W = b.torH * 0.4);
+      this.chest = T.group(body, 0, WY, 0); const up = (this.up = T.group(this.chest, 0, -WY, 0));
+      up.add(this.torso);
+      body.add(T.mesh(T.rbox(b.torW * 0.96, WY + 0.14, b.torD * 0.96, 0.12), shirtM, 0, WY / 2 - 0.02, 0)); // pelvis fill
       if (!spec.noBelt && spec.build !== "small") body.add(T.mesh(T.rbox(b.torW * 1.01, 0.18, b.torD * 1.02, 0.05), T.mat(spec.belt || "#1a1a1f", { r: 0.6 }), 0, 0.1, 0));
       // head on a neck pivot
-      this.neck = T.group(body, 0, b.torH + 0.04, 0);
+      this.neck = T.group(up, 0, b.torH + 0.04, 0);
       const H = b.head;
       this.faceStyle = Object.assign({ skin: spec.skin || "#f6c79a", brow: spec.hairColor || "#3b2416" }, spec.faceStyle || {});
       this.faceMat = new THREE.MeshStandardMaterial({ map: T.faceTex(this.faceStyle, "smile"), roughness: 0.6 });
+      if (this.faceStyle.monster) { this.faceMat.emissiveMap = (this.faceMat.map.userData || {}).glow || null; this.faceMat.emissive = new THREE.Color(this.faceMat.emissiveMap ? "#ffffff" : "#000000"); this.faceMat.emissiveIntensity = 1.3; } // glowing eyes
       this.head = T.mesh(T.rbox(H, H, H, H * 0.24, 5), [skin, skin, skin, skin, this.faceMat, skin], 0, H / 2, 0);
       this.neck.add(this.head);
       this.headTop = T.group(this.neck, 0, H, 0);
@@ -384,7 +432,7 @@
       const aD = b.armD || b.armW * 1.05, uH = b.armH / 2;
       for (const side of ["L", "R"]) {
         const sx = side === "L" ? 1 : -1;
-        const sh = T.group(body, sx * (b.torW / 2 + b.armW / 2 - 0.05), b.torH - 0.12, 0);
+        const sh = T.group(up, sx * (b.torW / 2 + b.armW / 2 - 0.05), b.torH - 0.12, 0);
         sh.userData.x0 = sh.position.x;
         const slM = metal ? T.mat(spec.sleeves || spec.shirt, metal) : sleeve, skM = spec.gloves ? T.mat(spec.gloves, metal || {}) : skin;
         sh.add(T.mesh(T.rbox(b.armW, uH + 0.14, aD, 0.12), sl >= uH * 0.6 ? slM : skM, 0, -uH / 2 + 0.1, 0));
@@ -395,7 +443,7 @@
         const hl = uH - fs;
         el.add(T.mesh(T.rbox(b.armW * 0.96, hl + 0.1, aD * 0.96, 0.14), skM, 0, -fs - hl / 2 + 0.02, 0));
         // joint caps: the shoulder and the elbow stay closed whatever the pose (no gaps, no floating arms)
-        const cap = T.mesh(T.rbox(b.armW * 0.98, b.armW * 0.92, aD * 0.98, 0.16), slM, sh.position.x - sx * 0.04, sh.position.y - 0.05, 0); body.add(cap);
+        const cap = T.mesh(T.rbox(b.armW * 0.98, b.armW * 0.92, aD * 0.98, 0.16), slM, sh.position.x - sx * 0.04, sh.position.y - 0.05, 0); up.add(cap);
         const ec = T.mesh(T.rbox(b.armW * 0.97, b.armW * 0.78, aD * 0.97, 0.2), fs > 0.1 || sl >= uH * 0.95 ? slM : skM, 0, el.position.y, 0); sh.add(ec);
         this.arm[side] = sh; this.elbow[side] = el;
         this.hand[side] = T.group(el, 0, -uH + 0.09, 0.05);
@@ -410,8 +458,10 @@
         hp.add(T.mesh(T.rbox(b.legW, tH + 0.12, b.legD, 0.12), pM, 0, -tH / 2 + 0.04, 0));
         const kn = T.group(hp, 0, -tH, 0);
         kn.add(T.mesh(T.rbox(b.legW * 0.98, tH - 0.2, b.legD * 0.98, 0.12), pM, 0, -(tH - 0.3) / 2, 0));
-        kn.add(T.mesh(T.rbox(b.legW * 1.04, 0.36, b.legD * 1.12, 0.12), shoes, 0, -tH + 0.18, 0.05));
-        kn.add(T.mesh(T.rbox(b.legW * 1.08, 0.1, b.legD * 1.16, 0.04), T.mat(spec.sole || "#f4f4f4", { r: 0.7 }), 0, -tH + 0.03, 0.05)); // the sole sits a hair below the shoe: no flicker where the faces meet
+        const an = T.group(kn, 0, -tH + 0.3, 0);
+        an.add(T.mesh(T.rbox(b.legW * 1.04, 0.36, b.legD * 1.12, 0.12), shoes, 0, -0.12, 0.05));
+        an.add(T.mesh(T.rbox(b.legW * 1.08, 0.1, b.legD * 1.16, 0.04), T.mat(spec.sole || "#f4f4f4", { r: 0.7 }), 0, -0.27, 0.05));
+        (this.ankle = this.ankle || {})[side] = an; // the sole sits a hair below the shoe: no flicker where the faces meet
         hp.add(T.mesh(T.rbox(b.legW * 0.97, b.legW * 0.7, b.legD * 0.97, 0.18), pM, 0, kn.position.y, 0)); // knee cap
         this.leg[side] = hp; this.knee[side] = kn;
       }
@@ -435,6 +485,7 @@
       this.blob.scale.set(Math.max(b.torW * 1.25, b.legW * 2.6), b.legD * 2.8, 1); this.blob.position.y = 0.03;
       root.add(this.blob); this._blobS = [this.blob.scale.x, this.blob.scale.y];
       this.seed = spec.seed || 1;
+      this.persona = spec.persona || (spec.monster || (spec.faceStyle && spec.faceStyle.monster) || /brute|stalker|hulk|imp/.test(spec.build || "") ? "monster" : PLIST[Math.abs(Math.round(this.seed * 7.3)) % PLIST.length]);
       this.expr = "smile";
     }
     _hair(spec, H) {
@@ -551,7 +602,7 @@
       const ex = spec.extras || [];
       const b = this.b;
       for (const e of ex) {
-        if (e === "sash") { const m = T.mesh(T.rbox(0.42, b.torH * 1.45, 0.08, 0.03), T.mat("#c8202a", { r: 0.5 }), 0, b.torH / 2, b.torD / 2 + 0.05); m.rotation.z = 0.62; this.body.add(m); const m2 = T.mesh(T.rbox(0.18, b.torH * 1.45, 0.09, 0.03), T.mat("#f0c23a", { r: 0.4, m: 0.4 }), 0, b.torH / 2, b.torD / 2 + 0.06); m2.rotation.z = 0.62; this.body.add(m2); }
+        if (e === "sash") { const m = T.mesh(T.rbox(0.42, b.torH * 1.45, 0.08, 0.03), T.mat("#c8202a", { r: 0.5 }), 0, b.torH / 2, b.torD / 2 + 0.05); m.rotation.z = 0.62; this.up.add(m); const m2 = T.mesh(T.rbox(0.18, b.torH * 1.45, 0.09, 0.03), T.mat("#f0c23a", { r: 0.4, m: 0.4 }), 0, b.torH / 2, b.torD / 2 + 0.06); m2.rotation.z = 0.62; this.up.add(m2); }
         if (e === "shades") {   // 3D sunglasses with a blue mirror tint; p.shades === false hides them for a shot
           const H = b.head, gs = T.group(this.neck, 0, H * 0.6, H / 2 + 0.05), fr = T.mat("#0c0c0e", { r: 0.3, m: 0.4 }), le = T.mat(spec.lens || "#1d6fe0", { r: 0.08, m: 0.75 });
           for (const sx of [-1, 1]) { gs.add(T.mesh(T.rbox(H * 0.36, H * 0.2, 0.05, 0.04), le, sx * H * 0.21, 0, 0.02)); gs.add(T.mesh(T.rbox(H * 0.4, 0.05, 0.06, 0.02), fr, sx * H * 0.21, H * 0.11, 0.02));
@@ -563,33 +614,64 @@
           for (let i = 0; i < 5; i++) { const seg = T.group(par, 0, i ? -len * 0.9 : b.legH * 0.1, i ? 0 : -b.torD / 2 - 0.05); seg.rotation.x = i ? 0.28 : 2.1; seg.add(T.mesh(T.rbox(w, len, w, w * 0.4), m, 0, -len / 2, 0)); this.tail.push(seg); par = seg; len *= 0.85; w *= 0.8; }
           const tip = T.mesh(new THREE.ConeGeometry(w * 1.8, len * 1.1, 4), T.mat(spec.hornColor || "#2a0b0b", { r: 0.4 }), 0, -len * 0.9, 0); tip.rotation.x = Math.PI; par.add(tip); }
         if (e === "wings") { const m = T.mat(spec.wingColor || "#2a1030", { r: 0.8, side: THREE.DoubleSide }), bone = T.mat(spec.boneColor || "#1a0a10", { r: 0.5 }); this.wings = [];
-          for (const sx of [-1, 1]) { const w = T.group(this.body, sx * b.torW * 0.25, b.torH * 0.85, -b.torD / 2 - 0.08); const span = b.torW * 1.6 + 1.2;
+          for (const sx of [-1, 1]) { const w = T.group(this.up, sx * b.torW * 0.25, b.torH * 0.85, -b.torD / 2 - 0.08); const span = b.torW * 1.6 + 1.2;
             const shp = new THREE.Shape(); shp.moveTo(0, 0); shp.lineTo(span, span * 0.35); shp.lineTo(span * 0.82, -span * 0.15); shp.lineTo(span * 0.6, 0); shp.lineTo(span * 0.42, -span * 0.3); shp.lineTo(span * 0.25, -0.05); shp.lineTo(span * 0.1, -span * 0.32); shp.closePath();
             const mem = new THREE.Mesh(new THREE.ShapeGeometry(shp), m); mem.scale.x = sx; w.add(mem); const arm = T.mesh(T.rbox(span * 1.05, 0.14, 0.14, 0.05), bone, sx * span * 0.5, span * 0.17, 0.02); arm.rotation.z = sx * 0.33; w.add(arm);
             w.rotation.y = -sx * 0.5; this.wings.push(w); } }
         if (e === "spikes") { const m = T.mat(spec.hornColor || "#e8dcc0", { r: 0.4 });
-          for (const sx of [-1, 1]) for (let k = 0; k < 3; k++) { const sp = T.mesh(new THREE.ConeGeometry(0.16 + 0.04 * (2 - k), 0.7 - k * 0.12, 6), m, sx * (b.torW / 2 - 0.1 - k * 0.32), b.torH + 0.2, -0.1 + k * 0.05); sp.rotation.z = -sx * 0.5; this.body.add(sp); }
-          for (let k = 0; k < 4; k++) { const sp = T.mesh(new THREE.ConeGeometry(0.16, 0.55, 6), m, 0, b.torH * (0.9 - k * 0.22), -b.torD / 2 - 0.1); sp.rotation.x = -1.3; this.body.add(sp); } }
+          for (const sx of [-1, 1]) for (let k = 0; k < 3; k++) { const sp = T.mesh(new THREE.ConeGeometry(0.16 + 0.04 * (2 - k), 0.7 - k * 0.12, 6), m, sx * (b.torW / 2 - 0.1 - k * 0.32), b.torH + 0.2, -0.1 + k * 0.05); sp.rotation.z = -sx * 0.5; this.up.add(sp); }
+          for (let k = 0; k < 4; k++) { const sp = T.mesh(new THREE.ConeGeometry(0.16, 0.55, 6), m, 0, b.torH * (0.9 - k * 0.22), -b.torD / 2 - 0.1); sp.rotation.x = -1.3; this.up.add(sp); } }
         if (e === "claws") { const m = T.mat(spec.hornColor || "#f0e6d0", { r: 0.3 });
           for (const side of ["L", "R"]) for (let k = 0; k < 3; k++) { const cl = T.mesh(new THREE.ConeGeometry(0.09, 0.6, 5), m, (k - 1) * b.armW * 0.3, -0.38, b.armW * 0.25); cl.rotation.x = Math.PI + 0.3; this.hand[side].add(cl); } }
         if (e === "bigHorns") { const m = T.mat(spec.hornColor || "#2a0b0b", { r: 0.35 }), H = b.head;
           for (const sx of [-1, 1]) { let par = T.group(this.neck, sx * H * 0.42, H * 0.92, 0); let r = H * 0.2, l = H * 0.42;
             for (let k = 0; k < 4; k++) { const sg = T.group(par, 0, k ? l * 0.9 : 0, 0); sg.rotation.z = -sx * (k ? 0.45 : 0.9); sg.rotation.x = k ? -0.15 : 0; sg.add(T.mesh(new THREE.CylinderGeometry(r * 0.75, r, l, 8), m, 0, l / 2, 0)); par = sg; r *= 0.72; l *= 0.95; }
             par.add(T.mesh(new THREE.ConeGeometry(r, l, 8), m, 0, l * 1.3, 0)); } }
-        if (e === "bowtie") { const m = T.mesh(T.rbox(0.7, 0.32, 0.12, 0.06), T.mat("#d02a3a", { r: 0.5 }), 0, b.torH - 0.12, b.torD / 2 + 0.06); this.body.add(m); }
-        if (e === "hood") { const m = T.mesh(T.rbox(b.torW * 0.78, 0.7, 0.42, 0.18), T.mat(spec.shirt, { r: 0.7 }), 0, b.torH - 0.08, -b.torD / 2 - 0.14); m.rotation.x = -0.25; this.body.add(m); }
-        if (e === "cape") { const m = T.mesh(T.rbox(b.torW * 1.05, b.torH + b.legH * 0.7, 0.1, 0.04), T.mat("#c42032", { r: 0.8 }), 0, b.torH - (b.torH + b.legH * 0.7) / 2, -b.torD / 2 - 0.12); m.rotation.x = 0.06; this.body.add(m); this.cape = m; }
+        // ---- monster parts, pack 6
+        if (e === "jaw") { const H = b.head, m = T.mat(spec.skin, { r: 0.6 }), th = T.mat(spec.boneColor || "#f3ecd8", { r: 0.3 });
+          const j = (this.jaw = T.group(this.neck, 0, H * 0.18, H * 0.18)); j.add(T.mesh(T.rbox(H * 0.95, H * 0.3, H * 0.75, 0.08), m, 0, -H * 0.12, H * 0.22));
+          for (let k = 0; k < 5; k++) { const t = T.mesh(new THREE.ConeGeometry(0.07, 0.26, 4), th, (k - 2) * H * 0.18, H * 0.08, H * 0.55); j.add(t); } }
+        if (e === "arms4") { const m = T.mat(spec.skin, { r: 0.65 }), cl = T.mat(spec.hornColor || "#f0e6d0", { r: 0.3 }); this.arms2 = [];
+          for (const sx of [-1, 1]) { const g = T.group(this.up, sx * (b.torW / 2 + b.armW * 0.35), b.torH * 0.5, 0.05); g.add(T.mesh(T.rbox(b.armW * 0.8, b.armH * 0.85, b.armW * 0.8, 0.1), m, 0, -b.armH * 0.38, 0));
+            for (let k = 0; k < 3; k++) { const c = T.mesh(new THREE.ConeGeometry(0.08, 0.45, 5), cl, (k - 1) * 0.16, -b.armH * 0.85, 0.12); c.rotation.x = Math.PI + 0.3; g.add(c); }
+            g.userData.sx = sx; this.arms2.push(g); } }
+        if (e === "tentacles") { const m = T.mat(spec.tailColor || spec.skin, { r: 0.55 }); this.tents = [];
+          for (let i = 0; i < 4; i++) { let par = T.group(this.up, (i - 1.5) * b.torW * 0.28, b.torH * 0.75, -b.torD / 2 - 0.1), len = b.torH * 0.45, w = 0.32; const segs = [];
+            par.rotation.x = -1.1; par.rotation.z = (i - 1.5) * 0.45;
+            for (let k = 0; k < 6; k++) { const sg = T.group(par, 0, k ? len : 0, 0); sg.add(T.mesh(T.rbox(w, len * 1.05, w, w * 0.45), m, 0, len / 2, 0)); segs.push(sg); par = sg; len *= 0.86; w *= 0.84; }
+            this.tents.push(segs); } }
+        if (e === "mane") { const m = T.mat(spec.hairColor || spec.hornColor || "#1a1a1a", { r: 0.8 });
+          for (let k = 0; k < 14; k++) { const a = (k / 14) * Math.PI * 2, r = b.torW * 0.42; const c = T.mesh(new THREE.ConeGeometry(0.2, 0.9, 5), m, Math.sin(a) * r, b.torH + 0.05, Math.cos(a) * r * 0.7);
+            c.rotation.set(Math.cos(a) * 0.9, 0, -Math.sin(a) * 0.9); this.up.add(c); } }
+        if (e === "plates") { const m = T.mat(spec.hornColor || "#5a5348", { r: 0.35, m: 0.5 });
+          for (const sx of [-1, 1]) { const pl = T.mesh(T.rbox(b.armW * 1.5, 0.3, b.torD * 1.1, 0.1), m, sx * (b.torW / 2 + b.armW * 0.3), b.torH + 0.05, 0); pl.rotation.z = -sx * 0.35; this.up.add(pl); }
+          for (let k = 0; k < 3; k++) this.up.add(T.mesh(T.rbox(b.torW * (0.8 - k * 0.12), 0.22, 0.12, 0.06), m, 0, b.torH * (0.78 - k * 0.2), b.torD / 2 + 0.06)); }
+        if (e === "veins") { const g = T.mat(spec.glow || spec.faceStyle && spec.faceStyle.eyeColor || "#ff3b1f", { r: 0.4 }); g.emissive = new THREE.Color(spec.glow || (spec.faceStyle && spec.faceStyle.eyeColor) || "#ff3b1f"); g.emissiveIntensity = 1.4;
+          const ln = (par, x, y, z, h, rz) => { const v = T.mesh(T.rbox(0.07, h, 0.04, 0.02), g, x, y, z); v.rotation.z = rz; par.add(v); };
+          ln(this.up, -b.torW * 0.18, b.torH * 0.6, b.torD / 2 + 0.03, b.torH * 0.5, 0.4); ln(this.up, b.torW * 0.2, b.torH * 0.45, b.torD / 2 + 0.03, b.torH * 0.45, -0.5); ln(this.up, 0, b.torH * 0.25, b.torD / 2 + 0.03, b.torH * 0.3, 0.1);
+          for (const sd of ["L", "R"]) ln(this.elbow[sd], 0, -b.armH * 0.2, b.armW * 0.55, b.armH * 0.35, 0.2); }
+        if (e === "head2") { const H = b.head * 0.7, m = T.mat(spec.skin, { r: 0.6 });
+          const fm = new THREE.MeshStandardMaterial({ map: T.faceTex(Object.assign({}, this.faceStyle, { eyes: 1 }), "angry"), roughness: 0.6 });
+          const g = T.group(this.up, b.torW * 0.42, b.torH + 0.1, 0); g.add(T.mesh(T.rbox(H, H, H, H * 0.24, 5), [m, m, m, m, fm, m], 0, H / 2, 0)); g.rotation.z = -0.35; this.head2 = g; }
+        if (e === "mask") { const H = b.head, c = T.canvas(256, 256), q = c.getContext("2d");   // a bone-white mask over the face: dark eye holes, red stripes
+          q.fillStyle = spec.maskColor || "#f2efe6"; q.fillRect(0, 0, 256, 256); q.fillStyle = "#0b0b0b"; for (const x of [70, 186]) { q.beginPath(); q.ellipse(x, 100, 30, 22, x < 128 ? 0.4 : -0.4, 0, 7); q.fill(); }
+          q.fillStyle = (spec.faceStyle && spec.faceStyle.eyeColor) || "#ffd400"; for (const x of [70, 186]) { q.beginPath(); q.arc(x, 102, 7, 0, 7); q.fill(); }
+          q.fillStyle = spec.stripe || "#c62828"; q.fillRect(118, 0, 20, 70); q.fillRect(30, 150, 196, 10); for (let k = 0; k < 9; k++) { q.fillStyle = "#f2efe6"; q.fillRect(40 + k * 20, 175, 14, 40); q.fillStyle = "#0b0b0b"; q.fillRect(40 + k * 20, 215, 14, 4); }
+          const mm = new THREE.MeshStandardMaterial({ map: T.tex(c), roughness: 0.45 }); const mk = T.mesh(T.rbox(H * 1.02, H * 1.02, 0.12, 0.05), mm, 0, H / 2, H / 2 + 0.07); this.neck.add(mk); this.mask = mk; }
+        if (e === "bowtie") { const m = T.mesh(T.rbox(0.7, 0.32, 0.12, 0.06), T.mat("#d02a3a", { r: 0.5 }), 0, b.torH - 0.12, b.torD / 2 + 0.06); this.up.add(m); }
+        if (e === "hood") { const m = T.mesh(T.rbox(b.torW * 0.78, 0.7, 0.42, 0.18), T.mat(spec.shirt, { r: 0.7 }), 0, b.torH - 0.08, -b.torD / 2 - 0.14); m.rotation.x = -0.25; this.up.add(m); }
+        if (e === "cape") { const m = T.mesh(T.rbox(b.torW * 1.05, b.torH + b.legH * 0.7, 0.1, 0.04), T.mat(spec.capeColor || "#c42032", { r: 0.8 }), 0, b.torH - (b.torH + b.legH * 0.7) / 2, -b.torD / 2 - 0.12); m.rotation.x = 0.06; this.up.add(m); this.cape = m; }
         if (e === "belt") { const m = T.mesh(T.rbox(b.torW + 0.06, 0.24, b.torD + 0.06, 0.06), T.mat("#3a2a1c", { r: 0.6 }), 0, 0.14, 0); this.body.add(m); }
         if (e === "chain") {
           // a chain that hangs from the neck and lies on the chest (a U, not a ring standing in front)
           const gold = T.mat("#f2c230", { r: 0.25, m: 0.75 }), r = Math.min(0.5, b.torW * 0.26);
-          const m = T.mesh(new THREE.TorusGeometry(r, 0.055, 6, 24, Math.PI), gold, 0, b.torH - 0.04, b.torD / 2 + 0.035); m.rotation.z = Math.PI; m.scale.set(1, 1.25, 0.25); this.body.add(m);
-          const pend = T.mesh(T.rbox(0.26, 0.3, 0.08, 0.05), gold, 0, b.torH - 0.04 - r * 1.25 - 0.12, b.torD / 2 + 0.06); this.body.add(pend);
+          const m = T.mesh(new THREE.TorusGeometry(r, 0.055, 6, 24, Math.PI), gold, 0, b.torH - 0.04, b.torD / 2 + 0.035); m.rotation.z = Math.PI; m.scale.set(1, 1.25, 0.25); this.up.add(m);
+          const pend = T.mesh(T.rbox(0.26, 0.3, 0.08, 0.05), gold, 0, b.torH - 0.04 - r * 1.25 - 0.12, b.torD / 2 + 0.06); this.up.add(pend);
         }
       }
     }
     face(name) {
-      if (name && name !== this.expr) { this.faceMat.map = T.faceTex(this.faceStyle, name); this.faceMat.needsUpdate = true; this.expr = name; }
+      if (name && name !== this.expr) { this.faceMat.map = T.faceTex(this.faceStyle, name); if (this.faceStyle.monster) this.faceMat.emissiveMap = (this.faceMat.map.userData || {}).glow || null; this.faceMat.needsUpdate = true; this.expr = name; }
       return this;
     }
     // p: {x,y,z, ry, s, walk, run, armL, armR, legL, legR, head:[nod, turn, tilt], lean:[fwd, side], face, bob, jump, blink:false}
@@ -602,22 +684,27 @@
       r.scale.set(s, s * (p.squash ?? 1), s);
       let aL = [0, 0.06], aR = [0, 0.06], lL = [0, 0], lR = [0, 0], bob = 0, lean = p.lean || [0, 0];
       let eL = null, eR = null, kL = 0, kR = 0, twist = p.twist || 0;
-      const tm = (time ?? 0), sd = this.seed;
+      const tm0 = (time ?? 0), sd = this.seed, per = PERSONA[p.persona || this.persona] || PERSONA.calm, tm = tm0 * per.spd;
+      let pBob = p.bob || 0;
       if (p.walk !== undefined && p.walk !== null) {
-        const ph = p.walk, A = p.run ? 1.15 : p.amp ?? 0.62, A2 = p.run ? 1.25 : (p.amp ?? 0.62) * 0.95;
+        const ph = p.walk, A = p.run ? 1.15 : (p.amp ?? 0.62) * Math.min(1.25, per.walk), A2 = p.run ? 1.25 : (p.amp ?? 0.62) * 0.95 * Math.min(1.3, per.walk);
         lL = [A * Math.sin(ph), 0]; lR = [-A * Math.sin(ph), 0];
         aL = [-A2 * Math.sin(ph), 0.08]; aR = [A2 * Math.sin(ph), 0.08];
         const K = p.run ? 1.7 : 0.95;
         kL = K * Math.max(0, Math.cos(ph)) + (p.run ? 0.25 : 0.08); kR = K * Math.max(0, -Math.cos(ph)) + (p.run ? 0.25 : 0.08);
         eL = p.run ? 1.35 : 0.3 + 0.35 * Math.max(0, -Math.sin(ph)); eR = p.run ? 1.35 : 0.3 + 0.35 * Math.max(0, Math.sin(ph));
         bob = Math.abs(Math.cos(ph)) * (p.run ? 0.34 : 0.16);
-        twist += (p.run ? 0.16 : 0.09) * Math.sin(ph);
+        twist += (p.run ? 0.16 : 0.09 * per.swag) * Math.sin(ph);
+        if (!p.run && per.bounce) pBob += per.bounce * 1.2 * Math.abs(Math.sin(ph * 2));
         if (p.run) lean = [lean[0] + 0.26, lean[1]];
       } else if (!p.still) {
-        bob = 0; twist += 0.07 * Math.sin(tm * 1.1 + sd) + 0.03 * Math.sin(tm * 2.7 + sd * 3); // weight shift
-        // a livelier idle: arms sway, weight shifts
-        aL = [0.07 * Math.sin(tm * 1.7 + sd), 0.07 + 0.02 * Math.sin(tm * 2.1 + sd)]; aR = [0.07 * Math.sin(tm * 1.7 + sd + 2), 0.07 + 0.02 * Math.sin(tm * 2.3 + sd)];
-        if (!p.lean) lean = [0.015 * Math.sin(tm * 1.3 + sd), 0.02 * Math.sin(tm * 0.9 + sd * 2)];
+        const am = per.amp;
+        bob = 0; twist += (0.07 * Math.sin(tm * 1.1 + sd) + 0.03 * Math.sin(tm * 2.7 + sd * 3)) * am; // weight shift
+        // a livelier idle in the actor's own manner: arms sway, weight shifts, a bounce or a fidget
+        aL = [0.07 * am * Math.sin(tm * 1.7 + sd), 0.07 + per.spread + 0.02 * am * Math.sin(tm * 2.1 + sd)]; aR = [0.07 * am * Math.sin(tm * 1.7 + sd + 2), 0.07 + per.spread + 0.02 * am * Math.sin(tm * 2.3 + sd)];
+        if (!p.lean) lean = [0.015 * am * Math.sin(tm * 1.3 + sd), 0.02 * am * Math.sin(tm * 0.9 + sd * 2)];
+        if (per.bounce && !p._sit) pBob += per.bounce * (0.5 + 0.5 * Math.sin(tm * 5 + sd));
+        if (per.spread > 0.15 && !p.legL && !p.legR) { lL = [0, 0.07]; lR = [0, 0.07]; }
       }
       if (p.armL) aL = p.armL; if (p.armR) aR = p.armR;
       if (p.legL) { lL = p.legL; kL = 0; } if (p.legR) { lR = p.legR; kR = 0; }
@@ -635,7 +722,7 @@
       this.leg.L.rotation.set(-lL[0], 0, lL[1] || 0); this.leg.R.rotation.set(-lR[0], 0, -(lR[1] || 0));
       this.knee.L.rotation.x = kL; this.knee.R.rotation.x = kR;
       // keep the feet on the ground: a positive bob becomes a knee dip, never a float
-      const dip = Math.max(0, p.bob || 0) * 3.2;
+      const dip = Math.max(0, pBob) * 3.2;
       if (dip && !p._sit) { kL += dip; kR += dip; lL = [lL[0] + dip / 2, lL[1]]; lR = [lR[0] + dip / 2, lR[1]]; this.leg.L.rotation.x = -lL[0]; this.leg.R.rotation.x = -lR[0]; this.knee.L.rotation.x = kL; this.knee.R.rotation.x = kR; }
       if (p._sit || p.still) this.body.position.y = b.legH + bob + Math.min(0, p.bob || 0);
       else {
@@ -643,7 +730,18 @@
         const flight = p.run ? Math.abs(Math.cos(p.walk || 0)) * 0.12 : 0;
         this.body.position.y = Math.max(ext(lL[0], kL), ext(lR[0], kR)) + flight;
       }
-      this.body.rotation.set(lean[0], twist, -lean[1]);
+      // the hips take part of the lean and twist, the chest the rest (plus posture, the face's motion and p.chest)
+      const em = p.still ? null : emoMotion(p.face, tm0 + sd), pc = p.chest || [0, 0, 0];
+      const post = p.still ? 0 : per.pos * (p._sit ? 0.5 : 1);
+      this.body.rotation.set(lean[0] * 0.45, twist * 0.35, -lean[1] * 0.5);
+      this.chest.rotation.set(lean[0] * 0.55 + post + (em ? em.ch[0] : 0) + pc[0], twist * 0.65 + (em ? em.ch[1] : 0) + (pc[1] || 0), -lean[1] * 0.5 + (em ? em.ch[2] : 0) + (pc[2] || 0));
+      if (em && em.sh) { r.position.x += em.sh * Math.sin(tm0 * 47); r.position.z += em.sh * Math.sin(tm0 * 53 + 1); }
+      // ankles: the shoe stays flat on the ground whatever the thigh and knee do (no toes in the floor)
+      if (this.ankle) for (const [sd2, l, k] of [["L", this.leg.L.rotation.x, this.knee.L.rotation.x], ["R", this.leg.R.rotation.x, this.knee.R.rotation.x]]) {
+        const w = this.body.rotation.x + l + k; this.ankle[sd2].rotation.x = Math.max(-0.6, Math.min(0.6, -w));
+      }
+      // wrists: p.wristL / p.wristR = [x, y, z]
+      for (const sd2 of ["L", "R"]) { const w = p["wrist" + sd2]; if (w) this.hand[sd2].rotation.set(w[0] || 0, w[1] || 0, w[2] || 0); else this.hand[sd2].rotation.set(0, 0, 0); }
       if (this.blob) {   // the contact shadow stays on the ground: shrinks and fades as he jumps, softer when sitting
         const up = Math.max(0, (p.jump || 0) + (this.body.position.y - b.legH) * 0.5), k = 1 / (1 + up * 0.25);
         this.blob.position.y = 0.03 - (p.jump || 0) / Math.max(0.01, s);
@@ -651,10 +749,15 @@
         this.blob.material.opacity = (p._sit ? 0.28 : 0.5) * Math.max(0.15, 1 - up * 0.18);
         this.blob.visible = !(p.rx || p.rz) && !p.noBlob;
       }
-      const h = p.head || (p.still ? [0, 0, 0] : [0.05 * Math.sin(tm * 1.9 + sd), 0.16 * Math.sin(tm * 0.85 + sd * 2), 0.06 * Math.sin(tm * 1.3 + sd)]);
+      let h = p.head ? p.head.slice() : (p.still ? [0, 0, 0] : [per.head[0] + 0.05 * per.amp * Math.sin(tm * 1.9 + sd), 0.16 * per.amp * Math.sin(tm * 0.85 + sd * 2) + per.fidget * 0.3 * Math.sin(tm * 2.7 + sd * 5), per.head[1] + 0.06 * per.amp * Math.sin(tm * 1.3 + sd)]);
+      if (em) { const k = p.head ? 0.6 : 1; h = [h[0] + em.hd[0] * k, (h[1] || 0) + em.hd[1] * k, (h[2] || 0) + em.hd[2] * k]; }
       this.neck.rotation.set(h[0], h[1] || 0, h[2] || 0);
       if (this.shades) this.shades.visible = p.shades !== false;
       if (this.tail) this.tail.forEach((sg, i) => { sg.rotation.z = 0.22 * Math.sin(tm * 2.6 + sd + i * 0.7); });
+      if (this.tents) this.tents.forEach((segs, i) => segs.forEach((sg, k) => { if (k) { sg.rotation.x = 0.25 * Math.sin(tm0 * 2.2 + i * 1.3 + k * 0.6); sg.rotation.z = 0.2 * Math.sin(tm0 * 1.7 + i + k * 0.5); } }));
+      if (this.arms2) this.arms2.forEach((g) => { g.rotation.x = -0.35 - 0.35 * Math.sin(tm0 * 2.5 + g.userData.sx); g.rotation.z = g.userData.sx * (0.25 + 0.1 * Math.sin(tm0 * 1.9)); });
+      if (this.head2) this.head2.rotation.y = 0.4 * Math.sin(tm0 * 0.9 + 1);
+      if (this.jaw) this.jaw.rotation.x = /laugh|grin|angry|rage|scream|roar|shock|evil|demon/i.test(p.face || "") ? 0.22 + 0.15 * Math.abs(Math.sin(tm0 * 8)) : 0.05;
       if (this.wings) this.wings.forEach((w, i) => { w.rotation.y = (i ? 1 : -1) * (0.35 + 0.35 * Math.sin(tm * 5 + sd)); });
       // breathing: the chest rises a little; a cape trails and flutters, more when moving
       if (!p.still) { const br = Math.sin(tm * 2.4 + sd * 1.7); this.body.scale.set(1 + 0.008 * br, 1 + 0.012 * br, 1 + 0.018 * br); } else this.body.scale.set(1, 1, 1);
