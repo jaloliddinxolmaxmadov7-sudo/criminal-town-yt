@@ -40,3 +40,7 @@ Channel: CRIMINAL TOWN (YouTube Shorts, English). Three shorts a day from the th
 2. Look sheets (`tools/look.py`) are checked by eye before rendering.
 3. After the render: `python3 roblox/tools/qa_sheets.py film.mp4 qa_final/` and an independent reviewer agent checks every sheet (detached arms, things merged into each other, covered or messy faces, phones/props through bodies, empty or dark frames). Fix and re-render until clean.
 Rig: shoulder, elbow and knee caps keep limbs joined; one clean extra per emotion; open-front hood; 3D glasses; held phones in front of the chest, dropped phones flat; swords upright in a guard and along the arm in a swing.
+
+## Monsters (owner's rule, 2026-11-24)
+Monsters are never just people in shirts. Use the monster kit: builds brute / stalker / hulk / imp (plus tall), faceStyle {monster:1, eyeColor, eyes:1-3}, extras bigHorns, wings, spikes, claws, tail; skin-coloured body, no clothes. Every shot with monsters gets NEW monster designs (see roblox/episodes/006-demons/shots_gen.py: MON() and the generated MONSTERS table). Avoid the "fall" move (the body reads as loose blocks); use kneel or scared.
+Speed: the 3D draws at 720 x 1280 inside the 1080 x 1920 frame (T.RS = 0.6667) - about 45 min per 1:30 video. Renders must run inside an active turn (background jobs stop a few minutes after a reply).

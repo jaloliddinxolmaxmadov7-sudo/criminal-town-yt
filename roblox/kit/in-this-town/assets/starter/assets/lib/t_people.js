@@ -91,7 +91,24 @@
   });
   T.EXPR = EXPR;
   const BLINKABLE = new Set(["smile", "happy", "grin", "wow", "talk", "determined", "worried", "sad", "angry", "tongue"]);
+  function drawMonster(st, ex) {
+    const c = T.canvas(512, 512), g = c.getContext("2d"); g.scale(2, 2);
+    g.fillStyle = st.skin; g.fillRect(0, 0, 256, 256);
+    g.fillStyle = "rgba(0,0,0,0.25)"; for (const [x, y, r] of [[40, 200, 18], [210, 60, 14], [60, 40, 10], [200, 210, 12]]) { g.beginPath(); g.arc(x, y, r, 0, 7); g.fill(); } // scars and spots
+    const eye = st.eyeColor || "#ffd400", open = ex && /laugh|shocked|angry|scared|squeeze|oh|sparkle_oh|creepy/.test(ex.png || ""), n = st.eyes || 2;
+    const xs = n === 1 ? [128] : n === 3 ? [70, 128, 186] : [84, 172];
+    g.fillStyle = "#120806"; g.beginPath(); g.moveTo(40, 62); g.lineTo(118, 92); g.lineTo(138, 92); g.lineTo(216, 62); g.lineTo(216, 78); g.lineTo(40, 78); g.closePath(); g.fill(); // heavy angry brow
+    for (const x of xs) { const r = g.createRadialGradient(x, 108, 2, x, 108, 30); r.addColorStop(0, "#ffffff"); r.addColorStop(0.25, eye); r.addColorStop(1, "rgba(0,0,0,0)"); g.fillStyle = r; g.beginPath(); g.arc(x, 108, 30, 0, 7); g.fill();
+      g.fillStyle = eye; g.beginPath(); g.ellipse(x, 108, 20, 11, 0, 0, 7); g.fill(); g.fillStyle = "#120806"; g.beginPath(); g.ellipse(x, 108, 4, 10, 0, 0, 7); g.fill(); }
+    const my = 182, mh = open ? 52 : 22;
+    g.fillStyle = "#1a0505"; g.beginPath(); g.moveTo(44, my - mh / 2); g.quadraticCurveTo(128, my - mh / 2 - 14, 212, my - mh / 2); g.lineTo(206, my + mh / 2); g.quadraticCurveTo(128, my + mh / 2 + 10, 50, my + mh / 2); g.closePath(); g.fill();
+    if (open) { g.fillStyle = "#b3122a"; g.beginPath(); g.ellipse(128, my + mh / 2 - 8, 34, 10, 0, 0, 7); g.fill(); }
+    g.fillStyle = "#f4eedc"; for (let i = 0; i < 9; i++) { const x = 52 + i * 19; g.beginPath(); g.moveTo(x, my - mh / 2 - 2); g.lineTo(x + 16, my - mh / 2 - 2); g.lineTo(x + 8, my - mh / 2 + (i % 2 ? 16 : 24)); g.closePath(); g.fill();
+      g.beginPath(); g.moveTo(x + 4, my + mh / 2 + 2); g.lineTo(x + 18, my + mh / 2 + 2); g.lineTo(x + 11, my + mh / 2 - (i % 2 ? 12 : 18)); g.closePath(); g.fill(); }
+    return c;
+  }
   function drawFace(st, ex) {
+    if (st.monster) return drawMonster(st, ex);
     const c = T.canvas(512, 512), g = c.getContext("2d"); g.scale(2, 2);
     const ink = st.ink || "#1d1a22";
     g.fillStyle = st.skin; g.fillRect(0, 0, 256, 256);
@@ -180,7 +197,7 @@
     if (ex.money) { g.font = "900 54px sans-serif"; g.textAlign = "center"; g.textBaseline = "middle"; for (const x of EX) { g.fillStyle = "#1e8e3e"; g.beginPath(); g.arc(x, EY, 30, 0, 7); g.fill(); g.fillStyle = "#ffe14d"; g.fillText("$", x, EY + 2); } g.textAlign = "start"; g.textBaseline = "alphabetic"; }
     if (ex.fireEyes) { for (const x of EX) { g.fillStyle = "#ff6d00"; g.beginPath(); g.moveTo(x - 20, EY - 40); g.quadraticCurveTo(x - 22, EY - 66, x - 6, EY - 80); g.quadraticCurveTo(x - 2, EY - 62, x + 6, EY - 74); g.quadraticCurveTo(x + 22, EY - 58, x + 20, EY - 40); g.closePath(); g.fill(); g.fillStyle = "#ffd23f"; g.beginPath(); g.ellipse(x, EY - 50, 7, 11, 0, 0, 7); g.fill(); } }
     if (ex.dots) { g.fillStyle = ink; for (const x of [196, 214, 232]) { g.beginPath(); g.arc(x, 34, 6, 0, 7); g.fill(); } }
-    if (ex.ice) { g.fillStyle = "rgba(170,225,255,0.32)"; g.fillRect(0, 0, 256, 256); }
+    if (ex.ice) { g.fillStyle = "rgba(170,225,255,0.18)"; g.fillRect(0, 0, 256, 256); }
     if (ex.hearts) { g.fillStyle = "#ff3b6b"; for (const [x, y, r] of [[36, 40, 12], [220, 30, 15], [206, 64, 9]]) { g.beginPath(); g.moveTo(x, y + r); g.bezierCurveTo(x - r * 2, y - r * 0.2, x - r * 0.6, y - r * 1.6, x, y - r * 0.4); g.bezierCurveTo(x + r * 0.6, y - r * 1.6, x + r * 2, y - r * 0.2, x, y + r); g.fill(); } }
     if (ex.bags) { g.fillStyle = "rgba(80,40,90,0.45)"; for (const x of EX) { g.beginPath(); g.ellipse(x, EY + 30, 28, 9, 0, 0, 7); g.fill(); } }
     if (ex.tear1) { g.fillStyle = "#8fd8ff"; g.strokeStyle = "#2f7fb8"; g.lineWidth = 3; const x = EX[1] + 6, y = EY + 26; g.beginPath(); g.moveTo(x, y); g.quadraticCurveTo(x + 14, y + 26, x, y + 32); g.quadraticCurveTo(x - 14, y + 26, x, y); g.fill(); g.stroke(); }
@@ -328,6 +345,11 @@
     skinny: { legH: 2.3, legW: 0.6, legD: 0.64, torH: 2.05, torW: 1.2, torD: 0.66, armH: 2.05, armW: 0.6, head: 1.35 },
     kid: { legH: 1.55, legW: 0.84, legD: 0.88, torH: 1.6, torW: 1.75, torD: 0.92, armH: 1.6, armW: 0.78, head: 1.45 },
     small: { legH: 1.05, legW: 0.72, legD: 0.78, torH: 1.2, torW: 1.45, torD: 0.85, armH: 1.15, armW: 0.66, head: 1.55 },
+    // monsters
+    brute: { legH: 1.7, legW: 1.25, legD: 1.3, torH: 2.9, torW: 3.6, torD: 2.0, armH: 3.1, armW: 1.3, head: 1.2 },      // gorilla: huge chest, long heavy arms, small head
+    stalker: { legH: 3.4, legW: 0.55, legD: 0.6, torH: 2.6, torW: 1.3, torD: 0.7, armH: 3.6, armW: 0.5, head: 1.25 },  // tall and thin, arms to the knees
+    hulk: { legH: 2.2, legW: 1.2, legD: 1.2, torH: 2.6, torW: 3.0, torD: 1.6, armH: 2.6, armW: 1.15, head: 1.3 },
+    imp: { legH: 0.9, legW: 0.7, legD: 0.75, torH: 1.1, torW: 1.5, torD: 1.0, armH: 1.2, armW: 0.62, head: 1.75 },     // small, big head, quick
   };
   T.BUILDS = BUILDS;
   class Actor {
@@ -389,7 +411,7 @@
         const kn = T.group(hp, 0, -tH, 0);
         kn.add(T.mesh(T.rbox(b.legW * 0.98, tH - 0.2, b.legD * 0.98, 0.12), pM, 0, -(tH - 0.3) / 2, 0));
         kn.add(T.mesh(T.rbox(b.legW * 1.04, 0.36, b.legD * 1.12, 0.12), shoes, 0, -tH + 0.18, 0.05));
-        kn.add(T.mesh(T.rbox(b.legW * 1.08, 0.1, b.legD * 1.16, 0.04), T.mat(spec.sole || "#f4f4f4", { r: 0.7 }), 0, -tH + 0.05, 0.05));
+        kn.add(T.mesh(T.rbox(b.legW * 1.08, 0.1, b.legD * 1.16, 0.04), T.mat(spec.sole || "#f4f4f4", { r: 0.7 }), 0, -tH + 0.03, 0.05)); // the sole sits a hair below the shoe: no flicker where the faces meet
         hp.add(T.mesh(T.rbox(b.legW * 0.97, b.legW * 0.7, b.legD * 0.97, 0.18), pM, 0, kn.position.y, 0)); // knee cap
         this.leg[side] = hp; this.knee[side] = kn;
       }
@@ -536,6 +558,24 @@
             gs.add(T.mesh(T.rbox(0.04, 0.05, H * 0.5, 0.02), fr, sx * H * 0.5, H * 0.08, -H * 0.24)); }
           gs.add(T.mesh(T.rbox(H * 0.1, 0.05, 0.06, 0.02), fr, 0, H * 0.05, 0.03)); this.shades = gs;
         }
+        // ---- monster parts (colours: spec.hornColor, spec.boneColor, spec.wingColor)
+        if (e === "tail") { const m = T.mat(spec.tailColor || spec.skin, { r: 0.7 }); let par = this.body, len = b.legH * 0.55, w = b.torW * 0.22; this.tail = [];
+          for (let i = 0; i < 5; i++) { const seg = T.group(par, 0, i ? -len * 0.9 : b.legH * 0.1, i ? 0 : -b.torD / 2 - 0.05); seg.rotation.x = i ? 0.28 : 2.1; seg.add(T.mesh(T.rbox(w, len, w, w * 0.4), m, 0, -len / 2, 0)); this.tail.push(seg); par = seg; len *= 0.85; w *= 0.8; }
+          const tip = T.mesh(new THREE.ConeGeometry(w * 1.8, len * 1.1, 4), T.mat(spec.hornColor || "#2a0b0b", { r: 0.4 }), 0, -len * 0.9, 0); tip.rotation.x = Math.PI; par.add(tip); }
+        if (e === "wings") { const m = T.mat(spec.wingColor || "#2a1030", { r: 0.8, side: THREE.DoubleSide }), bone = T.mat(spec.boneColor || "#1a0a10", { r: 0.5 }); this.wings = [];
+          for (const sx of [-1, 1]) { const w = T.group(this.body, sx * b.torW * 0.25, b.torH * 0.85, -b.torD / 2 - 0.08); const span = b.torW * 1.6 + 1.2;
+            const shp = new THREE.Shape(); shp.moveTo(0, 0); shp.lineTo(span, span * 0.35); shp.lineTo(span * 0.82, -span * 0.15); shp.lineTo(span * 0.6, 0); shp.lineTo(span * 0.42, -span * 0.3); shp.lineTo(span * 0.25, -0.05); shp.lineTo(span * 0.1, -span * 0.32); shp.closePath();
+            const mem = new THREE.Mesh(new THREE.ShapeGeometry(shp), m); mem.scale.x = sx; w.add(mem); const arm = T.mesh(T.rbox(span * 1.05, 0.14, 0.14, 0.05), bone, sx * span * 0.5, span * 0.17, 0.02); arm.rotation.z = sx * 0.33; w.add(arm);
+            w.rotation.y = -sx * 0.5; this.wings.push(w); } }
+        if (e === "spikes") { const m = T.mat(spec.hornColor || "#e8dcc0", { r: 0.4 });
+          for (const sx of [-1, 1]) for (let k = 0; k < 3; k++) { const sp = T.mesh(new THREE.ConeGeometry(0.16 + 0.04 * (2 - k), 0.7 - k * 0.12, 6), m, sx * (b.torW / 2 - 0.1 - k * 0.32), b.torH + 0.2, -0.1 + k * 0.05); sp.rotation.z = -sx * 0.5; this.body.add(sp); }
+          for (let k = 0; k < 4; k++) { const sp = T.mesh(new THREE.ConeGeometry(0.16, 0.55, 6), m, 0, b.torH * (0.9 - k * 0.22), -b.torD / 2 - 0.1); sp.rotation.x = -1.3; this.body.add(sp); } }
+        if (e === "claws") { const m = T.mat(spec.hornColor || "#f0e6d0", { r: 0.3 });
+          for (const side of ["L", "R"]) for (let k = 0; k < 3; k++) { const cl = T.mesh(new THREE.ConeGeometry(0.09, 0.6, 5), m, (k - 1) * b.armW * 0.3, -0.38, b.armW * 0.25); cl.rotation.x = Math.PI + 0.3; this.hand[side].add(cl); } }
+        if (e === "bigHorns") { const m = T.mat(spec.hornColor || "#2a0b0b", { r: 0.35 }), H = b.head;
+          for (const sx of [-1, 1]) { let par = T.group(this.neck, sx * H * 0.42, H * 0.92, 0); let r = H * 0.2, l = H * 0.42;
+            for (let k = 0; k < 4; k++) { const sg = T.group(par, 0, k ? l * 0.9 : 0, 0); sg.rotation.z = -sx * (k ? 0.45 : 0.9); sg.rotation.x = k ? -0.15 : 0; sg.add(T.mesh(new THREE.CylinderGeometry(r * 0.75, r, l, 8), m, 0, l / 2, 0)); par = sg; r *= 0.72; l *= 0.95; }
+            par.add(T.mesh(new THREE.ConeGeometry(r, l, 8), m, 0, l * 1.3, 0)); } }
         if (e === "bowtie") { const m = T.mesh(T.rbox(0.7, 0.32, 0.12, 0.06), T.mat("#d02a3a", { r: 0.5 }), 0, b.torH - 0.12, b.torD / 2 + 0.06); this.body.add(m); }
         if (e === "hood") { const m = T.mesh(T.rbox(b.torW * 0.78, 0.7, 0.42, 0.18), T.mat(spec.shirt, { r: 0.7 }), 0, b.torH - 0.08, -b.torD / 2 - 0.14); m.rotation.x = -0.25; this.body.add(m); }
         if (e === "cape") { const m = T.mesh(T.rbox(b.torW * 1.05, b.torH + b.legH * 0.7, 0.1, 0.04), T.mat("#c42032", { r: 0.8 }), 0, b.torH - (b.torH + b.legH * 0.7) / 2, -b.torD / 2 - 0.12); m.rotation.x = 0.06; this.body.add(m); this.cape = m; }
@@ -614,6 +654,8 @@
       const h = p.head || (p.still ? [0, 0, 0] : [0.05 * Math.sin(tm * 1.9 + sd), 0.16 * Math.sin(tm * 0.85 + sd * 2), 0.06 * Math.sin(tm * 1.3 + sd)]);
       this.neck.rotation.set(h[0], h[1] || 0, h[2] || 0);
       if (this.shades) this.shades.visible = p.shades !== false;
+      if (this.tail) this.tail.forEach((sg, i) => { sg.rotation.z = 0.22 * Math.sin(tm * 2.6 + sd + i * 0.7); });
+      if (this.wings) this.wings.forEach((w, i) => { w.rotation.y = (i ? 1 : -1) * (0.35 + 0.35 * Math.sin(tm * 5 + sd)); });
       // breathing: the chest rises a little; a cape trails and flutters, more when moving
       if (!p.still) { const br = Math.sin(tm * 2.4 + sd * 1.7); this.body.scale.set(1 + 0.008 * br, 1 + 0.012 * br, 1 + 0.018 * br); } else this.body.scale.set(1, 1, 1);
       if (this.cape) { const mv = p.walk !== undefined && p.walk !== null; this.cape.rotation.x = 0.06 + (mv ? (p.run ? 0.55 : 0.28) : 0.03) + (mv ? 0.12 : 0.05) * Math.abs(Math.sin(tm * (mv ? 9 : 2.2) + sd)); }

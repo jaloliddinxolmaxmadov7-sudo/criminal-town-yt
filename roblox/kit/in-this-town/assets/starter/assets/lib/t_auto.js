@@ -391,7 +391,10 @@
         let m;
         if ((cr.where || "behind") === "behind") { const k = n === 1 ? 0.5 : i / (n - 1); m = [T.lerp(-7.5, 7.5, k) + (rr() - 0.5) * 0.8, -4.6 - (i % 2) * 2.6 - rr() * 0.6]; }
         else if (cr.where === "front") { const row = i % 2, k = n <= 2 ? 0.5 : Math.floor(i / 2) / Math.max(1, Math.ceil(n / 2) - 1); m = [T.lerp(-6.5, 6.5, k) + row * 1.3 + (rr() - 0.5) * 0.5, 5.2 + row * 2.4]; }
-        else if (cr.where === "around") { const ang = Math.PI * (0.15 + 0.7 * (n === 1 ? 0.5 : i / (n - 1))); m = [Math.cos(ang) * -7, -Math.sin(ang) * 6 + 1.5]; }
+        else if (cr.where === "around") { // one arc for a small crowd; two staggered arcs for a big one, so nobody stands inside a neighbour
+          const two = n > 6, ring = two ? i % 2 : 0, j = two ? Math.floor(i / 2) : i, nn = two ? Math.ceil(n / 2) : n;
+          const ang = Math.PI * (0.15 + 0.7 * (nn === 1 ? 0.5 : (j + ring * 0.5) / (nn - 1 + (two ? 0.5 : 0)))), R = ring ? 1.45 : 1;
+          m = [Math.cos(ang) * -7 * R, -Math.sin(ang) * 6 * R + 1.5]; }
         else if (cr.where === "sides") { const side = i % 2 ? 1 : -1, k = Math.floor(i / 2); m = [side * (5 + k * 2.6), 0.6 - k * 1.8]; }
         else { m = [T.lerp(-8, 8, n === 1 ? 0.5 : i / (n - 1)), -5]; }
         const p = A.toWorld(pl, [m[0] + center[0], m[1] + center[1]]);
@@ -1034,7 +1037,7 @@
     }
     const rad = (cs) => (cs.a.b.torW / 2 + cs.a.b.armW * 0.9) * cs.a.root.scale.x;
     const blockedAtP = (cs, x, z) => {
-      const r = Math.min(cs.a.b.torW, cs.a.b.torD * 1.6) / 2 * 0.95 * cs.a.root.scale.x, y0 = cs.y + 0.4, y1 = cs.y + (cs.a.b.legH + cs.a.b.torH) * cs.a.root.scale.x;
+      const r = Math.min(cs.a.b.torW, cs.a.b.torD * 1.6) / 2 * 0.95 * cs.a.root.scale.x, y0 = cs.y + 0.4, y1 = cs.y + (cs.a.b.legH + cs.a.b.torH + cs.a.b.head) * cs.a.root.scale.x;
       for (const b of boxes) { if (b.max.y < y0 || b.min.y > y1) continue; const cx = Math.max(b.min.x, Math.min(x, b.max.x)), cz = Math.max(b.min.z, Math.min(z, b.max.z)); if (Math.hypot(x - cx, z - cz) < r) return true; }
       for (const o of actors) if (o !== cs && Math.hypot(o.pos0[0] - x, o.pos0[1] - z) < (rad(o) + rad(cs)) * 0.95) return true;
       return false;
@@ -1147,7 +1150,7 @@
     for (const cs of actors) {
       const st = curState(cs.states, t), a = cs.a, sc = a.root.scale.x, p = a.root.position;
       if (/^(sit|sleep|drawDesk|lie)/.test(st.do) || st.y) continue; // seated / lying on purpose
-      const r = Math.min(a.b.torW, a.b.torD * 1.6) / 2 * 0.8 * sc, y0 = p.y + 0.4 * sc, y1 = p.y + (a.b.legH + a.b.torH) * sc;
+      const r = Math.min(a.b.torW, a.b.torD * 1.6) / 2 * 0.8 * sc, y0 = p.y + 0.4 * sc, y1 = p.y + (a.b.legH + a.b.torH + a.b.head) * sc;
       for (const { b, m } of boxes) {
         if (b.max.y < y0 || b.min.y > y1) continue;
         const cx = Math.max(b.min.x, Math.min(p.x, b.max.x)), cz = Math.max(b.min.z, Math.min(p.z, b.max.z));

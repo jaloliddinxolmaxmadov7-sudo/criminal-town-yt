@@ -145,7 +145,10 @@
     if (!T.HEADLESS) {
       const R = (T.R = new THREE.WebGLRenderer({ canvas, antialias: false, preserveDrawingBuffer: true, powerPreference: "high-performance" }));
       R.setPixelRatio(1);
-      R.setSize(T.W, T.H, false);
+      // T.RS: the 3D is drawn at 720 x 1280 and shown at full size (captions stay sharp); about half the render time
+      T.RS = T.RS ?? 0.6667;
+      R.setSize(Math.round(T.W * T.RS), Math.round(T.H * T.RS), false);
+      canvas.style.width = T.W + "px"; canvas.style.height = T.H + "px";
       R.shadowMap.enabled = true;
       R.shadowMap.type = THREE.PCFSoftShadowMap;
       R.localClippingEnabled = true;
@@ -192,7 +195,7 @@
     T.points = [0, 1, 2].map(() => { const p = new THREE.PointLight("#ffcc88", 0, 30, 1.6); scene.add(p); return p; });
     scene.fog = new THREE.Fog("#cfe9ff", 120, 520);
     // post: scene -> MSAA target -> tone map + grade -> screen
-    T.rt = T.HEADLESS ? { texture: null } : new THREE.WebGLRenderTarget(T.W, T.H, { samples: 4, type: THREE.HalfFloatType });
+    T.rt = T.HEADLESS ? { texture: null } : new THREE.WebGLRenderTarget(Math.round(T.W * (T.RS ?? 1)), Math.round(T.H * (T.RS ?? 1)), { samples: 4, type: THREE.HalfFloatType });
     T.post = new THREE.ShaderMaterial({
       depthTest: false, depthWrite: false, toneMapped: false,
       uniforms: { src: { value: T.rt.texture }, exposure: { value: 1 }, sepia: { value: 0 }, sat: { value: 1.08 }, vig: { value: 0.22 }, flash: { value: 0 }, dark: { value: 0 }, grain: { value: 0 }, seed: { value: 0 }, tint: { value: new THREE.Color(1, 1, 1) } },
