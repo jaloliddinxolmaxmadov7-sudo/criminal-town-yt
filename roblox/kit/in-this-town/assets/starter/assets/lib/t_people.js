@@ -751,7 +751,9 @@
       }
       let h = p.head ? p.head.slice() : (p.still ? [0, 0, 0] : [per.head[0] + 0.05 * per.amp * Math.sin(tm * 1.9 + sd), 0.16 * per.amp * Math.sin(tm * 0.85 + sd * 2) + per.fidget * 0.3 * Math.sin(tm * 2.7 + sd * 5), per.head[1] + 0.06 * per.amp * Math.sin(tm * 1.3 + sd)]);
       if (em) { const k = p.head ? 0.6 : 1; h = [h[0] + em.hd[0] * k, (h[1] || 0) + em.hd[1] * k, (h[2] || 0) + em.hd[2] * k]; }
-      this.neck.rotation.set(h[0], h[1] || 0, h[2] || 0);
+      // the head never folds into the chest: clamp the nod, and less when the chest already leans forward
+      const chx = this.chest.rotation.x, hx = Math.max(-0.45, Math.min(0.42 - Math.max(0, chx) * 0.6, h[0]));
+      this.neck.rotation.set(hx, h[1] || 0, h[2] || 0);
       if (this.shades) this.shades.visible = p.shades !== false;
       if (this.tail) this.tail.forEach((sg, i) => { sg.rotation.z = 0.22 * Math.sin(tm * 2.6 + sd + i * 0.7); });
       if (this.tents) this.tents.forEach((segs, i) => segs.forEach((sg, k) => { if (k) { sg.rotation.x = 0.25 * Math.sin(tm0 * 2.2 + i * 1.3 + k * 0.6); sg.rotation.z = 0.2 * Math.sin(tm0 * 1.7 + i + k * 0.5); } }));

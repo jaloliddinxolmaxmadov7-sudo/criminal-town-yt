@@ -18,6 +18,7 @@ for s in S:
     if cam.get("move"): last = cam["move"]; continue
     opts = BY.get(cam.get("size", "medium"), BY["medium"])
     many = len(s.get("cast", [])) > 1 or s.get("crowd")
+    if s.get("crowd") and cam.get("size") in ("wide", "xwide", "full"): cam["move"] = "push" if k % 2 else "rise"; last = cam["move"]; k += 1; n += 1; continue
     if s.get("place") in ("living", "kitchen", "bedroom", "classroom", "office", "bakeryIn", "shopIn", "jewelIn"):
         opts = [o for o in opts if o in ("push", "dutch", "orbit", "orbitL", "zoom", "snapzoom", "whip", "whipL", "vertigo")] or ["push"]
     if many: opts = [o for o in opts if not o.startswith("whip") and o not in ("dolly", "vertigo", "snapzoom")] or ["push"]
